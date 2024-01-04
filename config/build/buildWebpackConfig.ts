@@ -32,7 +32,7 @@ export default function buildWebpackConfig(
       rules: buildLoaders(isDev),
     },
 
-    resolve: buildResolvers(),
+    resolve: buildResolvers(options),
     //помогает четко видеть, где в коде произошла ошибка
     devtool: isDev ? 'inline-source-map' : undefined,
     //локальный сервер (port:3000 и hot reloading)
