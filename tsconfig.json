@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    //место, куда производится сборка, но в нашем случае это не так важно, т.к. сборка происходит с помощью вебпака
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    //способы модульной сборки (т.е. common js или обычный import)
+    "module": "ESNext",
+    //в какую спецификацию комплириуем: для поддержки большинства браузеров
+    "target": "es5",
+    //чтобы можно было писать onClick={}
+    "jsx": "react-jsx",
+    //будет обрабатывать еще и ts файлы
+    "allowJs": true,
+    "moduleResolution": "node",
+    //позволяет вместо import * as React from 'react' писать import React from 'react'
+    "allowSyntheticDefaultImports": true,
+    // позволяет работать с пакетами, которые используют common js как с обычными пакетами с помощью import  (require() и module.export) = common js
+    "esModuleInterop": true
+  },
+  "ts-node": { "compilerOptions": { "module": "CommonJS" } }
+}
