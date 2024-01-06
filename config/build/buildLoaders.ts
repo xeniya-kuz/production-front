@@ -35,6 +35,16 @@ export function buildLoaders(isDev: boolean): webpack.RuleSetRule[] {
     ],
   };
 
+  const svgLoader = {
+    test: /\.svg$/,
+    use: ['@svgr/webpack'],
+  };
+
+  const fileLoader = {
+    test: /\.(png|jpe?g|gif|woff2|woff)$/i,
+    use: [{ loader: 'file-loader' }],
+  };
+
   //! порядок, при котором лоудеры возвращаются, имеет значение
-  return [tsLoader, cssLoader];
+  return [tsLoader, cssLoader, svgLoader, fileLoader];
 }
