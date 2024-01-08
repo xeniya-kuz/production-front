@@ -5,7 +5,7 @@ import { routeConfig } from '6shared/config/routeConfig/routeConfig';
 const AppRouter = () => {
   return (
     // без Suspense будут ошибки в консоли
-    // Нужно, потому что у нас копмоненты подгружаются асинхронно (чанки=lazy loading)
+    // Нужно, потому что у нас компоненты подгружаются асинхронно (чанки=lazy loading)
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         {Object.values(routeConfig).map(({ element, path }) => (

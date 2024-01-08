@@ -26,7 +26,7 @@ export default function buildWebpackConfig(
       //если не указать, то каждый раз будет создаваться новый файл, а старые не удаляются
       clean: true,
     },
-    plugins: buildPlugins(paths),
+    plugins: buildPlugins(paths, isDev),
     module: {
       //файлы с разными расширенями будут обрабатывать разные лоудеры
       rules: buildLoaders(isDev),

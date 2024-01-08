@@ -1,11 +1,11 @@
-import path from 'path';
 import HTMLWebpack from 'html-webpack-plugin';
 import webpack from 'webpack';
 import { BuildPaths } from './types/config';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 export function buildPlugins(
-  paths: BuildPaths
+  paths: BuildPaths,
+  isDev: boolean
 ): webpack.WebpackPluginInstance[] {
   return [
     new HTMLWebpack({
@@ -18,6 +18,10 @@ export function buildPlugins(
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash:8].css',
       chunkFilename: 'css/[name].[contenthash:8].css',
+    }),
+    //помогает прокидывать глобальные переменные (окружения??) в сам проект
+    new webpack.DefinePlugin({
+      __IS_DEV__: JSON.stringify(isDev),
     }),
   ];
 }
