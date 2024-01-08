@@ -8,5 +8,7 @@ export function buildDevServer(options: BuildOptions): Configuration {
     open: true,
     //иначе при обновлении страницы на каком-то пути (/about) выпаадет ошибка can't get
     historyApiFallback: true,
+    //hot replacement (reloading)? also needs plugin HotModuleReplacementPlugin
+    hot: true,
   };
 }
