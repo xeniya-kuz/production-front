@@ -45,6 +45,27 @@ export function buildLoaders(isDev: boolean): webpack.RuleSetRule[] {
     use: [{ loader: 'file-loader' }],
   };
 
+  const babelLoader = {
+    test: /\.(js|jsx|ts|tsx)$/,
+    exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env'],
+        //вытаскивает переводы в отдельную папку и подтягивает переводы
+        plugins: [
+          [
+            'i18next-extract',
+            {
+              locales: ['ru', 'en'],
+              keyAsDefaultValue: true,
+            },
+          ],
+        ],
+      },
+    },
+  };
+
   //! порядок, при котором лоудеры возвращаются, имеет значение
-  return [tsLoader, cssLoader, svgLoader, fileLoader];
+  return [fileLoader, svgLoader, babelLoader, tsLoader, cssLoader];
 }

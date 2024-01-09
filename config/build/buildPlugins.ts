@@ -28,7 +28,7 @@ export function buildPlugins(
 
   if (isDev) {
     plugins.push(
-      //hot replacement (reloading), also needs  hot: true in devServer
+      //hot replacement (reloading), also needs hot: true in devServer
       new webpack.HotModuleReplacementPlugin()
     );
     plugins.push(
