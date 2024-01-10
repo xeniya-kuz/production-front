@@ -1,14 +1,13 @@
-import webpack from 'webpack';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { BuildOptions } from './types/config';
+import type webpack from 'webpack'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
-export function buildLoaders(isDev: boolean): webpack.RuleSetRule[] {
-  //Если не используем ts, то нужен еще babel-loader
+export function buildLoaders (isDev: boolean): webpack.RuleSetRule[] {
+  // Если не используем ts, то нужен еще babel-loader
   const tsLoader = {
     test: /\.tsx?$/,
     use: 'ts-loader',
-    exclude: /node_modules/,
-  };
+    exclude: /node_modules/
+  }
 
   const cssLoader = {
     test: /\.s[ac]ss$/i,
@@ -16,7 +15,7 @@ export function buildLoaders(isDev: boolean): webpack.RuleSetRule[] {
       //! порядок важен
       // Creates `style` nodes from JS strings
       // 'style-loader',
-      //используем вместо style-loader
+      // используем вместо style-loader
       isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       // Translates CSS into CommonJS
       {
@@ -26,24 +25,24 @@ export function buildLoaders(isDev: boolean): webpack.RuleSetRule[] {
             auto: /\.module\./,
             localIdentName: isDev
               ? '[name]__[local]_[hash:base64:5]'
-              : '[hash:base64:8]',
-          },
-        },
+              : '[hash:base64:8]'
+          }
+        }
       },
       // Compiles Sass to CSS
-      'sass-loader',
-    ],
-  };
+      'sass-loader'
+    ]
+  }
 
   const svgLoader = {
     test: /\.svg$/,
-    use: ['@svgr/webpack'],
-  };
+    use: ['@svgr/webpack']
+  }
 
   const fileLoader = {
     test: /\.(png|jpe?g|gif|woff2|woff)$/i,
-    use: [{ loader: 'file-loader' }],
-  };
+    use: [{ loader: 'file-loader' }]
+  }
 
   const babelLoader = {
     test: /\.(js|jsx|ts|tsx)$/,
@@ -52,20 +51,20 @@ export function buildLoaders(isDev: boolean): webpack.RuleSetRule[] {
       loader: 'babel-loader',
       options: {
         presets: ['@babel/preset-env'],
-        //вытаскивает переводы в отдельную папку и подтягивает переводы
+        // вытаскивает переводы в отдельную папку и подтягивает переводы
         plugins: [
           [
             'i18next-extract',
             {
               locales: ['ru', 'en'],
-              keyAsDefaultValue: true,
-            },
-          ],
-        ],
-      },
-    },
-  };
+              keyAsDefaultValue: true
+            }
+          ]
+        ]
+      }
+    }
+  }
 
   //! порядок, при котором лоудеры возвращаются, имеет значение
-  return [fileLoader, svgLoader, babelLoader, tsLoader, cssLoader];
+  return [fileLoader, svgLoader, babelLoader, tsLoader, cssLoader]
 }

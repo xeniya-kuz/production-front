@@ -1,8 +1,8 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
+import i18n from 'i18next'
+import { initReactI18next } from 'react-i18next'
 
-import Backend from 'i18next-http-backend';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import Backend from 'i18next-http-backend'
+import LanguageDetector from 'i18next-browser-languagedetector'
 
 i18n
   .use(Backend)
@@ -14,14 +14,17 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    //язык по умолчанию
+    // язык по умолчанию
     fallbackLng: 'ru',
-    //__IS_DEV__ - переменная окружения
-    debug: __IS_DEV__ ? true : false,
+    // __IS_DEV__ - переменная окружения
+    debug: Boolean(__IS_DEV__),
 
     interpolation: {
-      escapeValue: false, // not needed for react as it escapes by default
-    },
-  });
+      escapeValue: false // not needed for react as it escapes by default
+    }
+  })
+  .catch((err: any) => {
+    console.error(err)
+  })
 
-export default i18n;
+export default i18n
