@@ -3,7 +3,12 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['standard-with-typescript', 'plugin:react/recommended'],
+  extends: [
+    'standard-with-typescript',
+    'plugin:react/recommended',
+    // подсвечивает ошибкой, если у текста нет перевода
+    'plugin:i18next/recommended',
+  ],
   overrides: [
     {
       env: {
@@ -20,7 +25,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['react', 'i18next'],
   settings: {
     react: {
       version: 'detect',
@@ -35,6 +40,14 @@ module.exports = {
     ],
     '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'warn',
+    // подсказывает, где текст не переведен
+    'i18next/no-literal-string': [
+      'error',
+      {
+        markupOnly: true,
+        ignoreAttribute: ['to', 'src', 'fallback'],
+      },
+    ],
   },
   globals: {
     __IS_DEV__: true,

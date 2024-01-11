@@ -1,5 +1,4 @@
 import { classNames } from '6shared/lib/classNames/classNames'
-import styles from './ThemeSwitcher.module.scss'
 import { Theme, useTheme } from '1app/providers/ThemeProvider'
 import IconLight from '6shared/assets/icons/theme-light.svg'
 import IconDark from '6shared/assets/icons/theme-dark.svg'
@@ -14,7 +13,7 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps): JSX.Element =>
 
   return (
       <Button
-      className={classNames(styles.themeSwitcher, [className])}
+      className={classNames('', [className])}
       onClick={toggleTheme}
       theme={ThemeButton.CLEAR}
     >

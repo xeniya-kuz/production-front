@@ -6,7 +6,7 @@ const AppRouter = (): JSX.Element => {
   return (
   // без Suspense будут ошибки в консоли
   // Нужно, потому что у нас компоненты подгружаются асинхронно (чанки=lazy loading)
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={'Loading...'}>
           <Routes>
               {Object.values(routeConfig).map(({ element, path }) => (
                   <Route
