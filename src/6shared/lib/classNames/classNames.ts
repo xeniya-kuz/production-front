@@ -1,7 +1,7 @@
 type Mods = Record<string, boolean | string>
 
 export function classNames (
-  className?: string | undefined,
+  className?: string,
   additional: Array<string | undefined> = [],
   mods: Mods = {}
 ): string {

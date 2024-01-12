@@ -10,7 +10,8 @@
     "lint": "npx eslint \"**/*.{ts,tsx}\"",
     "lint:fix": "npx eslint \"**/*.{ts,tsx}\" --fix",
     "prelint:fix": "npx stylelint \"**/*.scss\" --fix",
-    "prelint": "npx stylelint \"**/*.scss\""
+    "prelint": "npx stylelint \"**/*.scss\"",
+    "unit": "jest --config ./config/jest/jest.config.ts"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
     "@babel/preset-typescript": "^7.16.7",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.5",
     "@svgr/webpack": "^6.2.1",
+    "@types/jest": "^29.5.11",
     "@types/node": "^17.0.21",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
@@ -41,6 +43,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.5.1",
     "mini-css-extract-plugin": "^2.5.3",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
