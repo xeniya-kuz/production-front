@@ -3,6 +3,7 @@ import webpack from 'webpack'
 import { type BuildPaths } from './types/config'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
 export function buildPlugins (
   paths: BuildPaths,
@@ -23,7 +24,11 @@ export function buildPlugins (
     // помогает прокидывать глобальные переменные (окружения??) в сам проект
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev)
-    })
+    }),
+    new BundleAnalyzerPlugin(
+      // чтобы страница не открывалась автоматически при каждой сборке
+      { openAnalyzer: false }
+    )
   ]
 
   if (isDev) {
