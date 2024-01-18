@@ -3,5 +3,7 @@
   "Язык": "English",
   "Главная": "Main",
 	"Переключить": "Toggle",
-	"Страница не найдена":"Page is not found"
+	"Страница не найдена": "Page is not found",
+	"Произошла непредвиденная ошибка": "Error occured",
+	"ошибка": "throw error"
 }
