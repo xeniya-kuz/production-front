@@ -5,6 +5,7 @@
 
 // @ts-expect-error - не смогла понять, что не так
 import { type Config } from 'jest'
+import path from 'path'
 
 const config: Config = {
   // All imported modules in your tests should be mocked automatically
@@ -32,6 +33,12 @@ const config: Config = {
     'node_modules'
   ],
 
+  // чтобы тесты распознавали абсолютные пути
+  modulePaths: ['<rootDir>src'],
+
+  // for '@testing-library/jest-dom
+  setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
+
   // An array of file extensions your modules use
   moduleFileExtensions: [
     'js',
@@ -54,7 +61,14 @@ const config: Config = {
     // '**/?(*.)+(spec|test).[tj]s?(x)'
     // преположительно, эта регулярка работает и на маке и на винде
     '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'
-  ]
+  ],
+
+  // для scss
+  moduleNameMapper: {
+    '\\.s?css$': 'identity-obj-proxy',
+    // заглушка, чтобы jest не ругался на svg. Т.е. тестирвоать svg мы не будем, т.к. это просто иконки. Для svg будет возвращаться jestEmptyComponent
+    '\\.svg$': path.resolve(__dirname, 'jestEmptyComponent.tsx')
+  }
 
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,

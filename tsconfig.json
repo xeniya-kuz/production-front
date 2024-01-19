@@ -38,4 +38,9 @@
 		"strictNullChecks": true,
   },
   "ts-node": { "compilerOptions": { "module": "CommonJS" }},
+	// в документации '@testing-library/jest-dom написано включить setupTests, но из-за этого появляется ошибка с импортами (абсолютными и относительными) 
+	// "include": [
+  //   "./config/jest/setupTests.ts"
+  // ],
+	
 }

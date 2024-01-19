@@ -42,10 +42,10 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'warn',
     // подсказывает, где текст не переведен
     'i18next/no-literal-string': [
-      'error',
+      'warn',
       {
         markupOnly: true,
-        ignoreAttribute: ['to', 'src', 'fallback'],
+        ignoreAttribute: ['to', 'src', 'fallback', 'data-testid'],
       },
     ],
   },
