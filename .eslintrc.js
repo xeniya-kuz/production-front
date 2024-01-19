@@ -42,7 +42,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'warn',
     // подсказывает, где текст не переведен
     'i18next/no-literal-string': [
-      'warn',
+      'error',
       {
         markupOnly: true,
         ignoreAttribute: ['to', 'src', 'fallback', 'data-testid'],
@@ -52,4 +52,11 @@ module.exports = {
   globals: {
     __IS_DEV__: true,
   },
+  // отключили правило i18next/no-literal-string для тестовых файлов
+  overrides: [
+    {
+      files: ['**/src/**/*.test.{ts,tsx}'],
+      rules: { 'i18next/no-literal-string': 'off' },
+    },
+  ],
 };
