@@ -3,12 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: [
-    'standard-with-typescript',
-    'plugin:react/recommended',
-    // подсвечивает ошибкой, если у текста нет перевода
-    'plugin:i18next/recommended',
-  ],
+  extends: ['standard-with-typescript', 'plugin:react/recommended', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
   overrides: [
     {
       env: {
