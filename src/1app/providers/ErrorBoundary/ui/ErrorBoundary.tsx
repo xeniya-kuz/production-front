@@ -32,7 +32,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   }
 
   render (): React.ReactNode {
-    const { hasError, message } = this.state
+    const { hasError } = this.state
     const { children, fallback } = this.props
     if (hasError) {
       // You can render any custom fallback UI
