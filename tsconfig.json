@@ -44,5 +44,6 @@
 		"./src/**/*.tsx",
 		"./config/**/*.ts",
 		"./config/**/*.tsx",
+		"./webpack.config.ts"
   ],
 }
