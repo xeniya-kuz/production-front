@@ -24,11 +24,7 @@ export function buildPlugins (
     // помогает прокидывать глобальные переменные (окружения??) в сам проект
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev)
-    }),
-    new BundleAnalyzerPlugin(
-      // чтобы страница не открывалась автоматически при каждой сборке
-      { openAnalyzer: false }
-    )
+    })
   ]
 
   if (isDev) {
@@ -40,6 +36,10 @@ export function buildPlugins (
       // HotModuleReplacementPlugin плохо работал с реактом
       new ReactRefreshWebpackPlugin()
     )
+    plugins.push(new BundleAnalyzerPlugin(
+      // чтобы страница не открывалась автоматически при каждой сборке
+      { openAnalyzer: false }
+    ))
   }
 
   return plugins
