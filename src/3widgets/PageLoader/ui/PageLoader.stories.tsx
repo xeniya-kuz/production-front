@@ -7,7 +7,10 @@ import { PageLoader } from './PageLoader'
 const meta = {
   title: 'widgets/PageLoader',
   component: PageLoader,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  parameters: {
+    loki: { skip: true }
+  }
 
 } satisfies Meta<typeof PageLoader>
 

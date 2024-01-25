@@ -6,7 +6,11 @@ import { Loader } from './Loader'
 const meta = {
   title: 'shared/Loader',
   component: Loader,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  // потому что анимацию сложно заскринить одинаково два раза
+  parameters: {
+    loki: { skip: true }
+  }
 
 } satisfies Meta<typeof Loader>
 
