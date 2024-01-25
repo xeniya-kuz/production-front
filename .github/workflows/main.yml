@@ -31,7 +31,8 @@ jobs:
        run: npm run storybook:build
      - name: screenshot testing
        run: npm run test:loki:ci
-
+     - name: updating loki references
+       run: loki update --reactUri="file:./storybook-static
 
 
 
