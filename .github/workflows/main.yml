@@ -35,6 +35,8 @@ jobs:
        with:
         name: .loki
         path: .loki
+        artifacts:
+        when: on_failure
     #  - name: Download artifact
     #    uses: actions/download-artifact@v2
     #    with:
