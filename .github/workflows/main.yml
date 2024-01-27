@@ -29,32 +29,15 @@ jobs:
        run: npm run test:jest
      - name: build storybook
        run: npm run storybook:build
-     - name: screenshot testing
-       run: npm run test:loki:ci
-     - name: Upload artifact on failure
-       if: failure()
-       uses: actions/upload-artifact@v2
-       with:
-        name: my-artifact
-        path: .loki
-    # - uses: actions/upload-artifact@v3
-    #  with:
-    #   name: .loki
-    #   path: .loki
-    #   artifacts:
-    #   when: on_failure
-    #  - name: Download artifact
-    #    uses: actions/download-artifact@v2
-    #    with:
-    #     name: my-artifact
-    #     path: ../build
-    #  - name: Upload artifact
+    #  - name: screenshot testing
+    #    run: npm run test:loki:ci
+    #  - name: Upload loki artifact on failure
+    #    if: failure()
     #    uses: actions/upload-artifact@v2
     #    with:
-    #     name: my-artifact
-    #     path: ../build
-     
-
+    #     name: loki-artifact
+    #     path: .loki
+ 
 
 
 

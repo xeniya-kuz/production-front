@@ -12,9 +12,9 @@
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "test:jest": "jest --config ./config/jest/jest.config.ts",
-		"test:loki": "npx loki test",
-		"test:loki:ci": "npx loki --requireReference --reactUri file:./storybook-static",
-		"test:loki:ok": "npx loki test",
+    "test:loki": "npx loki test",
+    "test:loki:ci": "npx loki --requireReference --reactUri file:./storybook-static",
+    "test:loki:ok": "npx loki test",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook"
   },
@@ -91,16 +91,16 @@
   "loki": {
     "configurations": {
       "chrome.laptop": {
-        "target": "chrome.docker",
+        "target": "chrome.app",
         "width": 1366,
         "height": 768,
         "deviceScaleFactor": 1,
         "mobile": false
       },
       "chrome.iphone7": {
-        "target": "chrome.docker",
+        "target": "chrome.app",
         "preset": "iPhone 7"
       }
     }
-	}
+  }
 }
