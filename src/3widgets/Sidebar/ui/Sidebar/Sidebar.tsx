@@ -59,7 +59,7 @@ export const Sidebar = ({ className }: SidebarProps): JSX.Element => {
           </div>
           <div className={styles.switchers}>
               <ThemeSwitcher />
-              {/* <LangSwitcher className={styles.lang} short={collapsed}/> */}
+              <LangSwitcher className={styles.lang} short={collapsed}/>
           </div>
       </div>
   )
