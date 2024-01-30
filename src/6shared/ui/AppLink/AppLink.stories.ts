@@ -22,7 +22,7 @@ export const PrimaryLight: Story = {
 
 export const SecondaryLight: Story = {
   args: {
-    theme: AppLinkTheme.SECONDARY
+    theme: AppLinkTheme.INVERTED
   }
 }
 
@@ -35,7 +35,7 @@ export const PrimaryDark: Story = {
 
 export const SecondaryDark: Story = {
   args: {
-    theme: AppLinkTheme.SECONDARY
+    theme: AppLinkTheme.INVERTED
   },
   decorators: [ThemeDecorator(Theme.DARK)]
 }

@@ -2,7 +2,7 @@ import { classNames } from '6shared/lib/classNames/classNames'
 import { Theme, useTheme } from '1app/providers/ThemeProvider'
 import IconLight from '6shared/assets/icons/theme-light.svg'
 import IconDark from '6shared/assets/icons/theme-dark.svg'
-import { Button, ThemeButton } from '6shared/ui/Button/Button'
+import { Button, ButtonTheme } from '6shared/ui/Button/Button'
 
 interface ThemeSwitcherProps {
   className?: string
@@ -15,7 +15,7 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps): JSX.Element =>
       <Button
       className={classNames('', [className])}
       onClick={toggleTheme}
-      theme={ThemeButton.CLEAR}
+      theme={ButtonTheme.CLEAR}
     >
           {theme === Theme.LIGHT && <IconLight />}
           {theme === Theme.DARK && <IconDark />}

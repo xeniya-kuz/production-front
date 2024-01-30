@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Button, ThemeButton } from './Button'
-import { Theme } from '1app/providers/ThemeProvider'
-import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { Button, ButtonSize, ButtonTheme } from './Button'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -34,19 +32,62 @@ export const Primary: Story = {
 
 export const Clear: Story = {
   args: {
-    theme: ThemeButton.CLEAR
+    theme: ButtonTheme.CLEAR
   }
 }
 
-export const Outline: Story = {
+export const OutlineSizeM: Story = {
   args: {
-    theme: ThemeButton.OUTLINE
+    theme: ButtonTheme.OUTLINE
+  }
+}
+export const OutlineSizeL: Story = {
+  args: {
+    theme: ButtonTheme.OUTLINE,
+    size: ButtonSize.L
+  }
+}
+export const OutlineSizeXL: Story = {
+  args: {
+    theme: ButtonTheme.OUTLINE,
+    size: ButtonSize.XL
   }
 }
 
-export const OutlineDark: Story = {
+export const Background: Story = {
   args: {
-    theme: ThemeButton.OUTLINE
-  },
-  decorators: [ThemeDecorator(Theme.DARK)]
+    theme: ButtonTheme.BACKGROUND
+  }
+}
+
+export const BackgroundInverted: Story = {
+  args: {
+    theme: ButtonTheme.BACKGROUND_INVERTED
+  }
+}
+
+export const SquareSizeM: Story = {
+  args: {
+    children: '>',
+    square: true,
+    theme: ButtonTheme.BACKGROUND_INVERTED
+  }
+}
+
+export const SquareSizeL: Story = {
+  args: {
+    children: '>',
+    square: true,
+    size: ButtonSize.L,
+    theme: ButtonTheme.BACKGROUND_INVERTED
+  }
+}
+
+export const SquareSizeXL: Story = {
+  args: {
+    children: '>',
+    square: true,
+    size: ButtonSize.XL,
+    theme: ButtonTheme.BACKGROUND_INVERTED
+  }
 }
