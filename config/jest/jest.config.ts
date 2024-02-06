@@ -72,7 +72,7 @@ const config: Config = {
 
   // A set of global variables that need to be available in all test environments
   globals: {
-    __IS__DEV__: true
+    __IS_DEV__: true
   }
 
   // Indicates whether the coverage information should be collected while executing the test
