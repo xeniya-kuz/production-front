@@ -14,7 +14,6 @@ export default function App (): JSX.Element {
       <div className={classNames('app', [theme])}>
           {/* Здесь Suspense нужен, т.к. переводы из i18n будут подгружаться чанками */}
           <Suspense fallback={<PageLoader/>}>
-
               <Navbar />
               <div className="content-page">
                   <Sidebar />
