@@ -6,5 +6,6 @@
 	"Переключить": "Toggle",
 	"Страница не найдена": "Page is not found",
 	"Произошла непредвиденная ошибка": "Error occured",
-	"ошибка": "throw error"
+	"ошибка": "throw error",
+  "Войти": "Sign in"
 }

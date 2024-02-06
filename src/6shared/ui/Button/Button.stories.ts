@@ -36,11 +36,18 @@ export const Clear: Story = {
   }
 }
 
+export const ClearInverted: Story = {
+  args: {
+    theme: ButtonTheme.CLEAR_INVERTED
+  }
+}
+
 export const OutlineSizeM: Story = {
   args: {
     theme: ButtonTheme.OUTLINE
   }
 }
+
 export const OutlineSizeL: Story = {
   args: {
     theme: ButtonTheme.OUTLINE,
@@ -51,6 +58,12 @@ export const OutlineSizeXL: Story = {
   args: {
     theme: ButtonTheme.OUTLINE,
     size: ButtonSize.XL
+  }
+}
+
+export const OutlineInverted: Story = {
+  args: {
+    theme: ButtonTheme.OUTLINE_INVERTED
   }
 }
 

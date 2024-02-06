@@ -25,7 +25,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', 'i18next'],
+  plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
   settings: {
     react: {
       version: 'detect',
@@ -48,6 +48,9 @@ module.exports = {
         ignoreAttribute: ['to', 'src', 'fallback', 'data-testid'],
       },
     ],
+    //сдедит за правильностью написания хуков и их зависимостей
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'error', //checks effect dependencies
   },
   globals: {
     __IS_DEV__: true,

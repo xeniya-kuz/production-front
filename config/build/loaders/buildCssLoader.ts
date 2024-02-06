@@ -1,5 +1,6 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function buildCssLoader (isDev: boolean) {
   return {
     test: /\.s[ac]ss$/i,
