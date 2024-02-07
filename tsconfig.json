@@ -44,6 +44,8 @@
 		"./src/**/*.tsx",
 		"./config/**/*.ts",
 		"./config/**/*.tsx",
-		"./webpack.config.ts"
-  ],
+		"./webpack.config.ts",
+    "./**/*.js",
+    "./**/*.jsx"
+, "json-server/index.js"  ],
 }
