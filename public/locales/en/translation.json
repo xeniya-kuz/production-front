@@ -7,5 +7,7 @@
 	"Страница не найдена": "Page is not found",
 	"Произошла непредвиденная ошибка": "Error occured",
 	"ошибка": "throw error",
-  "Войти": "Sign in"
+  "Войти": "Sign in",
+  "Введите логин": "Type login",
+  "Введите пароль": "Type password"
 }

@@ -4,6 +4,7 @@ import { type StoryFn } from '@storybook/react'
 export const ThemeDecorator = (theme: Theme) =>
   function InnerDecorator (StoryComponent: StoryFn) {
     return (
+    // initialTheme для тестирования
         <ThemeProvider initialTheme={theme}>
             <div className={`app ${theme}`}>
                 <StoryComponent/>

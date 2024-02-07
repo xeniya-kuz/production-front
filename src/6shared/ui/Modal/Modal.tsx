@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import styles from './Modal.module.scss'
-import { useEffect, type MouseEvent, type ReactNode, useCallback } from 'react'
+import { useEffect, type MouseEvent, type ReactNode, useCallback, useState } from 'react'
 import { Portal } from '6shared/ui/Portal/Portal'
 import { useTheme } from '1app/providers/ThemeProvider'
 
@@ -9,9 +9,12 @@ interface ModalProps {
   children?: ReactNode
   isOpen: boolean
   onClose: () => void
+  lazy?: boolean
 }
 
-export const Modal = ({ className, children, isOpen, onClose }: ModalProps): JSX.Element => {
+export const Modal = ({ className, children, isOpen, onClose, lazy = false }: ModalProps): JSX.Element | null => {
+  const [isMounted, setIsMounted] = useState<boolean>(false)
+
   const mods = {
     [styles.opened]: isOpen
   }
@@ -35,12 +38,22 @@ export const Modal = ({ className, children, isOpen, onClose }: ModalProps): JSX
   }, [closeHandler])
 
   useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true)
+    }
+  }, [isOpen])
+
+  useEffect(() => {
     if (isOpen) { window.addEventListener('keydown', onKeyDown) }
 
     return () => {
       window.removeEventListener('keydown', onKeyDown)
     }
   }, [isOpen, onKeyDown])
+
+  if (lazy && !isMounted) {
+    return null
+  }
 
   return (
       <Portal>

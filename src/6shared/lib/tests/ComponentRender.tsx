@@ -16,7 +16,7 @@ export function ComponentRender (component: ReactNode, props: componentRenderPro
   const { route = '/', initialState } = props
 
   return render(
-      <StoreProvider initialState={initialState}>
+      <StoreProvider initialState={initialState as StateSchema}>
           <MemoryRouter initialEntries={[route]}>
               <I18nextProvider i18n={i18n}>
                   {component}

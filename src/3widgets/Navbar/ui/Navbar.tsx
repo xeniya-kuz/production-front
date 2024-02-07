@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react'
 import { Modal } from '6shared/ui/Modal/Modal'
 import { useTranslation } from 'react-i18next'
 import { Button, ButtonTheme } from '6shared/ui/Button/Button'
+import { LoginModal } from '4features/AuthByUsername'
 
 interface NavbarProps {
   className?: string
@@ -25,10 +26,7 @@ export const Navbar = ({ className }: NavbarProps): JSX.Element => {
             onClick={onToggleModal}>
               {t('Войти')}
           </Button>
-          <Modal
-          isOpen={isAuthModal}
-          // eslint-disable-next-line i18next/no-literal-string
-          onClose={onToggleModal}>Задача организации, в особенности же понимание сущности ресурсосберегающих технологий влечёт за собой интересный процесс внедрения модернизации дальнейших направлений развития.</Modal>
+          <LoginModal isOpen={isAuthModal} onClose={onToggleModal}/>
       </div>
   )
 }
