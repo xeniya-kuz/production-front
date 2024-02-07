@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --env port=3000",
-    "start:dev:server":"node ./json-server/index.js",
+    "start:dev:server": "node ./json-server/index.js",
     "json-server": "npx json-server ./json-server/db.json --port 8000",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
@@ -21,8 +21,8 @@
     "test:loki:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test:loki:report": "npm run test:loki:json && npm run test:loki:html",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
-    "storybook:build": "storybook build -c ./config/storybook"
-   
+    "storybook:build": "storybook build -c ./config/storybook",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -85,7 +85,8 @@
     "webpack": "^5.69.1",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.7.4"
+    "webpack-dev-server": "^4.7.4",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
