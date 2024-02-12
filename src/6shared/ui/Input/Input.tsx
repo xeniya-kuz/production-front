@@ -12,7 +12,7 @@ interface InputProps extends HTMLInputProps {
 }
 
 export const Input = memo(
-  function InputTest (props: InputProps): JSX.Element {
+  function Input (props: InputProps): JSX.Element {
     const { className, value, onChange, type = 'text', placeholder, autofocus = false, ...otherProps } = props
     const ref = useRef<HTMLInputElement>(null)
 

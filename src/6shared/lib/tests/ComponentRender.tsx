@@ -1,8 +1,8 @@
-import { type ReactNode } from 'react'
+import { Suspense, type ReactNode } from 'react'
 import { I18nextProvider } from 'react-i18next'
 import { render } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import i18n from '6shared/config/i18n/i18nForTests'
+import i18nForTests from '6shared/config/i18n/i18nForTests'
 import { type StateSchema, StoreProvider } from '1app/providers/StoreProvider'
 import { type DeepPartial } from '@reduxjs/toolkit'
 
@@ -16,10 +16,12 @@ export function ComponentRender (component: ReactNode, props: componentRenderPro
   const { route = '/', initialState } = props
 
   return render(
-      <StoreProvider initialState={initialState as StateSchema}>
+      <StoreProvider initialState={initialState}>
           <MemoryRouter initialEntries={[route]}>
-              <I18nextProvider i18n={i18n}>
-                  {component}
+              <I18nextProvider i18n={i18nForTests}>
+                  <Suspense fallback={''}>
+                      {component}
+                  </Suspense>
               </I18nextProvider>
           </MemoryRouter>
       </StoreProvider>)

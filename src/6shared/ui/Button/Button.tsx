@@ -22,21 +22,24 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ButtonTheme
   square?: boolean
   size?: ButtonSize
+  disabled?: boolean
 }
 
 export const Button: FC<ButtonProps> = (props) => {
-  const { className, children, theme, square = false, size = ButtonSize.M, ...otherProps } = props
+  const { className, children, theme, square = false, size = ButtonSize.M, disabled = false, ...otherProps } = props
 
   const mods: Record<string, boolean> = {
     [styles.square]: square,
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     [styles[theme!]]: theme !== undefined,
-    [styles[size]]: size !== undefined
+    [styles[size]]: size !== undefined,
+    [styles.disabled]: disabled
   }
 
   return (
       <button
       className={classNames(styles.button, [className], mods)}
+      disabled={disabled}
       {...otherProps}
     >
           {children}

@@ -9,5 +9,8 @@
 	"ошибка": "throw error",
   "Войти": "Sign in",
   "Введите логин": "Type login",
-  "Введите пароль": "Type password"
+  "Введите пароль": "Type password",
+  "Форма авторизации": "Sign in form",
+  "Логин или пароль введены неправильно": "Username or password are incorrect",
+  "Выйти": "Log out"
 }

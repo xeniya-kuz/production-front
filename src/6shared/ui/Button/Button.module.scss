@@ -80,3 +80,8 @@
 .size_xl {
 	font: var(--font-xl);
 }
+
+// states
+.disabled {
+	opacity: 0.5;
+}

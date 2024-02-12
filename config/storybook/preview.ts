@@ -1,6 +1,6 @@
-import { Theme } from '../../src/1app/providers/ThemeProvider/lib/ThemeContext'
-import { ThemeDecorator } from '../../src/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { StyleDecorator } from '../../src/6shared/config/storybook/StyleDecorator/StyleDecorator'
+import { Theme } from '1app/providers/ThemeProvider/lib/ThemeContext'
+import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { StyleDecorator } from '6shared/config/storybook/StyleDecorator/StyleDecorator'
 import { type Preview } from '@storybook/react'
 import { RouterDecorator } from '6shared/config/storybook/RouterDecorator/RouterDecorator'
 
