@@ -10,7 +10,7 @@ interface StoreProviderProps {
   initialState?: DeepPartial<StateSchema>
 }
 
-export const StoreProvider = ({ children, initialState }: StoreProviderProps) => {
+export const StoreProvider = ({ children, initialState }: StoreProviderProps): JSX.Element => {
   const store = createReduxStore(initialState as StateSchema)
 
   return (

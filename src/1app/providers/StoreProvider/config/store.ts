@@ -3,6 +3,7 @@ import { type StateSchema } from './StateSchema'
 import { userReducer } from '5entities/User'
 import { loginReducer } from '4features/AuthByUsername'
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function createReduxStore (initialState?: StateSchema) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     user: userReducer,
