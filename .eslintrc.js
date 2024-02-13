@@ -45,7 +45,7 @@ module.exports = {
       'error',
       {
         markupOnly: true,
-        ignoreAttribute: ['to', 'src', 'fallback', 'data-testid'],
+        ignoreAttribute: ['to', 'src', 'fallback', 'data-testid', 'reducerTitle'],
       },
     ],
     //сдедит за правильностью написания хуков и их зависимостей

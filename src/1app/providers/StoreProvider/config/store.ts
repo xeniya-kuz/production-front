@@ -1,21 +1,27 @@
 import { type ReducersMapObject, configureStore } from '@reduxjs/toolkit'
-import { type StateSchema } from './StateSchema'
+import { type ReduxStoreWithManager, type StateSchema } from './StateSchema'
 import { userReducer } from '5entities/User'
-import { loginReducer } from '4features/AuthByUsername'
+import { createReducerManager } from './reducerManager'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function createReduxStore (initialState?: StateSchema) {
   const rootReducers: ReducersMapObject<StateSchema> = {
-    user: userReducer,
-    loginForm: loginReducer
+    user: userReducer
   }
 
-  return configureStore<StateSchema>({
-    reducer: rootReducers,
+  const reducerManager = createReducerManager(rootReducers)
+
+  const store = configureStore<StateSchema>({
+    reducer: reducerManager.reduce,
     devTools: __IS_DEV__,
     // для тестирования
     preloadedState: initialState
   })
+
+  // @ts-expect-error - temporary
+  store.reducerManager = reducerManager
+
+  return store
 }
 
 export const store = createReduxStore()
