@@ -1,6 +1,6 @@
-import { type ReducersMapObject, configureStore, type DeepPartial } from '@reduxjs/toolkit'
-import { type StateSchema } from './StateSchema'
 import { userReducer } from '5entities/User'
+import { configureStore, type ReducersMapObject } from '@reduxjs/toolkit'
+import { type StateSchema } from './StateSchema'
 import { createReducerManager } from './reducerManager'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
