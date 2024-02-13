@@ -1,11 +1,15 @@
-import { type ReducersMapObject, configureStore } from '@reduxjs/toolkit'
-import { type ReduxStoreWithManager, type StateSchema } from './StateSchema'
+import { type ReducersMapObject, configureStore, type DeepPartial } from '@reduxjs/toolkit'
+import { type StateSchema } from './StateSchema'
 import { userReducer } from '5entities/User'
 import { createReducerManager } from './reducerManager'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function createReduxStore (initialState?: StateSchema) {
+export function createReduxStore (
+  initialState?: StateSchema,
+  asyncReducers?: ReducersMapObject<StateSchema>
+) {
   const rootReducers: ReducersMapObject<StateSchema> = {
+    ...asyncReducers,
     user: userReducer
   }
 
