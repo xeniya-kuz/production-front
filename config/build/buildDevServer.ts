@@ -7,8 +7,8 @@ export function buildDevServer (options: BuildOptions): Configuration {
     // автоматически открывает в браузере страницу с приложением
     open: true,
     // иначе при обновлении страницы на каком-то пути (/about) выпаадет ошибка can't get
-    historyApiFallback: true,
+    historyApiFallback: true
     // hot replacement (reloading)? also needs plugin HotModuleReplacementPlugin
-    hot: true
+    // hot: true
   }
 }

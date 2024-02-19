@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import { Modal } from '6shared/ui/Modal/Modal'
-import { Suspense } from 'react'
+import { Suspense, memo } from 'react'
 import { LoginFormAsync } from '../LoginForm/LoginForm.async'
 import { Loader } from '6shared/ui/Loader/Loader'
 
@@ -10,7 +10,7 @@ interface LoginModalProps {
   onClose: () => void
 }
 
-export const LoginModal = ({ className, isOpen, onClose }: LoginModalProps): JSX.Element => {
+export const LoginModal = memo(function LoginModal ({ className, isOpen, onClose }: LoginModalProps): JSX.Element {
   return (
       <Modal
         className={classNames(undefined, [className])}
@@ -18,8 +18,8 @@ export const LoginModal = ({ className, isOpen, onClose }: LoginModalProps): JSX
         onClose={onClose}
         lazy>
           <Suspense fallback={<Loader/>}>
-              <LoginFormAsync/>
+              <LoginFormAsync onSuccess={onClose}/>
           </Suspense>
       </Modal>
   )
-}
+})

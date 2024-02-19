@@ -1,9 +1,7 @@
-import axios from 'axios'
-import { loginByUsername } from './loginByUsername'
-import { type Dispatch } from 'react'
-import { type AppDispatch, type StateSchema } from '1app/providers/StoreProvider'
 import { userActions } from '5entities/User'
 import { TestAsyncThunk } from '6shared/lib/tests/TestAsyncThunk'
+import axios from 'axios'
+import { loginByUsername } from './loginByUsername'
 
 jest.mock('axios')
 
@@ -13,7 +11,7 @@ describe('loginByUsername', () => {
   const userFromServer = { username: '123', id: '1' }
   const userAuthData = { username: '123', password: '123' }
   //! читаемый сценарий - оставила для наглядности
-  // let dispatch: Dispatch<AppDispatch>
+  // let dispatch: useAppDispatch
   // let getState: () => StateSchema
 
   //  // запускается перед каждый тестом, т.е. dispatch и getState каждый раз создаются заново

@@ -1,3 +1,4 @@
+import { PageLoader } from '3widgets/PageLoader'
 import React, { type ReactNode, type ErrorInfo, Suspense } from 'react'
 
 interface ErrorBoundaryProps {
@@ -17,17 +18,10 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   }
 
   static getDerivedStateFromError (error: Error): ErrorBoundaryState {
-    // Update state so the next render will show the fallback UI.
     return { hasError: true, message: error.message }
   }
 
   componentDidCatch (error: Error, info: ErrorInfo): void {
-    // Example "componentStack":
-    //   in ComponentThatThrows (created by App)
-    //   in ErrorBoundary (created by App)
-    //   in div (created by App)
-    //   in App
-    // logErrorToMyService(error, info.componentStack)
     console.error(error, info.componentStack)
   }
 
@@ -35,9 +29,8 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     const { hasError } = this.state
     const { children, fallback } = this.props
     if (hasError) {
-      // You can render any custom fallback UI
       return (
-          <Suspense fallback=''>
+          <Suspense fallback={<PageLoader/>}>
               {fallback}
           </Suspense>
       )

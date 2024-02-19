@@ -6,12 +6,11 @@ import { Suspense, useEffect } from 'react'
 import './styles/index.scss'
 import { PageLoader } from '3widgets/PageLoader'
 import { AppRouter } from './providers/router'
-import { useDispatch } from 'react-redux'
 import { userActions } from '5entities/User'
-import { type AppDispatch } from './providers/StoreProvider'
+import { useAppDispatch } from '6shared/lib/hooks/useAppDispatch/useAppDispatch'
 
 export default function App (): JSX.Element {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   const { theme } = useTheme()
 
   useEffect(() => {

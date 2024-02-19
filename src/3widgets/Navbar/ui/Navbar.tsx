@@ -1,20 +1,20 @@
-import { classNames } from '6shared/lib/classNames/classNames'
-import styles from './Navbar.module.scss'
-import { useCallback, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { Button, ButtonTheme } from '6shared/ui/Button/Button'
 import { LoginModal } from '4features/AuthByUsername'
-import { useDispatch, useSelector } from 'react-redux'
 import { selectUserAuthData, userActions } from '5entities/User'
-import { type AppDispatch } from '1app/providers/StoreProvider'
+import { classNames } from '6shared/lib/classNames/classNames'
+import { useAppDispatch } from '6shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { Button, ButtonTheme } from '6shared/ui/Button/Button'
+import { memo, useCallback, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
+import styles from './Navbar.module.scss'
 
 interface NavbarProps {
   className?: string
 }
 
-export const Navbar = ({ className }: NavbarProps): JSX.Element => {
+export const Navbar = memo(function Navbar ({ className }: NavbarProps): JSX.Element {
   const { t } = useTranslation()
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   const authData = useSelector(selectUserAuthData)
 
   const [isAuthModal, setIsAuthModal] = useState(false)
@@ -54,4 +54,4 @@ export const Navbar = ({ className }: NavbarProps): JSX.Element => {
           />}
       </div>
   )
-}
+})

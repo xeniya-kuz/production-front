@@ -12,6 +12,7 @@ interface ModalProps {
   lazy?: boolean
 }
 
+// мемоизировать компонент (memo) не имеет смысла, т.к. в кач-ве children всегда передается какая-то двевовидная структура, которая часто меняется и стоит дорого для мемоизации
 export const Modal = ({ className, children, isOpen, onClose, lazy = false }: ModalProps): JSX.Element | null => {
   const [isMounted, setIsMounted] = useState<boolean>(false)
 

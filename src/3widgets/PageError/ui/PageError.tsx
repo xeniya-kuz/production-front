@@ -2,12 +2,13 @@ import { classNames } from '6shared/lib/classNames/classNames'
 import styles from './PageError.module.scss'
 import { useTranslation } from 'react-i18next'
 import { Button } from '6shared/ui/Button/Button'
+import { memo } from 'react'
 
 interface PageErrorProps {
   className?: string
 }
 
-export const PageError = ({ className }: PageErrorProps): JSX.Element => {
+export const PageError = memo(function PageError ({ className }: PageErrorProps): JSX.Element {
   const { t } = useTranslation()
 
   const reloadPage = (): void => {
@@ -20,4 +21,4 @@ export const PageError = ({ className }: PageErrorProps): JSX.Element => {
           <Button onClick={reloadPage}>{t('Обновить страницу')}</Button>
       </div>
   )
-}
+})

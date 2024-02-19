@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import styles from './Button.module.scss'
-import { type ButtonHTMLAttributes, type FC } from 'react'
+import { memo, type ButtonHTMLAttributes, type FC, type ReactNode } from 'react'
 
 export enum ButtonTheme {
   CLEAR = 'clear',
@@ -23,9 +23,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   square?: boolean
   size?: ButtonSize
   disabled?: boolean
+  children?: ReactNode
 }
 
-export const Button: FC<ButtonProps> = (props) => {
+// обычно в качестве children кнопки передается строка, поэтому используем memo
+export const Button = memo(function Button (props: ButtonProps) {
   const { className, children, theme, square = false, size = ButtonSize.M, disabled = false, ...otherProps } = props
 
   const mods: Record<string, boolean> = {
@@ -38,11 +40,11 @@ export const Button: FC<ButtonProps> = (props) => {
 
   return (
       <button
-      className={classNames(styles.button, [className], mods)}
-      disabled={disabled}
-      {...otherProps}
-    >
+        className={classNames(styles.button, [className], mods)}
+        disabled={disabled}
+        {...otherProps}
+      >
           {children}
       </button>
   )
-}
+})
