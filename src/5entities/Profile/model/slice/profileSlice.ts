@@ -1,4 +1,4 @@
-import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import { type ProfileSchema } from '../types/profile'
 
 const initialState: ProfileSchema = {

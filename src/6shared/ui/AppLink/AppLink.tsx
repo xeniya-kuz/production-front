@@ -1,7 +1,7 @@
 import { classNames } from '6shared/lib/classNames/classNames'
-import styles from './AppLink.module.scss'
+import { memo, type ReactNode } from 'react'
 import { Link, type LinkProps } from 'react-router-dom'
-import { type ReactNode, type FC, memo } from 'react'
+import styles from './AppLink.module.scss'
 
 export enum AppLinkTheme {
   PRIMARY = 'primary',
@@ -14,7 +14,7 @@ interface AppLinkProps extends LinkProps {
   children?: ReactNode
 }
 
-// обычно в качестве children кнопки передается строка, поэтому используем memo
+// обычно в качестве children передается строка, поэтому используем memo
 export const AppLink = memo(function AppLink (props: AppLinkProps) {
   const {
     className,

@@ -3,7 +3,7 @@ import { type StateSchemaKey } from '1app/providers/StoreProvider/config/StateSc
 import { useAppDispatch } from '6shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { type Reducer } from '@reduxjs/toolkit'
 import { useEffect, type ReactNode } from 'react'
-import { useDispatch, useStore } from 'react-redux'
+import { useStore } from 'react-redux'
 
 export type ReducerList = {
   [name in StateSchemaKey]?: Reducer

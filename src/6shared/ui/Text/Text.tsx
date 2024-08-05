@@ -13,7 +13,7 @@ interface TextProps {
   text?: string
   theme?: TextTheme
 }
-
+// memo забирает память, но у нас ее много, а вот вычислительные, процессорные мощности и видеокарту надо беречь
 export const Text = memo(function Text (props: TextProps): JSX.Element {
   const { className, title, text, theme = TextTheme.PRIMARY } = props
 
