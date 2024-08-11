@@ -1,8 +1,14 @@
 import { type StateSchema } from '1app/providers/StoreProvider'
 import { type AsyncThunkAction } from '@reduxjs/toolkit'
+import axios, { type AxiosStatic } from 'axios'
 
 type ActionCreator<Return, Arg, RejectedValue>
     = (arg: Arg) => AsyncThunkAction<Return, Arg, { rejectValue: RejectedValue }>
+
+jest.mock('axios')
+const mockedAxios = jest.mocked(axios, {
+  shallow: true
+})
 
 // класс для стандартизации тестирования асинх санков
 export class TestAsyncThunk<Return, Arg, RejectedValue> {
@@ -10,16 +16,22 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
   getState: () => StateSchema
   actionCreator: ActionCreator<Return, Arg, RejectedValue>
 
+  api: jest.MockedFunctionDeep<AxiosStatic>
+  navigate: jest.MockedFn<any>
+
   constructor (actionCreator: ActionCreator<Return, Arg, RejectedValue>) {
     this.actionCreator = actionCreator
     this.dispatch = jest.fn()
     this.getState = jest.fn()
+
+    this.api = mockedAxios
+    this.navigate = jest.fn()
   }
 
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   async callThunk (arg: Arg) {
     const action = this.actionCreator(arg)
-    const result = await action(this.dispatch, this.getState, undefined)
+    const result = await action(this.dispatch, this.getState, { api: this.api, navigate: this.navigate })
 
     return result
   }

@@ -9,7 +9,7 @@ const mockedAxios = jest.mocked(axios)
 
 describe('loginByUsername', () => {
   const userFromServer = { username: '123', id: '1' }
-  const userAuthData = { username: '123', password: '123' }
+  const userAuthData = { username: 'admin', password: '123' }
   //! читаемый сценарий - оставила для наглядности
   // let dispatch: useAppDispatch
   // let getState: () => StateSchema
@@ -51,6 +51,8 @@ describe('loginByUsername', () => {
     // замокали ответ с сервера
     mockedAxios.post.mockReturnValue(Promise.resolve({ data: userFromServer }))
     const thunk = new TestAsyncThunk(loginByUsername)
+    thunk.api.post.mockReturnValue(Promise.resolve({ data: userAuthData }))
+
     const result = await thunk.callThunk(userAuthData)
 
     expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(userFromServer))
@@ -64,8 +66,10 @@ describe('loginByUsername', () => {
 
   test('error login', async () => {
     // замокали ответ с сервера
-    mockedAxios.post.mockReturnValue(Promise.resolve({ status: 403 }))
+    // mockedAxios.post.mockReturnValue(Promise.resolve({ status: 403 }))
     const thunk = new TestAsyncThunk(loginByUsername)
+    // замокали ответ с сервера
+    thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }))
     const result = await thunk.callThunk(userAuthData)
 
     expect(thunk.dispatch).toHaveBeenCalledTimes(2)

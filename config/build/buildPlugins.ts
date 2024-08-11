@@ -1,14 +1,15 @@
 import HTMLWebpack from 'html-webpack-plugin'
 import webpack from 'webpack'
-import { type BuildPaths } from './types/config'
+import { type BuildOptions } from './types/config'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
-export function buildPlugins (
-  paths: BuildPaths,
-  isDev: boolean
-): webpack.WebpackPluginInstance[] {
+export function buildPlugins ({
+  paths,
+  isDev,
+  apiUrl
+}: BuildOptions): webpack.WebpackPluginInstance[] {
   const plugins = [
     new HTMLWebpack({
       // без этой строки index.html каждый раз создается "чистым", т.е. в нем нет <div class="root"></div>, а нам надо для встраивания кода. А теперь используется наш index.html в качестве шаблона
@@ -23,7 +24,8 @@ export function buildPlugins (
     }),
     // помогает прокидывать глобальные переменные (окружения??) в сам проект
     new webpack.DefinePlugin({
-      __IS_DEV__: JSON.stringify(isDev)
+      __IS_DEV__: JSON.stringify(isDev),
+      __API__: JSON.stringify(apiUrl)
     })
   ]
 

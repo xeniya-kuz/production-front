@@ -54,12 +54,13 @@ module.exports = {
   },
   globals: {
     __IS_DEV__: true,
+    __API__: true,
   },
   // отключили правило i18next/no-literal-string для тестовых файлов
   overrides: [
     {
       files: ['**/src/**/*.test.{ts,tsx}'],
-      rules: { 'i18next/no-literal-string': 'off' },
+      rules: { 'i18next/no-literal-string': 'off' ,'@typescript-eslint/no-non-null-assertion':'off'},
     },
   ],
 };

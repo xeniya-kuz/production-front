@@ -17,3 +17,5 @@ declare module '*.jpeg';
 // не смогла избавиться от ошибки
 // eslint-disable-next-line
 declare const __IS_DEV__: boolean
+// eslint-disable-next-line
+declare const __API__: string

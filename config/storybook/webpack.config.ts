@@ -33,7 +33,8 @@ export default ({ config }: { config: webpack.Configuration }): webpack.Configur
   config.module?.rules?.push(buildSvgLoader())
   // помогает прокидывать глобальные переменные (окружения??) в сам проект
   config.plugins?.push(new webpack.DefinePlugin({
-    __IS_DEV__: true
+    __IS_DEV__: JSON.stringify(true),
+    __API__: JSON.stringify('')
   }))
 
   return config
