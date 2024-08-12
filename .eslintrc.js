@@ -40,6 +40,8 @@ module.exports = {
     ],
     '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'warn',
+    "@typescript-eslint/no-invalid-void-type": 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
     // подсказывает, где текст не переведен
     'i18next/no-literal-string': [
       'error',
@@ -60,7 +62,9 @@ module.exports = {
   overrides: [
     {
       files: ['**/src/**/*.test.{ts,tsx}'],
-      rules: { 'i18next/no-literal-string': 'off' ,'@typescript-eslint/no-non-null-assertion':'off'},
+      rules: { 
+        'i18next/no-literal-string': 'off'  
+      },
     },
   ],
 };
