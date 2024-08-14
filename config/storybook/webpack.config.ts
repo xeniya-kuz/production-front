@@ -17,14 +17,12 @@ export default ({ config }: { config: webpack.Configuration }): webpack.Configur
   config.resolve?.modules?.push(paths.src)
   config.resolve?.extensions?.push('ts', 'tsx')
 
-  if (config.module != null) {
-    config.module.rules = config.module?.rules?.map((rule: RuleSetRule) => {
-      // eslint-disable-next-line @typescript-eslint/prefer-includes
-      if (/svg/.test(rule.test as string)) {
+  if (config.module?.rules !== undefined) {
+    config.module.rules = config.module.rules?.map((rule: RuleSetRule | '...') => {
+      if (rule !== '...' && rule.test instanceof RegExp && rule.test.toString().includes('svg')) {
         // отключаем обработку svg файлов
         return { ...rule, exclude: /\.svg$/i }
       }
-
       return rule
     })
   }

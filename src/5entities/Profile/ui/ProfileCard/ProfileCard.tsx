@@ -3,9 +3,6 @@ import styles from './ProfileCard.module.scss'
 import { useTranslation } from 'react-i18next'
 import { Text } from '6shared/ui/Text/Text'
 import { Button, ButtonTheme } from '6shared/ui/Button/Button'
-import { useAppDispatch } from '6shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { useEffect } from 'react'
-import { fetchProfileData } from '../../model/services/fetchProfileData'
 import { useSelector } from 'react-redux'
 import { selectProfileData } from '../../model/selectors/selectProfileData/selectProfileData'
 import { Input } from '6shared/ui/Input/Input'
@@ -16,12 +13,7 @@ interface ProfileCardProps {
 
 export const ProfileCard = ({ className }: ProfileCardProps): JSX.Element => {
   const { t } = useTranslation(['profile', 'buttons'])
-  const dispatch = useAppDispatch()
   const profile = useSelector(selectProfileData)
-
-  useEffect(() => {
-    void dispatch(fetchProfileData())
-  }, [dispatch])
 
   return (
       <div className={classNames(styles.profileCard, [className])}>

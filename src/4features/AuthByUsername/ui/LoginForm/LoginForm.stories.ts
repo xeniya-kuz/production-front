@@ -31,11 +31,11 @@ export const Dark: Story = {
 export const WithError: Story = {
   args: {
   },
-  decorators: [StoreDecorator({ loginForm: { ...loginFormState, error: 'Ошибка авторизации' } })]
+  decorators: [StoreDecorator({ loginForm: { error: 'Ошибка авторизации' } })]
 }
 
 export const IsLoading: Story = {
   args: {
   },
-  decorators: [StoreDecorator({ loginForm: { ...loginFormState, isLoading: true } })]
+  decorators: [StoreDecorator({ loginForm: { isLoading: true } })]
 }

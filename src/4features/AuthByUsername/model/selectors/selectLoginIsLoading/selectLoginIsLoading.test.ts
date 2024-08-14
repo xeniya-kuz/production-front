@@ -1,5 +1,4 @@
 import { type StateSchema } from '1app/providers/StoreProvider'
-import { type DeepPartial } from '@reduxjs/toolkit'
 import { selectLoginIsLoading } from './selectLoginIsLoading'
 
 describe('selectLoginIsLoading', () => {

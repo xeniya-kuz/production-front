@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { useAppDispatch } from '6shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { useAppDispatch } from '6shared/lib/hooks'
 import { Button, ButtonTheme } from '6shared/ui/Button/Button'
 import { Input } from '6shared/ui/Input/Input'
 import { Text, TextTheme } from '6shared/ui/Text/Text'

@@ -15,9 +15,9 @@ export function useTheme (): UseThemeResult {
 
   const toggleTheme = useCallback((): void => {
     const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK
-    if (setTheme !== undefined) setTheme(newTheme)
+    setTheme?.(newTheme)
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme)
   }, [setTheme, theme])
 
-  return { theme, toggleTheme }
+  return { theme: theme ?? Theme.LIGHT, toggleTheme }
 }

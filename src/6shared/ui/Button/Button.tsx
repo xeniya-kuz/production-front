@@ -1,4 +1,4 @@
-import { classNames } from '6shared/lib/classNames/classNames'
+import { classNames, type Mods } from '6shared/lib/classNames/classNames'
 import { memo, type ButtonHTMLAttributes, type ReactNode } from 'react'
 import styles from './Button.module.scss'
 
@@ -29,13 +29,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 // обычно в качестве children кнопки передается строка, поэтому используем memo
 // (обычно, если в компоненте есть children, то memo не используем)
 export const Button = memo(function Button (props: ButtonProps) {
-  const { className, children, theme, square = false, size = ButtonSize.M, disabled = false, ...otherProps } = props
+  const { className, children, theme = ButtonTheme.OUTLINE, square = false, size = ButtonSize.M, disabled = false, ...otherProps } = props
 
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [styles.square]: square,
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    [styles[theme!]]: theme !== undefined,
-    [styles[size]]: size !== undefined,
+    [styles[theme]]: theme,
+    [styles[size]]: size,
     [styles.disabled]: disabled
   }
 

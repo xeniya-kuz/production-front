@@ -1,4 +1,4 @@
-import { classNames } from '6shared/lib/classNames/classNames'
+import { classNames, type Mods } from '6shared/lib/classNames/classNames'
 import styles from './Modal.module.scss'
 import { useEffect, type MouseEvent, type ReactNode, useCallback, useState } from 'react'
 import { Portal } from '6shared/ui/Portal/Portal'
@@ -16,7 +16,7 @@ interface ModalProps {
 export const Modal = ({ className, children, isOpen, onClose, lazy = false }: ModalProps): JSX.Element | null => {
   const [isMounted, setIsMounted] = useState<boolean>(false)
 
-  const mods = {
+  const mods: Mods = {
     [styles.opened]: isOpen
   }
 

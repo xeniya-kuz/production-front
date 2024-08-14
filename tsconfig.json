@@ -36,6 +36,7 @@
     // console.log(Moment);
     "esModuleInterop": true,
 		"strictNullChecks": true,
+    "strict": true,
   },
   "ts-node": { "compilerOptions": { "module": "CommonJS" }},
 	"include": [

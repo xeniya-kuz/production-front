@@ -4,7 +4,6 @@ import { render } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import i18nForTests from '6shared/config/i18n/i18nForTests'
 import { type StateSchema, StoreProvider } from '1app/providers/StoreProvider'
-import { type DeepPartial } from '@reduxjs/toolkit'
 
 export interface componentRenderProps {
   route?: string

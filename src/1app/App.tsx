@@ -7,7 +7,7 @@ import './styles/index.scss'
 import { PageLoader } from '3widgets/PageLoader'
 import { AppRouter } from './providers/router'
 import { userActions } from '5entities/User'
-import { useAppDispatch } from '6shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { useAppDispatch } from '6shared/lib/hooks'
 
 export default function App (): JSX.Element {
   const dispatch = useAppDispatch()
