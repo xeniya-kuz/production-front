@@ -1,15 +1,18 @@
 import { userActions } from '5entities/User'
 import { TestAsyncThunk } from '6shared/lib/tests/TestAsyncThunk'
-import axios from 'axios'
 import { loginByUsername } from './loginByUsername'
 
-jest.mock('axios')
-
-const mockedAxios = jest.mocked(axios)
+// замокали axios
+// jest.mock('axios')
+// const mockedAxios = jest.mocked(axios)
 
 describe('loginByUsername', () => {
-  const userFromServer = { username: '123', id: '1' }
-  const userAuthData = { username: 'admin', password: '123' }
+  const userFromServer = {
+    username: '123',
+    id: '1',
+    password: '123'
+  }
+  const userAuthData = { username: '123', password: '123' }
   //! читаемый сценарий - оставила для наглядности
   // let dispatch: useAppDispatch
   // let getState: () => StateSchema
@@ -49,17 +52,16 @@ describe('loginByUsername', () => {
   // а тут уже используем класс TestAsyncThunk, предназначенный для стандартизации тестирования асинх санков
   test('success login', async () => {
     // замокали ответ с сервера
-    mockedAxios.post.mockReturnValue(Promise.resolve({ data: userFromServer }))
+    // mockedAxios.post.mockReturnValue(Promise.resolve({ data: userFromServer }))
     const thunk = new TestAsyncThunk(loginByUsername)
-    thunk.api.post.mockReturnValue(Promise.resolve({ data: userAuthData }))
+    thunk.api.post.mockReturnValue(Promise.resolve({ data: userFromServer }))
 
     const result = await thunk.callThunk(userAuthData)
 
     expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(userFromServer))
-
     expect(thunk.dispatch).toHaveBeenCalledTimes(3)
     // eslint-disable-next-line @typescript-eslint/unbound-method
-    expect(mockedAxios.post).toHaveBeenCalled()
+    expect(thunk.api.post).toHaveBeenCalled()
     expect(result.meta.requestStatus).toBe('fulfilled')
     expect(result.payload).toEqual(userFromServer)
   })
@@ -74,7 +76,7 @@ describe('loginByUsername', () => {
 
     expect(thunk.dispatch).toHaveBeenCalledTimes(2)
     // eslint-disable-next-line @typescript-eslint/unbound-method
-    expect(mockedAxios.post).toHaveBeenCalled()
+    expect(thunk.api.post).toHaveBeenCalled()
     expect(result.meta.requestStatus).toBe('rejected')
     expect(result.payload).toBe('auth error')
   })

@@ -15,7 +15,6 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
 
     try {
       const response = await extra.api.post<User>('/login', authData)
-      console.log('response', response)
 
       if (response?.data === undefined) {
         throw new Error()
