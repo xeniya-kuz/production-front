@@ -4,6 +4,8 @@ import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { type SidebarItemType } from '../../module/items'
 import styles from './SidebarItem.module.scss'
+import { useSelector } from 'react-redux'
+import { selectUserAuthData } from '5entities/User'
 
 interface SidebarItemProps {
   item: SidebarItemType
@@ -11,8 +13,13 @@ interface SidebarItemProps {
 }
 
 export const SidebarItem = memo(
-  function SidebarItem ({ item, collapsed }: SidebarItemProps): JSX.Element {
+  function SidebarItem ({ item, collapsed }: SidebarItemProps): JSX.Element | null {
     const { t } = useTranslation()
+    const isAuth = Boolean(useSelector(selectUserAuthData))
+
+    if (!isAuth && Boolean(item.isPrivate)) {
+      return null
+    }
 
     return (
         <div className={styles.sidebaritem}>
@@ -24,7 +31,7 @@ export const SidebarItem = memo(
                 })}
               >
                 <item.Icon className={styles.icon}/>
-                <span className={styles.link}> {t(item.text)}</span>
+                <span className={styles.link}>{t(item.text)}</span>
             </AppLink>
         </div>
     )

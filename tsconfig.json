@@ -37,6 +37,8 @@
     "esModuleInterop": true,
 		"strictNullChecks": true,
     "strict": true,
+    //чтобы импортировать .json файлы без ошибок
+    "resolveJsonModule": true,
   },
   "ts-node": { "compilerOptions": { "module": "CommonJS" }},
 	"include": [
@@ -47,6 +49,10 @@
 		"./config/**/*.tsx",
 		"./webpack.config.ts",
     "./**/*.js",
-    "./**/*.jsx"
-, "json-server/index.js"  ],
+    "./**/*.jsx",
+    "json-server/index.js", 
+    "public/locales/ru/index.ts",
+    "public/locales/en/index.ts",
+    "public/locales/index.ts"
+],
 }

@@ -3,6 +3,7 @@ import { initReactI18next } from 'react-i18next'
 
 import Backend from 'i18next-http-backend'
 import LanguageDetector from 'i18next-browser-languagedetector'
+import { resources } from '../../../../public/locales'
 
 i18n
   .use(Backend)
@@ -18,7 +19,8 @@ i18n
     fallbackLng: 'ru',
     // __IS_DEV__ - переменная окружения
     debug: Boolean(__IS_DEV__),
-
+    resources,
+    // ns: Object.keys(resources.ru),
     interpolation: {
       escapeValue: false // not needed for react as it escapes by default
     }

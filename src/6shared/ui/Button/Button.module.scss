@@ -19,7 +19,8 @@
 
 // outline
 .outline,
-.outlineInverted {
+.outlineInverted,
+.outlineRed {
 	background: none;
 }
 
@@ -30,6 +31,11 @@
 .outlineInverted {
 	color: var(--inverted-primary-color);
 	border: 1px solid var(--inverted-primary-color);
+}
+
+.outlineRed {
+	color: var(--red-light);
+	border: 1px solid var(--red-light);
 }
 
 // background

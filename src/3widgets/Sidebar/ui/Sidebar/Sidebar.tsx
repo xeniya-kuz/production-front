@@ -3,7 +3,7 @@ import { ThemeSwitcher } from '4features/ThemeSwitcher'
 import { classNames } from '6shared/lib/classNames/classNames'
 import { Button, ButtonSize, ButtonTheme } from '6shared/ui/Button/Button'
 import { memo, useState } from 'react'
-import { SidebarItemList } from '../../module/items'
+import { sidebarItemList } from '../../module/items'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
 import styles from './Sidebar.module.scss'
 
@@ -36,7 +36,7 @@ export const Sidebar = memo(
                 {collapsed ? '>' : '<'}
             </Button>
             <div className={styles.items}>
-                {SidebarItemList.map((item) => (
+                {sidebarItemList.map((item) => (
                     <SidebarItem
                       key={item.path}
                       item={item}

@@ -1,28 +1,29 @@
-import { RoutePaths } from '6shared/config/routeConfig/routeConfig'
+import { routePaths } from '6shared/config/routeConfig/routeConfig'
 import { type SVGAttributes, type FunctionComponent } from 'react'
 import MainIcon from '6shared/assets/icons/main-20-20.svg'
 import AboutIcon from '6shared/assets/icons/about-20-20.svg'
 import ProfileIcon from '6shared/assets/icons/profile-20-20.svg'
-
 export interface SidebarItemType {
   path: string
   text: string
   Icon: FunctionComponent<SVGAttributes<SVGElement>>
+  isPrivate?: boolean
 }
 
-export const SidebarItemList: SidebarItemType[] = [
+export const sidebarItemList: SidebarItemType[] = [
   {
-    path: RoutePaths.main,
-    text: 'Главная',
+    path: routePaths.main,
+    text: 'translation:Главная',
     Icon: MainIcon
   },
   {
-    path: RoutePaths.about,
-    text: 'О сайте',
+    path: routePaths.about,
+    text: 'about:about-us',
     Icon: AboutIcon
   },
   {
-    path: RoutePaths.profile,
-    text: 'Профиль',
-    Icon: ProfileIcon
+    path: routePaths.profile,
+    text: 'profile:profile',
+    Icon: ProfileIcon,
+    isPrivate: true
   }]

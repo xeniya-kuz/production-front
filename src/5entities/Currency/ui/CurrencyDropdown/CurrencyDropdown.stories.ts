@@ -1,0 +1,28 @@
+import type { Meta, StoryObj } from '@storybook/react'
+import { CurrencyDropdown } from './CurrencyDropdown'
+import { Currency } from '../../model/types'
+
+const meta = {
+  title: 'entities/CurrencyDropdown',
+  component: CurrencyDropdown,
+  parameters: {
+    layout: 'fullscreen'
+  },
+
+  tags: ['autodocs']
+} satisfies Meta<typeof CurrencyDropdown>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Primary: Story = {
+  args: {
+    value: Currency.EUR
+  }
+}
+
+export const Disabled: Story = {
+  args: {
+    disabled: true
+  }
+}

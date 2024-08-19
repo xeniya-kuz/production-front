@@ -1,6 +1,6 @@
 import { StoreProvider, type StateSchema } from '1app/providers/StoreProvider'
+import { profileReducer } from '2pages/ProfilePage/model/slice/profileSlice'
 import { loginReducer } from '4features/AuthByUsername/model/slice/loginSlice'
-import { profileReducer } from '5entities/Profile'
 import { type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { type StoryFn } from '@storybook/react'
 

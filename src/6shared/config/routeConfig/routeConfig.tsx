@@ -4,6 +4,10 @@ import { NotFoundPage } from '2pages/NotFoundPage'
 import { ProfilePage } from '2pages/ProfilePage'
 import { type RouteProps } from 'react-router-dom'
 
+type AppRoutesProps = RouteProps & {
+  isPrivate?: boolean
+}
+
 export enum AppRoutes {
   MAIN = 'main',
   ABOUT = 'about',
@@ -12,7 +16,7 @@ export enum AppRoutes {
   NOT_FOUND = 'not_found',
 }
 
-export const RoutePaths: Record<AppRoutes, string> = {
+export const routePaths: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: '/',
   [AppRoutes.ABOUT]: '/about',
   [AppRoutes.PROFILE]: '/profile',
@@ -20,22 +24,23 @@ export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.NOT_FOUND]: '*'
 }
 
-export const RouteConfig: Record<AppRoutes, RouteProps> = {
+export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.MAIN]: {
-    path: RoutePaths.main,
+    path: routePaths.main,
     element: <MainPage />
   },
   [AppRoutes.ABOUT]: {
-    path: RoutePaths.about,
+    path: routePaths.about,
     element: <AboutPage />
   },
   [AppRoutes.PROFILE]: {
-    path: RoutePaths.profile,
-    element: <ProfilePage />
+    path: routePaths.profile,
+    element: <ProfilePage />,
+    isPrivate: true
   },
   // last
   [AppRoutes.NOT_FOUND]: {
-    path: RoutePaths.not_found,
+    path: routePaths.not_found,
     element: <NotFoundPage />
   }
 }

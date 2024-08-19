@@ -3,7 +3,6 @@ import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDec
 import { Theme } from '1app/providers/ThemeProvider'
 import AboutPage from './AboutPage'
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: 'pages/AboutPage',
   component: AboutPage,

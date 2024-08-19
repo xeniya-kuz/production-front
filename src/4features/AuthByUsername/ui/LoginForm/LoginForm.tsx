@@ -4,7 +4,7 @@ import { useAppDispatch } from '6shared/lib/hooks'
 import { Button, ButtonTheme } from '6shared/ui/Button/Button'
 import { Input } from '6shared/ui/Input/Input'
 import { Text, TextTheme } from '6shared/ui/Text/Text'
-import { memo, useCallback } from 'react'
+import { type ChangeEvent, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { selectLoginError } from '../../model/selectors/selectLoginError/selectLoginError'
@@ -32,11 +32,11 @@ const LoginForm = memo(function LoginForm ({ className, onSuccess }: LoginFormPr
   const isLoading = useSelector(selectLoginIsLoading)
   const error = useSelector(selectLoginError)
 
-  const onChangeUsername = useCallback((value: string) => {
+  const onChangeUsername = useCallback((_, value: string) => {
     dispatch(loginActions.setUsername(value))
   }, [dispatch])
 
-  const onChangePassword = useCallback((value: string) => {
+  const onChangePassword = useCallback((_, value: string) => {
     dispatch(loginActions.setPassword(value))
   }, [dispatch])
 

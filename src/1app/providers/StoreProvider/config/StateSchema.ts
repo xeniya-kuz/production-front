@@ -1,5 +1,5 @@
+import { type ProfileSchema } from '2pages/ProfilePage/model/types/profile'
 import { type LoginSchema } from '4features/AuthByUsername'
-import { type ProfileSchema } from '5entities/Profile'
 import { type UserSchema } from '5entities/User'
 import { type AnyAction, type CombinedState, type EnhancedStore, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit'
 import { type ThunkMiddlewareFor } from '@reduxjs/toolkit/dist/getDefaultMiddleware'
@@ -36,4 +36,5 @@ export interface ThunkExtraArg {
 export interface ThunkConfig<T> {
   rejectValue: T
   extra: ThunkExtraArg
+  state: StateSchema
 }
