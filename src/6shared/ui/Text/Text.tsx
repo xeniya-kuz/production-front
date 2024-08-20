@@ -24,7 +24,8 @@ interface TextProps {
 export const Text = memo(function Text (props: TextProps): JSX.Element {
   const {
     className,
-    title, text,
+    title,
+    text,
     theme = TextTheme.PRIMARY,
     align = TextAlign.LEFT
   } = props

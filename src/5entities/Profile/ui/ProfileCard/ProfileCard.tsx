@@ -49,7 +49,7 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
 
   const onNumberChange = (name: string, value: string): void => {
     if (!isNaN(+value)) {
-      onChange?.(name as keyof Profile, +value)
+      onChange?.(name as keyof Profile, +value === 0 ? '' : +value)
     }
   }
 

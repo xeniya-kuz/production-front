@@ -1,4 +1,5 @@
 import { type Profile } from '5entities/Profile'
+import { type ValidateProfileError } from './validate'
 
 export interface ProfileSchema {
   profile?: Profile
@@ -6,4 +7,5 @@ export interface ProfileSchema {
   isLoading: boolean
   error?: string
   readonly: boolean
+  validateErrors?: ValidateProfileError[]
 }
