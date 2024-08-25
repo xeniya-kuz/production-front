@@ -35,9 +35,9 @@ const ProfilePage = memo(function ProfilePage ({ className }: ProfilePageProps):
   const { t } = useTranslation()
 
   useEffect(() => {
-    // if (__PROJECT__ !== 'storybook') {
-    void dispatch(fetchProfileData())
-    // }
+    if (__PROJECT__ !== 'storybook') {
+      void dispatch(fetchProfileData())
+    }
   }, [dispatch])
 
   const onChange = useCallback((name: keyof Profile, value: string | number) => {

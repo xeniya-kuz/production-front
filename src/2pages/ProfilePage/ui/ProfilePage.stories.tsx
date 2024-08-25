@@ -5,6 +5,7 @@ import ProfilePage from './ProfilePage'
 import { StoreDecorator } from '6shared/config/storybook/StoreDecorator/StoreDecorator'
 import { Currency } from '5entities/Currency'
 import AvatarImg from '6shared/assets/tests/storybook.jpg'
+import { Country } from '5entities/Country'
 
 const meta = {
   title: 'pages/ProfilePage',
@@ -19,7 +20,20 @@ const meta = {
         username: 'tra-ta-ta',
         city: 'San Francisco',
         currency: Currency.EUR,
-        avatar: AvatarImg
+        avatar: AvatarImg,
+        country: Country.Armenia
+      },
+      profile: {
+
+        first: 'Trevor',
+        lastname: 'Smith',
+        age: 20,
+        username: 'tra-ta-ta',
+        city: 'San Francisco',
+        currency: Currency.EUR,
+        avatar: AvatarImg,
+        country: Country.Armenia
+
       }
     }
   })]
