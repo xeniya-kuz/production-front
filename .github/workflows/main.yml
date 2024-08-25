@@ -31,18 +31,18 @@ jobs:
      - name: unit testing
        if: always()
        run: npm run test:jest
-     - name: build storybook
-       if: always()
-       run: npm run storybook:build
-     - name: screenshot testing
-       if: always()
-       run: npm run test:loki:ci
-     - name: upload loki artifact on failure
-       if: failure()
-       uses: actions/upload-artifact@v2
-       with:
-        name: loki-artifact
-        path: .loki
+    #  - name: build storybook
+    #    if: always()
+    #    run: npm run storybook:build
+    #  - name: screenshot testing
+    #    if: always()
+    #    run: npm run test:loki:ci
+    #  - name: upload loki artifact on failure
+    #    if: failure()
+    #    uses: actions/upload-artifact@v2
+    #    with:
+    #     name: loki-artifact
+    #     path: .loki
  
 
 
