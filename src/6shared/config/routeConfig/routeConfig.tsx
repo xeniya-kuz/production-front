@@ -4,7 +4,7 @@ import { NotFoundPage } from '2pages/NotFoundPage'
 import { ProfilePage } from '2pages/ProfilePage'
 import { type RouteProps } from 'react-router-dom'
 
-type AppRoutesProps = RouteProps & {
+export type AppRoutesProps = RouteProps & {
   isPrivate?: boolean
 }
 

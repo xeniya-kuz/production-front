@@ -1,29 +1,30 @@
-import { memo, Suspense, useMemo } from 'react'
-import { Route, Routes } from 'react-router-dom'
-import { routeConfig } from '6shared/config/routeConfig/routeConfig'
 import { PageLoader } from '3widgets/PageLoader'
-import { useSelector } from 'react-redux'
-import { selectUserAuthData } from '5entities/User'
+import { type AppRoutesProps, routeConfig } from '6shared/config/routeConfig/routeConfig'
+import { memo, Suspense, useCallback } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import { RequireAuth } from './RequireAuth'
 
 const AppRouter = (): JSX.Element => {
-  const isAuth = Boolean(useSelector(selectUserAuthData))
+  const renderWithWrapper = useCallback((route: AppRoutesProps) => {
+    const element = <div className="page-wrapper">
+        {route.element}
+    </div>
 
-  const routes = useMemo(() => {
-    return Object.values(routeConfig).filter(route => isAuth ? route : route.isPrivate !== true)
-  }, [isAuth])
+    return (
+        <Route
+          key={route.path}
+          path={route.path}
+          element={(route.isPrivate === true) ? <RequireAuth>{element}</RequireAuth> : element }
+        />
+    )
+  }, [])
 
   return (
   // без Suspense будут ошибки в консоли
   // Нужно, потому что у нас компоненты подгружаются асинхронно (чанки=lazy loading)
       <Suspense fallback={<PageLoader/>}>
           <Routes>
-              {routes.map(({ element, path }) => (
-                  <Route
-            key={path}
-            element={<div className="page-wrapper">{element}</div>}
-            path={path}
-          />
-              ))}
+              {Object.values(routeConfig).map(renderWithWrapper)}
           </Routes>
       </Suspense>
   )

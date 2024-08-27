@@ -3,7 +3,7 @@ import { type User, type UserSchema } from '../types/user'
 import { USER_LOCALSTORAGE_KEY } from '6shared/const/localstorage'
 
 const initialState: UserSchema = {
-
+  _mounted: false
 }
 
 export const userSlice = createSlice({
@@ -15,8 +15,10 @@ export const userSlice = createSlice({
     },
     initAuthData: (state) => {
       const userData = localStorage.getItem(USER_LOCALSTORAGE_KEY)
-
-      state.authData = userData !== null ? JSON.parse(userData) as User : undefined
+      if (userData !== null) {
+        state.authData = userData !== null ? JSON.parse(userData) as User : undefined
+      }
+      state._mounted = true
     },
     logout: (state) => {
       localStorage.removeItem(USER_LOCALSTORAGE_KEY)

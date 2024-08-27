@@ -6,12 +6,14 @@ import { Suspense, useEffect } from 'react'
 import './styles/index.scss'
 import { PageLoader } from '3widgets/PageLoader'
 import { AppRouter } from './providers/router'
-import { userActions } from '5entities/User'
+import { selectUserMounted, userActions } from '5entities/User'
 import { useAppDispatch } from '6shared/lib/hooks'
+import { useSelector } from 'react-redux'
 
 export default function App (): JSX.Element {
   const dispatch = useAppDispatch()
   const { theme } = useTheme()
+  const isMounted = useSelector(selectUserMounted)
 
   useEffect(() => {
     dispatch(userActions.initAuthData())
@@ -24,7 +26,7 @@ export default function App (): JSX.Element {
               <Navbar />
               <div className="content-page">
                   <Sidebar />
-                  <AppRouter />
+                  {isMounted && <AppRouter />}
               </div>
           </Suspense>
       </div>
