@@ -24,7 +24,10 @@ export default function buildWebpackConfig (
       // contenthash рандомный набор букв и цифр
       filename: '[name].[contenthash].js',
       // если не указать, то каждый раз будет создаваться новый файл, а старые не удаляются
-      clean: true
+      clean: true,
+      // если не указать, то урлы типа articles/1 будут искаться в папке articles, которой у нас в бандле нет.
+      // (Примерный запрос: http://localhost:3000/articles/bundle.87e98b914bbc91817038.js)
+      publicPath: '/'
     },
     plugins: buildPlugins(options),
     module: {
