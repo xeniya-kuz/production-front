@@ -32,7 +32,7 @@ export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps): JSX.El
   }, [dispatch])
 
   return (
-      <div className={classNames(styles.profileHeader, [className])}>
+      <header className={classNames(styles.profileHeader, [className])}>
           <Text title={t('profile:profile')}/>
           {readonly === true
             ? <Button
@@ -58,6 +58,6 @@ export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps): JSX.El
                     {t('cancel') }
                 </Button>
             </>}
-      </div>
+      </header>
   )
 }

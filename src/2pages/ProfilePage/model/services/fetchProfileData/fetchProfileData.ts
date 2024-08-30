@@ -9,7 +9,6 @@ export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<stri
 
     try {
       const response = await extra.api.get<Profile>('/profile')
-      console.log('response', response)
 
       if (response.data === undefined) {
         throw new Error()

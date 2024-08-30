@@ -6,10 +6,10 @@ const MainPage = memo(function MainPage (): JSX.Element {
   const { t } = useTranslation()
 
   return (
-      <>
+      <main>
           {t('Главная страница')}
           <div><BugButton/></div>
-      </>
+      </main>
   )
 })
 

@@ -5,12 +5,12 @@ import { type Reducer } from '@reduxjs/toolkit'
 import { useEffect, type ReactNode } from 'react'
 import { useStore } from 'react-redux'
 
-export type ReducerList = {
+export type ReducersList = {
   [name in StateSchemaKey]?: Reducer
 }
 
 interface DynamicLoaderComponentProps {
-  reducers: ReducerList
+  reducers: ReducersList
   children?: ReactNode
   removeAfterUnmount?: boolean
 }

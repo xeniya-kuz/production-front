@@ -1,5 +1,6 @@
 import { type ProfileSchema } from '2pages/ProfilePage/model/types/profile'
 import { type LoginSchema } from '4features/AuthByUsername'
+import { type ArticleDetailsSchema } from '5entities/Article'
 import { type UserSchema } from '5entities/User'
 import { type AnyAction, type CombinedState, type EnhancedStore, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit'
 import { type ThunkMiddlewareFor } from '@reduxjs/toolkit/dist/getDefaultMiddleware'
@@ -13,6 +14,7 @@ export interface StateSchema {
   // Асинхронные редьюсеры
   loginForm?: LoginSchema
   profile?: ProfileSchema
+  articleDetails?: ArticleDetailsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

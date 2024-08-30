@@ -28,13 +28,13 @@ export const Dark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)]
 }
 
-export const WithError: Story = {
+export const Error: Story = {
   args: {
   },
   decorators: [StoreDecorator({ loginForm: { error: 'Ошибка авторизации' } })]
 }
 
-export const IsLoading: Story = {
+export const Loading: Story = {
   args: {
   },
   decorators: [StoreDecorator({ loginForm: { isLoading: true } })]

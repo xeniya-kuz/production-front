@@ -1,93 +1,94 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Theme } from '1app/providers/ThemeProvider'
 import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { Text, TextAlign, TextTheme } from './Text'
+import { Text, TextAlign, TextSize, TextTheme } from './Text'
 
 const meta = {
   title: 'shared/Text',
   component: Text,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  args: {
+    title: 'title',
+    text: 'Задача организации, в особенности же понимание сущности ресурсосберегающих технологий влечёт за собой интересный процесс внедрения модернизации дальнейших направлений развития.'
+  }
 
 } satisfies Meta<typeof Text>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Light: Story = {
-  args: {
-    title: 'title',
-    text: 'Задача организации, в особенности же понимание сущности ресурсосберегающих технологий влечёт за собой интересный процесс внедрения модернизации дальнейших направлений развития.'
-  }
-}
+export const Light: Story = {}
 
 export const OnlyTitleLight: Story = {
   args: {
-    title: 'title'
+    text: undefined
   }
 }
 
 export const OnlyTextLight: Story = {
   args: {
-    text: 'Задача организации, в особенности же понимание сущности ресурсосберегающих технологий влечёт за собой интересный процесс внедрения модернизации дальнейших направлений развития.'
+    title: undefined
   }
 }
 
 export const Dark: Story = {
-  args: {
-    title: 'title',
-    text: 'Задача организации, в особенности же понимание сущности ресурсосберегающих технологий влечёт за собой интересный процесс внедрения модернизации дальнейших направлений развития.'
-  },
   decorators: [ThemeDecorator(Theme.DARK)]
 }
 
 export const OnlyTitleDark: Story = {
   args: {
-    title: 'title'
+    text: undefined
   },
   decorators: [ThemeDecorator(Theme.DARK)]
 }
 
 export const OnlyTextDark: Story = {
   args: {
-    text: 'Задача организации, в особенности же понимание сущности ресурсосберегающих технологий влечёт за собой интересный процесс внедрения модернизации дальнейших направлений развития.'
+    title: undefined
   },
   decorators: [ThemeDecorator(Theme.DARK)]
 }
 
 export const Error: Story = {
   args: {
-    title: 'title',
-    text: 'Задача организации, в особенности же понимание сущности ресурсосберегающих технологий влечёт за собой интересный процесс внедрения модернизации дальнейших направлений развития.',
     theme: TextTheme.ERROR
   }
 }
 
 export const OnlyTitleError: Story = {
   args: {
-    title: 'title',
-    theme: TextTheme.ERROR
+    theme: TextTheme.ERROR,
+    text: undefined
   }
 }
 
 export const OnlyTextError: Story = {
   args: {
-    text: 'Задача организации, в особенности же понимание сущности ресурсосберегающих технологий влечёт за собой интересный процесс внедрения модернизации дальнейших направлений развития.',
+    title: undefined,
     theme: TextTheme.ERROR
   }
 }
 
 export const AlignRight: Story = {
   args: {
-    title: 'title',
-    text: 'Задача организации, в особенности же понимание сущности ресурсосберегающих технологий влечёт за собой интересный процесс внедрения модернизации дальнейших направлений развития.',
     align: TextAlign.RIGHT
   }
 }
 
-export const AlignCenter: Story = {
+export const SizeS: Story = {
   args: {
-    title: 'title',
-    text: 'Задача организации, в особенности же понимание сущности ресурсосберегающих технологий влечёт за собой интересный процесс внедрения модернизации дальнейших направлений развития.',
-    align: TextAlign.CENTER
+    size: TextSize.S
+  }
+}
+
+export const SizeM: Story = {
+  args: {
+    size: TextSize.M
+  }
+}
+
+export const SizeL: Story = {
+  args: {
+    size: TextSize.L
   }
 }

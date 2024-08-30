@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import { memo, useCallback, useEffect } from 'react'
-import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { DynamicModuleLoader, type ReducersList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch } from '6shared/lib/hooks'
 import { useSelector } from 'react-redux'
 import { fetchProfileData, validateProfileErrorsTranslations } from '../model/services'
@@ -17,7 +17,7 @@ import {
 import { Text, TextTheme } from '6shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 
-const initialReducer: ReducerList = {
+const initialReducer: ReducersList = {
   profile: profileReducer
 }
 
@@ -46,7 +46,7 @@ const ProfilePage = memo(function ProfilePage ({ className }: ProfilePageProps):
 
   return (
       <DynamicModuleLoader reducers={initialReducer} removeAfterUnmount>
-          <div className={classNames(undefined, [className])}>
+          <main className={classNames(undefined, [className])}>
               <ProfilePageHeader/>
               {validateErrors?.length !== undefined &&
                validateErrors?.map(err =>
@@ -61,7 +61,7 @@ const ProfilePage = memo(function ProfilePage ({ className }: ProfilePageProps):
                 onChange={onChange}
                 readonly={readonly}
               />
-          </div>
+          </main>
       </DynamicModuleLoader>
   )
 })

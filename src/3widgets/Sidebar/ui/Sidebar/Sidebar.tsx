@@ -20,7 +20,7 @@ export const Sidebar = memo(
     }
 
     return (
-        <div
+        <aside
           data-testid='sidebar'
           className={classNames(styles.sidebar, [className], {
             [styles.collapsed]: collapsed
@@ -35,19 +35,25 @@ export const Sidebar = memo(
               >
                 {collapsed ? '>' : '<'}
             </Button>
-            <div className={styles.items}>
-                {sidebarItemList.map((item) => (
-                    <SidebarItem
-                      key={item.path}
-                      item={item}
-                      collapsed={collapsed}
+            <nav>
+                <ul className={styles.items}>
+                    {sidebarItemList.map((item) => (
+                        <SidebarItem
+                          key={item.path}
+                          item={item}
+                          collapsed={collapsed}
                     />
-                ))}
-            </div>
-            <div className={styles.switchers}>
-                <ThemeSwitcher />
-                <LangSwitcher className={styles.lang} short={collapsed}/>
-            </div>
-        </div>
+                    ))}
+                </ul>
+            </nav>
+            <ul className={styles.switchers}>
+                <li className={styles.li}>
+                    <ThemeSwitcher />
+                </li>
+                <li className={styles.li}>
+                    <LangSwitcher className={styles.lang} short={collapsed}/>
+                </li>
+            </ul>
+        </aside>
     )
   })

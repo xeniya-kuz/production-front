@@ -1,0 +1,36 @@
+.primaryFill {
+	fill: var(--primary-color);
+	stroke: var(--primary-color);
+}
+
+.secondaryFill {
+	fill: var(--secondary-color);
+}
+
+.invertedPrimaryFill {
+	fill: var(--inverted-primary-color);
+}
+
+.invertedSecondaryFill {
+	fill: var(--inverted-secondary-color);
+}
+
+.primaryStroke {
+	fill: none;
+	stroke: var(--primary-color);
+}
+
+.secondaryStroke {
+	fill: none;
+	stroke: var(--secondary-color);
+}
+
+.invertedPrimaryStroke {
+	fill: none;
+	stroke: var(--inverted-primary-color);
+}
+
+.invertedSecondaryStroke {
+	fill: none;
+	stroke: var(--inverted-secondary-color);
+}
