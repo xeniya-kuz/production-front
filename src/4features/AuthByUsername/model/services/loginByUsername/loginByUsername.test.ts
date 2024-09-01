@@ -10,7 +10,8 @@ describe('loginByUsername', () => {
   const userFromServer = {
     username: '123',
     id: '1',
-    password: '123'
+    password: '123',
+    avatar: ''
   }
   const userAuthData = { username: '123', password: '123' }
   //! читаемый сценарий - оставила для наглядности

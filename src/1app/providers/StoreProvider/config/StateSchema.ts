@@ -1,3 +1,4 @@
+import { type ArticleDetailsCommentsSchema } from '2pages/ArticleDetailsPage'
 import { type ProfileSchema } from '2pages/ProfilePage/model/types/profile'
 import { type LoginSchema } from '4features/AuthByUsername'
 import { type ArticleDetailsSchema } from '5entities/Article'
@@ -15,6 +16,7 @@ export interface StateSchema {
   loginForm?: LoginSchema
   profile?: ProfileSchema
   articleDetails?: ArticleDetailsSchema
+  articleDetailsComments?: ArticleDetailsCommentsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

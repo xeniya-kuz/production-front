@@ -30,7 +30,7 @@ export const sidebarItemList: SidebarItemType[] = [
   },
   {
     path: routePaths.articles,
-    text: 'article:articles',
+    text: 'articles:articles',
     Icon: ArticleIcon,
     isPrivate: true
   }

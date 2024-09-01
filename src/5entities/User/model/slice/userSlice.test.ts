@@ -3,7 +3,8 @@ import { userActions, userReducer } from './userSlice'
 
 const user = {
   id: '1',
-  username: 'foo'
+  username: 'foo',
+  avatar: ''
 }
 
 describe('userSlice', () => {

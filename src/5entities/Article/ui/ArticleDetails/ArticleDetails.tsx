@@ -2,7 +2,7 @@ import { fetchArticleById } from '5entities/Article/model/services/fetchArticleB
 import { classNames } from '6shared/lib/classNames/classNames'
 import { DynamicModuleLoader, type ReducersList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch } from '6shared/lib/hooks'
-import { memo, useEffect } from 'react'
+import { memo } from 'react'
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
 import styles from './styles.module.scss'
 import { useSelector } from 'react-redux'
@@ -12,6 +12,7 @@ import { selectArticleDetails } from '5entities/Article/model/selectors/selectAr
 import { Text, TextAlign, TextTheme } from '6shared/ui/Text/Text'
 import { Article } from './Article'
 import { SketelonArticle } from './SketelonArticle'
+import { useInitialEffect } from '6shared/lib/hooks/useInitialEffect/useInitialEffect'
 
 interface ArticleDetailsProps {
   className?: string
@@ -30,11 +31,9 @@ export const ArticleDetails = memo(
     const error = useSelector(selectArticleDetailsError)
     const article = useSelector(selectArticleDetails)
 
-    useEffect(() => {
-      if (__PROJECT__ !== 'storybook') {
-        void dispatch(fetchArticleById(articleId))
-      }
-    }, [dispatch, articleId])
+    useInitialEffect(() => {
+      void dispatch(fetchArticleById(articleId))
+    })
 
     let content
 

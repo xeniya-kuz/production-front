@@ -1,6 +1,7 @@
 {
   "": "",
   "  \"change-theme": "  \"change-theme",
+  "Comments": "Comments",
   "about-us": "about-us",
   "age": "age",
   "article": "article",
@@ -9,12 +10,14 @@
   "cancel": "cancel",
   "change-theme": "change-theme",
   "city": "city",
+  "comments": "comments",
   "copy": "copy",
   "country": "country",
   "currency": "currency",
   "edit": "edit",
   "first-name": "first-name",
   "last-name": "last-name",
+  "no-comments": "no-comments",
   "save": "save",
   "username": "username",
   "Введите логин": "Введите логин",
@@ -27,5 +30,6 @@
   "Произошла непредвиденная ошибка": "Произошла непредвиденная ошибка",
   "Страница не найдена": "Страница не найдена",
   "Форма авторизации": "Форма авторизации",
-  "ошибка": "ошибка"
+  "ошибка": "ошибка",
+  "сomments": "сomments"
 }

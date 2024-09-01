@@ -12,10 +12,10 @@ export const SketelonArticle = memo(function SketelonArticle
   return (
       <div className={classNames(undefined, [className])}>
           <Skeleton className={styles.avatar} width={200} height={200} border='50%'/>
-          <Skeleton width={300} height={32} />
-          <Skeleton width={600} height={24} />
-          <Skeleton width='100%' height={200}/>
-          <Skeleton width='100%' height={200} />
+          <Skeleton width={300} height={32} className={styles.skeleton} />
+          <Skeleton width={600} height={24} className={styles.skeleton} />
+          <Skeleton width='100%' height={200} className={styles.skeleton} />
+          <Skeleton width='100%' height={200} className={styles.skeleton} />
 
       </div>
   )

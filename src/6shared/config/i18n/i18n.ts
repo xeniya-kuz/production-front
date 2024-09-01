@@ -23,6 +23,9 @@ i18n
     // ns: Object.keys(resources.ru),
     interpolation: {
       escapeValue: false // not needed for react as it escapes by default
+    },
+    react: {
+      useSuspense: false // без этого в Brave Suspense не останавливается
     }
   })
   .catch((err: any) => {

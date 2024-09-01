@@ -1,5 +1,5 @@
 import { classNames } from '6shared/lib/classNames/classNames'
-import { memo, useCallback, useEffect } from 'react'
+import { memo, useCallback } from 'react'
 import { DynamicModuleLoader, type ReducersList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch } from '6shared/lib/hooks'
 import { useSelector } from 'react-redux'
@@ -16,6 +16,7 @@ import {
 } from '../model/selectors'
 import { Text, TextTheme } from '6shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
+import { useInitialEffect } from '6shared/lib/hooks/useInitialEffect/useInitialEffect'
 
 const initialReducer: ReducersList = {
   profile: profileReducer
@@ -34,11 +35,11 @@ const ProfilePage = memo(function ProfilePage ({ className }: ProfilePageProps):
   const validateErrors = useSelector(selectProfileValidateErrors)
   const { t } = useTranslation()
 
-  useEffect(() => {
+  useInitialEffect(() => {
     if (__PROJECT__ !== 'storybook') {
       void dispatch(fetchProfileData())
     }
-  }, [dispatch])
+  })
 
   const onChange = useCallback((name: keyof Profile, value: string | number) => {
     dispatch(profileActions.updateProfile({ [name]: value }))
