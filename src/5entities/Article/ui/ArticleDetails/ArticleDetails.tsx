@@ -1,7 +1,7 @@
 import { fetchArticleById } from '5entities/Article/model/services/fetchArticleById/fetchArticleById'
 import { classNames } from '6shared/lib/classNames/classNames'
 import { DynamicModuleLoader, type ReducersList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { useAppDispatch } from '6shared/lib/hooks'
+import { useAppDispatch, useInitialEffect } from '6shared/lib/hooks'
 import { memo } from 'react'
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
 import styles from './styles.module.scss'
@@ -12,7 +12,6 @@ import { selectArticleDetails } from '5entities/Article/model/selectors/selectAr
 import { Text, TextAlign, TextTheme } from '6shared/ui/Text/Text'
 import { Article } from './Article'
 import { SketelonArticle } from './SketelonArticle'
-import { useInitialEffect } from '6shared/lib/hooks/useInitialEffect/useInitialEffect'
 
 interface ArticleDetailsProps {
   className?: string
@@ -50,7 +49,7 @@ export const ArticleDetails = memo(
     }
 
     return (
-        <DynamicModuleLoader reducers={initialReducer} removeAfterUnmount>
+        <DynamicModuleLoader reducers={initialReducer}>
             <div className={classNames(styles.articleDetails, [className])}>
                 {content}
             </div>

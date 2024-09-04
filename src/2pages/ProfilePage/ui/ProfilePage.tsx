@@ -1,7 +1,7 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import { memo, useCallback } from 'react'
 import { DynamicModuleLoader, type ReducersList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { useAppDispatch } from '6shared/lib/hooks'
+import { useAppDispatch, useInitialEffect } from '6shared/lib/hooks'
 import { useSelector } from 'react-redux'
 import { fetchProfileData, validateProfileErrorsTranslations } from '../model/services'
 import { type Profile, ProfileCard } from '5entities/Profile'
@@ -16,7 +16,7 @@ import {
 } from '../model/selectors'
 import { Text, TextTheme } from '6shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
-import { useInitialEffect } from '6shared/lib/hooks/useInitialEffect/useInitialEffect'
+import { useParams } from 'react-router-dom'
 
 const initialReducer: ReducersList = {
   profile: profileReducer
@@ -34,10 +34,11 @@ const ProfilePage = memo(function ProfilePage ({ className }: ProfilePageProps):
   const readonly = useSelector(selectProfileReadonly)
   const validateErrors = useSelector(selectProfileValidateErrors)
   const { t } = useTranslation()
+  const { profileId } = useParams<{ profileId: string }>()
 
   useInitialEffect(() => {
     if (__PROJECT__ !== 'storybook') {
-      void dispatch(fetchProfileData())
+      void dispatch(fetchProfileData(profileId))
     }
   })
 
@@ -46,7 +47,7 @@ const ProfilePage = memo(function ProfilePage ({ className }: ProfilePageProps):
   }, [dispatch])
 
   return (
-      <DynamicModuleLoader reducers={initialReducer} removeAfterUnmount>
+      <DynamicModuleLoader reducers={initialReducer}>
           <main className={classNames(undefined, [className])}>
               <ProfilePageHeader/>
               {validateErrors?.length !== undefined &&

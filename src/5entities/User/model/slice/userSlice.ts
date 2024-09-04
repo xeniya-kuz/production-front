@@ -16,7 +16,7 @@ export const userSlice = createSlice({
     initAuthData: (state) => {
       const userData = localStorage.getItem(USER_LOCALSTORAGE_KEY)
       if (userData !== null) {
-        state.authData = userData !== null ? JSON.parse(userData) as User : undefined
+        state.authData = JSON.parse(userData) as User
       }
       state._mounted = true
     },

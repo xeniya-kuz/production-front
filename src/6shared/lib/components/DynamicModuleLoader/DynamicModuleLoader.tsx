@@ -15,7 +15,7 @@ interface DynamicLoaderComponentProps {
   removeAfterUnmount?: boolean
 }
 
-export const DynamicModuleLoader = ({ reducers, children, removeAfterUnmount }: DynamicLoaderComponentProps): JSX.Element => {
+export const DynamicModuleLoader = ({ reducers, children, removeAfterUnmount = true }: DynamicLoaderComponentProps): JSX.Element => {
   const dispatch = useAppDispatch()
   const store = useStore() as ReduxStoreWithManager
 
@@ -26,8 +26,8 @@ export const DynamicModuleLoader = ({ reducers, children, removeAfterUnmount }: 
     })
 
     return () => {
-      if (removeAfterUnmount === true) {
-        Object.entries(reducers).forEach(([title, reducer]) => {
+      if (removeAfterUnmount) {
+        Object.entries(reducers).forEach(([title]) => {
           store.reducerManager?.remove(title as StateSchemaKey)
           dispatch({ type: `@DESTROY ${title} reducer` })
         })

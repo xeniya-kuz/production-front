@@ -3,12 +3,12 @@
     {
       "id": "1",
       "title": "json-server",
-      "userId": 1
+      "userId": "1"
     },
     {
       "id": "2",
       "title": "json-server",
-      "userId": 2
+      "userId": "2"
     }
   ],
   "articles": [
@@ -19,7 +19,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -99,7 +101,13 @@
       "id": "3",
       "text": "some comment 3",
       "articleId": "1",
-      "userId": "2"
+      "userId": "1"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "123",
+      "id": "4Cljjzl"
     }
   ],
   "users": [
@@ -117,14 +125,28 @@
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     }
   ],
-  "profile": {
-    "first": "Иван",
-    "lastname": "Петров",
-    "age": 22,
-    "city": "Москва",
-    "username": "tra-ta-ta",
-    "currency": "USD",
-    "country": "Kazakhstan",
-    "avatar": "https://avatars.dzeninfra.ru/get-zen_doc/53963/pub_651011ddc419e8692e91c5dc_65101281d67f4c757ed51043/scale_1200"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "first": "Иван123",
+      "lastname": "Петров",
+      "age": 22,
+      "city": "Москва",
+      "username": "tra-ta-ta",
+      "currency": "USD",
+      "country": "Kazakhstan",
+      "avatar": "https://avatars.dzeninfra.ru/get-zen_doc/53963/pub_651011ddc419e8692e91c5dc_65101281d67f4c757ed51043/scale_1200"
+    },
+    {
+      "id": "2",
+      "first": "ulbi tv",
+      "lastname": "asf",
+      "age": 465,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "ulbi tv",
+      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
+    }
+  ]
 }

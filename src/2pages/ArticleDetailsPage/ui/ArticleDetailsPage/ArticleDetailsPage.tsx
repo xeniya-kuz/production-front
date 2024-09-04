@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
-import { memo } from 'react'
+import { memo, useCallback } from 'react'
 import { ArticleDetails } from '5entities/Article'
 import { useParams } from 'react-router-dom'
 import { Text, TextSize } from '6shared/ui/Text/Text'
@@ -10,9 +10,10 @@ import { DynamicModuleLoader, type ReducersList } from '6shared/lib/components/D
 import { articleDetailsCommentsReducer, selectArticleComments } from '../../model/slices/articleDetailsCommentsSlice'
 import { useSelector } from 'react-redux'
 import { selectArticleCommentsIsLoading } from '../../model/selectors/comments/comments'
-import { useInitialEffect } from '6shared/lib/hooks/useInitialEffect/useInitialEffect'
-import { useAppDispatch } from '6shared/lib/hooks'
-import { fetchCommentsByArticleId } from '2pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
+import { useInitialEffect, useAppDispatch } from '6shared/lib/hooks'
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
+import { AddCommentForm } from '4features/AddCommentForm'
+import { addArticleComment } from '../../model/services/addArticleComment/addArticleComment'
 
 interface ArticleDetailsPageProps {
   className?: string
@@ -33,6 +34,10 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element
     void dispatch(fetchCommentsByArticleId(articleId))
   })
 
+  const onSendComment = useCallback((comment: string) => {
+    void dispatch(addArticleComment(comment))
+  }, [dispatch])
+
   if (articleId === undefined) {
     return (
         <div className={classNames(undefined, [className])}>
@@ -46,6 +51,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element
           <div className={classNames(styles.articleDetailsPage, [className])}>
               <ArticleDetails articleId={articleId}/>
               <Text title={t('comments')} className={styles.commentTitle} size={TextSize.S}/>
+              <AddCommentForm onSend={onSendComment}/>
               <CommentList
                 comments={comments}
                 isLoading={commentsisLoading}

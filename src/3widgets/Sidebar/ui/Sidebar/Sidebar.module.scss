@@ -1,14 +1,14 @@
 .sidebar {
 	position: relative;
 
-	width: var(--sidebar-width);
+	min-width: var(--sidebar-width);
 	height: calc(100vh - var(--navbar-height));
 
 	color: var(--inverted-primary-color);
 
 	background-color: var(--inverted-bg-color);
 
-	transition: width 0.3s;
+	transition: min-width 0.3s;
 }
 
 .switchers {
@@ -39,7 +39,7 @@
 }
 
 .collapsed {
-	width: var(--sidebar-width-collapsed);
+	min-width: var(--sidebar-width-collapsed);
 
 	.switchers {
 		flex-direction: column;

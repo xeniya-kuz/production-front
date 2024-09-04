@@ -48,7 +48,7 @@ const LoginForm = memo(function LoginForm ({ className, onSuccess }: LoginFormPr
   }, [dispatch, username, password, onSuccess])
 
   return (
-      <DynamicModuleLoader reducers={initialReducer} removeAfterUnmount>
+      <DynamicModuleLoader reducers={initialReducer}>
           <div className={classNames(styles.loginForm, [className])}>
               <Text title={t('Форма авторизации')}/>
               {(error !== undefined) &&

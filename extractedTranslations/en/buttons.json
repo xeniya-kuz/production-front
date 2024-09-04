@@ -1,6 +1,8 @@
 {
   "cancel": "cancel",
   "change-theme": "",
+  "copy": "",
   "edit": "edit",
-  "save": "save"
+  "save": "save",
+  "send": "send"
 }

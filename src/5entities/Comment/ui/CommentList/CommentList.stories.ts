@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { CommentList } from './CommentList'
 
 const meta = {
-  title: 'entities/CommentList',
+  title: 'entities/Comment/CommentList',
   component: CommentList,
   parameters: {
     layout: 'fullscreen'

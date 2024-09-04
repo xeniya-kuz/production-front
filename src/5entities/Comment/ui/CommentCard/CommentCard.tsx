@@ -5,7 +5,9 @@ import { type Comment } from '../../model/types/comment'
 import { Avatar } from '6shared/ui/Avatar/Avatar'
 import { Text, TextSize } from '6shared/ui/Text/Text'
 import AvatarMock from '6shared/assets/icons/user.png'
-import { Skeleton } from '6shared/ui/Skeleton/Skeleton'
+import { AppLink } from '6shared/ui/AppLink/AppLink'
+import { routePaths } from '6shared/config/routeConfig/routeConfig'
+import { SkeletonCommentCard } from './SkeletonCommentCard'
 
 interface CommentCardProps {
   className?: string
@@ -17,23 +19,23 @@ export const CommentCard = memo(function CommentCard
 ({ className, comment, isLoading }: CommentCardProps): JSX.Element {
   if (isLoading === true) {
     return (
-        <div className={classNames(styles.commentCard, [className])}>
-            <div className={styles.header }>
-                <Skeleton border='50%' width={30} height={30}/>
-                <Skeleton width={150} height={20} className={styles.username}/>
-            </div>
-            <Skeleton width={'100%'} height={16} className={styles.skeleton}/>
-            <Skeleton width={'70%'} height={16} className={styles.skeleton}/>
+        <div className={classNames(styles.commentCard, [className, styles.loading])}>
+            <SkeletonCommentCard
+              classNameHeader={styles.header}
+              classNameUsername={styles.username}
+             />
         </div>
     )
   }
 
   return (
-      <div className={classNames(styles.commentCard, [className])}>
-          <div className={styles.header }>
+      <div className={classNames(styles.commentCard, [className])} >
+          <AppLink
+          to={`${routePaths.profile}/${comment.user.id}`}
+          className={styles.header}>
               <Avatar size={30} alt={comment.user.username} src={comment.user.avatar ?? AvatarMock}/>
               <Text title={comment.user.username} className={styles.username} size={TextSize.S}/>
-          </div>
+          </AppLink>
           <Text text={comment.text} className={styles.text} />
       </div>
   )
