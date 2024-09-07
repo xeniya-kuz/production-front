@@ -1,5 +1,5 @@
 import { StoreProvider, type StateSchema } from '1app/providers/StoreProvider'
-import { articleDetailsCommentsReducer } from '2pages/ArticleDetailsPage/model/slices/articleDetailsCommentsSlice'
+import { articleDetailsCommentsReducer } from '2pages/ArticleDetailsPage/model/slice/articleDetailsCommentsSlice'
 import { profileReducer } from '2pages/ProfilePage/model/slice/profileSlice'
 import { addCommentFormReducer } from '4features/AddCommentForm/model/slice/addCommentFormSlice'
 import { loginReducer } from '4features/AuthByUsername/model/slice/loginSlice'

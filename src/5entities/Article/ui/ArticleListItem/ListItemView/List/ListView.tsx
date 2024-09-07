@@ -22,7 +22,7 @@ export const ListView = memo(function ListView
   const textBlock = article.blocks.find(block => block.type === ArticleBlockType.TEXT) as ArticleTextBlockType
 
   return (
-      <Card className={styles.card} onClick={onOpenArticle}>
+      <Card className={styles.card} >
           <div className={styles.header}>
               {/* eslint-disable-next-line i18next/no-literal-string */}
               <Avatar size={30} src={article.user.avatar} alt='avatar'/>

@@ -16,13 +16,17 @@ export const enum IconColors {
 interface IconProps {
   className?: string
   Svg: VFC<SVGProps<SVGSVGElement>>
-  color?: IconColors
+  color?: IconColors | IconColors[]
 }
 
 export const Icon = memo(function Icon
 ({ className, Svg, color = IconColors.PRIMARY_FILL }: IconProps): JSX.Element {
+  const colorStyles = Array.isArray(color)
+    ? color.map(c => styles[c])
+    : [styles[color]]
+
   return (
-      <Svg className={classNames(styles.icon, [className, styles[color]])}/>
+      <Svg className={classNames(styles.icon, [className, ...colorStyles])}/>
 
   )
 })

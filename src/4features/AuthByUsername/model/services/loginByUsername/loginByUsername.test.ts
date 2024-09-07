@@ -1,18 +1,13 @@
 import { userActions } from '5entities/User'
 import { TestAsyncThunk } from '6shared/lib/tests/TestAsyncThunk'
 import { loginByUsername } from './loginByUsername'
+import { userMock } from '6shared/const/mocks/user'
 
 // замокали axios
 // jest.mock('axios')
 // const mockedAxios = jest.mocked(axios)
 
 describe('loginByUsername', () => {
-  const userFromServer = {
-    username: '123',
-    id: '1',
-    // password: '123',
-    avatar: ''
-  }
   const userAuthData = { username: '123', password: '123' }
   //! читаемый сценарий - оставила для наглядности
   // let dispatch: useAppDispatch
@@ -55,16 +50,16 @@ describe('loginByUsername', () => {
     // замокали ответ с сервера
     // mockedAxios.post.mockReturnValue(Promise.resolve({ data: userFromServer }))
     const thunk = new TestAsyncThunk(loginByUsername)
-    thunk.api.post.mockReturnValue(Promise.resolve({ data: userFromServer }))
+    thunk.api.post.mockReturnValue(Promise.resolve({ data: userMock }))
 
     const result = await thunk.callThunk(userAuthData)
 
-    expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(userFromServer))
+    expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(userMock))
     expect(thunk.dispatch).toHaveBeenCalledTimes(3)
     // eslint-disable-next-line @typescript-eslint/unbound-method
     expect(thunk.api.post).toHaveBeenCalled()
     expect(result.meta.requestStatus).toBe('fulfilled')
-    expect(result.payload).toEqual(userFromServer)
+    expect(result.payload).toEqual(userMock)
   })
 
   test('error login', async () => {

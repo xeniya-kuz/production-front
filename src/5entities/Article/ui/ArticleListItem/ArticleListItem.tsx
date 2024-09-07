@@ -1,7 +1,7 @@
 import EyeIcon from '6shared/assets/icons/eye-20-20.svg'
 import { routePaths } from '6shared/config/routeConfig/routeConfig'
 import { classNames } from '6shared/lib/classNames/classNames'
-import { Icon } from '6shared/ui/Icon/Icon'
+import { Icon, IconColors } from '6shared/ui/Icon/Icon'
 import { Text } from '6shared/ui/Text/Text'
 import { memo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -23,7 +23,7 @@ export const ArticleListItem = memo(function ArticleItem
   const types = <Text text={article.type.join(', ')} className={styles.types}/>
   const views = <>
       <Text text={String(article.views)} className={styles.views}/>
-      <Icon Svg={EyeIcon}/>
+      <Icon Svg={EyeIcon} color={[IconColors.SECONDARY_STROKE, IconColors.SECONDARY_FILL]}/>
   </>
 
   const onOpenArticle = useCallback(() => {

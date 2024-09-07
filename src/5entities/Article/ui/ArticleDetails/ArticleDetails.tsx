@@ -9,9 +9,9 @@ import { useSelector } from 'react-redux'
 import { selectArticleDetailsIsLoading } from '5entities/Article/model/selectors/selectArticleDetailsIsLoading/selectArticleDetailsIsLoading'
 import { selectArticleDetailsError } from '5entities/Article/model/selectors/selectArticleDetailsError/selectArticleDetailsError'
 import { selectArticleDetails } from '5entities/Article/model/selectors/selectArticleDetails/selectArticleDetails'
-import { Text, TextAlign, TextTheme } from '6shared/ui/Text/Text'
 import { Article } from './Article'
 import { SketelonArticle } from './SketelonArticle'
+import { Error } from '6shared/ui/Error/Error'
 
 interface ArticleDetailsProps {
   className?: string
@@ -41,7 +41,7 @@ export const ArticleDetails = memo(
     }
 
     if (error !== undefined) {
-      content = <Text title={error} theme={TextTheme.ERROR} align={TextAlign.CENTER}/>
+      content = <Error title={error} text=''/>
     }
 
     if (article !== undefined) {
