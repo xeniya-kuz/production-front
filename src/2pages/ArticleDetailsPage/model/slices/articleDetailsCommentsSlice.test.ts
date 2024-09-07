@@ -4,6 +4,7 @@ import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId/f
 import { type ArticleDetailsCommentsSchema } from '../types/ArticleDetailsCommentsSchema'
 import { articleDetailsCommentsReducer } from './articleDetailsCommentsSlice'
 import { type Comment } from '5entities/Comment'
+import { commentsMock } from '6shared/const/mocks/comment'
 
 describe('articleDetailsCommentsSlice', () => {
   jest.mock('@reduxjs/toolkit')
@@ -28,19 +29,17 @@ describe('articleDetailsCommentsSlice', () => {
   })
 
   test('fetchCommentsByArticleId fulfilled', async () => {
-    const comments = [{ id: '1', text: 'Comment 1', user: { id: '1', username: 'user1' } }]
-
     const state: DeepPartial<ArticleDetailsCommentsSchema> = {
       isLoading: true
     }
 
     expect(articleDetailsCommentsReducer(
       state as ArticleDetailsCommentsSchema,
-      fetchCommentsByArticleId.fulfilled(comments, '', '')
+      fetchCommentsByArticleId.fulfilled(commentsMock, '', '')
     )).toEqual({
       isLoading: false,
-      entities: { [comments[0].id]: comments[0] },
-      ids: [comments[0].id]
+      entities: { [commentsMock[0].id]: commentsMock[0] },
+      ids: [commentsMock[0].id]
     })
   })
 

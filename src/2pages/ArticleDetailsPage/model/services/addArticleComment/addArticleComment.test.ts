@@ -1,23 +1,22 @@
 import { TestAsyncThunk } from '6shared/lib/tests/TestAsyncThunk'
 import { addArticleComment } from './addArticleComment'
-
-const user = { id: '1', username: 'user1' }
-const comment = { id: '1', text: 'Comment 1', user }
+import { userMock } from '6shared/const/mocks/user'
+import { commentMock } from '6shared/const/mocks/comment'
 
 describe('addArticleComment', () => {
   test('success', async () => {
     const thunk = new TestAsyncThunk(addArticleComment, {
-      user: { authData: user },
+      user: { authData: userMock },
       articleDetails: { article: { id: '1' } }
     })
-    thunk.api.post.mockReturnValue(Promise.resolve({ data: comment }))
+    thunk.api.post.mockReturnValue(Promise.resolve({ data: commentMock }))
 
     const result = await thunk.callThunk('comment')
 
     // eslint-disable-next-line @typescript-eslint/unbound-method
     expect(thunk.api.post).toHaveBeenCalled()
     expect(result.meta.requestStatus).toBe('fulfilled')
-    expect(result.payload).toEqual(comment)
+    expect(result.payload).toEqual(commentMock)
   })
 
   test('error', async () => {

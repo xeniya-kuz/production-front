@@ -5,9 +5,7 @@ const meta = {
   title: 'pages/ArticlesPage',
   component: ArticlesPage,
   tags: ['autodocs'],
-  args: {
-
-  }
+  args: { }
 
 } satisfies Meta<typeof ArticlesPage>
 

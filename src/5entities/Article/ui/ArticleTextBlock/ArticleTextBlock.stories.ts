@@ -5,7 +5,7 @@ import { ArticleTextBlock } from './ArticleTextBlock'
 import { ArticleBlockType } from '../../model/types/article'
 
 const meta = {
-  title: 'entities/ArticleTextBlock',
+  title: 'entities/Article/ArticleTextBlock',
   component: ArticleTextBlock,
   tags: ['autodocs'],
   args: {

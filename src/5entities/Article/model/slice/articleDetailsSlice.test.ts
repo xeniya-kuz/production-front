@@ -1,19 +1,7 @@
+import { articleMock } from '6shared/const/mocks/article'
 import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById'
-import { ArticleType } from '../types/article'
 import { type ArticleDetailsSchema } from '../types/articleDetailsSchema'
 import { articleDetailsReducer } from './articleDetailsSlice'
-
-const article =
-    {
-      id: '1',
-      title: 'Javascript news',
-      subtitle: 'Что нового в JS за 2022 год?',
-      img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
-      views: 1022,
-      createdAt: '26.02.2022',
-      blocks: [],
-      type: [ArticleType.IT]
-    }
 
 describe('articleDetailsSlice', () => {
   test('fetchArticleById pending', async () => {
@@ -38,10 +26,10 @@ describe('articleDetailsSlice', () => {
 
     expect(articleDetailsReducer(
       state as ArticleDetailsSchema,
-      fetchArticleById.fulfilled(article, fetchArticleById.fulfilled.type, '')
+      fetchArticleById.fulfilled(articleMock, fetchArticleById.fulfilled.type, '')
     )).toEqual({
       isLoading: false,
-      article
+      article: articleMock
     })
   })
 

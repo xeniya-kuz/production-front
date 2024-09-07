@@ -1,3 +1,5 @@
+import { type User } from '5entities/User'
+
 export const enum ArticleBlockType {
   TEXT = 'TEXT',
   CODE = 'CODE',
@@ -34,6 +36,7 @@ export const enum ArticleType {
 
 export interface Article {
   id: string
+  user: User
   title: string
   subtitle: string
   img: string
@@ -41,4 +44,9 @@ export interface Article {
   createdAt: string
   type: ArticleType[]
   blocks: ArticleBlock[]
+}
+
+export const enum ArticleView {
+  LIST = 'list',
+  TILE = 'tile',
 }

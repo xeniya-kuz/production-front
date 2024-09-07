@@ -4,5 +4,7 @@
   "save": "Save",
   "copy":"Copy",
   "change-theme": "Change theme",
-  "send": "Send"
+  "send": "Send",
+  "read-more": "Read more...",
+  "back-to-list": "Back to the list"
 }

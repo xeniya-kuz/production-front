@@ -1,11 +1,6 @@
+import { userMock } from '6shared/const/mocks/user'
 import { type UserSchema } from '../types/user'
 import { userActions, userReducer } from './userSlice'
-
-const user = {
-  id: '1',
-  username: 'foo',
-  avatar: ''
-}
 
 describe('userSlice', () => {
   test('setAuthData', async () => {
@@ -13,8 +8,8 @@ describe('userSlice', () => {
 
     expect(userReducer(
       state as UserSchema,
-      userActions.setAuthData(user)
-    )).toEqual({ authData: user, _mounted: false })
+      userActions.setAuthData(userMock)
+    )).toEqual({ authData: userMock, _mounted: false })
   })
 
   test('initAuthData', async () => {
@@ -29,7 +24,7 @@ describe('userSlice', () => {
   })
 
   test('logout', async () => {
-    const state: DeepPartial<UserSchema> = { _mounted: true, authData: user }
+    const state: DeepPartial<UserSchema> = { _mounted: true, authData: userMock }
 
     expect(userReducer(
       state as UserSchema,

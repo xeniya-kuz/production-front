@@ -5,7 +5,7 @@ import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDec
 import { Theme } from '1app/providers/ThemeProvider'
 
 const meta = {
-  title: 'entities/ArticleCodeBlock',
+  title: 'entities/Article/ArticleCodeBlock',
   component: ArticleCodeBlock,
   tags: ['autodocs'],
   args: {
