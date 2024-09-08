@@ -1,24 +1,15 @@
 import { type StateSchema } from '1app/providers/StoreProvider'
 import { selectEditedProfile } from './selectEditedProfile'
-import { Currency } from '5entities/Currency'
+import { profileMock } from '6shared/const/mocks/profile'
 
 describe('selectEditedProfile', () => {
   test('should edited profile', () => {
-    const profile = {
-      first: 'Trevor',
-      lastname: 'Smith',
-      age: 20,
-      username: 'tra-ta-ta',
-      city: 'San Francisco',
-      currency: Currency.EUR
-
-    }
     const state: DeepPartial<StateSchema> = {
       profile: {
-        editedProfile: profile
+        editedProfile: profileMock
       }
     }
-    expect(selectEditedProfile(state as StateSchema)).toEqual(profile)
+    expect(selectEditedProfile(state as StateSchema)).toEqual(profileMock)
   })
 
   test('should work with empty state', () => {

@@ -5,13 +5,13 @@ import { type ArticleDetailsCommentsSchema } from '../types/ArticleDetailsCommen
 import { articleDetailsCommentsReducer } from './articleDetailsCommentsSlice'
 import { type Comment } from '5entities/Comment'
 import { commentsMock } from '6shared/const/mocks/comment'
+import { type StateSchema } from '1app/providers/StoreProvider'
 
 describe('articleDetailsCommentsSlice', () => {
   jest.mock('@reduxjs/toolkit')
-  const mockedCreateEntityAdapter = jest.mocked(createEntityAdapter<Comment>({
+  const commentsAdapter = jest.mocked(createEntityAdapter<Comment>({
     selectId: (comment: Comment) => comment.id
   }))
-  const commentsAdapter = mockedCreateEntityAdapter
 
   test('fetchCommentsByArticleId pending', async () => {
     const state: DeepPartial<ArticleDetailsCommentsSchema> = {
@@ -73,23 +73,40 @@ describe('articleDetailsCommentsSlice', () => {
     })
   })
 
-  // test('addArticleComment fulfilled', async () => {
-  //   const commentToAdd = { id: '2', text: 'Comment 2', user: { id: '2', username: 'user2' } }
-  //   const commentFromState = { 1: { id: '1', text: 'Comment 1', user: { id: '1', username: 'user1' } } }
+  test('addArticleComment fulfilled', async () => {
+    const commentFromState = {
+      1: {
+        id: '1',
+        text: 'Comment 1',
+        user: { id: '1', username: 'user1' }
+      }
+    }
+    const commentToAdd = {
+      id: '2',
+      text: 'Comment 2',
+      user: { id: '4', username: 'user4' }
+    }
 
-  //   const state: DeepPartial<ArticleDetailsCommentsSchema> = {
-  //     isLoading: true,
-  //     entities: commentFromState
-  //   }
+    const globalState: DeepPartial<StateSchema> = {
+      user: { authData: { id: '4' } },
+      articleDetails: { article: { id: '3' } }
+    }
 
-  //   expect(articleDetailsCommentsReducer(
-  //     state as ArticleDetailsCommentsSchema,
-  //     addArticleComment.fulfilled(commentToAdd, '', '', commentsAdapter)
-  //   )).toEqual({
-  //     isLoading: false,
-  //     entities: { ...commentFromState, [commentToAdd.id]: commentToAdd }
-  //   })
-  // })
+    const state: DeepPartial<ArticleDetailsCommentsSchema> = {
+      isLoading: true,
+      entities: commentFromState,
+      ids: ['1']
+    }
+
+    expect(articleDetailsCommentsReducer(
+      state as ArticleDetailsCommentsSchema,
+      addArticleComment.fulfilled(commentToAdd, '', commentToAdd.text, { getState: () => globalState, extra: commentsAdapter })
+    )).toEqual({
+      isLoading: false,
+      entities: { ...commentFromState, [commentToAdd.id]: commentToAdd },
+      ids: ['1', '2']
+    })
+  })
 
   test('addArticleComment rejected', async () => {
     const state: DeepPartial<ArticleDetailsCommentsSchema> = {

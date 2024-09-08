@@ -12,6 +12,8 @@ import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchA
 import { articlesPageActions, articlesPageReducer, selectArticles } from '../../model/slice/articlesPageSlice'
 import styles from './ArticlesPage.module.scss'
 import { ViewSwitcher } from '4features/ArticlesViewSwitcher'
+import { Page } from '6shared/ui/Page/Page'
+import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage'
 
 interface ArticlesPageProps {
   className?: string
@@ -29,32 +31,39 @@ const ArticlesPage = ({ className }: ArticlesPageProps): JSX.Element => {
   const error = useSelector(selectArticlesError)
 
   useInitialEffect(() => {
-    void dispatch(fetchArticlesList())
-    dispatch(articlesPageActions.initView())
+    dispatch(articlesPageActions.initState())
+    void dispatch(fetchArticlesList({ page: 1 }))
   })
 
   const onViewChange = useCallback((view: ArticleView) => {
     dispatch(articlesPageActions.setView(view))
   }, [dispatch])
 
+  const onLoadNextArticles = useCallback(() => {
+    void dispatch(fetchNextArticlesPage())
+  }, [dispatch])
+
   if (error !== undefined) {
     return (
-        <main className={classNames(styles.articlesPage, [className])}>
+        <Page className={classNames(styles.articlesPage, [className])}>
             <Error/>
-        </main>
+        </Page>
     )
   }
 
   return (
       <DynamicModuleLoader reducers={initialReducer}>
-          <main className={classNames(styles.articlesPage, [className])}>
+          <Page
+            className={classNames(styles.articlesPage, [className])}
+            onScrollEnd={onLoadNextArticles}
+          >
               <ViewSwitcher view={view} onViewChange={onViewChange}/>
               <ArticleList
                 view={view}
                 isLoading={isLoading}
                 articles={articles}
               />
-          </main>
+          </Page>
       </DynamicModuleLoader>
   )
 }

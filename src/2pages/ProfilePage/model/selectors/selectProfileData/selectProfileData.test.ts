@@ -1,24 +1,15 @@
 import { type StateSchema } from '1app/providers/StoreProvider'
 import { selectProfileData } from './selectProfileData'
-import { Currency } from '5entities/Currency'
+import { profileMock } from '6shared/const/mocks/profile'
 
 describe('selectProfileData', () => {
   test('should return profile data', () => {
-    const profile = {
-      first: 'Trevor',
-      lastname: 'Smith',
-      age: 20,
-      username: 'tra-ta-ta',
-      city: 'San Francisco',
-      currency: Currency.EUR
-    }
-
     const state: DeepPartial<StateSchema> = {
       profile: {
-        profile, isLoading: false
+        profile: profileMock, isLoading: false
       }
     }
-    expect(selectProfileData(state as StateSchema)).toEqual(profile)
+    expect(selectProfileData(state as StateSchema)).toEqual(profileMock)
   })
 
   test('should work with empty state', () => {

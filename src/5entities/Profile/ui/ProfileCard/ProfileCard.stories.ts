@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ProfileCard } from './ProfileCard'
-import { Currency } from '5entities/Currency'
+import { profileMock } from '6shared/const/mocks/profile'
 import AvatarImg from '6shared/assets/tests/storybook.jpg'
 
 const meta = {
@@ -13,12 +13,7 @@ const meta = {
   tags: ['autodocs'],
   args: {
     profile: {
-      first: 'Trevor',
-      lastname: 'Smith',
-      age: 20,
-      username: 'tra-ta-ta',
-      city: 'San Francisco',
-      currency: Currency.EUR,
+      ...profileMock,
       avatar: AvatarImg
     }
   }

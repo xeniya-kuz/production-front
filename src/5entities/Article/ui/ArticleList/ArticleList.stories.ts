@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ArticleList } from './ArticleList'
-import { articleMock } from '6shared/const/mocks/article'
+import { articlesMock } from '6shared/const/mocks/article'
 import { ArticleView } from '5entities/Article/model/types/article'
 import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from '1app/providers/ThemeProvider'
@@ -14,8 +14,7 @@ const meta = {
   },
   tags: ['autodocs'],
   args: {
-    articles: new Array(3).fill(0)
-      .map((_, index) => ({ ...articleMock, id: String(index) }))
+    articles: articlesMock
   }
 
 } satisfies Meta<typeof ArticleList>

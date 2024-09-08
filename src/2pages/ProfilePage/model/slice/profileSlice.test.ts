@@ -2,15 +2,7 @@ import { Currency } from '5entities/Currency'
 import { ValidateProfileError, type ProfileSchema } from '../types'
 import { profileActions, profileReducer } from './profileSlice'
 import { updateProfileData } from '../services'
-
-const profile = {
-  first: 'Trevor',
-  lastname: 'Smith',
-  age: 20,
-  username: 'tra-ta-ta',
-  city: 'San Francisco',
-  currency: Currency.EUR
-}
+import { profileMock } from '6shared/const/mocks/profile'
 
 describe('profileSlice', () => {
   test('setReadonly', async () => {
@@ -27,7 +19,7 @@ describe('profileSlice', () => {
       readonly: false,
       validateErrors: [],
       editedProfile: undefined,
-      profile
+      profile: profileMock
     }
 
     expect(profileReducer(
@@ -36,21 +28,21 @@ describe('profileSlice', () => {
     )).toEqual({
       readonly: true,
       validateErrors: undefined,
-      editedProfile: profile,
-      profile
+      editedProfile: profileMock,
+      profile: profileMock
     })
   })
 
   test('updateProfile', async () => {
     const state: DeepPartial<ProfileSchema> = {
-      editedProfile: profile
+      editedProfile: profileMock
     }
 
     expect(profileReducer(
       state as ProfileSchema,
       profileActions.updateProfile({ currency: Currency.USD })
     )).toEqual({
-      editedProfile: { ...profile, currency: Currency.USD }
+      editedProfile: { ...profileMock, currency: Currency.USD }
     })
   })
 
@@ -73,17 +65,17 @@ describe('profileSlice', () => {
     const state: DeepPartial<ProfileSchema> = {
       isLoading: true,
       readonly: false,
-      profile: { ...profile, currency: Currency.USD },
-      editedProfile: { ...profile, currency: Currency.USD }
+      profile: { ...profileMock, currency: Currency.USD },
+      editedProfile: { ...profileMock, currency: Currency.USD }
     }
 
     expect(profileReducer(
       state as ProfileSchema,
-      updateProfileData.fulfilled(profile, '')
+      updateProfileData.fulfilled(profileMock, '')
     )).toEqual({
       isLoading: false,
-      profile,
-      editedProfile: profile,
+      profile: profileMock,
+      editedProfile: profileMock,
       readonly: true
     })
   })

@@ -17,6 +17,7 @@ import { addArticleComment } from '../../model/services/addArticleComment/addArt
 import { selectArticleDetailsError } from '5entities/Article/model/selectors/selectArticleDetailsError/selectArticleDetailsError'
 import { Button } from '6shared/ui/Button/Button'
 import { routePaths } from '6shared/config/routeConfig/routeConfig'
+import { Page } from '6shared/ui/Page/Page'
 
 interface ArticleDetailsPageProps {
   className?: string
@@ -49,15 +50,15 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element
 
   if (articleId === undefined) {
     return (
-        <div className={classNames(undefined, [className])}>
+        <Page className={classNames(styles.articleDetailsPage, [className])}>
             { t('article-not-found')}
-        </div>
+        </Page>
     )
   }
 
   return (
       <DynamicModuleLoader reducers={initialReducer}>
-          <div className={classNames(styles.articleDetailsPage, [className])}>
+          <Page className={classNames(styles.articleDetailsPage, [className])}>
               <Button onClick={onBackToList}>{t('buttons:back-to-list')}</Button>
               <ArticleDetails articleId={articleId}/>
               {articleError === undefined &&
@@ -70,7 +71,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element
                   />
               </>}
 
-          </div>
+          </Page>
       </DynamicModuleLoader>
   )
 }

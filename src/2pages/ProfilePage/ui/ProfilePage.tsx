@@ -17,6 +17,7 @@ import {
 import { Text, TextTheme } from '6shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
+import { Page } from '6shared/ui/Page/Page'
 
 const initialReducer: ReducersList = {
   profile: profileReducer
@@ -48,14 +49,12 @@ const ProfilePage = memo(function ProfilePage ({ className }: ProfilePageProps):
 
   return (
       <DynamicModuleLoader reducers={initialReducer}>
-          <main className={classNames(undefined, [className])}>
+          <Page className={classNames(undefined, [className])}>
               <ProfilePageHeader/>
               {validateErrors?.length !== undefined &&
                validateErrors?.map(err =>
                    <Text key={err} theme={TextTheme.ERROR} text={t(validateProfileErrorsTranslations[err])}/>
-
-               )
-                }
+               )}
               <ProfileCard
                 profile={editingProfile}
                 isLoading={isLoading}
@@ -63,7 +62,7 @@ const ProfilePage = memo(function ProfilePage ({ className }: ProfilePageProps):
                 onChange={onChange}
                 readonly={readonly}
               />
-          </main>
+          </Page>
       </DynamicModuleLoader>
   )
 })

@@ -54,27 +54,27 @@ const LoginForm = memo(function LoginForm ({ className, onSuccess }: LoginFormPr
               {(error !== undefined) &&
               <Text text={t('Логин или пароль введены неправильно')} theme={TextTheme.ERROR}/>}
               <Input
-            type='text'
-            className={styles.input}
-            autofocus
-            placeholder={t('Введите логин')}
-            onChange={onChangeUsername}
-            value={username}
-          />
+                type='text'
+                className={styles.input}
+                autofocus
+                placeholder={t('Введите логин')}
+                onChange={onChangeUsername}
+                value={username}
+              />
               <Input
-            type='text'
-            className={styles.input}
-            placeholder={t('Введите пароль')}
-            onChange={onChangePassword}
-            value={password}
-          />
+                type='text'
+                className={styles.input}
+                placeholder={t('Введите пароль')}
+                onChange={onChangePassword}
+                value={password}
+              />
               <Button
-            theme={ButtonTheme.OUTLINE}
-            className={styles.loginBtn}
-            // eslint-disable-next-line @typescript-eslint/no-misused-promises
-            onClick={onLoginClick}
-            disabled={isLoading}
-          >
+                theme={ButtonTheme.OUTLINE}
+                className={styles.loginBtn}
+                // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                onClick={onLoginClick}
+                disabled={isLoading}
+              >
                   {t('Войти')}
               </Button>
           </div>

@@ -29,9 +29,8 @@ export const ArticleList = memo(function ArticleList
 ({ className, articles, isLoading, view = ArticleView.TILE }: ArticleListProps): JSX.Element {
   return (
       <div className={classNames(styles.articleList, [className, styles[view]])}>
-          {isLoading === true
-            ? getSkeleton(view)
-            : getArticles(articles, view)}
+          {getArticles(articles, view)}
+          {Boolean(isLoading) && getSkeleton(view)}
       </div>
   )
 })

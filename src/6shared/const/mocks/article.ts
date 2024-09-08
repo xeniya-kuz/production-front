@@ -1,9 +1,10 @@
 import { type Article } from '5entities/Article'
 import { ArticleBlockType, ArticleType } from '5entities/Article/model/types/article'
+import { userMock } from './user'
 
 export const articleMock: Article = {
   id: '1',
-  user: { id: 'a', username: 'mock', avatar: 'https://avatars.dzeninfra.ru/get-zen_doc/53963/pub_651011ddc419e8692e91c5dc_65101281d67f4c757ed51043/scale_1200' },
+  user: userMock,
   title: 'Javascript news',
   subtitle: 'Что нового в JS за 2022 год?',
   img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
@@ -73,3 +74,6 @@ export const articleMock: Article = {
     }
   ]
 }
+
+export const articlesMock: Article[] = new Array(3).fill(0)
+  .map((_, index) => ({ ...articleMock, id: String(index) }))

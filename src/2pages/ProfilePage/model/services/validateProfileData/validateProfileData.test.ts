@@ -1,39 +1,28 @@
-import { Country } from '5entities/Country'
+import { profileMock } from '6shared/const/mocks/profile'
 import { ValidateProfileError } from '../../types'
 import { validateProfileData } from './validateProfileData'
-import { Currency } from '5entities/Currency'
-
-const profile = {
-  first: 'Trevor',
-  lastname: 'Smith',
-  age: 20,
-  username: 'tra-ta-ta',
-  city: 'San Francisco',
-  currency: Currency.EUR,
-  country: Country.Armenia
-}
 
 describe('validateProfileData', () => {
   test('success', async () => {
-    const result = validateProfileData(profile)
+    const result = validateProfileData(profileMock)
 
     expect(result).toEqual([])
   })
 
   test('no first name', async () => {
-    const result = validateProfileData({ ...profile, first: '' })
+    const result = validateProfileData({ ...profileMock, first: '' })
 
     expect(result).toEqual([ValidateProfileError.NAME])
   })
 
   test('no country', async () => {
-    const result = validateProfileData({ ...profile, country: undefined })
+    const result = validateProfileData({ ...profileMock, country: undefined })
 
     expect(result).toEqual([ValidateProfileError.COUNTRY])
   })
 
   test('incorrect age', async () => {
-    const result = validateProfileData({ ...profile, age: 0 })
+    const result = validateProfileData({ ...profileMock, age: 0 })
 
     expect(result).toEqual([ValidateProfileError.AGE])
   })

@@ -33,7 +33,7 @@ export const ListView = memo(function ListView
           {types}
           <img src={article.img} alt={article.title} className={styles.img}/>
           {textBlock !== undefined && (
-          <ArticleTextBlock block={textBlock} className={styles.textBlock}/>
+              <ArticleTextBlock block={textBlock} className={styles.textBlock}/>
           )}
           <div className={styles.footer}>
               <Button onClick={onOpenArticle}>{t('read-more')}</Button>

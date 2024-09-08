@@ -29,19 +29,19 @@ export const Navbar = memo(function Navbar ({ className }: NavbarProps): JSX.Ele
 
   if (authData !== undefined) {
     return (
-        <div className={classNames(styles.navbar, [className])}>
+        <header className={classNames(styles.navbar, [className])}>
             <Button className={styles.links}
               theme={ButtonTheme.CLEAR_INVERTED}
               onClick={onLogout}
             >
                 {t('Выйти')}
             </Button>
-        </div>
+        </header>
     )
   }
 
   return (
-      <div className={classNames(styles.navbar, [className])}>
+      <header className={classNames(styles.navbar, [className])}>
           <Button className={styles.links}
             theme={ButtonTheme.CLEAR_INVERTED}
             onClick={onToggleModal}
@@ -52,6 +52,6 @@ export const Navbar = memo(function Navbar ({ className }: NavbarProps): JSX.Ele
             isOpen={isAuthModal}
             onClose={onToggleModal}
           />}
-      </div>
+      </header>
   )
 })

@@ -3,9 +3,8 @@ import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDec
 import { Theme } from '1app/providers/ThemeProvider'
 import ProfilePage from './ProfilePage'
 import { StoreDecorator } from '6shared/config/storybook/StoreDecorator/StoreDecorator'
-import { Currency } from '5entities/Currency'
+import { profileMock } from '6shared/const/mocks/profile'
 import AvatarImg from '6shared/assets/tests/storybook.jpg'
-import { Country } from '5entities/Country'
 
 const meta = {
   title: 'pages/ProfilePage',
@@ -14,26 +13,12 @@ const meta = {
   decorators: [StoreDecorator({
     profile: {
       editedProfile: {
-        first: 'Trevor',
-        lastname: 'Smith',
-        age: 20,
-        username: 'tra-ta-ta',
-        city: 'San Francisco',
-        currency: Currency.EUR,
-        avatar: AvatarImg,
-        country: Country.Armenia
+        ...profileMock,
+        avatar: AvatarImg
       },
       profile: {
-
-        first: 'Trevor',
-        lastname: 'Smith',
-        age: 20,
-        username: 'tra-ta-ta',
-        city: 'San Francisco',
-        currency: Currency.EUR,
-        avatar: AvatarImg,
-        country: Country.Armenia
-
+        ...profileMock,
+        avatar: AvatarImg
       }
     }
   })]
