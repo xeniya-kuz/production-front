@@ -36,7 +36,7 @@ export function createReducerManager (initialReducers: ReducersMapObject<StateSc
     },
 
     remove: (key: StateSchemaKey) => {
-      if ((key.length === 0) || reducers[key] !== undefined) {
+      if ((key.length === 0) || reducers[key] === undefined) {
         return
       }
 

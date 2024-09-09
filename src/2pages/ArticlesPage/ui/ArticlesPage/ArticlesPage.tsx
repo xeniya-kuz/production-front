@@ -8,12 +8,12 @@ import { useSelector } from 'react-redux'
 import { selectArticlesError } from '../../model/selectors/selectArticlesError/selectArticlesError'
 import { selectArticlesIsLoading } from '../../model/selectors/selectArticlesIsLoading/selectArticlesIsLoading'
 import { selectArticlesView } from '../../model/selectors/selectArticlesView/selectArticlesView'
-import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList'
 import { articlesPageActions, articlesPageReducer, selectArticles } from '../../model/slice/articlesPageSlice'
 import styles from './ArticlesPage.module.scss'
 import { ViewSwitcher } from '4features/ArticlesViewSwitcher'
 import { Page } from '6shared/ui/Page/Page'
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage'
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage'
 
 interface ArticlesPageProps {
   className?: string
@@ -31,8 +31,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps): JSX.Element => {
   const error = useSelector(selectArticlesError)
 
   useInitialEffect(() => {
-    dispatch(articlesPageActions.initState())
-    void dispatch(fetchArticlesList({ page: 1 }))
+    void dispatch(initArticlesPage())
   })
 
   const onViewChange = useCallback((view: ArticleView) => {
@@ -52,7 +51,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps): JSX.Element => {
   }
 
   return (
-      <DynamicModuleLoader reducers={initialReducer}>
+      <DynamicModuleLoader reducers={initialReducer} removeAfterUnmount={false}>
           <Page
             className={classNames(styles.articlesPage, [className])}
             onScrollEnd={onLoadNextArticles}

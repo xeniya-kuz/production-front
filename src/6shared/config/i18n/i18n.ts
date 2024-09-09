@@ -18,7 +18,8 @@ i18n
     // язык по умолчанию
     fallbackLng: 'ru',
     // __IS_DEV__ - переменная окружения
-    debug: Boolean(__IS_DEV__),
+    // debug: Boolean(__IS_DEV__),
+    debug: false,
     resources,
     // ns: Object.keys(resources.ru),
     interpolation: {
