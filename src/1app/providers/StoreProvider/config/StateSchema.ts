@@ -1,6 +1,7 @@
 import { type ArticleDetailsCommentsSchema } from '2pages/ArticleDetailsPage'
 import { type ArticlesPageSchema } from '2pages/ArticlesPage'
 import { type ProfileSchema } from '2pages/ProfilePage'
+import { type PageSchema } from '3widgets/Page'
 import { type AddCommentFormSchema } from '4features/AddCommentForm'
 import { type LoginSchema } from '4features/AuthByUsername'
 import { type ArticleDetailsSchema } from '5entities/Article'
@@ -12,6 +13,7 @@ import { type AxiosInstance } from 'axios'
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StateSchema {
   user: UserSchema
+  page: PageSchema
 
   // Асинхронные редьюсеры
   loginForm?: LoginSchema
@@ -20,6 +22,7 @@ export interface StateSchema {
   articleDetailsComments?: ArticleDetailsCommentsSchema
   addCommentForm?: AddCommentFormSchema
   articlesPage?: ArticlesPageSchema
+
 }
 
 export type StateSchemaKey = keyof StateSchema

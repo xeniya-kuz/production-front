@@ -1,5 +1,5 @@
 import { BugButton } from '1app/providers/ErrorBoundary/ui/BugButton'
-import { Page } from '6shared/ui/Page/Page'
+import { Page } from '3widgets/Page'
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 

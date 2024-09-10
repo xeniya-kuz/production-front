@@ -17,7 +17,7 @@ import { addArticleComment } from '../../model/services/addArticleComment/addArt
 import { selectArticleDetailsError } from '5entities/Article/model/selectors/selectArticleDetailsError/selectArticleDetailsError'
 import { Button } from '6shared/ui/Button/Button'
 import { routePaths } from '6shared/config/routeConfig/routeConfig'
-import { Page } from '6shared/ui/Page/Page'
+import { Page } from '3widgets/Page'
 
 interface ArticleDetailsPageProps {
   className?: string

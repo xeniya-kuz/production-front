@@ -10,7 +10,7 @@ describe('selectAddCommentFormText', () => {
 
   test('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = { }
-    expect(selectAddCommentFormText(state as StateSchema)).toBe(undefined)
+    expect(selectAddCommentFormText(state as StateSchema)).toBe('')
   })
 }
 )

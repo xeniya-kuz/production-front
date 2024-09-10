@@ -11,7 +11,7 @@ import { selectArticlesView } from '../../model/selectors/selectArticlesView/sel
 import { articlesPageActions, articlesPageReducer, selectArticles } from '../../model/slice/articlesPageSlice'
 import styles from './ArticlesPage.module.scss'
 import { ViewSwitcher } from '4features/ArticlesViewSwitcher'
-import { Page } from '6shared/ui/Page/Page'
+import { Page } from '3widgets/Page'
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage'
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage'
 

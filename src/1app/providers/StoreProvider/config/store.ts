@@ -4,6 +4,7 @@ import { type CombinedState, type Reducer } from 'redux'
 import { type ThunkExtraArg, type StateSchema } from './StateSchema'
 import { createReducerManager } from './reducerManager'
 import { $api } from '6shared/api/api'
+import { pageReducer } from '3widgets/Page'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function createReduxStore (
@@ -11,8 +12,9 @@ export function createReduxStore (
   asyncReducers?: ReducersMapObject<StateSchema>
 ) {
   const rootReducers: ReducersMapObject<StateSchema> = {
-    // ...asyncReducers,
-    user: userReducer
+    ...asyncReducers,
+    user: userReducer,
+    page: pageReducer
   }
 
   const reducerManager = createReducerManager(rootReducers)

@@ -1,7 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type ThunkConfig } from '1app/providers/StoreProvider'
-import { type Article } from '5entities/Article'
-import { selectArticlesPageLimit } from '../../selectors/selectArticlesPageLimit/selectArticlesPageLimit'
 import { selectArticlesPageHasMore } from '../../selectors/selectArticlesPageHasMore/selectArticlesPageHasMore'
 import { selectArticlesPageNum } from '../../selectors/selectArticlesPageNum/selectArticlesPageNum'
 import { selectArticlesIsLoading } from '../../selectors/selectArticlesIsLoading/selectArticlesIsLoading'
