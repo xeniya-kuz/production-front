@@ -1,8 +1,8 @@
-import { Currency } from '5entities/Currency'
 import { ValidateProfileError, type ProfileSchema } from '../types'
 import { profileActions, profileReducer } from './profileSlice'
 import { updateProfileData } from '../services'
 import { profileMock } from '6shared/const/mocks/profile'
+import { Currency } from '4features/CurrencyDropdown'
 
 describe('profileSlice', () => {
   test('setReadonly', async () => {

@@ -1,5 +1,3 @@
-import { CountryDropdown } from '5entities/Country'
-import { type Currency, CurrencyDropdown } from '5entities/Currency'
 import { classNames, type Mods } from '6shared/lib/classNames/classNames'
 import { Avatar } from '6shared/ui/Avatar/Avatar'
 import { Error } from '6shared/ui/Error/Error'
@@ -8,6 +6,8 @@ import { Loader } from '6shared/ui/Loader/Loader'
 import { useTranslation } from 'react-i18next'
 import { type Profile } from '../../model/types/profile'
 import styles from './ProfileCard.module.scss'
+import { type Currency, CurrencyDropdown } from '4features/CurrencyDropdown'
+import { CountryDropdown } from '4features/CountryDropdown'
 
 interface ProfileCardProps {
   className?: string
@@ -38,11 +38,11 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
     )
   }
 
-  const onTextChange = (name: string | Currency, value: string): void => {
+  const onTextChange = ({ name, value }: { name: string | Currency, value: string }): void => {
     onChange?.(name as keyof Profile, value)
   }
 
-  const onNumberChange = (name: string, value: string): void => {
+  const onNumberChange = ({ name, value }: { name: string, value: string }): void => {
     if (!isNaN(+value)) {
       onChange?.(name as keyof Profile, +value === 0 ? '' : +value)
     }

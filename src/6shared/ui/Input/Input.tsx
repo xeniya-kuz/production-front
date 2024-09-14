@@ -7,7 +7,7 @@ type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onC
 interface InputProps extends HTMLInputProps {
   className?: string
   value?: string | number
-  onChange?: (name: string, value: string) => void
+  onChange?: ({ name, value }: { name: string, value: string }) => void
   autofocus?: boolean
   readOnly?: boolean
 }
@@ -41,8 +41,8 @@ export const Input = memo(
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
       const name = e.target.name
       const value = e.target.value
-      // optional chaining
-      onChange?.(name, value)
+
+      onChange?.({ name, value })
       setCaretPosition(value.length)
     }
 

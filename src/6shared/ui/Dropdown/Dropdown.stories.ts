@@ -11,9 +11,9 @@ const meta = {
   tags: ['autodocs'],
   args: {
     options: [
-      { value: 'value1', content: 'content1' },
-      { value: 'value2', content: 'content2' },
-      { value: 'value3', content: 'content3' }
+      { value: 'value1', label: 'content1' },
+      { value: 'value2', label: 'content2' },
+      { value: 'value3', label: 'content3' }
     ]
   }
 } satisfies Meta<typeof Dropdown>

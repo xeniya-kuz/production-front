@@ -4,15 +4,15 @@ import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList'
 
 jest.mock('../fetchArticlesList/fetchArticlesList')
 
-// !проверить, что в инициализированном диспатчи отработали, а в не инициализированом - нет
-
 describe('initArticlesPage', () => {
+  const searchParams = new URLSearchParams(window.location.search)
+
   test('state was not initialized before', async () => {
     const thunk = new TestAsyncThunk(initArticlesPage, {
       articlesPage: { _inited: false }
     })
 
-    await thunk.callThunk()
+    await thunk.callThunk(searchParams)
 
     expect(fetchArticlesList).toHaveBeenCalled()
     // dispatch(articlesPageActions...), dispatch(fetchArticlesList(...)), initArticlesPage.pending, initArticlesPage.fulfilled
@@ -24,7 +24,7 @@ describe('initArticlesPage', () => {
       articlesPage: { _inited: true }
     })
 
-    await thunk.callThunk()
+    await thunk.callThunk(searchParams)
 
     expect(fetchArticlesList).not.toHaveBeenCalled()
     // initArticlesPage.pending, initArticlesPage.fulfilled

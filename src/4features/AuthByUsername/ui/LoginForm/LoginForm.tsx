@@ -32,11 +32,11 @@ const LoginForm = memo(function LoginForm ({ className, onSuccess }: LoginFormPr
   const isLoading = useSelector(selectLoginIsLoading)
   const error = useSelector(selectLoginError)
 
-  const onChangeUsername = useCallback((_, value: string) => {
+  const onChangeUsername = useCallback(({ value }: { name: string, value: string }) => {
     dispatch(loginActions.setUsername(value))
   }, [dispatch])
 
-  const onChangePassword = useCallback((_, value: string) => {
+  const onChangePassword = useCallback(({ value }: { name: string, value: string }) => {
     dispatch(loginActions.setPassword(value))
   }, [dispatch])
 

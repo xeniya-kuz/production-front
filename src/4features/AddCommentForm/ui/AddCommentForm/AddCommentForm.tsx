@@ -27,13 +27,13 @@ const AddCommentForm = memo(function AddCommentForm
   const value = useSelector(selectAddCommentFormText)
   const error = useSelector(selectAddCommentFormError)
 
-  const onChange = useCallback((name: string, value: string) => {
+  const onChange = useCallback(({ name, value }: { name: string, value: string }) => {
     dispatch(addCommentFormActions.setComment(value))
   }, [dispatch])
 
   const onSendHandler = useCallback(() => {
     onSend(value ?? '')
-    onChange('', '')
+    onChange({ name: '', value: '' })
   }, [onChange, onSend, value])
 
   return (

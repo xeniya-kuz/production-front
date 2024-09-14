@@ -1,15 +1,15 @@
-import { type ArticleView, type Article } from '5entities/Article'
+import { type ArticleView, type Article, type ArticleSortField, type ArticleType } from '5entities/Article'
+import { type SortOrder } from '6shared/types/order'
 import { type EntityState } from '@reduxjs/toolkit'
 
 export interface ArticlesPageSchema extends EntityState<Article> {
   isLoading?: boolean
   error?: string
 
-  view?: ArticleView
-
   // pagination
   page: number
-  limit?: number
+  limit: number
   hasMore: boolean
   _inited: boolean
+
 }

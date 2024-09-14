@@ -5,11 +5,11 @@ import { articlesMock } from '6shared/const/mocks/article'
 describe('fetchArticlesList', () => {
   test('success', async () => {
     const thunk = new TestAsyncThunk(fetchArticlesList, {
-      articlesPage: { limit: 5 }
+      articlesPage: { limit: 5, page: 2 }
     })
     thunk.api.get.mockReturnValue(Promise.resolve({ data: articlesMock }))
 
-    const result = await thunk.callThunk({ page: 2 })
+    const result = await thunk.callThunk({})
 
     // eslint-disable-next-line @typescript-eslint/unbound-method
     expect(thunk.api.get).toHaveBeenCalled()
@@ -18,9 +18,11 @@ describe('fetchArticlesList', () => {
   })
 
   test('error', async () => {
-    const thunk = new TestAsyncThunk(fetchArticlesList)
+    const thunk = new TestAsyncThunk(fetchArticlesList, {
+      articlesPage: { page: 2 }
+    })
     thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }))
-    const result = await thunk.callThunk({ page: 2 })
+    const result = await thunk.callThunk({})
     expect(result.meta.requestStatus).toBe('rejected')
   })
 })

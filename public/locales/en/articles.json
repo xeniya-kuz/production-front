@@ -1,4 +1,9 @@
 {
   "articles": "Articles",
-  "article-not-found":"Article is not found"
+  "article-not-found":"Article is not found",
+  "all": "All",
+  "it": "IT",
+  "science": "Science",
+  "economics": "Economics",
+  "articles-not-found": "Articles are not found"
 }

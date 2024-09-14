@@ -4,7 +4,7 @@ import ArticleDetailsPage from './ArticleDetailsPage'
 import { articleMock } from '6shared/const/mocks/article'
 
 const meta = {
-  title: 'pages/ArticleDetailsPage',
+  title: 'pages/Article/ArticleDetailsPage',
   component: ArticleDetailsPage,
   tags: ['autodocs'],
   args: {

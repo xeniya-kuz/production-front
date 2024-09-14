@@ -1,5 +1,5 @@
-import { Country } from '5entities/Country'
-import { Currency } from '5entities/Currency'
+import { Country } from '4features/CountryDropdown'
+import { Currency } from '4features/CurrencyDropdown'
 import { type Profile } from '5entities/Profile'
 
 export const profileMock: Profile = {

@@ -3,6 +3,7 @@ import { type ArticlesPageSchema } from '2pages/ArticlesPage'
 import { type ProfileSchema } from '2pages/ProfilePage'
 import { type PageSchema } from '3widgets/Page'
 import { type AddCommentFormSchema } from '4features/AddCommentForm'
+import { type ArticlesPageFiltersSchema } from '4features/ArticlesPageFilters/model/types/articlesPageFiltersSchema'
 import { type LoginSchema } from '4features/AuthByUsername'
 import { type ArticleDetailsSchema } from '5entities/Article'
 import { type UserSchema } from '5entities/User'
@@ -22,7 +23,7 @@ export interface StateSchema {
   articleDetailsComments?: ArticleDetailsCommentsSchema
   addCommentForm?: AddCommentFormSchema
   articlesPage?: ArticlesPageSchema
-
+  articlesPageFilters?: ArticlesPageFiltersSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

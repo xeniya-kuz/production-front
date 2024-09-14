@@ -29,6 +29,7 @@ export interface ArticleTextBlock extends ArticleBlockBase {
 export type ArticleBlock = ArticleTextBlock | ArticleImageBlock | ArticleCodeBlock
 
 export const enum ArticleType {
+  ALL = 'All',
   IT = 'IT',
   SCIENCE = 'SCIENCE',
   ECONOMICS = 'ECONOMICS',
@@ -49,4 +50,10 @@ export interface Article {
 export const enum ArticleView {
   LIST = 'list',
   TILE = 'tile',
+}
+
+export enum ArticleSortField {
+  VIEWS = 'views',
+  TITLE = 'title',
+  CREATED = 'createdAt'
 }
