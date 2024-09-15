@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import { memo, useCallback } from 'react'
-import { DynamicModuleLoader, type ReducersList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch, useInitialEffect } from '6shared/lib/hooks'
 import { useSelector } from 'react-redux'
 import { fetchProfileData, validateProfileErrorsTranslations } from '../model/services'
@@ -19,7 +19,7 @@ import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 import { Page } from '3widgets/Page'
 
-const initialReducer: ReducersList = {
+const initialReducer: ReducerList = {
   profile: profileReducer
 }
 

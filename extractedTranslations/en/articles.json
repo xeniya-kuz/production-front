@@ -1,7 +1,9 @@
 {
   "all": "all",
+  "articles-not-found": "",
   "economics": "economics",
   "it": "it",
+  "recommendations": "recommendations",
   "science": "science",
   "search": ""
 }

@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import styles from './ArticleList.module.scss'
-import { memo } from 'react'
+import { type HTMLAttributeAnchorTarget, memo } from 'react'
 import { ArticleView, type Article } from '../../model/types/article'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { ArticleListItemSkeleton } from '../ArticleListItem/ListItemSkeleton/ArticleListItemSkeleton'
@@ -13,6 +13,7 @@ interface ArticleListProps {
   className?: string
   articles: Article[]
   isLoading?: boolean
+  target?: HTMLAttributeAnchorTarget
 }
 
 const getSkeleton = (view: ArticleView): JSX.Element[] => new Array(view === ArticleView.LIST ? 3 : 9)
@@ -21,15 +22,15 @@ const getSkeleton = (view: ArticleView): JSX.Element[] => new Array(view === Art
       <ArticleListItemSkeleton key={index} view={view} className={styles.card}/>
   )
 
-const getArticles = (articles: Article[], view: ArticleView): JSX.Element[] | null =>
+const getArticles = (articles: Article[], view: ArticleView, target?: HTMLAttributeAnchorTarget): JSX.Element[] | null =>
   articles.length > 0
     ? articles.map((article) => (
-        <ArticleListItem key={article.id} article={article} view={view} className={styles.card}/>
+        <ArticleListItem key={article.id} article={article} view={view} className={styles.card} target={target}/>
     ))
     : null
 
 export const ArticleList = memo(function ArticleList
-({ className, articles, isLoading }: ArticleListProps): JSX.Element {
+({ className, articles, isLoading, target }: ArticleListProps): JSX.Element {
   const view = useSelector(selectArticlesView)
   const { t } = useTranslation('articles')
 
@@ -43,7 +44,7 @@ export const ArticleList = memo(function ArticleList
 
   return (
       <div className={classNames(styles.articleList, [className, styles[view]])}>
-          {getArticles(articles, view)}
+          {getArticles(articles, view, target)}
           {Boolean(isLoading) && getSkeleton(view)}
       </div>
   )

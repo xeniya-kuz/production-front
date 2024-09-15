@@ -4,7 +4,7 @@ import { memo, useCallback } from 'react'
 import { Input } from '6shared/ui/Input/Input'
 import { useTranslation } from 'react-i18next'
 import { Button } from '6shared/ui/Button/Button'
-import { DynamicModuleLoader, type ReducersList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slice/addCommentFormSlice'
 import { useSelector } from 'react-redux'
 import { selectAddCommentFormText } from '../../model/selectors/selectAddCommentFormText/selectAddCommentFormText'
@@ -16,7 +16,7 @@ interface AddCommentFormProps {
   onSend: (comment: string) => void
 }
 
-const initialReducer: ReducersList = {
+const initialReducer: ReducerList = {
   addCommentForm: addCommentFormReducer
 }
 

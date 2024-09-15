@@ -1,6 +1,6 @@
 import { fetchArticleById } from '5entities/Article/model/services/fetchArticleById/fetchArticleById'
 import { classNames } from '6shared/lib/classNames/classNames'
-import { DynamicModuleLoader, type ReducersList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch, useInitialEffect } from '6shared/lib/hooks'
 import { memo } from 'react'
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
@@ -18,7 +18,7 @@ interface ArticleDetailsProps {
   articleId: string
 }
 
-const initialReducer: ReducersList = {
+const initialReducer: ReducerList = {
   articleDetails: articleDetailsReducer
 }
 

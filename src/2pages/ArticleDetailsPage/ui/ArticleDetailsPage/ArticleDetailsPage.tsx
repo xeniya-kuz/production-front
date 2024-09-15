@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { Text, TextSize } from '6shared/ui/Text/Text'
 import { CommentList } from '5entities/Comment'
 import styles from './ArticleDetailsPage.module.scss'
-import { DynamicModuleLoader, type ReducersList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { articleDetailsCommentsReducer, selectArticleComments } from '../../model/slice/articleDetailsCommentsSlice'
 import { useSelector } from 'react-redux'
 import { selectArticleCommentsIsLoading } from '../../model/selectors/comments/comments'
@@ -18,18 +18,19 @@ import { selectArticleDetailsError } from '5entities/Article/model/selectors/sel
 import { Button } from '6shared/ui/Button/Button'
 import { routePaths } from '6shared/config/routeConfig/routeConfig'
 import { Page } from '3widgets/Page'
+import { ArticleRecommendations } from '4features/ArticleRecommendations'
 
 interface ArticleDetailsPageProps {
   className?: string
 }
 
-const initialReducer: ReducersList = {
+const initialReducer: ReducerList = {
   articleDetailsComments: articleDetailsCommentsReducer
 }
 
 const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element => {
   const dispatch = useAppDispatch()
-  const { t } = useTranslation(['comments', 'buttons'])
+  const { t } = useTranslation(['comments', 'buttons', 'articles'])
   const navigate = useNavigate()
   const { articleId } = useParams<{ articleId: string }>()
   const comments = useSelector(selectArticleComments.selectAll)
@@ -63,6 +64,8 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element
               <ArticleDetails articleId={articleId}/>
               {articleError === undefined &&
               <>
+                  <Text title={t('articles:recommendations')} className={styles.commentTitle} size={TextSize.S}/>
+                  <ArticleRecommendations/>
                   <Text title={t('comments:comments')} className={styles.commentTitle} size={TextSize.S}/>
                   <AddCommentForm onSend={onSendComment}/>
                   <CommentList

@@ -1,5 +1,5 @@
 import styles from '../../styles.module.scss'
-import { memo } from 'react'
+import { type HTMLAttributeAnchorTarget, memo } from 'react'
 import { ArticleBlockType, type Article, type ArticleTextBlock as ArticleTextBlockType } from '../../../../model/types/article'
 import { Avatar } from '6shared/ui/Avatar/Avatar'
 import { Text } from '6shared/ui/Text/Text'
@@ -7,16 +7,18 @@ import { ArticleTextBlock } from '../../../ArticleTextBlock/ArticleTextBlock'
 import { Button } from '6shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { Card } from '6shared/ui/Card/Card'
+import { AppLink } from '6shared/ui/AppLink/AppLink'
+import { routePaths } from '6shared/config/routeConfig/routeConfig'
 
 interface ListViewProps {
   article: Article
   types: JSX.Element
   views: JSX.Element
-  onOpenArticle: () => void
+  target?: HTMLAttributeAnchorTarget
 }
 
 export const ListView = memo(function ListView
-({ article, types, views, onOpenArticle }: ListViewProps): JSX.Element {
+({ article, types, views, target }: ListViewProps): JSX.Element {
   const { t } = useTranslation('buttons')
 
   const textBlock = article.blocks.find(block => block.type === ArticleBlockType.TEXT) as ArticleTextBlockType
@@ -36,7 +38,15 @@ export const ListView = memo(function ListView
               <ArticleTextBlock block={textBlock} className={styles.textBlock}/>
           )}
           <div className={styles.footer}>
-              <Button onClick={onOpenArticle}>{t('read-more')}</Button>
+              <AppLink
+              to={`${routePaths['article-details']}/${article.id}`}
+              target={target}
+              >
+                  <Button>
+                      {t('read-more')}
+                  </Button>
+              </AppLink>
+
               {views}
           </div>
       </Card>

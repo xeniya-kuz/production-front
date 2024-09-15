@@ -1,7 +1,7 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import styles from './ArticlesPageFilters.module.scss'
 import { memo, useCallback, useMemo } from 'react'
-import { ViewSwitcher } from '4features/ArticlesViewSwitcher'
+import { ViewSwitcher } from '4features/ViewSwitcher'
 import { useSelector } from 'react-redux'
 import { type ArticleSortField, type ArticleView, ArticleType } from '5entities/Article'
 import { useAppDispatch, useDebounce, useInitialEffect } from '6shared/lib/hooks'
@@ -17,14 +17,14 @@ import { selectArticlesSearch } from '../model/selectors/selectArticlesSearch/se
 import { selectArticlesOrder } from '../model/selectors/selectArticlesOrder/selectArticlesOrder'
 import { selectArticlesType } from '../model/selectors/selectArticlesType/selectArticlesType'
 import { articlesPageFiltersActions, articlesPageFiltersReducer } from '../model/slice/articlesPageFiltersSlice'
-import { DynamicModuleLoader, type ReducersList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 
 interface ArticlesPageFiltersProps {
   className?: string
   fetchData: () => void
 }
 
-const initialReducer: ReducersList = {
+const initialReducer: ReducerList = {
   articlesPageFilters: articlesPageFiltersReducer
 }
 

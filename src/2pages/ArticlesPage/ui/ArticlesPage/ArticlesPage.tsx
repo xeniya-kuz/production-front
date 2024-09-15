@@ -1,7 +1,7 @@
 import { Page } from '3widgets/Page'
 import { ArticleList } from '5entities/Article'
 import { classNames } from '6shared/lib/classNames/classNames'
-import { DynamicModuleLoader, type ReducersList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch, useInitialEffect } from '6shared/lib/hooks'
 import { Error } from '6shared/ui/Error/Error'
 import { memo, useCallback } from 'react'
@@ -20,7 +20,7 @@ interface ArticlesPageProps {
   className?: string
 }
 
-const initialReducer: ReducersList = {
+const initialReducer: ReducerList = {
   articlesPage: articlesPageReducer
 }
 
