@@ -6,5 +6,8 @@
   "science": "Наука",
   "economics": "Экономика",
   "articles-not-found": "Статьи не найдены",
-  "recommendations": "Рекомендации" 
+  "recommendations": "Рекомендации",
+  "article-edition": "Редактирование статьи",
+  "article-creation": "Создание статьи",
+  "creation-article": "Создание статьи" 
 }

@@ -6,5 +6,7 @@
   "science": "Science",
   "economics": "Economics",
   "articles-not-found": "Articles are not found",
-  "recommendations": "Recommendations" 
+  "recommendations": "Recommendations",
+  "article-edition": "Edit article",
+  "article-creation": "Create article"
 }

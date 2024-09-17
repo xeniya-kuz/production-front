@@ -7,6 +7,9 @@ import { memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import styles from './Navbar.module.scss'
+import { Text, TextTheme } from '6shared/ui/Text/Text'
+import { AppLink, AppLinkTheme } from '6shared/ui/AppLink/AppLink'
+import { routePaths } from '6shared/config/routeConfig/routeConfig'
 
 interface NavbarProps {
   className?: string
@@ -30,6 +33,15 @@ export const Navbar = memo(function Navbar ({ className }: NavbarProps): JSX.Ele
   if (authData !== undefined) {
     return (
         <header className={classNames(styles.navbar, [className])}>
+            {/* eslint-disable-next-line i18next/no-literal-string */}
+            <Text className={styles.appName} title='Production project' theme={TextTheme.INVERTED}/>
+            <AppLink
+                to={routePaths['article-create']}
+                theme={AppLinkTheme.INVERTED}
+                className={styles.create}
+             >
+                {t('articles:create-acticle')}
+            </AppLink>
             <Button className={styles.links}
               theme={ButtonTheme.CLEAR_INVERTED}
               onClick={onLogout}

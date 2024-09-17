@@ -17,6 +17,7 @@ export enum TextSize {
 export enum TextTheme {
   PRIMARY = 'primary',
   ERROR = 'error',
+  INVERTED = 'inverted'
 }
 
 interface TextProps {

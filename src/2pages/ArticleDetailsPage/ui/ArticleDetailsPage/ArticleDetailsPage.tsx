@@ -2,7 +2,7 @@ import { classNames } from '6shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
 import { memo, useCallback } from 'react'
 import { ArticleDetails } from '5entities/Article'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Text, TextSize } from '6shared/ui/Text/Text'
 import { CommentList } from '5entities/Comment'
 import styles from './ArticleDetailsPage.module.scss'
@@ -15,10 +15,9 @@ import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByAr
 import { AddCommentForm } from '4features/AddCommentForm'
 import { addArticleComment } from '../../model/services/addArticleComment/addArticleComment'
 import { selectArticleDetailsError } from '5entities/Article/model/selectors/selectArticleDetailsError/selectArticleDetailsError'
-import { Button } from '6shared/ui/Button/Button'
-import { routePaths } from '6shared/config/routeConfig/routeConfig'
 import { Page } from '3widgets/Page'
 import { ArticleRecommendations } from '4features/ArticleRecommendations'
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
 
 interface ArticleDetailsPageProps {
   className?: string
@@ -31,7 +30,6 @@ const initialReducer: ReducerList = {
 const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element => {
   const dispatch = useAppDispatch()
   const { t } = useTranslation(['comments', 'buttons', 'articles'])
-  const navigate = useNavigate()
   const { articleId } = useParams<{ articleId: string }>()
   const comments = useSelector(selectArticleComments.selectAll)
   const commentsisLoading = useSelector(selectArticleCommentsIsLoading)
@@ -45,10 +43,6 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element
     void dispatch(addArticleComment(comment))
   }, [dispatch])
 
-  const onBackToList = useCallback(() => {
-    navigate(routePaths.articles)
-  }, [navigate])
-
   if (articleId === undefined) {
     return (
         <Page className={classNames(styles.articleDetailsPage, [className])}>
@@ -60,7 +54,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element
   return (
       <DynamicModuleLoader reducers={initialReducer}>
           <Page className={classNames(styles.articleDetailsPage, [className])}>
-              <Button onClick={onBackToList}>{t('buttons:back-to-list')}</Button>
+              <ArticleDetailsPageHeader/>
               <ArticleDetails articleId={articleId}/>
               {articleError === undefined &&
               <>
