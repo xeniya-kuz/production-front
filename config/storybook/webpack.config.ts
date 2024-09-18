@@ -4,6 +4,7 @@ import path from 'path'
 import { buildCssLoader } from '../build/loaders/buildCssLoader'
 import { type RuleSetRule } from 'webpack'
 import { buildSvgLoader } from '../build/loaders/buildSvgLoader'
+import CopyPlugin from 'copy-webpack-plugin'
 // переопределяем вебпак конфиг сторибука(!), который уже (где-то?) настроен
 
 export default ({ config }: { config: webpack.Configuration }): webpack.Configuration => {
@@ -11,7 +12,9 @@ export default ({ config }: { config: webpack.Configuration }): webpack.Configur
     entry: '',
     build: '',
     html: '',
-    src: path.resolve(__dirname, '..', '..', 'src')
+    src: path.resolve(__dirname, '..', '..', 'src'),
+    buildLocales: path.resolve(__dirname, 'build', 'locales'),
+    locales: path.resolve(__dirname, 'public', 'locales')
   }
 
   config.resolve?.modules?.push(paths.src)
@@ -35,6 +38,15 @@ export default ({ config }: { config: webpack.Configuration }): webpack.Configur
     __API__: JSON.stringify(''),
     __PROJECT__: JSON.stringify('storybook')
   }))
+
+  config.plugins?.push(new CopyPlugin(
+    // копируем переводы из public в build
+    {
+      patterns: [
+        { from: paths.locales, to: paths.buildLocales }
+      ]
+    }
+  ))
 
   return config
 }

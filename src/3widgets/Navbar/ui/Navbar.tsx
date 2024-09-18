@@ -40,7 +40,7 @@ export const Navbar = memo(function Navbar ({ className }: NavbarProps): JSX.Ele
                 theme={AppLinkTheme.INVERTED}
                 className={styles.create}
              >
-                {t('articles:create-acticle')}
+                {t('articles:article-creation')}
             </AppLink>
             <Button className={styles.links}
               theme={ButtonTheme.CLEAR_INVERTED}

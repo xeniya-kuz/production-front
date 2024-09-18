@@ -1,2 +1,5 @@
 .eslintrc.js
 scripts
+build/locales/ru/index.ts
+build/locales/en/index.ts
+build/locales/index.ts

@@ -29,7 +29,7 @@ export const routePaths: Record<AppRoutes, string> = {
   [AppRoutes.PROFILE]: '/profile', // + :id
   [AppRoutes.ARTICLES]: '/articles',
   [AppRoutes.ARTICLE_DETAILS]: '/articles', // + :id
-  [AppRoutes.ARTICLE_CREATE]: '/articles',
+  [AppRoutes.ARTICLE_CREATE]: '/articles/new',
   [AppRoutes.ARTICLE_EDIT]: '/articles',
   // last
   [AppRoutes.NOT_FOUND]: '*'
@@ -60,7 +60,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     isPrivate: true
   },
   [AppRoutes.ARTICLE_CREATE]: {
-    path: `${routePaths['article-create']}/new`,
+    path: `${routePaths['article-create']}`,
     element: <ArticleEditPage />,
     isPrivate: true
   },
