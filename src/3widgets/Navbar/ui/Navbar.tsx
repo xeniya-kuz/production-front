@@ -43,8 +43,8 @@ export const Navbar = memo(function Navbar ({ className }: NavbarProps): JSX.Ele
                 {t('articles:article-creation')}
             </AppLink>
             <Button className={styles.links}
-              theme={ButtonTheme.CLEAR_INVERTED}
-              onClick={onLogout}
+                theme={ButtonTheme.CLEAR_INVERTED}
+                onClick={onLogout}
             >
                 {t('Выйти')}
             </Button>
@@ -55,14 +55,14 @@ export const Navbar = memo(function Navbar ({ className }: NavbarProps): JSX.Ele
   return (
       <header className={classNames(styles.navbar, [className])}>
           <Button className={styles.links}
-            theme={ButtonTheme.CLEAR_INVERTED}
-            onClick={onToggleModal}
+              theme={ButtonTheme.CLEAR_INVERTED}
+              onClick={onToggleModal}
           >
               {t('Войти')}
           </Button>
           {isAuthModal && <LoginModal
-            isOpen={isAuthModal}
-            onClose={onToggleModal}
+              isOpen={isAuthModal}
+              onClose={onToggleModal}
           />}
       </header>
   )

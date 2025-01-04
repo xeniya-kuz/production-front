@@ -27,9 +27,9 @@ export const Dropdown = <T extends string> (props: DropdownProps<T>): JSX.Elemen
   const optionList = useMemo(() => {
     return options.map((option) =>
         <option
-          key={option.value}
-          className={styles.option}
-          value={option.value}
+            key={option.value}
+            className={styles.option}
+            value={option.value}
         >
             {option.label}
         </option>
@@ -44,10 +44,10 @@ export const Dropdown = <T extends string> (props: DropdownProps<T>): JSX.Elemen
       <div className={classNames(styles.dropdown, [className], mods)}>
           {label !== undefined && <span className={styles.label}>{`${label}>`}</span>}
           <select
-          className={classNames(styles.select)}
-          value={value}
-          onChange={onChangeHandler}
-          disabled={disabled}
+              className={classNames(styles.select)}
+              value={value}
+              onChange={onChangeHandler}
+              disabled={disabled}
           // defaultValue={value}
           >
               {optionList}

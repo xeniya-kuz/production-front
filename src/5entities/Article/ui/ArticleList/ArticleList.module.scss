@@ -1,12 +1,8 @@
-.list {
-	.card {
-		margin-bottom: 30px;
-	}
+.articleList {
+	width: 100%;
+	height: calc(100vh - var(--navbar-height));
 }
 
-.tile {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 30px;
-	justify-content: center;
+.header {
+	margin: 30px 20px 20px 45px;
 }

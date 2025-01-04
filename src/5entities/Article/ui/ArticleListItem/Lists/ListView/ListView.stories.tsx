@@ -4,11 +4,11 @@ import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDec
 import { articleMock } from '6shared/const/mocks/article'
 import { Text } from '6shared/ui/Text/Text'
 import type { Meta, StoryObj } from '@storybook/react'
-import { TileView } from './TileView'
+import { ListView } from './ListView'
 
 const meta = {
-  title: 'entities/Article/TileView',
-  component: TileView,
+  title: 'entities/Article/ListView',
+  component: ListView,
 
   parameters: {
     layout: 'fullscreen'
@@ -16,17 +16,18 @@ const meta = {
   tags: ['autodocs'],
   args: {
     article: articleMock,
-    types: <Text text={`${ArticleType.IT}, ${ArticleType.ECONOMICS}`} />,
-    views: <Text text={'1042'}/>
+    // types: <Text text={`${ArticleType.IT}, ${ArticleType.ECONOMICS}`} />,
+    // views: <Text text={'1042'}/>,
+    index: 0
   }
 
-} satisfies Meta<typeof TileView>
+} satisfies Meta<typeof ListView>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {}
 
-export const Dark: Story = {
+export const DarkList: Story = {
   decorators: [ThemeDecorator(Theme.DARK)]
 }

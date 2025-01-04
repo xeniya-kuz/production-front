@@ -33,10 +33,10 @@ export const ArticleRecommendations = memo(function ArticleRecommendations
       <DynamicModuleLoader reducers={initialReducer}>
           <div className={classNames(styles.articleRecommendations, [className])}>
               <ArticleList
-                articles={recommendations}
-                isLoading={isLoading}
-                className={styles.list}
-                target='_blank'
+                  articles={recommendations}
+                  isLoading={isLoading}
+                  className={styles.list}
+                  target='_blank'
               />
           </div>
       </DynamicModuleLoader>

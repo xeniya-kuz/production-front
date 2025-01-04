@@ -21,10 +21,10 @@ export const CommentList = memo(function CommentList
           {(comments.length > 0)
             ? comments.map(comment =>
                 <CommentCard
-                key={comment.id}
-                className={styles.comment}
-                comment={comment}
-                isLoading={isLoading}
+                    key={comment.id}
+                    className={styles.comment}
+                    comment={comment}
+                    isLoading={isLoading}
                 />
             )
             : <Text text={t('no-comments')}/>

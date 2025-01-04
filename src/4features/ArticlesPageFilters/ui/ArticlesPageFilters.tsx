@@ -18,10 +18,11 @@ import { selectArticlesOrder } from '../model/selectors/selectArticlesOrder/sele
 import { selectArticlesType } from '../model/selectors/selectArticlesType/selectArticlesType'
 import { articlesPageFiltersActions, articlesPageFiltersReducer } from '../model/slice/articlesPageFiltersSlice'
 import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { articlesPageActions } from '2pages/ArticlesPage/model/slice/articlesPageSlice'
+import { fetchArticlesList } from '2pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList'
 
 interface ArticlesPageFiltersProps {
   className?: string
-  fetchData: () => void
 }
 
 const initialReducer: ReducerList = {
@@ -29,7 +30,7 @@ const initialReducer: ReducerList = {
 }
 
 export const ArticlesPageFilters = memo(function ArticlesPageFilters
-({ className, fetchData }: ArticlesPageFiltersProps): JSX.Element {
+({ className }: ArticlesPageFiltersProps): JSX.Element {
   const view = useSelector(selectArticlesView)
   const dispatch = useAppDispatch()
   const { t } = useTranslation(['filters', 'articles'])
@@ -45,11 +46,16 @@ export const ArticlesPageFilters = memo(function ArticlesPageFilters
     { label: t('articles:it'), value: ArticleType.IT }
   ], [t])
 
-  const debouncedFetchData = useDebounce(fetchData, 500)
-
   useInitialEffect(() => {
     void dispatch(articlesPageFiltersActions.initState())
   })
+
+  const fetchData = useCallback((): void => {
+    dispatch(articlesPageActions.setPage(1))
+    void dispatch(fetchArticlesList({ replace: true }))
+  }, [dispatch])
+
+  const debouncedFetchData = useDebounce(fetchData, 500)
 
   const onViewChange = useCallback((view: ArticleView) => {
     dispatch(articlesPageFiltersActions.setView(view))
@@ -77,14 +83,14 @@ export const ArticlesPageFilters = memo(function ArticlesPageFilters
   }, [dispatch, debouncedFetchData])
 
   return (
-      <DynamicModuleLoader reducers={initialReducer}>
+      <DynamicModuleLoader reducers={initialReducer} removeAfterUnmount={false}>
           <div className={classNames(styles.articlesPageFilters, [className])}>
               <div className={styles.sortWrapper}>
                   <ArticleSortDropdown
-                  sort={sort}
-                  order={order}
-                  onChangeOrder={onChangeOrder}
-                  onChangeSort={onChangeSort}
+                      sort={sort}
+                      order={order}
+                      onChangeOrder={onChangeOrder}
+                      onChangeSort={onChangeSort}
               />
                   <ViewSwitcher view={view} onViewChange={onViewChange}/>
               </div>
@@ -92,10 +98,10 @@ export const ArticlesPageFilters = memo(function ArticlesPageFilters
                   <Input placeholder={t('search')} onChange={onChangeSearch} value={search}/>
               </Card>
               <Tabs
-            tabs={typesTabs}
-            activeTab={type}
-            setActiveTab={onChangeType}
-            className={styles.tabs}
+                  tabs={typesTabs}
+                  activeTab={type}
+                  setActiveTab={onChangeType}
+                  className={styles.tabs}
             />
           </div>
       </DynamicModuleLoader>

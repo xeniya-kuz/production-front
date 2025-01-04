@@ -1,51 +1,52 @@
+import { ArticlesPageFilters, selectArticlesView } from '4features/ArticlesPageFilters'
+import { ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY, ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY } from '6shared/const/localstorage'
 import { classNames } from '6shared/lib/classNames/classNames'
-import styles from './ArticleList.module.scss'
-import { type HTMLAttributeAnchorTarget, memo } from 'react'
-import { ArticleView, type Article } from '../../model/types/article'
-import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
-import { ArticleListItemSkeleton } from '../ArticleListItem/ListItemSkeleton/ArticleListItemSkeleton'
-import { useSelector } from 'react-redux'
-import { selectArticlesView } from '4features/ArticlesPageFilters'
-import { useTranslation } from 'react-i18next'
 import { Text } from '6shared/ui/Text/Text'
+import { type HTMLAttributeAnchorTarget, memo, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
+import { type Article, ArticleView } from '../../model/types/article'
+import { Lists } from '../ArticleListItem/Lists/Lists'
+import { Tiles } from '../ArticleListItem/Tiles/Tiles'
+import styles from './ArticleList.module.scss'
 
 interface ArticleListProps {
   className?: string
   articles: Article[]
   isLoading?: boolean
   target?: HTMLAttributeAnchorTarget
+  onLoadNextArticles?: () => void
+
 }
 
-const getSkeleton = (view: ArticleView): JSX.Element[] => new Array(view === ArticleView.LIST ? 3 : 9)
-  .fill(0)
-  .map((_, index) =>
-      <ArticleListItemSkeleton key={index} view={view} className={styles.card}/>
-  )
-
-const getArticles = (articles: Article[], view: ArticleView, target?: HTMLAttributeAnchorTarget): JSX.Element[] | null =>
-  articles.length > 0
-    ? articles.map((article) => (
-        <ArticleListItem key={article.id} article={article} view={view} className={styles.card} target={target}/>
-    ))
-    : null
-
 export const ArticleList = memo(function ArticleList
-({ className, articles, isLoading, target }: ArticleListProps): JSX.Element {
-  const view = useSelector(selectArticlesView)
+({ className, articles, isLoading, target, onLoadNextArticles }: ArticleListProps): JSX.Element {
   const { t } = useTranslation('articles')
+  const view = useSelector(selectArticlesView)
+  const [selectedArticleId, setSelectedArticleId] = useState(0)
+
+  const Header = () => <ArticlesPageFilters className={styles.header}/>
+
+  useEffect(() => {
+    const articleListIndex = localStorage.getItem(ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY) ?? 0
+    const articleViewIndex = localStorage.getItem(ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY) ?? 0
+    setSelectedArticleId(view === ArticleView.LIST ? +articleListIndex : +articleViewIndex)
+  }, [view])
 
   if (isLoading !== true && (articles.length === 0)) {
     return (
-        <div className={classNames(styles.articleList, [className, styles[view]])}>
+        <div className={classNames(styles.articleList, [className])}>
             <Text title={t('articles-not-found')}/>
         </div>
     )
   }
 
   return (
-      <div className={classNames(styles.articleList, [className, styles[view]])}>
-          {getArticles(articles, view, target)}
-          {Boolean(isLoading) && getSkeleton(view)}
+      <div className={classNames(styles.articleList, [className])}>
+          {view === ArticleView.LIST
+            ? <Lists Header={Header} articles={articles} onLoadNextArticles={onLoadNextArticles} selectedArticleId={selectedArticleId} isLoading={isLoading} target={target}/>
+            : <Tiles Header={Header} articles={articles} onLoadNextArticles={onLoadNextArticles} selectedArticleId={selectedArticleId} isLoading={isLoading} target={target}/>
+         }
       </div>
   )
 })

@@ -21,8 +21,8 @@ export const CommentCard = memo(function CommentCard
     return (
         <div className={classNames(styles.commentCard, [className, styles.loading])}>
             <SkeletonCommentCard
-              classNameHeader={styles.header}
-              classNameUsername={styles.username}
+                classNameHeader={styles.header}
+                classNameUsername={styles.username}
              />
         </div>
     )
@@ -31,8 +31,8 @@ export const CommentCard = memo(function CommentCard
   return (
       <div className={classNames(styles.commentCard, [className])} >
           <AppLink
-          to={`${routePaths.profile}/${comment.user.id}`}
-          className={styles.header}>
+              to={`${routePaths.profile}/${comment.user.id}`}
+              className={styles.header}>
               <Avatar size={30} alt={comment.user.username} src={comment.user.avatar ?? AvatarMock}/>
               <Text title={comment.user.username} className={styles.username} size={TextSize.S}/>
           </AppLink>

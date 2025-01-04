@@ -13,10 +13,10 @@ interface LoginModalProps {
 export const LoginModal = memo(function LoginModal ({ className, isOpen, onClose }: LoginModalProps): JSX.Element {
   return (
       <Modal
-        className={classNames(undefined, [className])}
-        isOpen={isOpen}
-        onClose={onClose}
-        lazy>
+          className={classNames(undefined, [className])}
+          isOpen={isOpen}
+          onClose={onClose}
+          lazy>
           <Suspense fallback={<Loader/>}>
               <LoginFormAsync onSuccess={onClose}/>
           </Suspense>

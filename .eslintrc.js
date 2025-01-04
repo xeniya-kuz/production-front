@@ -33,6 +33,7 @@ module.exports = {
   },
   rules: {
     'react/jsx-indent': [2, 4],
+    "react/jsx-indent-props": ["error", 4],
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [
       2,

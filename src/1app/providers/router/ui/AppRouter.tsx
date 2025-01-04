@@ -10,9 +10,9 @@ const AppRouter = (): JSX.Element => {
 
     return (
         <Route
-          key={route.path}
-          path={route.path}
-          element={(route.isPrivate === true) ? <RequireAuth>{element}</RequireAuth> : element }
+            key={route.path}
+            path={route.path}
+            element={(route.isPrivate === true) ? <RequireAuth>{element}</RequireAuth> : element }
         />
     )
   }, [])

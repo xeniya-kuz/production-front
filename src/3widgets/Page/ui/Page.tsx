@@ -36,9 +36,9 @@ export const Page = memo(function Page
 
   return (
       <main
-        ref={wrapperRef}
-        className={classNames(styles.page, [className])}
-        onScroll={onScroll}
+          ref={wrapperRef}
+          className={classNames(styles.page, [className])}
+          onScroll={onScroll}
       >
           {children}
           {onScrollEnd !== undefined && <div className={styles.trigger} ref={triggerRef}/>}

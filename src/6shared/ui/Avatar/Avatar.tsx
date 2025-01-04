@@ -21,9 +21,9 @@ export const Avatar = ({ className, src, alt, size }: AvatarProps): JSX.Element 
       <>
           {src !== undefined &&
           <img src={src}
-           alt={alt}
-           className={classNames(styles.avatar, [className])}
-           style={inlineStyles}
+              alt={alt}
+              className={classNames(styles.avatar, [className])}
+              style={inlineStyles}
            />
            }
       </>

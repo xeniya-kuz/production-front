@@ -63,8 +63,8 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element
                   <Text title={t('comments:comments')} className={styles.commentTitle} size={TextSize.S}/>
                   <AddCommentForm onSend={onSendComment}/>
                   <CommentList
-                    comments={comments}
-                    isLoading={commentsisLoading}
+                      comments={comments}
+                      isLoading={commentsisLoading}
                   />
               </>}
 

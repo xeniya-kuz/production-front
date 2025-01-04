@@ -9,15 +9,24 @@ import { AppRouter } from './providers/router'
 import { selectUserMounted, userActions } from '5entities/User'
 import { useAppDispatch } from '6shared/lib/hooks'
 import { useSelector } from 'react-redux'
+import { ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY, ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY } from '6shared/const/localstorage'
+import { routePaths } from '6shared/config/routeConfig/routeConfig'
+import { useLocation } from 'react-router-dom'
 
 export default function App (): JSX.Element {
   const dispatch = useAppDispatch()
   const { theme } = useTheme()
   const isMounted = useSelector(selectUserMounted)
+  const { pathname } = useLocation()
 
   useEffect(() => {
     dispatch(userActions.initAuthData())
-  }, [dispatch])
+
+    if (!pathname.includes(routePaths.articles) || !pathname.includes(routePaths['article-details'])) {
+      localStorage.removeItem(ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY)
+      localStorage.removeItem(ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY)
+    }
+  }, [dispatch, pathname])
 
   return (
       <div className={classNames('app', [theme])}>

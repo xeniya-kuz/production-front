@@ -17,10 +17,10 @@ export const ThemeSwitcher = memo(
 
     return (
         <Button
-          className={classNames('', [className])}
-          onClick={toggleTheme}
-          theme={ButtonTheme.CLEAR}
-          title={t('change-theme')}
+            className={classNames('', [className])}
+            onClick={toggleTheme}
+            theme={ButtonTheme.CLEAR}
+            title={t('change-theme')}
         >
             <Icon Svg={IconTheme} color={IconColors.INVERTED_PRIMARY_FILL} />
         </Button>

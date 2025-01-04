@@ -30,13 +30,13 @@ export const CurrencyDropdown = memo(
     return (
         <Dropdown
           // eslint-disable-next-line i18next/no-literal-string
-          name={NAME}
-          value={value}
-          label={t(NAME)}
-          options={options}
-          className={classNames(undefined, [className])}
-          disabled={disabled}
-          onChange={onChangeHandler}
+            name={NAME}
+            value={value}
+            label={t(NAME)}
+            options={options}
+            className={classNames(undefined, [className])}
+            disabled={disabled}
+            onChange={onChangeHandler}
           />
     )
   })

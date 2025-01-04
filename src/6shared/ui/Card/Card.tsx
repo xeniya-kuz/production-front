@@ -17,8 +17,8 @@ export const Card = memo(function Card
 ({ className, children, theme = CardTheme.PRIMARY, ...props }: CardProps): JSX.Element {
   return (
       <div
-        className={classNames(styles.card, [className, styles[theme]])}
-        {...props}
+          className={classNames(styles.card, [className, styles[theme]])}
+          {...props}
         >
           {children}
       </div>

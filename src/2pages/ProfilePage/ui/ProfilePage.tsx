@@ -56,11 +56,11 @@ const ProfilePage = memo(function ProfilePage ({ className }: ProfilePageProps):
                    <Text key={err} theme={TextTheme.ERROR} text={t(validateProfileErrorsTranslations[err])}/>
                )}
               <ProfileCard
-                profile={editingProfile}
-                isLoading={isLoading}
-                error={error}
-                onChange={onChange}
-                readonly={readonly}
+                  profile={editingProfile}
+                  isLoading={isLoading}
+                  error={error}
+                  onChange={onChange}
+                  readonly={readonly}
               />
           </Page>
       </DynamicModuleLoader>

@@ -1,5 +1,5 @@
 import { Skeleton } from '6shared/ui/Skeleton/Skeleton'
-import styles from '../../styles.module.scss'
+import styles from '../styles.module.scss'
 import { memo } from 'react'
 
 export const SkeletonTileView = memo(function SkeletonTileView

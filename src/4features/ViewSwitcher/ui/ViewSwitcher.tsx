@@ -39,8 +39,8 @@ export const ViewSwitcher = memo(function ArticlesViewSwitcher
                           ? IconColors.PRIMARY_FILL
                           : IconColors.SECONDARY_FILL
                         }
-                        className={classNames(undefined, [],
-                          { [styles.notSelected]: viewType.view !== view })
+                      className={classNames(undefined, [],
+                        { [styles.notSelected]: viewType.view !== view })
                         }
                   />
               </Button>

@@ -31,17 +31,17 @@ export const Sidebar = memo(
 
     return (
         <aside
-          data-testid='sidebar'
-          className={classNames(styles.sidebar, [className], {
-            [styles.collapsed]: collapsed
-          })}
+            data-testid='sidebar'
+            className={classNames(styles.sidebar, [className], {
+              [styles.collapsed]: collapsed
+            })}
         >
             <Button
-              data-testid='sidebar-toggle'
-              className={styles.collapseBtn}
-              square size={ButtonSize.L}
-              theme={ButtonTheme.BACKGROUND_INVERTED}
-              onClick={onToggle}
+                data-testid='sidebar-toggle'
+                className={styles.collapseBtn}
+                square size={ButtonSize.L}
+                theme={ButtonTheme.BACKGROUND_INVERTED}
+                onClick={onToggle}
               >
                 {collapsed ? '>' : '<'}
             </Button>

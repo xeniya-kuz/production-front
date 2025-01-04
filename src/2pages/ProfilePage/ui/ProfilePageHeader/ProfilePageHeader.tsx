@@ -42,24 +42,24 @@ export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps): JSX.El
           <>
               {readonly === true
                 ? <Button
-                  theme={ButtonTheme.OUTLINE}
-                  className={classNames(styles.editBtn)}
-                  onClick={onEdit}
+                        theme={ButtonTheme.OUTLINE}
+                        className={classNames(styles.editBtn)}
+                        onClick={onEdit}
                   >
                     {t('edit') }
                 </Button>
                 : <>
                     <Button
-                theme={ButtonTheme.OUTLINE}
-                className={classNames(styles.saveBtn)}
-                onClick={onSave}
+                        theme={ButtonTheme.OUTLINE}
+                        className={classNames(styles.saveBtn)}
+                        onClick={onSave}
                 >
                         {t('save') }
                     </Button>
                     <Button
-                theme={ButtonTheme.OUTLINE_RED}
-                className={classNames(styles.cancelBtn)}
-                onClick={onCancelEdit}
+                        theme={ButtonTheme.OUTLINE_RED}
+                        className={classNames(styles.cancelBtn)}
+                        onClick={onCancelEdit}
                 >
                         {t('cancel') }
                     </Button>

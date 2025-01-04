@@ -23,11 +23,11 @@ export const Tabs = <T extends string>({ className, tabs, activeTab, setActiveTa
       <div className={classNames(styles.tabs, [className])}>
           {tabs.map(tab => (
               <Card
-                key={tab.value}
-                className={styles.tab}
-                theme={tab.value === activeTab
-                  ? CardTheme.PRIMARY
-                  : CardTheme.OUTLINE}
+                  key={tab.value}
+                  className={styles.tab}
+                  theme={tab.value === activeTab
+                    ? CardTheme.PRIMARY
+                    : CardTheme.OUTLINE}
                   onClick={onClick(tab)}
               >
                   {tab.label}
