@@ -32,7 +32,7 @@ export const Tiles = memo(function Tiles
     }, 1000)
   }, [selectedArticleId])
 
-  const renderArticle = (index: number, article: Article) => <TileView article={article} target={target} className={styles.tile} index={index}/>
+  const renderArticle = (index: number, article: Article): JSX.Element => <TileView article={article} target={target} className={styles.tile} index={index}/>
 
   useInitialEffect(() => {
     timeout()

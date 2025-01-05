@@ -1,4 +1,4 @@
-import { classNames } from '6shared/lib/classNames/classNames'
+import { classNames } from './classNames'
 // import { classNames } from './classNames'
 
 describe('classNames', () => {

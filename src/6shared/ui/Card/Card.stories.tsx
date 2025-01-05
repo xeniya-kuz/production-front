@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Card } from './Card'
-import { Text } from '6shared/ui/Text/Text'
+import { Text } from '../Text/Text'
 import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from '1app/providers/ThemeProvider'
 const meta = {

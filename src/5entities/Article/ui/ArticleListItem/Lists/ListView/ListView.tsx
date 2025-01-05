@@ -34,7 +34,7 @@ export const ListView = memo(function ListView
 
   const textBlock = article.blocks.find(block => block.type === ArticleBlockType.TEXT) as ArticleTextBlockType
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (): void => {
     localStorage.setItem(ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY, JSON.stringify(index))
   }
 

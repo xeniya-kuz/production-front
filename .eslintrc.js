@@ -25,7 +25,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
+  plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'fsd-path-checker-sia355'],
   settings: {
     react: {
       version: 'detect',
@@ -54,6 +54,7 @@ module.exports = {
     //сдедит за правильностью написания хуков и их зависимостей
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error', //checks effect dependencies
+    'fsd-path-checker-sia355/path-checker': 'error', //самодельный плагин
   },
   globals: {
     __IS_DEV__: true,

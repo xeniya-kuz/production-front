@@ -26,7 +26,7 @@ export const TileView = memo(function TileView
       <Icon Svg={EyeIcon} color={[IconColors.SECONDARY_STROKE, IconColors.SECONDARY_FILL]}/>
   </>
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (): void => {
     localStorage.setItem(ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY, JSON.stringify(index))
   }
 

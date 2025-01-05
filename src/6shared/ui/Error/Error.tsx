@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { Text, TextAlign, TextTheme } from '6shared/ui/Text/Text'
+import { Text, TextAlign, TextTheme } from '../Text/Text'
 import { t } from 'i18next'
 
 interface ErrorProps {

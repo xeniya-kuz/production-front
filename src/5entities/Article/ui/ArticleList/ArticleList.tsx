@@ -25,7 +25,7 @@ export const ArticleList = memo(function ArticleList
   const view = useSelector(selectArticlesView)
   const [selectedArticleId, setSelectedArticleId] = useState(0)
 
-  const Header = () => <ArticlesPageFilters className={styles.header}/>
+  const Header = (): JSX.Element => <ArticlesPageFilters className={styles.header}/>
 
   useEffect(() => {
     const articleListIndex = localStorage.getItem(ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY) ?? 0

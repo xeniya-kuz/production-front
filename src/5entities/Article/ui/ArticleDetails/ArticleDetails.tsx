@@ -1,4 +1,3 @@
-import { fetchArticleById } from '5entities/Article/model/services/fetchArticleById/fetchArticleById'
 import { classNames } from '6shared/lib/classNames/classNames'
 import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch, useInitialEffect } from '6shared/lib/hooks'
@@ -6,12 +5,13 @@ import { memo } from 'react'
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
 import styles from './styles.module.scss'
 import { useSelector } from 'react-redux'
-import { selectArticleDetailsIsLoading } from '5entities/Article/model/selectors/selectArticleDetailsIsLoading/selectArticleDetailsIsLoading'
-import { selectArticleDetailsError } from '5entities/Article/model/selectors/selectArticleDetailsError/selectArticleDetailsError'
-import { selectArticleDetails } from '5entities/Article/model/selectors/selectArticleDetails/selectArticleDetails'
 import { Article } from './Article'
 import { SketelonArticle } from './SketelonArticle'
 import { Error } from '6shared/ui/Error/Error'
+import { selectArticleDetailsIsLoading } from '../../model/selectors/selectArticleDetailsIsLoading/selectArticleDetailsIsLoading'
+import { selectArticleDetailsError } from '../../model/selectors/selectArticleDetailsError/selectArticleDetailsError'
+import { selectArticleDetails } from '../../model/selectors/selectArticleDetails/selectArticleDetails'
+import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById'
 
 interface ArticleDetailsProps {
   className?: string
