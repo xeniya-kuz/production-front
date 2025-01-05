@@ -18,6 +18,7 @@ import { selectArticleDetailsError } from '5entities/Article/model/selectors/sel
 import { Page } from '3widgets/Page'
 import { ArticleRecommendations } from '4features/ArticleRecommendations'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
+import { VStack } from '6shared/ui/Stack'
 
 interface ArticleDetailsPageProps {
   className?: string
@@ -57,16 +58,18 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element
               <ArticleDetailsPageHeader/>
               <ArticleDetails articleId={articleId}/>
               {articleError === undefined &&
-              <>
-                  <Text title={t('articles:recommendations')} className={styles.commentTitle} size={TextSize.S}/>
-                  <ArticleRecommendations/>
-                  <Text title={t('comments:comments')} className={styles.commentTitle} size={TextSize.S}/>
-                  <AddCommentForm onSend={onSendComment}/>
-                  <CommentList
-                      comments={comments}
-                      isLoading={commentsisLoading}
+                  <>
+                      <Text title={t('articles:recommendations')} size={TextSize.S}/>
+                      <ArticleRecommendations/>
+                      <Text title={t('comments:comments')} size={TextSize.S}/>
+                      <VStack gap='16' max>
+                          <AddCommentForm onSend={onSendComment}/>
+                          <CommentList
+                              comments={comments}
+                              isLoading={commentsisLoading}
                   />
-              </>}
+                      </VStack>
+                  </>}
 
           </Page>
       </DynamicModuleLoader>

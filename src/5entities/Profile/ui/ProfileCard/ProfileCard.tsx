@@ -8,6 +8,7 @@ import { type Profile } from '../../model/types/profile'
 import styles from './ProfileCard.module.scss'
 import { type Currency, CurrencyDropdown } from '4features/CurrencyDropdown'
 import { CountryDropdown } from '4features/CountryDropdown'
+import { HStack, VStack } from '6shared/ui/Stack'
 
 interface ProfileCardProps {
   className?: string
@@ -24,17 +25,17 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
 
   if (isLoading === true) {
     return (
-        <div className={classNames(styles.profileCard, [className, styles.loader])}>
+        <HStack justify='center' max className={classNames(styles.profileCard, [className, styles.loader])}>
             <Loader/>
-        </div>
+        </HStack>
     )
   }
 
   if (error !== undefined) {
     return (
-        <div className={classNames(styles.profileCard, [className, styles.error])}>
+        <HStack justify='center' max className={classNames(styles.profileCard, [className, styles.error])}>
             <Error/>
-        </div>
+        </HStack>
     )
   }
 
@@ -53,71 +54,62 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
   }
 
   return (
-      <div className={classNames(styles.profileCard, [className], mods)}>
-          <article>
-              {profile?.avatar !== undefined &&
-              <div className={styles.avatarWrapper}>
+      <VStack gap='16' max className={classNames(styles.profileCard, [className], mods)}>
+          {profile?.avatar !== undefined &&
+              <HStack justify='center' max>
                   <Avatar src={profile?.avatar} alt={t('profile:avatar')}/>
-              </div>
+              </HStack>
               }
-              <Input
+          <Input
                   // eslint-disable-next-line i18next/no-literal-string
-                  name='first'
-                  value={profile?.first}
-                  placeholder={t('first-name')}
-                  className={styles.input}
-                  onChange={onTextChange}
-                  readOnly={readonly}
+              name='first'
+              value={profile?.first}
+              placeholder={t('first-name')}
+              onChange={onTextChange}
+              readOnly={readonly}
               />
-              <Input
+          <Input
                   // eslint-disable-next-line i18next/no-literal-string
-                  name='lastname'
-                  value={profile?.lastname}
-                  placeholder={t('last-name')}
-                  className={styles.input}
-                  onChange={onTextChange}
-                  readOnly={readonly}
+              name='lastname'
+              value={profile?.lastname}
+              placeholder={t('last-name')}
+              onChange={onTextChange}
+              readOnly={readonly}
               />
-              <Input
+          <Input
                   // eslint-disable-next-line i18next/no-literal-string
-                  name='age'
-                  value={profile?.age}
-                  placeholder={t('age')}
-                  className={styles.input}
-                  onChange={onNumberChange}
-                  readOnly={readonly}
+              name='age'
+              value={profile?.age}
+              placeholder={t('age')}
+              onChange={onNumberChange}
+              readOnly={readonly}
               />
-              <Input
+          <Input
                   // eslint-disable-next-line i18next/no-literal-string
-                  name='city'
-                  value={profile?.city}
-                  placeholder={t('city')}
-                  className={styles.input}
-                  onChange={onTextChange}
-                  readOnly={readonly}
+              name='city'
+              value={profile?.city}
+              placeholder={t('city')}
+              onChange={onTextChange}
+              readOnly={readonly}
               />
-              <Input
+          <Input
                   // eslint-disable-next-line i18next/no-literal-string
-                  name='username'
-                  value={profile?.username}
-                  placeholder={t('username')}
-                  className={styles.input}
-                  onChange={onTextChange}
-                  readOnly={readonly}
+              name='username'
+              value={profile?.username}
+              placeholder={t('username')}
+              onChange={onTextChange}
+              readOnly={readonly}
               />
-              <CurrencyDropdown
-                  value={profile?.currency}
-                  disabled={readonly}
-                  onChange={onTextChange}
-                  className={styles.input}
+          <CurrencyDropdown
+              value={profile?.currency}
+              disabled={readonly}
+              onChange={onTextChange}
               />
-              <CountryDropdown
-                  value={profile?.country}
-                  disabled={readonly}
-                  onChange={onTextChange}
-                  className={styles.input}
+          <CountryDropdown
+              value={profile?.country}
+              disabled={readonly}
+              onChange={onTextChange}
               />
-          </article>
-      </div>
+      </VStack>
   )
 }

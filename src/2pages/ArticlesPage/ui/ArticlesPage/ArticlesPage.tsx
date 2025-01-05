@@ -9,6 +9,7 @@ import { selectArticlesIsLoading } from '../../model/selectors/selectArticlesIsL
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage'
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage'
 import { articlesPageReducer, selectArticles } from '../../model/slice/articlesPageSlice'
+import { selectArticlesView } from '4features/ArticlesPageFilters'
 
 interface ArticlesPageProps {
   className?: string
@@ -23,6 +24,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps): JSX.Element => {
   const articles = useSelector(selectArticles.selectAll)
   const isLoading = useSelector(selectArticlesIsLoading)
   const error = useSelector(selectArticlesError)
+  const view = useSelector(selectArticlesView)
   // useSearchParams можно заменить new URLSearchParams(window.location.search)
   const [searchParams] = useSearchParams()
 
@@ -41,6 +43,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps): JSX.Element => {
               articles={articles}
               onLoadNextArticles={onLoadNextArticles}
               className={className}
+              view={view}
               />
       </DynamicModuleLoader>
   )

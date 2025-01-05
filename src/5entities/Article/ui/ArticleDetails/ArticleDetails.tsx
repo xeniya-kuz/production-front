@@ -12,6 +12,7 @@ import { selectArticleDetailsIsLoading } from '../../model/selectors/selectArtic
 import { selectArticleDetailsError } from '../../model/selectors/selectArticleDetailsError/selectArticleDetailsError'
 import { selectArticleDetails } from '../../model/selectors/selectArticleDetails/selectArticleDetails'
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById'
+import { VStack } from '6shared/ui/Stack'
 
 interface ArticleDetailsProps {
   className?: string
@@ -50,9 +51,9 @@ export const ArticleDetails = memo(
 
     return (
         <DynamicModuleLoader reducers={initialReducer}>
-            <div className={classNames(styles.articleDetails, [className])}>
+            <VStack gap='16' className={classNames(styles.articleDetails, [className])}>
                 {content}
-            </div>
+            </VStack>
         </DynamicModuleLoader>
     )
   })

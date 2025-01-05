@@ -1,5 +1,4 @@
 import { classNames } from '6shared/lib/classNames/classNames'
-import styles from './ArticleDetailsPageHeader.module.scss'
 import { memo, useCallback } from 'react'
 import { Button } from '6shared/ui/Button/Button'
 import { routePaths } from '6shared/config/routeConfig/routeConfig'
@@ -8,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { selectIsArticleAuthor } from '../../model/selectors/comments/article/article'
 import { selectArticleDetails } from '5entities/Article'
+import { HStack } from '6shared/ui/Stack'
 
 interface ArticleDetailsPageHeaderProps {
   className?: string
@@ -31,9 +31,9 @@ export const ArticleDetailsPageHeader = memo(function ArticleDetailsPageHeader
   }, [navigate, article])
 
   return (
-      <div className={classNames(styles.articleDetailsPageHeader, [className])}>
+      <HStack max justify='between' className={classNames(className)}>
           <Button onClick={onBackToList}>{t('back-to-list')}</Button>
-          {isAuthor && <Button onClick={onEditArticle} className={styles.editBtn}>{t('edit')}</Button>}
-      </div>
+          {isAuthor && <Button onClick={onEditArticle}>{t('edit')}</Button>}
+      </HStack>
   )
 })

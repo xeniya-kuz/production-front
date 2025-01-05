@@ -10,6 +10,7 @@ import { ArticleBlockType, type ArticleBlock, type Article as ArticleType } from
 import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock'
 import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
+import { HStack, VStack } from '6shared/ui/Stack'
 
 interface ArticleProps {
   className?: string
@@ -34,11 +35,11 @@ export const Article = memo(function Article
   const renderBlock = useCallback((block: ArticleBlock) => {
     switch (block.type) {
       case ArticleBlockType.CODE:
-        return <ArticleCodeBlock key={block.id} className={styles.block} block={block}/>
+        return <ArticleCodeBlock key={block.id} block={block}/>
       case ArticleBlockType.IMAGE:
-        return <ArticleImageBlock key={block.id} className={styles.block} block={block}/>
+        return <ArticleImageBlock key={block.id} block={block}/>
       case ArticleBlockType.TEXT:
-        return <ArticleTextBlock key={block.id} className={styles.block} block={block}/>
+        return <ArticleTextBlock key={block.id} block={block}/>
       default:
         return null
     }
@@ -46,16 +47,18 @@ export const Article = memo(function Article
 
   return (
       <article className={classNames(styles.article, [className])}>
-          <div className={styles.avatarWrapper}>
+          <HStack justify='center' max>
               <Avatar size={200} src={article?.img} alt={article?.title} className={styles.avatar}/>
-          </div>
-          <Text title={article?.title} text={article?.subtitle} size={TextSize.L}/>
-          {articleInfo.map((info, index) => (
-              <div className={styles.articleInfo} key={index}>
-                  <Icon Svg={info.icon} className={styles.icon}/>
-                  <Text text={info.text}/>
-              </div>
-          ))}
+          </HStack>
+          <VStack gap='4' max>
+              <Text title={article?.title} text={article?.subtitle} size={TextSize.L}/>
+              {articleInfo.map((info, index) => (
+                  <HStack gap='8' key={index}>
+                      <Icon Svg={info.icon}/>
+                      <Text text={info.text}/>
+                  </HStack>
+              ))}
+          </VStack>
           {article?.blocks.map(renderBlock)}
 
       </article>

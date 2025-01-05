@@ -24,77 +24,48 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const PrimaryList: Story = {
-  decorators: [StoreDecorator({
-    articlesPageFilters: {
-      view: ArticleView.LIST
-    }
-  })]
+  args: { view: ArticleView.LIST }
 }
 
 export const DarkList: Story = {
-  decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
-    articlesPageFilters: {
-      view: ArticleView.LIST
-    }
-  })]
+  args: { view: ArticleView.LIST },
+  decorators: [ThemeDecorator(Theme.DARK)]
 }
 
 export const PrimaryTile: Story = {
-  decorators: [StoreDecorator({
-    articlesPageFilters: {
-      view: ArticleView.TILE
-    }
-  })]
+  args: { view: ArticleView.TILE }
 }
 
 export const DarkTile: Story = {
-  decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
-    articlesPageFilters: {
-      view: ArticleView.TILE
-    }
-  })]
+  args: { view: ArticleView.TILE },
+  decorators: [ThemeDecorator(Theme.DARK)]
 }
 
 export const PrimaryListLoading: Story = {
   args: {
-    isLoading: true
-  },
-  decorators: [StoreDecorator({
-    articlesPageFilters: {
-      view: ArticleView.LIST
-    }
-  })]
+    isLoading: true,
+    view: ArticleView.LIST
+  }
 }
 
 export const DarkListLoading: Story = {
   args: {
-    isLoading: true
-  },
-  decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
-    articlesPageFilters: {
-      view: ArticleView.LIST
-    }
-  })]
+    isLoading: true,
+    view: ArticleView.LIST
+  }
 }
 
 export const PrimaryTileLoading: Story = {
   args: {
-    isLoading: true
-  },
-  decorators: [StoreDecorator({
-    articlesPageFilters: {
-      view: ArticleView.TILE
-    }
-  })]
+    isLoading: true,
+    view: ArticleView.TILE
+  }
 }
 
 export const DarkTileLoading: Story = {
   args: {
-    isLoading: true
+    isLoading: true,
+    view: ArticleView.TILE
   },
-  decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
-    articlesPageFilters: {
-      view: ArticleView.TILE
-    }
-  })]
+  decorators: [ThemeDecorator(Theme.DARK)]
 }

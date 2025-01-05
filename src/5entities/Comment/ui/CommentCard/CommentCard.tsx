@@ -8,6 +8,7 @@ import AvatarMock from '6shared/assets/icons/user.png'
 import { AppLink } from '6shared/ui/AppLink/AppLink'
 import { routePaths } from '6shared/config/routeConfig/routeConfig'
 import { SkeletonCommentCard } from './SkeletonCommentCard'
+import { HStack, VStack } from '6shared/ui/Stack'
 
 interface CommentCardProps {
   className?: string
@@ -19,24 +20,21 @@ export const CommentCard = memo(function CommentCard
 ({ className, comment, isLoading }: CommentCardProps): JSX.Element {
   if (isLoading === true) {
     return (
-        <div className={classNames(styles.commentCard, [className, styles.loading])}>
-            <SkeletonCommentCard
-                classNameHeader={styles.header}
-                classNameUsername={styles.username}
-             />
-        </div>
+        <VStack gap='16' max className={classNames(styles.commentCard, [className, styles.loading])}>
+            <SkeletonCommentCard />
+        </VStack>
     )
   }
 
   return (
-      <div className={classNames(styles.commentCard, [className])} >
-          <AppLink
-              to={`${routePaths.profile}/${comment.user.id}`}
-              className={styles.header}>
-              <Avatar size={30} alt={comment.user.username} src={comment.user.avatar ?? AvatarMock}/>
-              <Text title={comment.user.username} className={styles.username} size={TextSize.S}/>
+      <VStack gap='16' max className={classNames(styles.commentCard, [className])} >
+          <AppLink to={`${routePaths.profile}/${comment.user.id}`}>
+              <HStack gap='4'>
+                  <Avatar size={30} alt={comment.user.username} src={comment.user.avatar ?? AvatarMock}/>
+                  <Text title={comment.user.username} className={styles.username} size={TextSize.S}/>
+              </HStack>
           </AppLink>
           <Text text={comment.text} className={styles.text} />
-      </div>
+      </VStack>
   )
 })

@@ -16,13 +16,12 @@ interface ArticleListProps {
   isLoading?: boolean
   target?: HTMLAttributeAnchorTarget
   onLoadNextArticles?: () => void
-
+  view: ArticleView
 }
 
 export const ArticleList = memo(function ArticleList
-({ className, articles, isLoading, target, onLoadNextArticles }: ArticleListProps): JSX.Element {
+({ className, articles, isLoading, target, onLoadNextArticles, view }: ArticleListProps): JSX.Element {
   const { t } = useTranslation('articles')
-  const view = useSelector(selectArticlesView)
   const [selectedArticleId, setSelectedArticleId] = useState(0)
 
   const Header = (): JSX.Element => <ArticlesPageFilters className={styles.header}/>

@@ -1,6 +1,6 @@
-import styles from './CommentCard.module.scss'
-import { memo } from 'react'
 import { Skeleton } from '6shared/ui/Skeleton/Skeleton'
+import { HStack, VStack } from '6shared/ui/Stack'
+import { memo } from 'react'
 
 interface SkeletonCommentCardProps {
   classNameHeader?: string
@@ -10,13 +10,15 @@ interface SkeletonCommentCardProps {
 export const SkeletonCommentCard = memo(function SkeletonCommentCard
 ({ classNameHeader, classNameUsername }: SkeletonCommentCardProps): JSX.Element {
   return (
-      <>
-          <div className={classNameHeader}>
+      <VStack gap='16' max>
+          <HStack gap='4' className={classNameHeader}>
               <Skeleton border='50%' width={30} height={30}/>
               <Skeleton width={150} height={20} className={classNameUsername}/>
-          </div>
-          <Skeleton width={'100%'} height={16} className={styles.skeleton}/>
-          <Skeleton width={'70%'} height={16} className={styles.skeleton}/>
-      </>
+          </HStack>
+          <VStack gap='8' max>
+              <Skeleton width={'100%'} height={16}/>
+              <Skeleton width={'70%'} height={16}/>
+          </VStack>
+      </VStack>
   )
 })

@@ -1,10 +1,10 @@
 import { classNames } from '6shared/lib/classNames/classNames'
-import styles from './CommentList.module.scss'
 import { memo } from 'react'
 import { type Comment } from '../../model/types/comment'
 import { CommentCard } from '../CommentCard/CommentCard'
 import { Text } from '6shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
+import { VStack } from '6shared/ui/Stack'
 
 interface CommentListProps {
   className?: string
@@ -17,18 +17,17 @@ export const CommentList = memo(function CommentList
   const { t } = useTranslation('comments')
 
   return (
-      <div className={classNames(styles.commentlist, [className])}>
+      <VStack gap='16' max className={classNames(className)}>
           {(comments.length > 0)
             ? comments.map(comment =>
                 <CommentCard
                     key={comment.id}
-                    className={styles.comment}
                     comment={comment}
                     isLoading={isLoading}
                 />
             )
             : <Text text={t('no-comments')}/>
          }
-      </div>
+      </VStack>
   )
 })

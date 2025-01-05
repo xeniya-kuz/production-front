@@ -6,7 +6,7 @@ import { articleRecommendationsReducer, selectArticleRecommendations } from '../
 import { useSelector } from 'react-redux'
 import { selectRecommendationsIsLoading } from '../model/selectors/selectRecommendationsIsLoading/selectRecommendationsIsLoading'
 import { selectRecommendationsError } from '../model/selectors/selectRecommendationsError/selectRecommendationsError'
-import { ArticleList } from '5entities/Article'
+import { ArticleList, ArticleView } from '5entities/Article'
 import { useAppDispatch, useInitialEffect } from '6shared/lib/hooks'
 import { fetchArticlesRecommendations } from '../model/services/fetchArticlesRecommendations/fetchArticlesRecommendations'
 
@@ -37,6 +37,7 @@ export const ArticleRecommendations = memo(function ArticleRecommendations
                   isLoading={isLoading}
                   className={styles.list}
                   target='_blank'
+                  view={ArticleView.TILE}
               />
           </div>
       </DynamicModuleLoader>
