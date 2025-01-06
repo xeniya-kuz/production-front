@@ -55,5 +55,5 @@ export const enum ArticleView {
 export enum ArticleSortField {
   VIEWS = 'views',
   TITLE = 'title',
-  CREATED = 'createdAt'
+  CREATED = 'creation-date'
 }

@@ -1,10 +1,10 @@
-import { classNames } from '6shared/lib/classNames/classNames'
-import { memo, useMemo } from 'react'
-import { Dropdown, type Options } from '6shared/ui/Dropdown/Dropdown'
-import { useTranslation } from 'react-i18next'
 import { ArticleSortField } from '5entities/Article'
-import styles from './ArticleSortDropdown.module.scss'
+import { classNames } from '6shared/lib/classNames/classNames'
 import { type SortOrder } from '6shared/types/order'
+import { ListBox, type ListBoxOption } from '6shared/ui/ListBox/ListBox'
+import { memo, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
+import styles from './ArticleSortDropdown.module.scss'
 
 interface ArticleSortDropdownProps {
   className?: string
@@ -18,7 +18,7 @@ export const ArticleSortDropdown = memo(function ArticleSortDropdown
 ({ className, sort, onChangeSort, order, onChangeOrder }: ArticleSortDropdownProps): JSX.Element {
   const { t } = useTranslation('filters')
 
-  const orderOptions = useMemo<Array<Options<SortOrder>>>(() => [
+  const orderOptions = useMemo<ListBoxOption[]>(() => [
     {
       value: 'asc',
       label: t('asc')
@@ -29,7 +29,7 @@ export const ArticleSortDropdown = memo(function ArticleSortDropdown
     }
   ], [t])
 
-  const sortFieldOptions = useMemo<Array<Options<ArticleSortField>>>(() => [
+  const sortFieldOptions = useMemo<ListBoxOption[]>(() => [
     {
       value: ArticleSortField.CREATED,
       label: t('creation-date')
@@ -46,8 +46,8 @@ export const ArticleSortDropdown = memo(function ArticleSortDropdown
 
   return (
       <div className={classNames(styles.articleSortDropdown, [className])}>
-          <Dropdown label={t('sort-by')} options={sortFieldOptions} value={sort} onChange={onChangeSort}/>
-          <Dropdown label={t('sort-by')} options={orderOptions} value={order} onChange={onChangeOrder}/>
+          <ListBox label={t('sort-by')} options={sortFieldOptions} value={sort} onChange={onChangeSort}/>
+          <ListBox label={t('sort-by')} options={orderOptions} value={order} onChange={onChangeOrder}/>
       </div>
   )
 })

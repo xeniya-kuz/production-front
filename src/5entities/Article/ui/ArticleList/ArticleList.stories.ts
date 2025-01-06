@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { ArticleList } from './ArticleList'
-import { articlesMock } from '6shared/const/mocks/article'
-import { ArticleView } from '../../model/types/article'
-import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from '1app/providers/ThemeProvider'
-import { StoreDecorator } from '6shared/config/storybook/StoreDecorator/StoreDecorator'
+import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { articlesMock } from '6shared/const/mocks/article'
+import type { Meta, StoryObj } from '@storybook/react'
+import { ArticleView } from '../../model/types/article'
+import { ArticleList } from './ArticleList'
 
 const meta = {
   title: 'entities/Article/ArticleList',
