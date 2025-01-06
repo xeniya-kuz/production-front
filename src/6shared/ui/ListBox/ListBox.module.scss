@@ -15,14 +15,31 @@
 	position: absolute;
 	z-index: 10000;
 
-	width: 100%;
+	min-width: 100%;
 
 	background-color: var(--listbox-bg);
-	border-radius: 0 0 12px 12px;
 	box-shadow: 4px 4px 8px var(--listbox-bg);
 
-	&.top {
+	&.topLeft,
+	&.topRight {
 		bottom: 100%;
+		border-radius: 12px 12px 0 0;
+	}
+
+	&.topRight,
+	&.bottomRight {
+		left: 0;
+	}
+
+	&.topLeft,
+	&.bottomLeft {
+		right: 0;
+	}
+
+	&.bottomLeft,
+	&.bottomRight {
+		top: 100%;
+		border-radius: 0 0 12px 12px;
 	}
 }
 

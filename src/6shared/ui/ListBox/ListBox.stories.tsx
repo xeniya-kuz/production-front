@@ -8,12 +8,16 @@ const meta = {
   component: ListBox,
   tags: ['autodocs'],
   args: {
+    value: 'value3',
     options: [
-      { value: 'value1', label: 'content1' },
-      { value: 'value2', label: 'content2' },
-      { value: 'value3', label: 'content3' }
+      { value: 'value1', label: 'content1111111' },
+      { value: 'value2', label: 'content2222222' },
+      { value: 'value3', label: 'content3333333' }
     ]
-  }
+  },
+  decorators: [
+    Story => <div style={{ padding: '200px' }}><Story/></div>
+  ]
 
 } satisfies Meta<typeof ListBox>
 

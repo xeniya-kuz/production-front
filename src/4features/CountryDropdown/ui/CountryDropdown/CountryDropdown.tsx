@@ -37,7 +37,7 @@ export const CountryDropdown = memo(
             className={classNames(undefined, [className])}
             disabled={disabled}
             onChange={onChangeHandler}
-            direction='top'
+            direction='top right'
           />
     )
   })

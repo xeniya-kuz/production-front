@@ -10,6 +10,8 @@ import styles from './Navbar.module.scss'
 import { Text, TextTheme } from '6shared/ui/Text/Text'
 import { AppLink, AppLinkTheme } from '6shared/ui/AppLink/AppLink'
 import { routePaths } from '6shared/config/routeConfig/routeConfig'
+import { Dropdown } from '6shared/ui/Dropdown/Dropdown'
+import { Avatar } from '6shared/ui/Avatar/Avatar'
 
 interface NavbarProps {
   className?: string
@@ -30,6 +32,17 @@ export const Navbar = memo(function Navbar ({ className }: NavbarProps): JSX.Ele
     dispatch(userActions.logout())
   }, [dispatch])
 
+  const dropdownItems = [
+    {
+      content: t('profile:profile'),
+      href: `${routePaths.profile}/${authData?.id}`
+    },
+    {
+      content: t('Выйти'),
+      onClick: onLogout
+    }
+  ]
+
   if (authData !== undefined) {
     return (
         <header className={classNames(styles.navbar, [className])}>
@@ -42,12 +55,17 @@ export const Navbar = memo(function Navbar ({ className }: NavbarProps): JSX.Ele
              >
                 {t('articles:article-creation')}
             </AppLink>
-            <Button className={styles.links}
-                theme={ButtonTheme.CLEAR_INVERTED}
-                onClick={onLogout}
-            >
-                {t('Выйти')}
-            </Button>
+            <Dropdown
+                className={styles.dropdown}
+                direction='top left'
+                trigger={<Avatar
+                    alt='avatar'
+                    size={30}
+                    src={authData.avatar}
+                  />
+                }
+                items={dropdownItems}
+                />
         </header>
     )
   }

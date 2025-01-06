@@ -6,6 +6,7 @@ import { Button } from '../Button/Button'
 import { Icon, IconColors } from '../Icon/Icon'
 import { HStack } from '../Stack'
 import styles from './ListBox.module.scss'
+import { type DropdownDirection } from '6shared/types/ui'
 
 export interface ListBoxOption {
   value: string
@@ -24,17 +25,19 @@ interface ListBoxProps<T extends string> {
   direction?: DropdownDirection
 }
 
-type DropdownDirection = 'top' | 'bottom'
-
 export const ListBox = <T extends string> (props: ListBoxProps<T>): JSX.Element => {
-  const { className, options, value, onChange, name = '', disabled, label, direction = 'bottom' } = props
+  const { className, options, value, onChange, name = '', disabled, label, direction = 'bottom left' } = props
 
   const handleOnChange = (value: T): void => {
     onChange({ name, value })
   }
 
   const mods: Mods = {
-    [styles.disabled]: disabled
+    [styles.disabled]: disabled,
+    [styles.topLeft]: direction === 'top left',
+    [styles.topRight]: direction === 'top right',
+    [styles.bottomLeft]: direction === 'bottom left',
+    [styles.bottomRight]: direction === 'bottom right'
   }
 
   const selectedOption = options.find(option => option.value === value)
@@ -52,7 +55,7 @@ export const ListBox = <T extends string> (props: ListBoxProps<T>): JSX.Element 
               <HListbox.Button as={'div'} className={styles.trigger}>
                   <Button>{selectedOption?.label}</Button>
               </HListbox.Button>
-              <HListbox.Options className={classNames(styles.options, [styles[direction]], mods)}>
+              <HListbox.Options className={classNames(styles.options, [], mods)}>
                   {options.map((option) => (
                       <HListbox.Option
                           key={option.value}

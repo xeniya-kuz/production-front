@@ -36,7 +36,7 @@ export const CurrencyDropdown = memo(
             className={classNames(undefined, [className])}
             disabled={disabled}
             onChange={onChangeHandler}
-            direction='top'
+            direction='top right'
           />
     )
   })
