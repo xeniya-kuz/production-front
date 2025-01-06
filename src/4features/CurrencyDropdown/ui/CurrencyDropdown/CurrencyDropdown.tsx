@@ -1,7 +1,7 @@
 import { classNames } from '6shared/lib/classNames/classNames'
-import { Dropdown } from '6shared/ui/Dropdown/Dropdown'
-import { useTranslation } from 'react-i18next'
+import { ListBox } from '6shared/ui/ListBox/ListBox'
 import { memo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Currency } from '../../model/types'
 
 interface CurrencySelectProps {
@@ -28,8 +28,7 @@ export const CurrencyDropdown = memo(
     }
 
     return (
-        <Dropdown
-          // eslint-disable-next-line i18next/no-literal-string
+        <ListBox
             name={NAME}
             value={value}
             label={t(NAME)}
@@ -37,6 +36,7 @@ export const CurrencyDropdown = memo(
             className={classNames(undefined, [className])}
             disabled={disabled}
             onChange={onChangeHandler}
+            direction='top'
           />
     )
   })
