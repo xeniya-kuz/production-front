@@ -47,9 +47,9 @@ export const Sidebar = memo(
                 {collapsed ? '>' : '<'}
             </Button>
             <nav>
-                <ul>
-                    <VStack gap='8' className={styles.items}>{itemsList}</VStack>
-                </ul>
+                {/* <ul> */}
+                <VStack gap='8' role='list' className={styles.items}>{itemsList}</VStack>
+                {/* </ul> */}
             </nav>
             <ul className={styles.switchers}>
                 <li className={styles.li}>
