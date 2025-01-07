@@ -5,16 +5,16 @@ import { Text } from '6shared/ui/Text/Text'
 import { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { selectProfileData, selectProfileReadonly } from '../../model/selectors'
-import { updateProfileData } from '../../model/services'
-import { profileActions } from '../../model/slice'
 import { HStack } from '6shared/ui/Stack'
+import { selectProfileData, selectProfileReadonly } from '../../model/selectors'
+import { profileActions } from '../../model/slice'
+import { updateProfileData } from '../../model/services'
 
 interface ProfilePageHeaderProps {
   className?: string
 }
 
-export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps): JSX.Element => {
+export const EditableProfileCardHeader = ({ className }: ProfilePageHeaderProps): JSX.Element => {
   const dispatch = useAppDispatch()
   const { t } = useTranslation('buttons')
   const readonly = useSelector(selectProfileReadonly)
@@ -63,7 +63,6 @@ export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps): JSX.El
                 }
           </>
           }
-
       </HStack>
   )
 }

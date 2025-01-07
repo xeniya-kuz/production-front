@@ -1,6 +1,6 @@
 import { type StateSchema } from '1app/providers/StoreProvider'
 import { selectProfileValidateErrors } from './selectProfileValidateErrors'
-import { ValidateProfileError } from '../../types'
+import { ValidateProfileError } from '../../types/validate'
 
 describe('selectProfileValidateErrors', () => {
   test('should return validate errors', () => {
