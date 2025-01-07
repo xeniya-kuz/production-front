@@ -1,5 +1,5 @@
 import { classNames } from '6shared/lib/classNames/classNames'
-import styles from './AddCommentForm.module.scss'
+import styles from './ArticleComments.module.scss'
 import { memo, useCallback } from 'react'
 import { CommentForm } from '5entities/CommentForm'
 import { useTranslation } from 'react-i18next'
@@ -23,7 +23,7 @@ const initialReducer: ReducerList = {
   articleComments: articleCommentsReducer
 }
 
-const AddArticleCommentForm = memo(function AddArticleCommentForm
+const ArticleComments = memo(function ArticleComments
 ({ className, articleId }: AddArticleCommentFormProps): JSX.Element {
   const dispatch = useAppDispatch()
   const { t } = useTranslation('comments')
@@ -52,4 +52,4 @@ const AddArticleCommentForm = memo(function AddArticleCommentForm
   )
 })
 
-export default AddArticleCommentForm
+export default ArticleComments

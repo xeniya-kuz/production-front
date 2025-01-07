@@ -1,5 +1,5 @@
 import { Page } from '3widgets/Page'
-import { AddArticleCommentForm } from '4features/AddArticleCommentForm'
+import { ArticleComments } from '4features/ArticleComments'
 import { ArticleRecommendations } from '4features/ArticleRecommendations'
 import { ArticleDetails } from '5entities/Article'
 import { classNames } from '6shared/lib/classNames/classNames'
@@ -15,7 +15,7 @@ interface ArticleDetailsPageProps {
 }
 
 const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element => {
-  const { t } = useTranslation(['comments', 'buttons', 'articles'])
+  const { t } = useTranslation()
   const { articleId } = useParams<{ articleId: string }>()
 
   if (articleId === undefined) {
@@ -32,7 +32,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element
               <ArticleDetailsPageHeader/>
               <ArticleDetails articleId={articleId}/>
               <ArticleRecommendations/>
-              <AddArticleCommentForm articleId={articleId}/>
+              <ArticleComments articleId={articleId}/>
           </VStack>
       </Page>
   )

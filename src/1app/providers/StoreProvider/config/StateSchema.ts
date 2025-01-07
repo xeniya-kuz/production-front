@@ -1,7 +1,7 @@
 import { type ArticlesPageSchema } from '2pages/ArticlesPage'
 import { type ProfileSchema } from '2pages/ProfilePage'
 import { type PageSchema } from '3widgets/Page'
-import { type ArticleCommentsSchema } from '4features/AddArticleCommentForm'
+import { type ArticleCommentsSchema } from '4features/ArticleComments'
 import { type ArticlesPageFiltersSchema } from '4features/ArticlesPageFilters'
 import { type LoginSchema } from '4features/AuthByUsername'
 import { type ArticleDetailsSchema } from '5entities/Article'

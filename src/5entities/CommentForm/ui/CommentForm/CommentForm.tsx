@@ -21,7 +21,7 @@ const initialReducer: ReducerList = {
   commentForm: commentFormReducer
 }
 
-const CommentForm = memo(function AddArticleCommentForm
+const CommentForm = memo(function ArticleComments
 ({ className, onSend }: AddArticleCommentFormProps): JSX.Element {
   const dispatch = useAppDispatch()
   const { t } = useTranslation('comments')

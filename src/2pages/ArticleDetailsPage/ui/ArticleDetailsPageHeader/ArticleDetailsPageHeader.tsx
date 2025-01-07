@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { selectArticleDetails } from '5entities/Article'
 import { HStack } from '6shared/ui/Stack'
 import { useSelector } from 'react-redux'
-import { selectIsArticleAuthor } from '4features/AddArticleCommentForm'
+import { selectIsArticleAuthor } from '4features/ArticleComments'
 
 interface ArticleDetailsPageHeaderProps {
   className?: string
