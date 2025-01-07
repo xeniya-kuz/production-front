@@ -51,7 +51,7 @@ export const ArticleDetails = memo(
 
     return (
         <DynamicModuleLoader reducers={initialReducer}>
-            <VStack gap='16' className={classNames(styles.articleDetails, [className])}>
+            <VStack gap='16' max className={classNames(styles.articleDetails, [className])}>
                 {content}
             </VStack>
         </DynamicModuleLoader>

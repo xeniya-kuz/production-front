@@ -11,14 +11,15 @@ interface ListsProps {
   className?: string
   articles: Article[]
   onLoadNextArticles?: () => void
-  Header: () => JSX.Element
+  Header: () => JSX.Element | null
   target?: HTMLAttributeAnchorTarget
   selectedArticleId: number
   isLoading?: boolean
+  useWindowScroll?: boolean
 }
 
 export const Lists = memo(function Lists
-({ className, articles, onLoadNextArticles, Header, target, selectedArticleId, isLoading }: ListsProps): JSX.Element {
+({ className, articles, onLoadNextArticles, Header, target, selectedArticleId, isLoading, useWindowScroll = true }: ListsProps): JSX.Element {
   const renderArticle = (index: number, article: Article): JSX.Element => <ListView article={article} target={target} index={index} className={styles.list}/>
 
   const components = { Header, Footer: () => <Footer isLoading={isLoading} /> }
@@ -31,6 +32,7 @@ export const Lists = memo(function Lists
           initialTopMostItemIndex={selectedArticleId}
           components={components}
           className={classNames(undefined, [className])}
+          useWindowScroll={useWindowScroll}
       />
 
   )

@@ -12,14 +12,15 @@ interface TilesProps {
   className?: string
   articles: Article[]
   onLoadNextArticles?: () => void
-  Header: () => JSX.Element
+  Header: () => JSX.Element | null
   target?: HTMLAttributeAnchorTarget
   selectedArticleId: number
   isLoading?: boolean
+  useWindowScroll?: boolean
 }
 
 export const Tiles = memo(function Tiles
-({ className, articles, Header, onLoadNextArticles, target, selectedArticleId, isLoading }: TilesProps): JSX.Element {
+({ className, articles, Header, onLoadNextArticles, target, selectedArticleId, isLoading, useWindowScroll = true }: TilesProps): JSX.Element {
   const virtuosoGridRef = useRef<VirtuosoGridHandle>(null)
 
   const timeout = useCallback(() => {
@@ -72,6 +73,7 @@ export const Tiles = memo(function Tiles
                 enter: (velocity) => Math.abs(velocity) > 200,
                 exit: (velocity) => Math.abs(velocity) < 30
               }}
+              useWindowScroll={useWindowScroll}
        />
       </div>
   )

@@ -5,6 +5,7 @@ import { type ThunkExtraArg, type StateSchema } from './StateSchema'
 import { createReducerManager } from './reducerManager'
 import { $api } from '6shared/api/api'
 import { pageReducer } from '3widgets/Page'
+import { rtkApi } from '6shared/api/rtkApi'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function createReduxStore (
@@ -14,7 +15,8 @@ export function createReduxStore (
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     user: userReducer,
-    page: pageReducer
+    page: pageReducer,
+    [rtkApi.reducerPath]: rtkApi.reducer
   }
 
   const reducerManager = createReducerManager(rootReducers)
@@ -34,7 +36,7 @@ export function createReduxStore (
         thunk: {
           extraArgument: extraArg
         }
-      })
+      }).concat(rtkApi.middleware)
 
   })
 

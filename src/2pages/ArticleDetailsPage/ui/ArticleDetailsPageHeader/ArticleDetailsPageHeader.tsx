@@ -4,10 +4,10 @@ import { Button } from '6shared/ui/Button/Button'
 import { routePaths } from '6shared/config/routeConfig/routeConfig'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
-import { selectIsArticleAuthor } from '../../model/selectors/comments/article/article'
 import { selectArticleDetails } from '5entities/Article'
 import { HStack } from '6shared/ui/Stack'
+import { useSelector } from 'react-redux'
+import { selectIsArticleAuthor } from '4features/AddArticleCommentForm'
 
 interface ArticleDetailsPageHeaderProps {
   className?: string

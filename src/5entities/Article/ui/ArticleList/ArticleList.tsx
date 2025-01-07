@@ -16,14 +16,16 @@ interface ArticleListProps {
   target?: HTMLAttributeAnchorTarget
   onLoadNextArticles?: () => void
   view: ArticleView
+  withHeader?: boolean
+  useWindowScroll?: boolean
 }
 
 export const ArticleList = memo(function ArticleList
-({ className, articles, isLoading, target, onLoadNextArticles, view }: ArticleListProps): JSX.Element {
+({ className, articles, isLoading, target, onLoadNextArticles, view, withHeader = true, useWindowScroll = false }: ArticleListProps): JSX.Element {
   const { t } = useTranslation('articles')
   const [selectedArticleId, setSelectedArticleId] = useState(0)
 
-  const Header = (): JSX.Element => <ArticlesPageFilters className={styles.header}/>
+  const Header = (): JSX.Element | null => withHeader ? <ArticlesPageFilters className={styles.header}/> : null
 
   useEffect(() => {
     const articleListIndex = localStorage.getItem(ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY) ?? 0
@@ -42,8 +44,8 @@ export const ArticleList = memo(function ArticleList
   return (
       <div className={classNames(styles.articleList, [className])}>
           {view === ArticleView.LIST
-            ? <Lists Header={Header} articles={articles} onLoadNextArticles={onLoadNextArticles} selectedArticleId={selectedArticleId} isLoading={isLoading} target={target}/>
-            : <Tiles Header={Header} articles={articles} onLoadNextArticles={onLoadNextArticles} selectedArticleId={selectedArticleId} isLoading={isLoading} target={target}/>
+            ? <Lists Header={Header} articles={articles} onLoadNextArticles={onLoadNextArticles} selectedArticleId={selectedArticleId} isLoading={isLoading} target={target} useWindowScroll={useWindowScroll}/>
+            : <Tiles Header={Header} articles={articles} onLoadNextArticles={onLoadNextArticles} selectedArticleId={selectedArticleId} isLoading={isLoading} target={target} useWindowScroll={useWindowScroll}/>
          }
       </div>
   )

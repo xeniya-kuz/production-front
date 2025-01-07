@@ -1,13 +1,13 @@
-import { type ArticleDetailsCommentsSchema } from '2pages/ArticleDetailsPage'
 import { type ArticlesPageSchema } from '2pages/ArticlesPage'
 import { type ProfileSchema } from '2pages/ProfilePage'
 import { type PageSchema } from '3widgets/Page'
-import { type AddCommentFormSchema } from '4features/AddCommentForm'
-import { type ArticleRecommendationsSchema } from '4features/ArticleRecommendations'
-import { type ArticlesPageFiltersSchema } from '4features/ArticlesPageFilters/model/types/articlesPageFiltersSchema'
+import { type ArticleCommentsSchema } from '4features/AddArticleCommentForm'
+import { type ArticlesPageFiltersSchema } from '4features/ArticlesPageFilters'
 import { type LoginSchema } from '4features/AuthByUsername'
 import { type ArticleDetailsSchema } from '5entities/Article'
+import { type CommentFormSchema } from '5entities/CommentForm'
 import { type UserSchema } from '5entities/User'
+import { type rtkApi } from '6shared/api/rtkApi'
 import { type AnyAction, type CombinedState, type EnhancedStore, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit'
 import { type ThunkMiddlewareFor } from '@reduxjs/toolkit/dist/getDefaultMiddleware'
 import { type AxiosInstance } from 'axios'
@@ -16,16 +16,16 @@ import { type AxiosInstance } from 'axios'
 export interface StateSchema {
   user: UserSchema
   page: PageSchema
+  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
   // Асинхронные редьюсеры
   loginForm?: LoginSchema
   profile?: ProfileSchema
   articleDetails?: ArticleDetailsSchema
-  articleDetailsComments?: ArticleDetailsCommentsSchema
-  addCommentForm?: AddCommentFormSchema
+  articleComments?: ArticleCommentsSchema
+  commentForm?: CommentFormSchema
   articlesPage?: ArticlesPageSchema
   articlesPageFilters?: ArticlesPageFiltersSchema
-  articleRecommendations?: ArticleRecommendationsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema
