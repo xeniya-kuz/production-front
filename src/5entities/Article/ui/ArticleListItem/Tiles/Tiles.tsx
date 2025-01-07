@@ -16,11 +16,12 @@ interface TilesProps {
   target?: HTMLAttributeAnchorTarget
   selectedArticleId: number
   isLoading?: boolean
-  useWindowScroll?: boolean
+  virtualized?: boolean
 }
 
 export const Tiles = memo(function Tiles
-({ className, articles, Header, onLoadNextArticles, target, selectedArticleId, isLoading, useWindowScroll = true }: TilesProps): JSX.Element {
+(props: TilesProps): JSX.Element {
+  const { className, articles, Header, onLoadNextArticles, target, selectedArticleId, isLoading, virtualized } = props
   const virtuosoGridRef = useRef<VirtuosoGridHandle>(null)
 
   const timeout = useCallback(() => {
@@ -56,25 +57,35 @@ export const Tiles = memo(function Tiles
     )
   }
 
+  if (virtualized === true) {
+    return (
+        <div className={classNames(styles.tilesContainer, [className])}>
+            <VirtuosoGrid
+                style={{ width: '100%' }}
+                ref={virtuosoGridRef}
+                totalCount={articles.length}
+              // skeleton подставляется на каждый элемент
+                components={{ Header, ScrollSeekPlaceholder: Skeleton }}
+              // эта строчка вызывает Warning: Can't perform a React state update on an unmounted component
+                endReached={onLoadNextArticles}
+                data={articles}
+                itemContent={renderArticle}
+                listClassName={styles.tiles}
+                scrollSeekConfiguration={{
+                  enter: (velocity) => Math.abs(velocity) > 200,
+                  exit: (velocity) => Math.abs(velocity) < 30
+                }}
+       />
+        </div>
+    )
+  }
+
   return (
       <div className={classNames(styles.tilesContainer, [className])}>
-          <VirtuosoGrid
-              style={{ width: '100%' }}
-              ref={virtuosoGridRef}
-              totalCount={articles.length}
-              // skeleton подставляется на каждый элемент
-              components={{ Header, ScrollSeekPlaceholder: Skeleton }}
-              // эта строчка вызывает Warning: Can't perform a React state update on an unmounted component
-              endReached={onLoadNextArticles}
-              data={articles}
-              itemContent={renderArticle}
-              listClassName={styles.tiles}
-              scrollSeekConfiguration={{
-                enter: (velocity) => Math.abs(velocity) > 200,
-                exit: (velocity) => Math.abs(velocity) < 30
-              }}
-              useWindowScroll={useWindowScroll}
-       />
+          {Header !== undefined && <Header/>}
+          <div className={styles.tiles}>
+              {articles.map((article, index) => renderArticle(index, article))}
+          </div>
       </div>
   )
 })

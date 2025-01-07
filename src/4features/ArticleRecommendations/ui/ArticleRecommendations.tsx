@@ -12,9 +12,13 @@ interface ArticleRecommendationsProps {
 }
 
 export const ArticleRecommendations = memo(function ArticleRecommendations
-({ className }: ArticleRecommendationsProps): JSX.Element {
+({ className }: ArticleRecommendationsProps): JSX.Element | null {
   const { t } = useTranslation('articles')
   const { isLoading, error, data: recommendations } = useArticleRecommendations(3)
+
+  if (recommendations === undefined) {
+    return null
+  }
 
   return (
       <VStack gap='8' max className={classNames(styles.articleRecommendations, [className])}>
@@ -25,7 +29,7 @@ export const ArticleRecommendations = memo(function ArticleRecommendations
               className={styles.list}
               target='_blank'
               view={ArticleView.TILE}
-              useWindowScroll
+              virtualized={false}
               />
       </VStack>
   )

@@ -10,61 +10,61 @@
 	height: 100%;
 }
 
+.date {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: none;
+}
+
+.imageWrapper {
+	position: relative;
+	overflow: hidden;
+	width: 200px;
+	height: 200px;
+}
+
+.img {
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+	transition: 0.5s;
+}
+
+.infoWrapper {
+	display: flex;
+	align-items: center;
+	margin-top: 8px;
+}
+
+.types p {
+	overflow: hidden;
+	width: 115px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.views {
+	margin-right: 8px;
+	margin-left: auto;
+}
+
+.title {
+	margin-top: 8px;
+}
+
+.title p {
+	overflow: hidden;
+	width: 200px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
 .tile {
 	cursor: pointer;
 	display: block;
 	width: 230px;
 	transition: 0.2s;
-
-	.date {
-		position: absolute;
-		top: 0;
-		right: 0;
-		display: none;
-	}
-
-	.imageWrapper {
-		position: relative;
-		overflow: hidden;
-		width: 200px;
-		height: 200px;
-	}
-
-	.img {
-		width: 200px;
-		height: 200px;
-		object-fit: cover;
-		transition: 0.5s;
-	}
-
-	.infoWrapper {
-		display: flex;
-		align-items: center;
-		margin-top: 8px;
-	}
-
-	.types p {
-		overflow: hidden;
-		width: 115px;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
-
-	.views {
-		margin-right: 8px;
-		margin-left: auto;
-	}
-
-	.title {
-		margin-top: 8px;
-	}
-
-	.title p {
-		overflow: hidden;
-		width: 200px;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
 
 	&:hover {
 		transform: scale(1.05);

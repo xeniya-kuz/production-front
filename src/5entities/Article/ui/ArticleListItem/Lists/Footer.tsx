@@ -14,7 +14,8 @@ export const Footer = memo(function Footer ({ className, isLoading }: FooterProp
     return (
         <>
             {new Array(3).fill(0).map((_, index) => <div className={classNames(styles.list, [className])} key={index}>
-                <Card className={styles.card}><SkeletonListView />
+                <Card className={styles.card}>
+                    <SkeletonListView />
                 </Card>
             </div>)}
         </>

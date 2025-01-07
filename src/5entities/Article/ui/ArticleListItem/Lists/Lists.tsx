@@ -15,16 +15,18 @@ interface ListsProps {
   target?: HTMLAttributeAnchorTarget
   selectedArticleId: number
   isLoading?: boolean
-  useWindowScroll?: boolean
+  virtualized?: boolean
 }
 
 export const Lists = memo(function Lists
-({ className, articles, onLoadNextArticles, Header, target, selectedArticleId, isLoading, useWindowScroll = true }: ListsProps): JSX.Element {
+(props: ListsProps): JSX.Element {
+  const { className, articles, onLoadNextArticles, Header, target, selectedArticleId, isLoading, virtualized } = props
+
   const renderArticle = (index: number, article: Article): JSX.Element => <ListView article={article} target={target} index={index} className={styles.list}/>
 
   const components = { Header, Footer: () => <Footer isLoading={isLoading} /> }
 
-  return (
+  if (virtualized === true) {
       <Virtuoso
           data={articles}
           itemContent={renderArticle}
@@ -32,8 +34,22 @@ export const Lists = memo(function Lists
           initialTopMostItemIndex={selectedArticleId}
           components={components}
           className={classNames(undefined, [className])}
-          useWindowScroll={useWindowScroll}
-      />
+/>
+  }
 
+  if (isLoading === true) {
+    return (
+        <>
+            {Header !== undefined && <Header/>}
+            <Footer/>
+        </>
+    )
+  }
+
+  return (
+      <div className={classNames(styles.tilesContainer, [className])}>
+          {Header !== undefined && <Header/>}
+          {articles.map((article, index) => renderArticle(index, article))}
+      </div>
   )
 })

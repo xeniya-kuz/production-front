@@ -15,12 +15,13 @@ interface ArticleListProps {
   target?: HTMLAttributeAnchorTarget
   onLoadNextArticles?: () => void
   view: ArticleView
-  useWindowScroll?: boolean
   Header?: () => JSX.Element
+  virtualized?: boolean
 }
 
 export const ArticleList = memo(function ArticleList
-({ className, articles, isLoading, target, onLoadNextArticles, view, Header, useWindowScroll = false }: ArticleListProps): JSX.Element {
+(props: ArticleListProps): JSX.Element {
+  const { className, articles, isLoading, target, onLoadNextArticles, view, Header, virtualized = true } = props
   const { t } = useTranslation('articles')
   const [selectedArticleId, setSelectedArticleId] = useState(0)
 
@@ -41,8 +42,8 @@ export const ArticleList = memo(function ArticleList
   return (
       <div className={classNames(styles.articleList, [className])}>
           {view === ArticleView.LIST
-            ? <Lists Header={Header} articles={articles} onLoadNextArticles={onLoadNextArticles} selectedArticleId={selectedArticleId} isLoading={isLoading} target={target} useWindowScroll={useWindowScroll}/>
-            : <Tiles Header={Header} articles={articles} onLoadNextArticles={onLoadNextArticles} selectedArticleId={selectedArticleId} isLoading={isLoading} target={target} useWindowScroll={useWindowScroll}/>
+            ? <Lists Header={Header} articles={articles} onLoadNextArticles={onLoadNextArticles} selectedArticleId={selectedArticleId} isLoading={isLoading} target={target} virtualized={virtualized}/>
+            : <Tiles Header={Header} articles={articles} onLoadNextArticles={onLoadNextArticles} selectedArticleId={selectedArticleId} isLoading={isLoading} target={target} virtualized={virtualized}/>
          }
       </div>
   )
