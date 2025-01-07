@@ -11,7 +11,7 @@ interface ListsProps {
   className?: string
   articles: Article[]
   onLoadNextArticles?: () => void
-  Header: () => JSX.Element | null
+  Header?: () => JSX.Element
   target?: HTMLAttributeAnchorTarget
   selectedArticleId: number
   isLoading?: boolean

@@ -1,4 +1,3 @@
-import { ArticlesPageFilters } from '4features/ArticlesPageFilters'
 import { ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY, ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY } from '6shared/const/localstorage'
 import { classNames } from '6shared/lib/classNames/classNames'
 import { Text } from '6shared/ui/Text/Text'
@@ -16,16 +15,14 @@ interface ArticleListProps {
   target?: HTMLAttributeAnchorTarget
   onLoadNextArticles?: () => void
   view: ArticleView
-  withHeader?: boolean
   useWindowScroll?: boolean
+  Header?: () => JSX.Element
 }
 
 export const ArticleList = memo(function ArticleList
-({ className, articles, isLoading, target, onLoadNextArticles, view, withHeader = true, useWindowScroll = false }: ArticleListProps): JSX.Element {
+({ className, articles, isLoading, target, onLoadNextArticles, view, Header, useWindowScroll = false }: ArticleListProps): JSX.Element {
   const { t } = useTranslation('articles')
   const [selectedArticleId, setSelectedArticleId] = useState(0)
-
-  const Header = (): JSX.Element | null => withHeader ? <ArticlesPageFilters className={styles.header}/> : null
 
   useEffect(() => {
     const articleListIndex = localStorage.getItem(ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY) ?? 0

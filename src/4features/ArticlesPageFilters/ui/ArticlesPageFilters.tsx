@@ -1,28 +1,27 @@
-import { classNames } from '6shared/lib/classNames/classNames'
-import styles from './ArticlesPageFilters.module.scss'
-import { memo, useCallback, useMemo } from 'react'
+import { ArticleSortDropdown } from '4features/ArticleSortDropdown'
 import { ViewSwitcher } from '4features/ViewSwitcher'
-import { useSelector } from 'react-redux'
-import { type ArticleSortField, type ArticleView, ArticleType } from '5entities/Article'
+import { type ArticleSortField, ArticleType, type ArticleView } from '5entities/Article'
+import { classNames } from '6shared/lib/classNames/classNames'
+import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch, useDebounce, useInitialEffect } from '6shared/lib/hooks'
-import { useTranslation } from 'react-i18next'
+import { type SortOrder } from '6shared/types/order'
 import { Card } from '6shared/ui/Card/Card'
 import { Input } from '6shared/ui/Input/Input'
-import { ArticleSortDropdown } from '4features/ArticleSortDropdown'
 import { type TabItem, Tabs } from '6shared/ui/Tabs/Tabs'
-import { type SortOrder } from '6shared/types/order'
-import { selectArticlesView } from '../model/selectors/selectArticlesView/selectArticlesView'
-import { selectArticlesSort } from '../model/selectors/selectArticlesSort/selectArticlesSort'
-import { selectArticlesSearch } from '../model/selectors/selectArticlesSearch/selectArticlesSearch'
+import { memo, useCallback, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
 import { selectArticlesOrder } from '../model/selectors/selectArticlesOrder/selectArticlesOrder'
+import { selectArticlesSearch } from '../model/selectors/selectArticlesSearch/selectArticlesSearch'
+import { selectArticlesSort } from '../model/selectors/selectArticlesSort/selectArticlesSort'
 import { selectArticlesType } from '../model/selectors/selectArticlesType/selectArticlesType'
+import { selectArticlesView } from '../model/selectors/selectArticlesView/selectArticlesView'
 import { articlesPageFiltersActions, articlesPageFiltersReducer } from '../model/slice/articlesPageFiltersSlice'
-import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { articlesPageActions } from '2pages/ArticlesPage/model/slice/articlesPageSlice'
-import { fetchArticlesList } from '2pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList'
+import styles from './ArticlesPageFilters.module.scss'
 
 interface ArticlesPageFiltersProps {
   className?: string
+  fetchData: () => void
 }
 
 const initialReducer: ReducerList = {
@@ -30,7 +29,7 @@ const initialReducer: ReducerList = {
 }
 
 export const ArticlesPageFilters = memo(function ArticlesPageFilters
-({ className }: ArticlesPageFiltersProps): JSX.Element {
+({ className, fetchData }: ArticlesPageFiltersProps): JSX.Element {
   const view = useSelector(selectArticlesView)
   const dispatch = useAppDispatch()
   const { t } = useTranslation(['filters', 'articles'])
@@ -49,11 +48,6 @@ export const ArticlesPageFilters = memo(function ArticlesPageFilters
   useInitialEffect(() => {
     void dispatch(articlesPageFiltersActions.initState())
   })
-
-  const fetchData = useCallback((): void => {
-    dispatch(articlesPageActions.setPage(1))
-    void dispatch(fetchArticlesList({ replace: true }))
-  }, [dispatch])
 
   const debouncedFetchData = useDebounce(fetchData, 500)
 

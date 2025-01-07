@@ -54,9 +54,9 @@ const ProfilePage = memo(function ProfilePage ({ className }: ProfilePageProps):
               <VStack gap='16' max>
                   <ProfilePageHeader/>
                   {validateErrors?.length !== undefined &&
-               validateErrors?.map(err =>
-                   <Text key={err} theme={TextTheme.ERROR} text={t(validateProfileErrorsTranslations[err])}/>
-               )}
+                      validateErrors?.map(err =>
+                          <Text key={err} theme={TextTheme.ERROR} text={t(validateProfileErrorsTranslations[err])}/>
+                      )}
                   <ProfileCard
                       profile={editingProfile}
                       isLoading={isLoading}

@@ -12,7 +12,7 @@ interface TilesProps {
   className?: string
   articles: Article[]
   onLoadNextArticles?: () => void
-  Header: () => JSX.Element | null
+  Header?: () => JSX.Element
   target?: HTMLAttributeAnchorTarget
   selectedArticleId: number
   isLoading?: boolean
@@ -48,7 +48,7 @@ export const Tiles = memo(function Tiles
   if (isLoading === true) {
     return (
         <>
-            <Header/>
+            {Header !== undefined && <Header/>}
             <div className={classNames(styles.tiles, [className])}>
                 {new Array(9).fill(0).map((_, index) => <Skeleton key={index}/>)}
             </div>

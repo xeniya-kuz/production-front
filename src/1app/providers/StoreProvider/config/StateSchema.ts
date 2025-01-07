@@ -1,7 +1,7 @@
-import { type ArticlesPageSchema } from '2pages/ArticlesPage'
 import { type ProfileSchema } from '2pages/ProfilePage'
 import { type PageSchema } from '3widgets/Page'
 import { type ArticleCommentsSchema } from '4features/ArticleComments'
+import { type ArticleInfiniteListSchema } from '4features/ArticleInfiniteList/model/types/articleInfiniteListSchema'
 import { type ArticlesPageFiltersSchema } from '4features/ArticlesPageFilters'
 import { type LoginSchema } from '4features/AuthByUsername'
 import { type ArticleDetailsSchema } from '5entities/Article'
@@ -24,7 +24,7 @@ export interface StateSchema {
   articleDetails?: ArticleDetailsSchema
   articleComments?: ArticleCommentsSchema
   commentForm?: CommentFormSchema
-  articlesPage?: ArticlesPageSchema
+  articleInfiniteList?: ArticleInfiniteListSchema
   articlesPageFilters?: ArticlesPageFiltersSchema
 }
 
