@@ -1,18 +1,11 @@
-import { classNames } from '6shared/lib/classNames/classNames'
-import styles from './ArticleRecommendations.module.scss'
-import { memo } from 'react'
-import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { articleRecommendationsReducer, selectArticleRecommendations } from '../model/slice/articleRecommendationsSlice'
-import { useSelector } from 'react-redux'
-import { selectRecommendationsIsLoading } from '../model/selectors/selectRecommendationsIsLoading/selectRecommendationsIsLoading'
-import { selectRecommendationsError } from '../model/selectors/selectRecommendationsError/selectRecommendationsError'
 import { ArticleList, ArticleView } from '5entities/Article'
-import { useAppDispatch, useInitialEffect } from '6shared/lib/hooks'
-import { fetchArticlesRecommendations } from '../model/services/fetchArticlesRecommendations/fetchArticlesRecommendations'
-
-const initialReducer: ReducerList = {
-  articleRecommendations: articleRecommendationsReducer
-}
+import { classNames } from '6shared/lib/classNames/classNames'
+import { VStack } from '6shared/ui/Stack'
+import { Text, TextSize } from '6shared/ui/Text/Text'
+import { memo } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useArticleRecommendations } from '../api/articleRecommendationsApi'
+import styles from './ArticleRecommendations.module.scss'
 
 interface ArticleRecommendationsProps {
   className?: string
@@ -20,26 +13,20 @@ interface ArticleRecommendationsProps {
 
 export const ArticleRecommendations = memo(function ArticleRecommendations
 ({ className }: ArticleRecommendationsProps): JSX.Element {
-  const dispatch = useAppDispatch()
-  const isLoading = useSelector(selectRecommendationsIsLoading)
-  const error = useSelector(selectRecommendationsError)
-  const recommendations = useSelector(selectArticleRecommendations.selectAll)
-
-  useInitialEffect(() => {
-    void dispatch(fetchArticlesRecommendations())
-  })
+  const { t } = useTranslation('articles')
+  const { isLoading, error, data: recommendations } = useArticleRecommendations(3)
 
   return (
-      <DynamicModuleLoader reducers={initialReducer}>
-          <div className={classNames(styles.articleRecommendations, [className])}>
-              <ArticleList
-                  articles={recommendations}
-                  isLoading={isLoading}
-                  className={styles.list}
-                  target='_blank'
-                  view={ArticleView.TILE}
+      <VStack gap='8' max className={classNames(styles.articleRecommendations, [className])}>
+          <Text title={t('recommendations')} size={TextSize.S}/>
+          <ArticleList
+              articles={recommendations}
+              isLoading={isLoading}
+              className={styles.list}
+              target='_blank'
+              view={ArticleView.TILE}
+              useWindowScroll
               />
-          </div>
-      </DynamicModuleLoader>
+      </VStack>
   )
 })

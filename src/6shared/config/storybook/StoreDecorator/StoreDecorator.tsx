@@ -1,10 +1,9 @@
 import { StoreProvider, type StateSchema } from '1app/providers/StoreProvider'
-import { articlesPageReducer } from '2pages/ArticlesPage'
-import { profileReducer } from '2pages/ProfilePage'
-import { articleCommentsReducer } from '4features/AddArticleCommentForm'
-import { articleRecommendationsReducer } from '4features/ArticleRecommendations'
+import { articleCommentsReducer } from '4features/ArticleComments'
+import { articleInfiniteListReducer } from '4features/ArticleInfiniteList'
 import { articlesPageFiltersReducer } from '4features/ArticlesPageFilters'
 import { loginReducer } from '4features/AuthByUsername/model/slice/loginSlice'
+import { profileReducer } from '4features/EditableProfileCard'
 import { articleDetailsReducer } from '5entities/Article'
 import { commentFormReducer } from '5entities/CommentForm'
 import { type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
@@ -16,9 +15,8 @@ const defaultAsyncReducers: ReducerList = {
   articleDetails: articleDetailsReducer,
   commentForm: commentFormReducer,
   articleComments: articleCommentsReducer,
-  articlesPage: articlesPageReducer,
-  articlesPageFilters: articlesPageFiltersReducer,
-  articleRecommendations: articleRecommendationsReducer
+  articleInfiniteList: articleInfiniteListReducer,
+  articlesPageFilters: articlesPageFiltersReducer
 }
 
 export const StoreDecorator = (state: DeepPartial<StateSchema>, asyncReducers?: ReducerList) =>
