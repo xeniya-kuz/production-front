@@ -4,32 +4,64 @@
 
 .primaryFill {
 	fill: var(--primary-color);
+
+	&:hover {
+		fill: var(--secondary-color);
+	}
 }
 
 .secondaryFill {
 	fill: var(--secondary-color);
+
+	&:hover {
+		fill: var(--primary-color);
+	}
 }
 
 .invertedPrimaryFill {
 	fill: var(--inverted-primary-color);
+
+	&:hover {
+		fill: var(--inverted-secondary-color);
+	}
 }
 
 .invertedSecondaryFill {
 	fill: var(--inverted-secondary-color);
+
+	&:hover {
+		fill: var(--inverted-primary-color);
+	}
 }
 
 .primaryStroke {
 	stroke: var(--primary-color);
+
+	&:hover {
+		stroke: var(--secondary-color);
+	}
 }
 
 .secondaryStroke {
 	stroke: var(--secondary-color);
+
+	&:hover {
+		stroke: var(--primary-color);
+	}
 }
 
 .invertedPrimaryStroke {
 	stroke: var(--inverted-primary-color);
+
+	&:hover {
+		stroke: var(--inverted-secondary-color);
+	}
 }
 
 .invertedSecondaryStroke {
 	stroke: var(--inverted-secondary-color);
+
+	&:hover {
+		stroke: var(--inverted-primary-color);
+	}
 }

@@ -26,6 +26,8 @@
 }
 
 .collapseBtn {
+	cursor: pointer;
+
 	position: absolute;
 	z-index: 1;
 	right: calc(var(--font-line-l) * -1);

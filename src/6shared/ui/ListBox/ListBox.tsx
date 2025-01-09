@@ -33,7 +33,6 @@ export const ListBox = <T extends string> (props: ListBoxProps<T>): JSX.Element 
   }
 
   const mods: Mods = {
-    [styles.disabled]: disabled,
     [styles.topLeft]: direction === 'top left',
     [styles.topRight]: direction === 'top right',
     [styles.bottomLeft]: direction === 'bottom left',
@@ -44,7 +43,7 @@ export const ListBox = <T extends string> (props: ListBoxProps<T>): JSX.Element 
 
   return (
       <HStack className={classNames(className, [], mods)}>
-          {label !== undefined && <span className={styles.label}>{`${label}>`}</span>}
+          {label !== undefined && <span className={classNames(styles.label, [], { [styles.disabled]: disabled })}>{`${label}>`}</span>}
           <HListbox
               as='div'
               value={value}
@@ -53,7 +52,7 @@ export const ListBox = <T extends string> (props: ListBoxProps<T>): JSX.Element 
               disabled={disabled}
           >
               <HListbox.Button as={'div'} className={styles.trigger}>
-                  <Button>{selectedOption?.label}</Button>
+                  <Button disabled={disabled}>{selectedOption?.label}</Button>
               </HListbox.Button>
               <HListbox.Options className={classNames(styles.options, [], mods)}>
                   {options.map((option) => (

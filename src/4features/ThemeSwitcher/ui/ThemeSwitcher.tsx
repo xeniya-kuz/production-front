@@ -5,6 +5,7 @@ import { Button, ButtonTheme } from '6shared/ui/Button/Button'
 import { Icon, IconColors } from '6shared/ui/Icon/Icon'
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
+import styles from './ThemeSwitcher.module.scss'
 
 interface ThemeSwitcherProps {
   className?: string
@@ -17,7 +18,7 @@ export const ThemeSwitcher = memo(
 
     return (
         <Button
-            className={classNames('', [className])}
+            className={classNames(styles.themeSwitcher, [className])}
             onClick={toggleTheme}
             theme={ButtonTheme.CLEAR}
             title={t('change-theme')}
