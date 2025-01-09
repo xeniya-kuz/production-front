@@ -29,7 +29,7 @@
 	cursor: pointer;
 
 	position: absolute;
-	z-index: 1;
+	z-index: var(--collaps-btn-z-index);
 	right: calc(var(--font-line-l) * -1);
 	bottom: var(--font-line-l);
 }

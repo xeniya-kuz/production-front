@@ -3,8 +3,8 @@ import { type LoginSchema } from '../types/loginSchema'
 import { loginByUsername } from '../services/loginByUsername/loginByUsername'
 
 const initialState: LoginSchema = {
-  username: '',
-  password: '',
+  username: 'admin',
+  password: '123',
   isLoading: false
 }
 

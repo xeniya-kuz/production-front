@@ -3,6 +3,7 @@ import { type AppRoutesProps, routeConfig } from '6shared/config/routeConfig/rou
 import { memo, Suspense, useCallback } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { RequireAuth } from './RequireAuth'
+import { RequirePermission } from './RequirePermission'
 
 const AppRouter = (): JSX.Element => {
   const renderWithWrapper = useCallback((route: AppRoutesProps) => {
@@ -12,7 +13,14 @@ const AppRouter = (): JSX.Element => {
         <Route
             key={route.path}
             path={route.path}
-            element={(route.isPrivate === true) ? <RequireAuth>{element}</RequireAuth> : element }
+            element={route.isPrivate === true
+              ? <RequireAuth>
+                  <RequirePermission roles={route.roles}>
+                      {element}
+                  </RequirePermission>
+              </RequireAuth>
+              : element
+            }
         />
     )
   }, [])

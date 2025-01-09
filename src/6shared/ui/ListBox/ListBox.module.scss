@@ -13,7 +13,7 @@
 
 .options {
 	position: absolute;
-	z-index: 10000;
+	z-index: var(--dropdown-z-index);
 
 	min-width: 100%;
 

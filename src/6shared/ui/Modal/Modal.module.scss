@@ -15,7 +15,7 @@
 }
 
 .overlay {
-	z-index: -1;
+	z-index: var(--overlay-z-index);
 
 	display: flex;
 	align-items: center;

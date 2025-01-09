@@ -1,5 +1,5 @@
 import { LoginModal } from '4features/AuthByUsername'
-import { selectUserAuthData, userActions } from '5entities/User'
+import { isUserAdmin, isUserManager, selectUserAuthData, userActions } from '5entities/User'
 import { classNames } from '6shared/lib/classNames/classNames'
 import { useAppDispatch } from '6shared/lib/hooks'
 import { Button, ButtonTheme } from '6shared/ui/Button/Button'
@@ -21,6 +21,9 @@ export const Navbar = memo(function Navbar ({ className }: NavbarProps): JSX.Ele
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const authData = useSelector(selectUserAuthData)
+  const isAdmin = useSelector(isUserAdmin)
+  const isManager = useSelector(isUserManager)
+  const isAdminPanelAvailabal = isAdmin || isManager
 
   const [isAuthModal, setIsAuthModal] = useState(false)
 
@@ -33,6 +36,12 @@ export const Navbar = memo(function Navbar ({ className }: NavbarProps): JSX.Ele
   }, [dispatch])
 
   const dropdownItems = [
+    ...(isAdminPanelAvailabal
+      ? [{
+          content: t('profile:admin-panel'),
+          href: `${routePaths['admin-panel']}`
+        }]
+      : []),
     {
       content: t('profile:profile'),
       href: `${routePaths.profile}/${authData?.id}`
@@ -57,11 +66,12 @@ export const Navbar = memo(function Navbar ({ className }: NavbarProps): JSX.Ele
             </AppLink>
             <Dropdown
                 className={styles.dropdown}
-                direction='top left'
-                trigger={<Avatar
-                    alt='avatar'
-                    size={30}
-                    src={authData.avatar}
+                direction='bottom left'
+                trigger={
+                    <Avatar
+                        alt='avatar'
+                        size={30}
+                        src={authData.avatar}
                   />
                 }
                 items={dropdownItems}

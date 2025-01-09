@@ -28,7 +28,7 @@
 
 .menu {
 	position: absolute;
-	z-index: 10000;
+	z-index: var(--dropdown-z-index);
 
 	display: flex;
 	flex-direction: column;
