@@ -10,7 +10,7 @@ describe('validateProfileData', () => {
   })
 
   test('no first name', async () => {
-    const result = validateProfileData({ ...profileMock, first: '' })
+    const result = validateProfileData({ ...profileMock, firstname: '' })
 
     expect(result).toEqual([ValidateProfileError.NAME])
   })

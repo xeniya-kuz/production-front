@@ -5,7 +5,7 @@ import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 
-export const ProfileErrors = memo(function Errors
+export const EditableProfileErrors = memo(function Errors
 (): JSX.Element {
   const { t } = useTranslation('alert')
   const validateErrors = useSelector(selectProfileValidateErrors)
@@ -14,7 +14,12 @@ export const ProfileErrors = memo(function Errors
       <>
           {validateErrors?.length !== undefined &&
               validateErrors?.map(err =>
-                  <Text key={err} theme={TextTheme.ERROR} text={t(validateProfileErrorsTranslations[err])}/>
+                  <Text
+                      key={err}
+                      theme={TextTheme.ERROR}
+                      text={t(validateProfileErrorsTranslations[err])}
+                      data-testid='editableProfileErrors'
+                  />
               )
             }
       </>

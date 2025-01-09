@@ -27,6 +27,7 @@ interface TextProps {
   theme?: TextTheme
   align?: TextAlign
   size?: TextSize
+  'data-testid'?: string
 }
 
 type HeaderTagType = 'h1' | 'h2' | 'h3'
@@ -44,7 +45,8 @@ export const Text = memo(function Text (props: TextProps): JSX.Element {
     text,
     theme = TextTheme.PRIMARY,
     align = TextAlign.LEFT,
-    size = TextSize.M
+    size = TextSize.M,
+    'data-testid': dataTestId
   } = props
 
   const additionalClassNames = [styles[theme], styles[align], styles[size]]
@@ -52,9 +54,9 @@ export const Text = memo(function Text (props: TextProps): JSX.Element {
   const HeaderTag = mapSizeToHeaderTag[size]
 
   return (
-      <div className={classNames(styles.text, [className, ...additionalClassNames])}>
-          {(title != null) && <HeaderTag className={styles.title}>{title}</HeaderTag>}
-          {(text != null) && <p className={styles.text}>{text}</p>}
+      <div className={classNames(styles.text, [className, ...additionalClassNames])} data-testid={dataTestId}>
+          {(title != null) && <HeaderTag data-testid={`${dataTestId}.Title`} className={styles.title}>{title}</HeaderTag>}
+          {(text != null) && <p data-testid={`${dataTestId}.Text`} className={styles.text}>{text}</p>}
       </div>
   )
 })

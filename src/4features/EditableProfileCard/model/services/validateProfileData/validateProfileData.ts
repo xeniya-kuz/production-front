@@ -8,10 +8,10 @@ export const validateProfileData = (profile?: Profile): ValidateProfileError[] =
     return [ValidateProfileError.NO_DATA]
   }
 
-  const { first, lastname, age, country } = profile
+  const { firstname, lastname, age, country } = profile
   const errors: ValidateProfileError[] = []
 
-  if (!first || !lastname) {
+  if (!firstname || !lastname) {
     errors.push(ValidateProfileError.NAME)
   }
 

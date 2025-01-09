@@ -1,6 +1,11 @@
 {
+  "age": "",
   "avatar": "avatar",
+  "city": "",
   "country": "",
   "currency": "",
-  "profile": "profile"
+  "first-name": "",
+  "last-name": "",
+  "profile": "profile",
+  "username": ""
 }

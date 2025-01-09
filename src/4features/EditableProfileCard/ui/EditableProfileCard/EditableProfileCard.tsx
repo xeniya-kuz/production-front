@@ -1,18 +1,18 @@
-import { memo, useCallback } from 'react'
 import { type Profile, ProfileCard } from '5entities/Profile'
-import { useAppDispatch, useInitialEffect } from '6shared/lib/hooks'
-import { useSelector } from 'react-redux'
 import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { profileActions, profileReducer } from '../../model/slice'
+import { useAppDispatch, useInitialEffect } from '6shared/lib/hooks'
+import { VStack } from '6shared/ui/Stack'
+import { memo, useCallback } from 'react'
+import { useSelector } from 'react-redux'
 import { selectEditedProfile, selectProfileError, selectProfileIsLoading, selectProfileReadonly } from '../../model/selectors'
 import { fetchProfileData } from '../../model/services'
-import { ProfileErrors } from '../Errors/ProfileErrors'
-import { VStack } from '6shared/ui/Stack'
+import { profileActions, profileReducer } from '../../model/slice'
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader'
+import { EditableProfileErrors } from '../EditableProfileErrors/EditableProfileErrors'
 
 interface EditableProfileCardProps {
   className?: string
-  profileId?: string
+  profileId: string | undefined
 }
 
 const initialReducer: ReducerList = {
@@ -41,7 +41,7 @@ export const EditableProfileCard = memo(function EditableProfileCard
       <DynamicModuleLoader reducers={initialReducer}>
           <VStack gap='16' max>
               <EditableProfileCardHeader/>
-              <ProfileErrors/>
+              <EditableProfileErrors/>
               <ProfileCard profile={editingProfile}
                   isLoading={isLoading}
                   error={error}
