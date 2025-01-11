@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { CountryDropdown } from './CountryDropdown'
-import { Country } from '../../model/types'
+import { Country } from '../../model/const/country'
 
 const meta = {
   title: 'entities/CountryDropdown',

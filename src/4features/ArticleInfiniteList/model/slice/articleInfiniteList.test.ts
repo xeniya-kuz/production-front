@@ -21,13 +21,13 @@ describe('articleInfiniteListReducer', () => {
   })
 
   // test('fetchArticlesList pending', async () => {
-  //   const state: DeepPartial<ArticlesPageSchema> = {
+  //   const state: DeepPartial<ArticleInfiniteListSchema> = {
   //     error: 'error',
   //     isLoading: false
   //   }
 
   //   expect(articleInfiniteListReducer(
-  //     state as ArticlesPageSchema,
+  //     state as ArticleInfiniteListSchema,
   //     fetchArticlesList.pending
   //   )).toEqual({
   //     error: undefined,

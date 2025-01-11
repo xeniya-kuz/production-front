@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Theme } from '1app/providers/ThemeProvider'
 import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { ArticleTextBlock } from './ArticleTextBlock'
-import { ArticleBlockType } from '../../model/types/article'
+import { ArticleBlockType } from '../../model/const/article'
 
 const meta = {
   title: 'entities/Article/ArticleTextBlock',

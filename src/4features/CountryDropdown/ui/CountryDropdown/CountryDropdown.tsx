@@ -2,7 +2,7 @@ import { classNames } from '6shared/lib/classNames/classNames'
 import { ListBox } from '6shared/ui/ListBox/ListBox'
 import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Country } from '../../model/types'
+import { Country } from '../../model/const/country'
 
 interface CountrySelectProps {
   className?: string
@@ -32,7 +32,7 @@ export const CountryDropdown = memo(
         <ListBox
             name={NAME}
             value={value}
-            label={t(NAME)}
+              label={t(NAME)}
             options={options}
             className={classNames(undefined, [className])}
             disabled={disabled}

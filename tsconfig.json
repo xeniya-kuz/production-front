@@ -39,6 +39,7 @@
     "strict": true,
     //чтобы импортировать .json файлы без ошибок
     "resolveJsonModule": true,
+    "isolatedModules": true,
   },
   "ts-node": { "compilerOptions": { "module": "CommonJS" }},
 	"include": [
@@ -54,5 +55,5 @@
     "public/locales/ru/index.ts",
     "public/locales/en/index.ts",
     "public/locales/index.ts"
-],
+, "src/5entities/Article/model/const/article"],
 }

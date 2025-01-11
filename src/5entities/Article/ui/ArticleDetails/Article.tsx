@@ -6,11 +6,12 @@ import CalendarIcon from '6shared/assets/icons/calendar-20-20.svg'
 import EyeIcon from '6shared/assets/icons/eye-20-20.svg'
 import { Icon } from '6shared/ui/Icon/Icon'
 import { Text, TextSize } from '6shared/ui/Text/Text'
-import { ArticleBlockType, type ArticleBlock, type Article as ArticleType } from '../../model/types/article'
+import {  type ArticleBlock, type Article as ArticleType } from '../../model/types/article'
 import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock'
 import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
 import { HStack, VStack } from '6shared/ui/Stack'
+import { ArticleBlockType } from '../../model/const/article'
 
 interface ArticleProps {
   className?: string

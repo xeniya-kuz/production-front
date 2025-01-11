@@ -2,7 +2,7 @@ import { classNames } from '6shared/lib/classNames/classNames'
 import { ListBox } from '6shared/ui/ListBox/ListBox'
 import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Currency } from '../../model/types'
+import { Currency } from '../../model/const/currency'
 
 interface CurrencySelectProps {
   className?: string

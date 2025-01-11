@@ -1,6 +1,6 @@
 import { type PageSchema } from '3widgets/Page'
 import { type ArticleCommentsSchema } from '4features/ArticleComments'
-import { type ArticleInfiniteListSchema } from '4features/ArticleInfiniteList/model/types/articleInfiniteListSchema'
+import { type ArticleInfiniteListSchema } from '4features/ArticleInfiniteList'
 import { type ArticlesPageFiltersSchema } from '4features/ArticlesPageFilters'
 import { type LoginSchema } from '4features/AuthByUsername'
 import { type ProfileSchema } from '4features/EditableProfileCard'

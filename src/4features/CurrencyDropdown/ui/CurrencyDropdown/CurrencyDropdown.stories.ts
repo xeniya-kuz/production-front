@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { CurrencyDropdown } from './CurrencyDropdown'
-import { Currency } from '../../model/types'
+import { Currency } from '../../model/const/currency'
 
 const meta = {
   title: 'entities/CurrencyDropdown',

@@ -3,10 +3,11 @@ import { classNames } from '6shared/lib/classNames/classNames'
 import { Text } from '6shared/ui/Text/Text'
 import { type HTMLAttributeAnchorTarget, memo, useEffect, useState, type JSX } from 'react'
 import { useTranslation } from 'react-i18next'
-import { type Article, ArticleView } from '../../model/types/article'
+import { type Article } from '../../model/types/article'
 import { Lists } from '../ArticleListItem/Lists/Lists'
 import { Tiles } from '../ArticleListItem/Tiles/Tiles'
 import styles from './ArticleList.module.scss'
+import { ArticleView } from '5entities/Article/model/const/article'
 
 interface ArticleListProps {
   className?: string

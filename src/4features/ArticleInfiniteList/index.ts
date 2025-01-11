@@ -5,3 +5,5 @@ export { articleInfiniteListActions } from './model/slice/articleInfiniteListSli
 export { articleInfiniteListReducer } from './model/slice/articleInfiniteListSlice'
 
 export { ArticleInfiniteList } from './ui/ArticleInfiniteList'
+
+export type { ArticleInfiniteListSchema } from './model/types/articleInfiniteListSchema'

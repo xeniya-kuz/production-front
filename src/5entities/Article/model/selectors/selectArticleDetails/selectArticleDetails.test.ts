@@ -1,6 +1,6 @@
 import { type StateSchema } from '1app/providers/StoreProvider'
 import { selectArticleDetails } from './selectArticleDetails'
-import { ArticleBlockType, ArticleType } from '../../types/article'
+import { ArticleBlockType, ArticleType } from '../../const/article'
 
 describe('selectArticleDetails', () => {
   test('success', () => {

@@ -1,5 +1,4 @@
-import { type Article } from '5entities/Article'
-import { ArticleBlockType, ArticleType } from '5entities/Article/model/types/article'
+import { ArticleBlockType, ArticleType, type Article } from '5entities/Article'
 import { userMock } from './user'
 
 export const articleMock: Article = {

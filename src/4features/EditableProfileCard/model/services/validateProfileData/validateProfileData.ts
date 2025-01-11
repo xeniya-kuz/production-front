@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 
 import { type Profile } from '5entities/Profile'
-import { ValidateProfileError } from '../../types/validate'
+import { ValidateProfileError } from '../../const/validate'
 
 export const validateProfileData = (profile?: Profile): ValidateProfileError[] => {
   if (profile === undefined) {

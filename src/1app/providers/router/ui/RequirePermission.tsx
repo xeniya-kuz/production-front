@@ -1,5 +1,5 @@
-import { selectUserRoles } from '5entities/User/model/selectors/selectUserRoles/selectUserRoles'
-import { type UserRole } from '5entities/User/model/types/user'
+import { selectUserRoles } from '5entities/User'
+import { type UserRole } from '5entities/User'
 import { routePaths } from '6shared/config/routeConfig/routeConfig'
 import { type JSX, useMemo } from 'react'
 import { useSelector } from 'react-redux'

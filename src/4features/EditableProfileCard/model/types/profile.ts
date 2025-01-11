@@ -1,5 +1,5 @@
 import { type Profile } from '5entities/Profile'
-import { type ValidateProfileError } from './validate'
+import { type ValidateProfileError } from '../const/validate'
 
 export interface ProfileSchema {
   profile?: Profile

@@ -73,15 +73,20 @@
 .background {
 	background-color: var(--bg-color);
 	border: none;
+
+	&:hover {
+		background-color: var(--inverted-primary-color);
+	}
 }
 
 .backgroundInverted {
 	color: var(--inverted-primary-color);
 	background-color: var(--inverted-bg-color);
+	border: none;
 
 	&:hover {
-		color: var(--inverted-secondary-color);
-		background-color: var(--bg-color);
+		color: var(--inverted-bg-color);
+		background-color: var(--inverted-primary-color);
 	}
 }
 

@@ -2,7 +2,7 @@ import { Theme } from '1app/providers/ThemeProvider'
 import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { articlesMock } from '6shared/const/mocks/article'
 import type { Meta, StoryObj } from '@storybook/react'
-import { ArticleView } from '../../model/types/article'
+import { ArticleView } from '../../model/const/article'
 import { ArticleList } from './ArticleList'
 
 const meta = {

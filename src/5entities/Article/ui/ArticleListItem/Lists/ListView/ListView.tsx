@@ -9,11 +9,12 @@ import { Icon, IconColors } from '6shared/ui/Icon/Icon'
 import { Text } from '6shared/ui/Text/Text'
 import { type JSX, memo, type HTMLAttributeAnchorTarget } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ArticleBlockType, type Article, type ArticleTextBlock as ArticleTextBlockType } from '../../../../model/types/article'
+import { type Article, type ArticleTextBlock as ArticleTextBlockType } from '../../../../model/types/article'
 import { ArticleTextBlock } from '../../../ArticleTextBlock/ArticleTextBlock'
 import styles from './ListView.module.scss'
 
 import EyeIcon from '6shared/assets/icons/eye-20-20.svg'
+import { ArticleBlockType } from '5entities/Article/model/const/article'
 
 interface ListViewProps {
   article: Article

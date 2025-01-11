@@ -3,7 +3,7 @@ import { updateProfileData } from '../services'
 import { profileMock } from '6shared/const/mocks/profile'
 import { Currency } from '4features/CurrencyDropdown'
 import { type ProfileSchema } from '../types/profile'
-import { ValidateProfileError } from '../types/validate'
+import { ValidateProfileError } from '../const/validate'
 
 describe('profileSlice', () => {
   test('setReadonly', async () => {

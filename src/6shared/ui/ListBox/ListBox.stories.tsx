@@ -16,7 +16,7 @@ const meta = {
     ]
   },
   decorators: [
-    (Story: StoryObj) => <div style={{ padding: '200px' }}><Story/></div>
+    Story => <div style={{ padding: '200px' }}><Story/></div>
   ]
 
 } satisfies Meta<typeof ListBox>

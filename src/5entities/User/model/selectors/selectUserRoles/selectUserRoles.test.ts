@@ -1,6 +1,7 @@
 import { type StateSchema } from '1app/providers/StoreProvider'
 import { isUserAdmin, selectUserRoles } from './selectUserRoles'
-import { UserRole } from '../../types/user'
+import { UserRole } from '../../const/userRole'
+
 
 describe('selectUserRoles', () => {
   test('success', () => {

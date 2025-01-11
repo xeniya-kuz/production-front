@@ -1,7 +1,7 @@
 import { StoreDecorator } from '6shared/config/storybook/StoreDecorator/StoreDecorator'
 import { profileMock } from '6shared/const/mocks/profile'
 import type { Meta, StoryObj } from '@storybook/react'
-import { ValidateProfileError } from '../../model/types/validate'
+import { ValidateProfileError } from '../../model/const/validate'
 import { EditableProfileCard } from './EditableProfileCard'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
