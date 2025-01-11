@@ -1,6 +1,5 @@
 import { type User } from '5entities/User'
-import { ArticleBlockType, ArticleType } from '../const/article'
-
+import { type ArticleBlockType, type ArticleType } from '../const/article'
 
 export interface ArticleBlockBase {
   id: string
@@ -24,7 +23,6 @@ export interface ArticleTextBlock extends ArticleBlockBase {
 
 export type ArticleBlock = ArticleTextBlock | ArticleImageBlock | ArticleCodeBlock
 
-
 export interface Article {
   id: string
   user: User
@@ -36,4 +34,3 @@ export interface Article {
   type: ArticleType[]
   blocks: ArticleBlock[]
 }
-

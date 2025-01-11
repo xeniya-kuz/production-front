@@ -32,7 +32,7 @@ export const CountryDropdown = memo(
         <ListBox
             name={NAME}
             value={value}
-              label={t(NAME)}
+            label={t(NAME)}
             options={options}
             className={classNames(undefined, [className])}
             disabled={disabled}

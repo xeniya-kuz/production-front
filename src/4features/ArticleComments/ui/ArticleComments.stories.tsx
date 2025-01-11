@@ -8,7 +8,7 @@ const meta = {
   component: ArticleComments,
   tags: ['autodocs'],
   args: {
-    articleId:commentsMock[0].id
+    articleId: commentsMock[0].id
   },
   decorators: [StoreDecorator({
     articleComments: {
@@ -25,5 +25,5 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
-  
+
 }

@@ -14,7 +14,7 @@ import { ArticleTextBlock } from '../../../ArticleTextBlock/ArticleTextBlock'
 import styles from './ListView.module.scss'
 
 import EyeIcon from '6shared/assets/icons/eye-20-20.svg'
-import { ArticleBlockType } from '5entities/Article/model/const/article'
+import { ArticleBlockType } from '../../../../model/const/article'
 
 interface ListViewProps {
   article: Article

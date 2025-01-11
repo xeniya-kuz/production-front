@@ -7,7 +7,7 @@ import { type Article } from '../../model/types/article'
 import { Lists } from '../ArticleListItem/Lists/Lists'
 import { Tiles } from '../ArticleListItem/Tiles/Tiles'
 import styles from './ArticleList.module.scss'
-import { ArticleView } from '5entities/Article/model/const/article'
+import { ArticleView } from '../../model/const/article'
 
 interface ArticleListProps {
   className?: string
