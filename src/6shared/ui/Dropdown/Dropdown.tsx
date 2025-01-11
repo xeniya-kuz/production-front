@@ -1,7 +1,7 @@
 import { Menu } from '@headlessui/react'
 import styles from './Dropdown.module.scss'
 import { classNames, type Mods } from '6shared/lib/classNames/classNames'
-import { Fragment, type ReactNode } from 'react'
+import { Fragment, type JSX, type ReactNode } from 'react'
 import { type DropdownDirection } from '6shared/types/ui'
 import { AppLink } from '../AppLink/AppLink'
 

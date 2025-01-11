@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import { AppLink, AppLinkTheme } from '6shared/ui/AppLink/AppLink'
-import { memo } from 'react'
+import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from './SidebarItem.module.scss'
 import { useSelector } from 'react-redux'

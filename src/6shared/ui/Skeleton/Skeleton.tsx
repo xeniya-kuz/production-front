@@ -1,4 +1,4 @@
-import { type CSSProperties } from 'react'
+import { type JSX, type CSSProperties } from 'react'
 import { classNames } from '../../lib/classNames/classNames'
 import styles from './Skeleton.module.scss'
 

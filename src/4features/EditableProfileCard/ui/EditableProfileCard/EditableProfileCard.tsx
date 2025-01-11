@@ -2,7 +2,7 @@ import { type Profile, ProfileCard } from '5entities/Profile'
 import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch, useInitialEffect } from '6shared/lib/hooks'
 import { VStack } from '6shared/ui/Stack'
-import { memo, useCallback } from 'react'
+import { type JSX, memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { selectEditedProfile, selectProfileError, selectProfileIsLoading, selectProfileReadonly } from '../../model/selectors'
 import { fetchProfileData } from '../../model/services'
@@ -42,7 +42,8 @@ export const EditableProfileCard = memo(function EditableProfileCard
           <VStack gap='16' max>
               <EditableProfileCardHeader/>
               <EditableProfileErrors/>
-              <ProfileCard profile={editingProfile}
+              <ProfileCard
+                  profile={editingProfile}
                   isLoading={isLoading}
                   error={error}
                   onChange={onChange}

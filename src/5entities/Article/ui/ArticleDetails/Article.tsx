@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import styles from './styles.module.scss'
-import { memo, useCallback } from 'react'
+import { type JSX, memo, useCallback } from 'react'
 import { Avatar } from '6shared/ui/Avatar/Avatar'
 import CalendarIcon from '6shared/assets/icons/calendar-20-20.svg'
 import EyeIcon from '6shared/assets/icons/eye-20-20.svg'

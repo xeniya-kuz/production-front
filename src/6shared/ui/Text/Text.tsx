@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import styles from './Text.module.scss'
-import { memo } from 'react'
+import { type JSX, memo } from 'react'
 
 export enum TextAlign {
   RIGHT = 'right',

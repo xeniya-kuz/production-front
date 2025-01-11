@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import styles from './CommentCard.module.scss'
-import { memo } from 'react'
+import { type JSX, memo } from 'react'
 import { type Comment } from '../../model/types/comment'
 import { Avatar } from '6shared/ui/Avatar/Avatar'
 import { Text, TextSize } from '6shared/ui/Text/Text'

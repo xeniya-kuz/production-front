@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import styles from './ArticleComments.module.scss'
-import { memo, useCallback } from 'react'
+import { type JSX, memo, useCallback } from 'react'
 import { CommentForm } from '5entities/CommentForm'
 import { useTranslation } from 'react-i18next'
 import { Text, TextSize } from '6shared/ui/Text/Text'

@@ -3,7 +3,7 @@ import { isUserAdmin, isUserManager, selectUserAuthData, userActions } from '5en
 import { classNames } from '6shared/lib/classNames/classNames'
 import { useAppDispatch } from '6shared/lib/hooks'
 import { Button, ButtonTheme } from '6shared/ui/Button/Button'
-import { memo, useCallback, useState } from 'react'
+import { type JSX, memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import styles from './Navbar.module.scss'

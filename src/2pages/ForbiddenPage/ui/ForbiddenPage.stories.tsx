@@ -2,11 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from '1app/providers/ThemeProvider'
 import { ForbiddenPage } from './ForbiddenPage'
+import { StoreDecorator } from '6shared/config/storybook/StoreDecorator/StoreDecorator'
 
 const meta = {
   title: 'pages/ForbiddenPage',
   component: ForbiddenPage,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  decorators: [StoreDecorator({})]
 
 } satisfies Meta<typeof ForbiddenPage>
 

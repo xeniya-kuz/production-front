@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import styles from './Icon.module.scss'
-import { memo, type VFC, type SVGProps } from 'react'
+import { memo, type SVGProps, type JSX, type FC } from 'react'
 
 export const enum IconColors {
   PRIMARY_FILL = 'primaryFill',
@@ -15,7 +15,7 @@ export const enum IconColors {
 
 interface IconProps {
   className?: string
-  Svg: VFC<SVGProps<SVGSVGElement>>
+  Svg: FC<SVGProps<SVGSVGElement>>
   color?: IconColors | IconColors[]
 }
 

@@ -1,7 +1,7 @@
 import { ArticleList, type ArticleView } from '5entities/Article'
 import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch, useInitialEffect } from '6shared/lib/hooks'
-import { memo, useCallback } from 'react'
+import { memo, useCallback, type JSX } from 'react'
 import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 import { selectArticlesError } from '../model/selectors/selectArticlesError/selectArticlesError'

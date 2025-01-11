@@ -1,7 +1,7 @@
 import { ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY, ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY } from '6shared/const/localstorage'
 import { classNames } from '6shared/lib/classNames/classNames'
 import { Text } from '6shared/ui/Text/Text'
-import { type HTMLAttributeAnchorTarget, memo, useEffect, useState } from 'react'
+import { type HTMLAttributeAnchorTarget, memo, useEffect, useState, type JSX } from 'react'
 import { useTranslation } from 'react-i18next'
 import { type Article, ArticleView } from '../../model/types/article'
 import { Lists } from '../ArticleListItem/Lists/Lists'

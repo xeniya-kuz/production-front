@@ -1,7 +1,7 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import { DynamicModuleLoader, type ReducerList } from '6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch, useInitialEffect } from '6shared/lib/hooks'
-import { memo } from 'react'
+import { type JSX, memo } from 'react'
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
 import styles from './styles.module.scss'
 import { useSelector } from 'react-redux'

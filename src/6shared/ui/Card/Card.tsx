@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import styles from './Card.module.scss'
-import { type HTMLAttributes, memo, type ReactNode } from 'react'
+import { type HTMLAttributes, type JSX, memo, type ReactNode } from 'react'
 
 export const enum CardTheme {
   PRIMARY = 'primary',

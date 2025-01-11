@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react'
+import { type JSX, type ReactNode } from 'react'
 import { Provider } from 'react-redux'
 // import { store } from '../config/store'
 import { type StateSchema } from '../config/StateSchema'

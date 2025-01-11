@@ -3,7 +3,7 @@ import { AppLink } from '6shared/ui/AppLink/AppLink'
 import { Card } from '6shared/ui/Card/Card'
 import { Icon, IconColors } from '6shared/ui/Icon/Icon'
 import { Text } from '6shared/ui/Text/Text'
-import { type HTMLAttributeAnchorTarget, memo } from 'react'
+import { type HTMLAttributeAnchorTarget, type JSX, memo } from 'react'
 import { type Article } from '../../../../model/types/article'
 import styles from '../styles.module.scss'
 

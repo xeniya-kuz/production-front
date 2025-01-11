@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { type JSX, memo } from 'react'
 import { Page } from '3widgets/Page'
 import { useTranslation } from 'react-i18next'
 

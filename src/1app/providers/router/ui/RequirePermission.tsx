@@ -1,7 +1,7 @@
 import { selectUserRoles } from '5entities/User/model/selectors/selectUserRoles/selectUserRoles'
 import { type UserRole } from '5entities/User/model/types/user'
 import { routePaths } from '6shared/config/routeConfig/routeConfig'
-import { useMemo } from 'react'
+import { type JSX, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, useLocation } from 'react-router-dom'
 

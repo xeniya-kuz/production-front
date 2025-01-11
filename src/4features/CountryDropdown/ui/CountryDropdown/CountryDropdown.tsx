@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import { ListBox } from '6shared/ui/ListBox/ListBox'
-import { memo } from 'react'
+import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Country } from '../../model/types'
 

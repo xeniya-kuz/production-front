@@ -9,6 +9,7 @@ import { HStack, VStack } from '6shared/ui/Stack'
 import { useTranslation } from 'react-i18next'
 import { type Profile } from '../../model/types/profile'
 import styles from './ProfileCard.module.scss'
+import { type JSX } from 'react'
 
 interface ProfileCardProps {
   className?: string

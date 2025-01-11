@@ -12,6 +12,8 @@ const meta = {
 
   tags: ['autodocs'],
   args: {
+    title: 'error title',
+    text: 'error text'
   }
 } satisfies Meta<typeof Error>
 

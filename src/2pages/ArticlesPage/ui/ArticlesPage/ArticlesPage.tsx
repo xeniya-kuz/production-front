@@ -1,6 +1,6 @@
 import { ArticleInfiniteList, articleInfiniteListActions, fetchArticlesList } from '4features/ArticleInfiniteList'
 import { ArticlesPageFilters, selectArticlesView } from '4features/ArticlesPageFilters'
-import { memo, useCallback } from 'react'
+import { type JSX, memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import styles from './ArticlesPage.module.scss'
 import { useAppDispatch } from '6shared/lib/hooks'

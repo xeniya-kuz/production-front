@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import styles from './CommentForm.module.scss'
-import { memo, useCallback } from 'react'
+import { type JSX, memo, useCallback } from 'react'
 import { Input } from '6shared/ui/Input/Input'
 import { useTranslation } from 'react-i18next'
 import { Button } from '6shared/ui/Button/Button'

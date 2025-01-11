@@ -1,6 +1,6 @@
 import { Skeleton } from '6shared/ui/Skeleton/Skeleton'
 import { HStack, VStack } from '6shared/ui/Stack'
-import { memo } from 'react'
+import { type JSX, memo } from 'react'
 
 interface SkeletonCommentCardProps {
   classNameHeader?: string

@@ -1,5 +1,6 @@
 import { selectUserAuthData } from '5entities/User'
 import { routePaths } from '6shared/config/routeConfig/routeConfig'
+import { type JSX } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, useLocation } from 'react-router-dom'
 

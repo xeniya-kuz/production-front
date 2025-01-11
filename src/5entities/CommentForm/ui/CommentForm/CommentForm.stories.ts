@@ -5,7 +5,7 @@ import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDec
 import { Theme } from '1app/providers/ThemeProvider'
 
 const meta = {
-  title: 'features/ArticleComments',
+  title: 'entities/Comment/CommentForm',
   component: CommentForm,
   tags: ['autodocs'],
   args: {

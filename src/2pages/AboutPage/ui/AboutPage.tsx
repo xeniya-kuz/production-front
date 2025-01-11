@@ -1,5 +1,5 @@
 import { Page } from '3widgets/Page'
-import { memo } from 'react'
+import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const AboutPage = memo(function AboutPage (): JSX.Element {

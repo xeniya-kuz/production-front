@@ -1,7 +1,7 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import styles from './PageLoader.module.scss'
 import { Loader } from '6shared/ui/Loader/Loader'
-import { memo } from 'react'
+import { type JSX, memo } from 'react'
 
 interface PageLoaderProps {
   className?: string

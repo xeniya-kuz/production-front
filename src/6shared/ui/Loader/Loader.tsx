@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import './Loader.scss'
-import { memo } from 'react'
+import { type JSX, memo } from 'react'
 
 interface LoaderProps {
   className?: string

@@ -1,5 +1,5 @@
 import { classNames } from '6shared/lib/classNames/classNames'
-import { memo } from 'react'
+import { type JSX, memo } from 'react'
 import { Page } from '3widgets/Page'
 import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'

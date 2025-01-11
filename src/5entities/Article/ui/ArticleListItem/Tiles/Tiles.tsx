@@ -1,7 +1,7 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import { useInitialEffect } from '6shared/lib/hooks'
 import { Card } from '6shared/ui/Card/Card'
-import { type FC, type HTMLAttributeAnchorTarget, memo, useCallback, useRef } from 'react'
+import { type FC, type HTMLAttributeAnchorTarget, memo, useCallback, useRef, type JSX } from 'react'
 import { VirtuosoGrid, type VirtuosoGridHandle } from 'react-virtuoso'
 import { type Article } from '../../../model/types/article'
 import { SkeletonTileView } from './Skeleton/SkeletonTileView'
@@ -64,9 +64,9 @@ export const Tiles = memo(function Tiles
                 style={{ width: '100%' }}
                 ref={virtuosoGridRef}
                 totalCount={articles.length}
-              // skeleton подставляется на каждый элемент
+                // skeleton подставляется на каждый элемент
                 components={{ Header, ScrollSeekPlaceholder: Skeleton }}
-              // эта строчка вызывает Warning: Can't perform a React state update on an unmounted component
+                // эта строчка вызывает Warning: Can't perform a React state update on an unmounted component
                 endReached={onLoadNextArticles}
                 data={articles}
                 itemContent={renderArticle}

@@ -1,6 +1,6 @@
 import { classNames, type Mods } from '6shared/lib/classNames/classNames'
 import { Listbox as HListbox } from '@headlessui/react'
-import { Fragment, type ReactNode } from 'react'
+import { Fragment, type JSX, type ReactNode } from 'react'
 import DoneIcon from '../../assets/icons/done-20-20.svg'
 import { Button } from '../Button/Button'
 import { Icon, IconColors } from '../Icon/Icon'

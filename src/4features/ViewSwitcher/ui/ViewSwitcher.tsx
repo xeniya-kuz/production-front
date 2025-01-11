@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import styles from './ViewSwitcher.module.scss'
-import { memo } from 'react'
+import { type JSX, memo } from 'react'
 import ListIcon from '6shared/assets/icons/list-24-24.svg'
 import TileIcon from '6shared/assets/icons/tile-24-24.svg'
 import { ArticleView } from '5entities/Article'

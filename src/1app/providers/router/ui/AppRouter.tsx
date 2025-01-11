@@ -1,6 +1,6 @@
 import { PageLoader } from '3widgets/PageLoader'
 import { type AppRoutesProps, routeConfig } from '6shared/config/routeConfig/routeConfig'
-import { memo, Suspense, useCallback } from 'react'
+import { type JSX, memo, Suspense, useCallback } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { RequireAuth } from './RequireAuth'
 import { RequirePermission } from './RequirePermission'

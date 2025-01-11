@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 
-import { type HTMLAttributeAnchorTarget, memo } from 'react'
+import { type HTMLAttributeAnchorTarget, memo, type JSX } from 'react'
 import { Virtuoso } from 'react-virtuoso'
 import { ListView } from './ListView/ListView'
 import { Footer } from './Footer'

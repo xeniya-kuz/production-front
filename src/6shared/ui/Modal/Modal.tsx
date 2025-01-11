@@ -1,6 +1,6 @@
 import { classNames, type Mods } from '6shared/lib/classNames/classNames'
 import styles from './Modal.module.scss'
-import { useEffect, type MouseEvent, type ReactNode, useCallback, useState } from 'react'
+import { useEffect, type MouseEvent, type ReactNode, useCallback, useState, type JSX } from 'react'
 import { Portal } from '../Portal/Portal'
 import { useTheme } from '1app/providers/ThemeProvider'
 

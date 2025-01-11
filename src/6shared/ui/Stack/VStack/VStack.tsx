@@ -1,3 +1,4 @@
+import { type JSX } from 'react'
 import { Flex, type FlexProps } from '../Flex/Flex'
 
 type VStackProps = Omit<FlexProps, 'direction'>

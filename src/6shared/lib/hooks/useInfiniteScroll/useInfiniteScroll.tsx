@@ -1,9 +1,9 @@
-import { useEffect, type MutableRefObject } from 'react'
+import { type RefObject, useEffect } from 'react'
 
 export interface UseInfiniteScrollOptions {
   callback?: () => void
-  triggerRef: MutableRefObject<HTMLElement>
-  wrapperRef: MutableRefObject<HTMLElement>
+  triggerRef: RefObject<HTMLElement | null>
+  wrapperRef: RefObject<HTMLElement | null>
 }
 
 export const useInfiniteScroll = ({ callback, triggerRef, wrapperRef }: UseInfiniteScrollOptions): void => {
@@ -25,10 +25,12 @@ export const useInfiniteScroll = ({ callback, triggerRef, wrapperRef }: UseInfin
         }
       }, options)
 
-      observer.observe(triggerElement)
+      if (triggerElement !== null) {
+        observer.observe(triggerElement)
+      }
 
       return () => {
-        if (observer !== null) {
+        if (observer !== null && triggerElement !== null) {
           // observer.disconnect()
           observer.unobserve(triggerElement)
         }

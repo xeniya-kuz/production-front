@@ -1,5 +1,5 @@
 import { classNames } from '6shared/lib/classNames/classNames'
-import { memo } from 'react'
+import { type JSX, memo } from 'react'
 import { type Comment } from '../../model/types/comment'
 import { CommentCard } from '../CommentCard/CommentCard'
 import { Text } from '6shared/ui/Text/Text'

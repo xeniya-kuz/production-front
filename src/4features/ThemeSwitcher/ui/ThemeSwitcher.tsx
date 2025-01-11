@@ -3,7 +3,7 @@ import IconTheme from '6shared/assets/icons/theme.svg'
 import { classNames } from '6shared/lib/classNames/classNames'
 import { Button, ButtonTheme } from '6shared/ui/Button/Button'
 import { Icon, IconColors } from '6shared/ui/Icon/Icon'
-import { memo } from 'react'
+import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from './ThemeSwitcher.module.scss'
 

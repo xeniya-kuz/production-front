@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import styles from './Tabs.module.scss'
-import { useCallback, type ReactNode } from 'react'
+import { type JSX, useCallback, type ReactNode } from 'react'
 import { Card, CardTheme } from '../Card/Card'
 
 export interface TabItem<T extends string> {

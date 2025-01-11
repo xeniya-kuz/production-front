@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import { Modal } from '6shared/ui/Modal/Modal'
-import { Suspense, memo } from 'react'
+import { type JSX, Suspense, memo } from 'react'
 import { LoginFormAsync } from '../LoginForm/LoginForm.async'
 import { Loader } from '6shared/ui/Loader/Loader'
 

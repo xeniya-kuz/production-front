@@ -1,6 +1,6 @@
 import { classNames } from '6shared/lib/classNames/classNames'
 import styles from './Code.module.scss'
-import { memo, useCallback } from 'react'
+import { type JSX, memo, useCallback } from 'react'
 import { Button, ButtonTheme } from '../Button/Button'
 import { Icon, IconColors } from '../Icon/Icon'
 import CopyIcon from '6shared/assets/icons/copy-20-20.svg'

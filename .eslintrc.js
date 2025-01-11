@@ -43,6 +43,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'warn',
     "@typescript-eslint/no-invalid-void-type": 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/strict-boolean-expressions': 'off',
     // подсказывает, где текст не переведен
     'i18next/no-literal-string': [
       'error',

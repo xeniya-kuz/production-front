@@ -1,5 +1,5 @@
 import { classNames } from '6shared/lib/classNames/classNames'
-import { memo, useCallback } from 'react'
+import { type JSX, memo, useCallback } from 'react'
 import { Button } from '6shared/ui/Button/Button'
 import { routePaths } from '6shared/config/routeConfig/routeConfig'
 import { useNavigate } from 'react-router-dom'
