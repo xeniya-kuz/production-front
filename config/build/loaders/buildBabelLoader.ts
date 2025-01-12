@@ -1,7 +1,14 @@
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function buildBabelLoader () {
+
+import babelRemovePropsPlugin from '../../babel/babelRemovePropsPlugin'
+
+interface BuildBabelLoaderProps {
+  isTsx?: boolean
+}
+
+export function buildBabelLoader ({ isTsx }: BuildBabelLoaderProps) {
   return {
-    test: /\.(js|jsx|ts|tsx)$/,
+    test: isTsx ? /\.(jsx|tsx)$/ : /\.(js|ts)$/,
     exclude: /node_modules/,
     use: {
       loader: 'babel-loader',
@@ -14,6 +21,19 @@ export function buildBabelLoader () {
             {
               locales: ['ru', 'en'],
               keyAsDefaultValue: true
+            }
+          ],
+          [
+            '@babel/plugin-transform-typescript',
+            {
+              isTsx
+            }
+          ],
+          '@babel/plugin-transform-runtime',
+          isTsx && [
+            babelRemovePropsPlugin(),
+            {
+              props: ['data-testid']
             }
           ]
         ]
