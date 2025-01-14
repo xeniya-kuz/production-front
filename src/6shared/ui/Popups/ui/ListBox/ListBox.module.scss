@@ -1,0 +1,24 @@
+.trigger {
+	margin: 0;
+	padding: 0;
+
+	background: none;
+	border: none;
+	outline: none;
+}
+
+.options {
+	min-width: 100%;
+	background-color: var(--listbox-bg);
+	box-shadow: 4px 4px 8px var(--listbox-bg);
+}
+
+.option {
+	display: flex;
+	justify-content: space-between;
+	padding: 5px 10px;
+}
+
+.active {
+	background-color: var(--inverted-primary-color);
+}

@@ -1,17 +1,17 @@
 import { LoginModal } from '4features/AuthByUsername'
-import { isUserAdmin, isUserManager, selectUserAuthData, userActions } from '5entities/User'
+import { AvatarDropdown } from '4features/AvatarDropdown'
+import { NotificationButton } from '4features/NotificationButton'
+import { selectUserAuthData } from '5entities/User'
+import { routePaths } from '6shared/config/routeConfig/routeConfig'
 import { classNames } from '6shared/lib/classNames/classNames'
-import { useAppDispatch } from '6shared/lib/hooks'
+import { AppLink, AppLinkTheme } from '6shared/ui/AppLink/AppLink'
 import { Button, ButtonTheme } from '6shared/ui/Button/Button'
+import { HStack } from '6shared/ui/Stack'
+import { Text, TextTheme } from '6shared/ui/Text/Text'
 import { type JSX, memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import styles from './Navbar.module.scss'
-import { Text, TextTheme } from '6shared/ui/Text/Text'
-import { AppLink, AppLinkTheme } from '6shared/ui/AppLink/AppLink'
-import { routePaths } from '6shared/config/routeConfig/routeConfig'
-import { Dropdown } from '6shared/ui/Dropdown/Dropdown'
-import { Avatar } from '6shared/ui/Avatar/Avatar'
 
 interface NavbarProps {
   className?: string
@@ -19,38 +19,12 @@ interface NavbarProps {
 
 export const Navbar = memo(function Navbar ({ className }: NavbarProps): JSX.Element {
   const { t } = useTranslation()
-  const dispatch = useAppDispatch()
   const authData = useSelector(selectUserAuthData)
-  const isAdmin = useSelector(isUserAdmin)
-  const isManager = useSelector(isUserManager)
-  const isAdminPanelAvailabal = isAdmin || isManager
-
   const [isAuthModal, setIsAuthModal] = useState(false)
 
   const onToggleModal = useCallback(() => {
     setIsAuthModal(prev => !prev)
   }, [])
-
-  const onLogout = useCallback(() => {
-    dispatch(userActions.logout())
-  }, [dispatch])
-
-  const dropdownItems = [
-    ...(isAdminPanelAvailabal
-      ? [{
-          content: t('profile:admin-panel'),
-          href: `${routePaths['admin-panel']}`
-        }]
-      : []),
-    {
-      content: t('profile:profile'),
-      href: `${routePaths.profile}/${authData?.id}`
-    },
-    {
-      content: t('Выйти'),
-      onClick: onLogout
-    }
-  ]
 
   if (authData !== undefined) {
     return (
@@ -64,18 +38,10 @@ export const Navbar = memo(function Navbar ({ className }: NavbarProps): JSX.Ele
              >
                 {t('articles:article-creation')}
             </AppLink>
-            <Dropdown
-                className={styles.dropdown}
-                direction='bottom left'
-                trigger={
-                    <Avatar
-                        alt='avatar'
-                        size={30}
-                        src={authData.avatar}
-                  />
-                }
-                items={dropdownItems}
-                />
+            <HStack gap={'16'} className={styles.actions}>
+                <NotificationButton/>
+                <AvatarDropdown/>
+            </HStack>
         </header>
     )
   }

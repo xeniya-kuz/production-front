@@ -1,9 +1,11 @@
-import { Menu } from '@headlessui/react'
-import styles from './Dropdown.module.scss'
-import { classNames, type Mods } from '6shared/lib/classNames/classNames'
-import { Fragment, type JSX, type ReactNode } from 'react'
+import { classNames } from '6shared/lib/classNames/classNames'
 import { type DropdownDirection } from '6shared/types/ui'
-import { AppLink } from '../AppLink/AppLink'
+import { Menu } from '@headlessui/react'
+import { Fragment, type JSX, type ReactNode } from 'react'
+import { AppLink } from '../../../AppLink/AppLink'
+import { mapDirectionsClass } from '../styles/const'
+import styles from './Dropdown.module.scss'
+import popupStyles from '../styles/popup.module.scss'
 
 export interface DropdownItem {
   content: ReactNode
@@ -19,18 +21,11 @@ interface DropdownProps {
   direction?: DropdownDirection
 }
 
-export const Dropdown = ({ className, trigger, items, direction }: DropdownProps): JSX.Element => {
-  const mods: Mods = {
-    [styles.topLeft]: direction === 'top left',
-    [styles.topRight]: direction === 'top right',
-    [styles.bottomLeft]: direction === 'bottom left',
-    [styles.bottomRight]: direction === 'bottom right'
-  }
-
+export const Dropdown = ({ className, trigger, items, direction = 'bottom right' }: DropdownProps): JSX.Element => {
   return (
-      <Menu as={'div'} className={classNames(styles.dropdown, [className])}>
-          <Menu.Button className={styles.btn}>{trigger}</Menu.Button>
-          <Menu.Items className={classNames(styles.menu, [], mods)}>
+      <Menu as={'div'} className={classNames(styles.dropdown, [className, popupStyles.popup])}>
+          <Menu.Button className={popupStyles.trigger}>{trigger}</Menu.Button>
+          <Menu.Items className={classNames(styles.menu, [mapDirectionsClass[direction], popupStyles.content])}>
               {items.map((item, index) => {
                 const content = ({ active }: { active: boolean }): JSX.Element => (
                     <button
@@ -39,7 +34,10 @@ export const Dropdown = ({ className, trigger, items, direction }: DropdownProps
                         className={classNames(
                           styles.item,
                           undefined,
-                          { [styles.active]: active })}
+                          {
+                            [styles.activeTop]: active && direction.includes('top'),
+                            [styles.activeBottom]: active && direction.includes('bottom')
+                          })}
                   >
                         {item.content}
                     </button>

@@ -31,12 +31,12 @@ export function buildBabelLoader ({ isTsx }: BuildBabelLoaderProps) {
           ],
           '@babel/plugin-transform-runtime',
           isTsx && [
-            babelRemovePropsPlugin(),
+            babelRemovePropsPlugin,
             {
               props: ['data-testid']
             }
           ]
-        ]
+        ].filter(Boolean)
       }
     }
   }

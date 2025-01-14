@@ -23,7 +23,7 @@ export const LangSwitcher = memo(
         <Button
             className={classNames(styles.langSwitcher, [className])}
             onClick={onToggle}
-            theme={ButtonTheme.CLEAR}
+            theme={ButtonTheme.CLEAR_INVERTED}
     >
             {t(short ? 'Короткий язык' : 'Язык')}
         </Button>

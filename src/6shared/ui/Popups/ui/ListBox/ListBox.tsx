@@ -1,12 +1,14 @@
-import { classNames, type Mods } from '6shared/lib/classNames/classNames'
+import { classNames } from '6shared/lib/classNames/classNames'
+import { type DropdownDirection } from '6shared/types/ui'
 import { Listbox as HListbox } from '@headlessui/react'
 import { Fragment, type JSX, type ReactNode } from 'react'
-import DoneIcon from '../../assets/icons/done-20-20.svg'
-import { Button } from '../Button/Button'
-import { Icon, IconColors } from '../Icon/Icon'
-import { HStack } from '../Stack'
+import DoneIcon from '../../../../assets/icons/done-20-20.svg'
+import { Button } from '../../../Button/Button'
+import { Icon, IconColors } from '../../../Icon/Icon'
+import { HStack } from '../../../Stack'
+import { mapDirectionsClass } from '../styles/const'
 import styles from './ListBox.module.scss'
-import { type DropdownDirection } from '6shared/types/ui'
+import popupStyles from '../styles/popup.module.scss'
 
 export interface ListBoxOption {
   value: string
@@ -32,29 +34,22 @@ export const ListBox = <T extends string> (props: ListBoxProps<T>): JSX.Element 
     onChange({ name, value })
   }
 
-  const mods: Mods = {
-    [styles.topLeft]: direction === 'top left',
-    [styles.topRight]: direction === 'top right',
-    [styles.bottomLeft]: direction === 'bottom left',
-    [styles.bottomRight]: direction === 'bottom right'
-  }
-
   const selectedOption = options.find(option => option.value === value)
 
   return (
-      <HStack className={classNames(className, [], mods)}>
-          {label !== undefined && <span className={classNames(styles.label, [], { [styles.disabled]: disabled })}>{`${label}>`}</span>}
+      <HStack className={classNames(className, [])}>
+          {label !== undefined && <span className={classNames(styles.label, [], { [popupStyles.disabled]: disabled })}>{`${label}>`}</span>}
           <HListbox
               as='div'
               value={value}
-              className={classNames(styles.listBox, [className])}
+              className={classNames(styles.listBox, [className, popupStyles.popup])}
               onChange={handleOnChange}
               disabled={disabled}
           >
-              <HListbox.Button as={'div'} className={styles.trigger}>
+              <HListbox.Button as={'div'} className={classNames(styles.trigger)}>
                   <Button disabled={disabled}>{selectedOption?.label}</Button>
               </HListbox.Button>
-              <HListbox.Options className={classNames(styles.options, [], mods)}>
+              <HListbox.Options className={classNames(styles.options, [mapDirectionsClass[direction], popupStyles.content])}>
                   {options.map((option) => (
                       <HListbox.Option
                           key={option.value}
