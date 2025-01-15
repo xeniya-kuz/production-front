@@ -1,8 +1,9 @@
-import { classNames, type Mods } from '6shared/lib/classNames/classNames'
-import styles from './Modal.module.scss'
-import { useEffect, type MouseEvent, type ReactNode, useCallback, useState, type JSX } from 'react'
-import { Portal } from '../Portal/Portal'
 import { useTheme } from '1app/providers/ThemeProvider'
+import { classNames, type Mods } from '6shared/lib/classNames/classNames'
+import { type MouseEvent, useCallback, useEffect, useRef, useState, type JSX, type ReactNode } from 'react'
+import { Overlay } from '../Overlay/Overlay'
+import { Portal } from '../Portal/Portal'
+import styles from './Modal.module.scss'
 
 interface ModalProps {
   className?: string
@@ -12,18 +13,27 @@ interface ModalProps {
   lazy?: boolean
 }
 
+const ANIMATION_DELAY = 300
+
 // мемоизировать компонент (memo) не имеет смысла, т.к. в кач-ве children всегда передается какая-то двевовидная структура, которая часто меняется и стоит дорого для мемоизации
 export const Modal = ({ className, children, isOpen, onClose, lazy = false }: ModalProps): JSX.Element | null => {
+  const [isClosing, setIsClosing] = useState(false)
   const [isMounted, setIsMounted] = useState<boolean>(false)
 
-  const mods: Mods = {
-    [styles.opened]: isOpen
-  }
-
+  const timerRef = useRef<NodeJS.Timeout>(null)
   const { theme } = useTheme()
 
+  const mods: Mods = {
+    [styles.opened]: isOpen,
+    [styles.isClosing]: isClosing
+  }
+
   const closeHandler = useCallback((): void => {
-    onClose()
+    setIsClosing(true)
+    timerRef.current = setTimeout(() => {
+      onClose()
+      setIsClosing(false)
+    }, ANIMATION_DELAY)
   }, [onClose])
 
   //! Новые ссылки на каждый ререндер
@@ -33,6 +43,7 @@ export const Modal = ({ className, children, isOpen, onClose, lazy = false }: Mo
 
   // используем useCallback, потому что он мемоизирует ссылку и возвращает всегда одну и ту же
   const onKeyDown = useCallback((e: globalThis.KeyboardEvent): void => {
+    console.log('onKeyDown', e.key)
     if (e.key === 'Escape') {
       closeHandler()
     }
@@ -45,9 +56,15 @@ export const Modal = ({ className, children, isOpen, onClose, lazy = false }: Mo
   }, [isOpen])
 
   useEffect(() => {
-    if (isOpen) { window.addEventListener('keydown', onKeyDown) }
+    if (isOpen) {
+      window.addEventListener('keydown', onKeyDown)
+    }
 
     return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current)
+      }
+
       window.removeEventListener('keydown', onKeyDown)
     }
   }, [isOpen, onKeyDown])
@@ -59,10 +76,9 @@ export const Modal = ({ className, children, isOpen, onClose, lazy = false }: Mo
   return (
       <Portal>
           <div className={classNames(styles.modal, [theme, className], mods)} >
-              <div className={styles.overlay} onClick={closeHandler}>
-                  <div className={styles.content} onClick={onContentClick}>
-                      {children}
-                  </div>
+              <Overlay onClick={closeHandler}/>
+              <div className={styles.content} onClick={onContentClick}>
+                  {children}
               </div>
           </div>
       </Portal>

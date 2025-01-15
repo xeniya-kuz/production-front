@@ -27,6 +27,5 @@ export const Icon = memo(function Icon
 
   return (
       <Svg className={classNames(styles.icon, [className, ...colorStyles])}/>
-
   )
 })

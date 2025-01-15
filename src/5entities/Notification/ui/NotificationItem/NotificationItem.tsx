@@ -21,7 +21,7 @@ export const NotificationItem = memo(function NotificationItem
 
   if (notification.href) {
     return (
-        <AppLink target='_blank' to={notification.href}>
+        <AppLink target='_blank' to={notification.href} className={styles.link}>
             {content}
         </AppLink>
     )

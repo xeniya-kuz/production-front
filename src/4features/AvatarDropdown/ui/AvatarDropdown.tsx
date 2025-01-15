@@ -47,7 +47,6 @@ export const AvatarDropdown = memo(function AvatarDropdown
   }
 
   return (
-
       <Dropdown
           className={className}
           direction='bottom left'
@@ -60,6 +59,5 @@ export const AvatarDropdown = memo(function AvatarDropdown
                 }
           items={dropdownItems}
           />
-
   )
 })
