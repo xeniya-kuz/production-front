@@ -1,6 +1,7 @@
 import { NotificationList } from '5entities/Notification'
 import NotificationIcon from '6shared/assets/icons/notification-20-20.svg'
 import { classNames } from '6shared/lib/classNames/classNames'
+import { AnimationPropvider } from '6shared/lib/components/AnimationProvider/AnimationProvider'
 import { Drawer } from '6shared/ui/Drawer/Drawer'
 import { Icon, IconColors } from '6shared/ui/Icon/Icon'
 import { Popover } from '6shared/ui/Popups'
@@ -32,9 +33,11 @@ export const NotificationButton = memo(function NotificationButton
           </BrowserView>
           <MobileView>
               {trigger}
-              <Drawer onClose={toggleOpen} isOpen={isOpen}>
-                  <NotificationList/>
-              </Drawer>
+              <AnimationPropvider>
+                  <Drawer onClose={toggleOpen} isOpen={isOpen}>
+                      <NotificationList/>
+                  </Drawer>
+              </AnimationPropvider>
           </MobileView>
       </>
 

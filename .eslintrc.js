@@ -44,6 +44,7 @@ module.exports = {
     "@typescript-eslint/no-invalid-void-type": 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
+    '@typescript-eslint/consistent-type-imports': 'warn',
     // подсказывает, где текст не переведен
     'i18next/no-literal-string': [
       'error',
@@ -55,7 +56,7 @@ module.exports = {
     //сдедит за правильностью написания хуков и их зависимостей
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error', //checks effect dependencies
-    'fsd-path-checker-sia355/path-checker': 'error', //самодельный плагин
+    'fsd-path-checker-sia355/path-checker': 'error', //самодельный плагин,
   },
   globals: {
     __IS_DEV__: true,
