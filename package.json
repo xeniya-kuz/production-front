@@ -23,7 +23,8 @@
     "test:loki:report": "npm run test:loki:json && npm run test:loki:html",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook --test",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "generate:slice": "node ./scripts/createSlice/index.js"
   },
   "keywords": [],
   "author": "",
@@ -93,6 +94,7 @@
     "stylelint-config-clean-order": "^5.4.0",
     "stylelint-config-standard-scss": "^3.0.0",
     "ts-loader": "^9.2.6",
+    "ts-morph": "^16.0.0",
     "ts-node": "^10.5.0",
     "typescript": "^4.5.5",
     "webpack": "^5.69.1",
