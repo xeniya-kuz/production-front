@@ -1,5 +1,5 @@
-import { selectArticleDetails } from '5entities/Article'
-import { selectUserAuthData } from '5entities/User'
+import { selectArticleDetails } from '@/5entities/Article'
+import { selectUserAuthData } from '@/5entities/User'
 import { createSelector } from '@reduxjs/toolkit'
 
 export const selectIsArticleAuthor = createSelector(

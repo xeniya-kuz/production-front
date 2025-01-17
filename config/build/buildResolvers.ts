@@ -9,6 +9,8 @@ export function buildResolvers (options: BuildOptions): webpack.ResolveOptions {
     modules: [options.paths.src, 'node_modules'],
     // index главным по умолчанию, но тут мы указали явно
     mainFiles: ['index'],
-    alias: {} // либо @ что тоже часто указывают
+    alias: {
+      '@': options.paths.src
+    }
   }
 }

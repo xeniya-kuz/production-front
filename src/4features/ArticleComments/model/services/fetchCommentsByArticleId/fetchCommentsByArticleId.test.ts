@@ -1,6 +1,6 @@
-import { TestAsyncThunk } from '6shared/lib/tests/TestAsyncThunk'
+import { TestAsyncThunk } from '@/6shared/lib/tests/TestAsyncThunk'
 import { fetchCommentsByArticleId } from './fetchCommentsByArticleId'
-import { commentsMock } from '6shared/const/mocks/comment'
+import { commentsMock } from '@/6shared/const/mocks/comment'
 
 describe('fetchCommentsByArticleId', () => {
   test('success', async () => {

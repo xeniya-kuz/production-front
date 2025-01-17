@@ -1,4 +1,4 @@
-import { classNames } from '6shared/lib/classNames/classNames'
+import { classNames } from '@/6shared/lib/classNames/classNames'
 import './Loader.scss'
 import { type JSX, memo } from 'react'
 

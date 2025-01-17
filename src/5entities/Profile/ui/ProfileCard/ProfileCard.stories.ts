@@ -1,4 +1,4 @@
-import { profileMock } from '6shared/const/mocks/profile'
+import { profileMock } from '@/6shared/const/mocks/profile'
 import type { Meta, StoryObj } from '@storybook/react'
 import { ProfileCard } from './ProfileCard'
 

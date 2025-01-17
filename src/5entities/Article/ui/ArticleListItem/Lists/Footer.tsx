@@ -1,7 +1,7 @@
-import { classNames } from '6shared/lib/classNames/classNames'
+import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './styles.module.scss'
 import { memo } from 'react'
-import { Card } from '6shared/ui/Card/Card'
+import { Card } from '@/6shared/ui/Card/Card'
 import { SkeletonListView } from './Skeleton/SkeletonListView'
 
 interface FooterProps {

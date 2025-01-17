@@ -1,4 +1,4 @@
-import { profileMock } from '6shared/const/mocks/profile'
+import { profileMock } from '@/6shared/const/mocks/profile'
 import { validateProfileData } from './validateProfileData'
 import { ValidateProfileError } from '../../const/validate'
 

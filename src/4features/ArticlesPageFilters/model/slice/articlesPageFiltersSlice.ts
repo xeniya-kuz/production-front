@@ -1,6 +1,6 @@
-import { ArticleSortField, ArticleType, ArticleView } from '5entities/Article'
-import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from '6shared/const/localstorage'
-import { type SortOrder } from '6shared/types/order'
+import { ArticleSortField, ArticleType, ArticleView } from '@/5entities/Article'
+import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from '@/6shared/const/localstorage'
+import { type SortOrder } from '@/6shared/types/order'
 import {
   createSlice,
   type PayloadAction

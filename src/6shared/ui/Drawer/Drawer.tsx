@@ -1,10 +1,10 @@
-import { useTheme } from '1app/providers/ThemeProvider'
+import { useTheme } from '@/1app/providers/ThemeProvider'
 import { memo, useCallback, useEffect, type ReactNode } from 'react'
-import { classNames, type Mods } from '6shared/lib/classNames/classNames'
+import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import { Overlay } from '../Overlay/Overlay'
 import { Portal } from '../Portal/Portal'
 import styles from './Drawer.module.scss'
-import { useAnimationLibs } from '6shared/lib/components/AnimationProvider/AnimationProvider'
+import { useAnimationLibs } from '@/6shared/lib/components/AnimationProvider/AnimationProvider'
 
 interface DrawerProps {
   className?: string

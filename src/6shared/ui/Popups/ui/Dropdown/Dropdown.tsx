@@ -1,5 +1,5 @@
-import { classNames } from '6shared/lib/classNames/classNames'
-import { type DropdownDirection } from '6shared/types/ui'
+import { classNames } from '@/6shared/lib/classNames/classNames'
+import { type DropdownDirection } from '@/6shared/types/ui'
 import { Menu } from '@headlessui/react'
 import { Fragment, type JSX, type ReactNode } from 'react'
 import { AppLink } from '../../../AppLink/AppLink'

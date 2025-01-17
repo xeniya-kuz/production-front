@@ -1,4 +1,4 @@
-import { Skeleton } from '6shared/ui/Skeleton/Skeleton'
+import { Skeleton } from '@/6shared/ui/Skeleton/Skeleton'
 import styles from '../styles.module.scss'
 import { memo, type JSX } from 'react'
 

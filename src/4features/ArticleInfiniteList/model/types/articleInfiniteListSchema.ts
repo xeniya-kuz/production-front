@@ -1,4 +1,4 @@
-import { type Article } from '5entities/Article'
+import { type Article } from '@/5entities/Article'
 import { type EntityState } from '@reduxjs/toolkit'
 
 export interface ArticleInfiniteListSchema extends EntityState<Article> {

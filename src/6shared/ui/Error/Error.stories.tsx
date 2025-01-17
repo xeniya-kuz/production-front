@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Error } from './Error'
-import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { Theme } from '1app/providers/ThemeProvider'
+import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { Theme } from '@/1app/providers/ThemeProvider'
 
 const meta = {
   title: 'shared/Error',

@@ -1,5 +1,5 @@
-import { type StateSchema } from '1app/providers/StoreProvider'
-import { type Comment } from '5entities/Comment'
+import { type StateSchema } from '@/1app/providers/StoreProvider'
+import { type Comment } from '@/5entities/Comment'
 import {
   createEntityAdapter,
   createSlice,

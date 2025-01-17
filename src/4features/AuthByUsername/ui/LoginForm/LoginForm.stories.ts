@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Theme } from '1app/providers/ThemeProvider'
-import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { Theme } from '@/1app/providers/ThemeProvider'
+import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import LoginForm from './LoginForm'
-import { StoreDecorator } from '6shared/config/storybook/StoreDecorator/StoreDecorator'
+import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
 
 const loginFormState = { username: '123', password: '123', isLoading: false }
 

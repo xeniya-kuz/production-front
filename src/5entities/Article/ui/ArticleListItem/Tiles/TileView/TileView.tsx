@@ -1,14 +1,14 @@
-import { routePaths } from '6shared/config/routeConfig/routeConfig'
-import { AppLink } from '6shared/ui/AppLink/AppLink'
-import { Card } from '6shared/ui/Card/Card'
-import { Icon, IconColors } from '6shared/ui/Icon/Icon'
-import { Text } from '6shared/ui/Text/Text'
+import { routePaths } from '@/6shared/config/routeConfig/routeConfig'
+import { AppLink } from '@/6shared/ui/AppLink/AppLink'
+import { Card } from '@/6shared/ui/Card/Card'
+import { Icon, IconColors } from '@/6shared/ui/Icon/Icon'
+import { Text } from '@/6shared/ui/Text/Text'
 import { type HTMLAttributeAnchorTarget, type JSX, memo } from 'react'
 import { type Article } from '../../../../model/types/article'
 import styles from '../styles.module.scss'
 
-import EyeIcon from '6shared/assets/icons/eye-20-20.svg'
-import { ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY } from '6shared/const/localstorage'
+import EyeIcon from '@/6shared/assets/icons/eye-20-20.svg'
+import { ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY } from '@/6shared/const/localstorage'
 
 interface TileViewProps {
   article: Article

@@ -1,6 +1,6 @@
-import { type StateSchema } from '1app/providers/StoreProvider'
+import { type StateSchema } from '@/1app/providers/StoreProvider'
 import { selectArticlesSort } from './selectArticlesSort'
-import { ArticleSortField } from '5entities/Article'
+import { ArticleSortField } from '@/5entities/Article'
 
 describe('selectArticlesSort', () => {
   test('success', () => {

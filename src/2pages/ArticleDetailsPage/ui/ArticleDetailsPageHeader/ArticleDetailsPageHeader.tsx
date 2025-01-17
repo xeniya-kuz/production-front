@@ -1,13 +1,13 @@
-import { classNames } from '6shared/lib/classNames/classNames'
+import { classNames } from '@/6shared/lib/classNames/classNames'
 import { type JSX, memo, useCallback } from 'react'
-import { Button } from '6shared/ui/Button/Button'
-import { routePaths } from '6shared/config/routeConfig/routeConfig'
+import { Button } from '@/6shared/ui/Button/Button'
+import { routePaths } from '@/6shared/config/routeConfig/routeConfig'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { selectArticleDetails } from '5entities/Article'
-import { HStack } from '6shared/ui/Stack'
+import { selectArticleDetails } from '@/5entities/Article'
+import { HStack } from '@/6shared/ui/Stack'
 import { useSelector } from 'react-redux'
-import { selectIsArticleAuthor } from '4features/ArticleComments'
+import { selectIsArticleAuthor } from '@/4features/ArticleComments'
 
 interface ArticleDetailsPageHeaderProps {
   className?: string

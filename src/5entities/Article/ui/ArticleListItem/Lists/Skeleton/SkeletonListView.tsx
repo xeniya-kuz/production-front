@@ -1,7 +1,7 @@
-import { Skeleton } from '6shared/ui/Skeleton/Skeleton'
+import { Skeleton } from '@/6shared/ui/Skeleton/Skeleton'
 import styles from '../ListView/ListView.module.scss'
 import { type JSX, memo } from 'react'
-import { classNames } from '6shared/lib/classNames/classNames'
+import { classNames } from '@/6shared/lib/classNames/classNames'
 
 export const SkeletonListView = memo(function SkeletonListView
 (): JSX.Element {

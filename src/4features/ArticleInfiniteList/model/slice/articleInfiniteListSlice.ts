@@ -1,5 +1,5 @@
-import { type StateSchema } from '1app/providers/StoreProvider'
-import { ArticleView, type Article } from '5entities/Article'
+import { type StateSchema } from '@/1app/providers/StoreProvider'
+import { ArticleView, type Article } from '@/5entities/Article'
 import {
   createEntityAdapter,
   createSlice,

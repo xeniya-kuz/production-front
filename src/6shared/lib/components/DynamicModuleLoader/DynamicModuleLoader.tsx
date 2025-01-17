@@ -1,5 +1,5 @@
-import { type ReduxStoreWithManager } from '1app/providers/StoreProvider'
-import { type StateSchema, type StateSchemaKey } from '1app/providers/StoreProvider/config/StateSchema'
+import { type ReduxStoreWithManager } from '@/1app/providers/StoreProvider'
+import { type StateSchema, type StateSchemaKey } from '@/1app/providers/StoreProvider/config/StateSchema'
 import { useAppDispatch } from '../../hooks'
 import { type Reducer } from '@reduxjs/toolkit'
 import { type JSX, useEffect, type ReactNode } from 'react'

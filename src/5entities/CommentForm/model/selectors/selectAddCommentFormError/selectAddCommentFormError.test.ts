@@ -1,4 +1,4 @@
-import { type StateSchema } from '1app/providers/StoreProvider'
+import { type StateSchema } from '@/1app/providers/StoreProvider'
 import { selectAddArticleCommentFormError } from './selectAddCommentFormError'
 
 describe('selectAddArticleCommentFormError', () => {

@@ -1,4 +1,4 @@
-import { classNames } from '6shared/lib/classNames/classNames'
+import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './Text.module.scss'
 import { type JSX, memo } from 'react'
 

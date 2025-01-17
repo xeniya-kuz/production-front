@@ -1,14 +1,14 @@
-import { classNames } from '6shared/lib/classNames/classNames'
+import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './CommentCard.module.scss'
 import { type JSX, memo } from 'react'
 import { type Comment } from '../../model/types/comment'
-import { Avatar } from '6shared/ui/Avatar/Avatar'
-import { Text, TextSize } from '6shared/ui/Text/Text'
-import AvatarMock from '6shared/assets/icons/user.png'
-import { AppLink } from '6shared/ui/AppLink/AppLink'
-import { routePaths } from '6shared/config/routeConfig/routeConfig'
+import { Avatar } from '@/6shared/ui/Avatar/Avatar'
+import { Text, TextSize } from '@/6shared/ui/Text/Text'
+import AvatarMock from '@/6shared/assets/icons/user.png'
+import { AppLink } from '@/6shared/ui/AppLink/AppLink'
+import { routePaths } from '@/6shared/config/routeConfig/routeConfig'
 import { SkeletonCommentCard } from './SkeletonCommentCard'
-import { HStack, VStack } from '6shared/ui/Stack'
+import { HStack, VStack } from '@/6shared/ui/Stack'
 
 interface CommentCardProps {
   className?: string

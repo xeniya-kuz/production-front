@@ -34,7 +34,7 @@ const config: Config = {
   ],
 
   // чтобы тесты распознавали абсолютные пути
-  modulePaths: ['<rootDir>src'],
+  modulePaths: ['<rootDir>src', '<rootDir>@'],
 
   // for '@testing-library/jest-dom
   setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
@@ -63,13 +63,6 @@ const config: Config = {
     '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'
   ],
 
-  // для scss
-  moduleNameMapper: {
-    '\\.s?css$': 'identity-obj-proxy',
-    // заглушка, чтобы jest не ругался на svg. Т.е. тестирвоать svg мы не будем, т.к. это просто иконки. Для svg будет возвращаться jestEmptyComponent
-    '\\.svg$': path.resolve(__dirname, 'jestEmptyComponent.tsx')
-  },
-
   // A set of global variables that need to be available in all test environments
   globals: {
     __IS_DEV__: true,
@@ -85,7 +78,7 @@ const config: Config = {
       openReport: true,
       inlineSource: true
     }]
-  ]
+  ],
 
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
@@ -134,7 +127,14 @@ const config: Config = {
   // maxWorkers: "50%",
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+  // для scss
+  moduleNameMapper: {
+    '\\.s?css$': 'identity-obj-proxy',
+    // заглушка, чтобы jest не ругался на svg. Т.е. тестировать svg мы не будем, т.к. это просто иконки. Для svg будет возвращаться jestEmptyComponent
+    '\\.svg$': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+    // т.к. добавила alias @, иначе тетсы падают
+    '^@/(.*)$': '<rootDir>/src/$1'
+  }
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],

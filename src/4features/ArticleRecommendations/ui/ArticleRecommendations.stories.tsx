@@ -1,8 +1,8 @@
 import { type Meta, type StoryObj } from '@storybook/react'
 import { ArticleRecommendations } from './ArticleRecommendations'
-import { StoreDecorator } from '6shared/config/storybook/StoreDecorator/StoreDecorator'
+import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
 import withMock from 'storybook-addon-mock'
-import { articlesMock } from '6shared/const/mocks/article'
+import { articlesMock } from '@/6shared/const/mocks/article'
 
 const meta = {
   title: 'features/Article/ArticleRecommendations',

@@ -1,4 +1,4 @@
-import { classNames } from '6shared/lib/classNames/classNames'
+import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './Flex.module.scss'
 import { type DetailedHTMLProps, type HTMLAttributes, type JSX, memo, type ReactNode } from 'react'
 

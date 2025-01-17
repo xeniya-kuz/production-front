@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { Theme } from '1app/providers/ThemeProvider'
+import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { Theme } from '@/1app/providers/ThemeProvider'
 import MainPage from './MainPage'
-import { StoreDecorator } from '6shared/config/storybook/StoreDecorator/StoreDecorator'
+import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {

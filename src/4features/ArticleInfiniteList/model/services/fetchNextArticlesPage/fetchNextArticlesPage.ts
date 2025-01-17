@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { type ThunkConfig } from '1app/providers/StoreProvider'
+import { type ThunkConfig } from '@/1app/providers/StoreProvider'
 import { selectArticlesHasMore } from '../../selectors/selectArticlesHasMore/selectArticlesHasMore'
 import { selectArticlesNum } from '../../selectors/selectArticlesNum/selectArticlesNum'
 import { selectArticlesIsLoading } from '../../selectors/selectArticlesIsLoading/selectArticlesIsLoading'

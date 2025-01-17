@@ -1,4 +1,4 @@
-import '1app/styles/index.scss'
+import '@/1app/styles/index.scss'
 import { type StoryFn } from '@storybook/react'
 import { type JSX } from 'react'
 

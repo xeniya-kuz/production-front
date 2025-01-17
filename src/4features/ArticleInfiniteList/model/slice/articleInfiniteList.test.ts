@@ -1,8 +1,8 @@
-import { type Article } from '5entities/Article'
+import { type Article } from '@/5entities/Article'
 import { type ArticleInfiniteListSchema } from '../types/articleInfiniteListSchema'
 import { articleInfiniteListActions, articleInfiniteListReducer } from './articleInfiniteListSlice'
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList'
-import { articlesMock } from '6shared/const/mocks/article'
+import { articlesMock } from '@/6shared/const/mocks/article'
 import { createEntityAdapter } from '@reduxjs/toolkit'
 
 describe('articleInfiniteListReducer', () => {

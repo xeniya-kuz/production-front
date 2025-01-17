@@ -1,5 +1,5 @@
-import { type ArticleView, type ArticleSortField, type ArticleType } from '5entities/Article'
-import { type SortOrder } from '6shared/types/order'
+import { type ArticleView, type ArticleSortField, type ArticleType } from '@/5entities/Article'
+import { type SortOrder } from '@/6shared/types/order'
 
 export interface ArticlesPageFiltersSchema {
   view: ArticleView

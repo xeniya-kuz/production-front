@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ViewSwitcher } from './ViewSwitcher'
-import { ArticleView } from '5entities/Article'
+import { ArticleView } from '@/5entities/Article'
 
 const meta = {
   title: 'features/ViewSwitcher',

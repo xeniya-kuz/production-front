@@ -1,9 +1,9 @@
-import { ArticleInfiniteList, articleInfiniteListActions, fetchArticlesList } from '4features/ArticleInfiniteList'
-import { ArticlesPageFilters, selectArticlesView } from '4features/ArticlesPageFilters'
+import { ArticleInfiniteList, articleInfiniteListActions, fetchArticlesList } from '@/4features/ArticleInfiniteList'
+import { ArticlesPageFilters, selectArticlesView } from '@/4features/ArticlesPageFilters'
 import { type JSX, memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import styles from './ArticlesPage.module.scss'
-import { useAppDispatch } from '6shared/lib/hooks'
+import { useAppDispatch } from '@/6shared/lib/hooks'
 
 const ArticlesPage = (): JSX.Element => {
   const dispatch = useAppDispatch()

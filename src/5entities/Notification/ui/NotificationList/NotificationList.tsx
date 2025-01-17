@@ -1,4 +1,4 @@
-import { VStack } from '6shared/ui/Stack'
+import { VStack } from '@/6shared/ui/Stack'
 import { type JSX, memo } from 'react'
 import { useNotifications } from '../../api/notificationApi'
 import { NotificationItem } from '../NotificationItem/NotificationItem'

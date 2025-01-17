@@ -1,8 +1,8 @@
-import { classNames } from '6shared/lib/classNames/classNames'
+import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './ArticleCodeBlock.module.scss'
 import { type JSX, memo } from 'react'
 import { type ArticleCodeBlock as ArticleCodeBlockType } from '../../model/types/article'
-import { Code } from '6shared/ui/Code/Code'
+import { Code } from '@/6shared/ui/Code/Code'
 
 interface ArticleCodeBlockProps {
   className?: string

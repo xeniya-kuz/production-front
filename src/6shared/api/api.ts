@@ -1,4 +1,4 @@
-import { USER_LOCALSTORAGE_KEY } from '6shared/const/localstorage'
+import { USER_LOCALSTORAGE_KEY } from '@/6shared/const/localstorage'
 import axios from 'axios'
 
 export const $api = axios.create({

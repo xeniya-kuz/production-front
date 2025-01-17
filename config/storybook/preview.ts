@@ -1,8 +1,8 @@
-import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { StyleDecorator } from '6shared/config/storybook/StyleDecorator/StyleDecorator'
+import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { StyleDecorator } from '@/6shared/config/storybook/StyleDecorator/StyleDecorator'
 import { type Preview } from '@storybook/react'
-import { RouterDecorator } from '6shared/config/storybook/RouterDecorator/RouterDecorator'
-import { Theme } from '1app/providers/ThemeProvider'
+import { RouterDecorator } from '@/6shared/config/storybook/RouterDecorator/RouterDecorator'
+import { Theme } from '@/1app/providers/ThemeProvider'
 
 const preview: Preview = {
   parameters: {

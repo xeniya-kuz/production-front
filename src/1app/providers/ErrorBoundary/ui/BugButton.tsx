@@ -1,4 +1,4 @@
-import { Button } from '6shared/ui/Button/Button'
+import { Button } from '@/6shared/ui/Button/Button'
 import { type JSX, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 

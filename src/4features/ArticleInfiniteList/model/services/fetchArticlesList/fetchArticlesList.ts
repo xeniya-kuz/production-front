@@ -1,13 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { type ThunkConfig } from '1app/providers/StoreProvider'
-import { ArticleType, type Article } from '5entities/Article'
+import { type ThunkConfig } from '@/1app/providers/StoreProvider'
+import { ArticleType, type Article } from '@/5entities/Article'
 import { selectArticlesLimit } from '../../selectors/selectArticlesLimit/selectArticlesLimit'
-import { addQueryParams } from '6shared/lib/url/addQueryParams/addQueryParams'
-import { selectArticlesSort } from '4features/ArticlesPageFilters/model/selectors/selectArticlesSort/selectArticlesSort'
-import { selectArticlesOrder } from '4features/ArticlesPageFilters/model/selectors/selectArticlesOrder/selectArticlesOrder'
-import { selectArticlesSearch } from '4features/ArticlesPageFilters/model/selectors/selectArticlesSearch/selectArticlesSearch'
+import { addQueryParams } from '@/6shared/lib/url/addQueryParams/addQueryParams'
+import { selectArticlesSort } from '@/4features/ArticlesPageFilters/model/selectors/selectArticlesSort/selectArticlesSort'
+import { selectArticlesOrder } from '@/4features/ArticlesPageFilters/model/selectors/selectArticlesOrder/selectArticlesOrder'
+import { selectArticlesSearch } from '@/4features/ArticlesPageFilters/model/selectors/selectArticlesSearch/selectArticlesSearch'
 import { selectArticlesNum } from '../../selectors/selectArticlesNum/selectArticlesNum'
-import { selectArticlesType } from '4features/ArticlesPageFilters/model/selectors/selectArticlesType/selectArticlesType'
+import { selectArticlesType } from '@/4features/ArticlesPageFilters/model/selectors/selectArticlesType/selectArticlesType'
 
 interface FetchArticlesListProps {
   replace?: boolean

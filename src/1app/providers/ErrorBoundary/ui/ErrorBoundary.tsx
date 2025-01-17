@@ -1,4 +1,4 @@
-import { PageLoader } from '3widgets/PageLoader'
+import { PageLoader } from '@/3widgets/PageLoader'
 import React, { type ReactNode, type ErrorInfo, Suspense } from 'react'
 
 interface ErrorBoundaryProps {

@@ -1,4 +1,4 @@
-import { classNames } from '6shared/lib/classNames/classNames'
+import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './Icon.module.scss'
 import { memo, type SVGProps, type JSX, type FC } from 'react'
 

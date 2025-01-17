@@ -1,6 +1,6 @@
-import { Theme } from '1app/providers/ThemeProvider'
-import { ThemeDecorator } from '6shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { articleMock } from '6shared/const/mocks/article'
+import { Theme } from '@/1app/providers/ThemeProvider'
+import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { articleMock } from '@/6shared/const/mocks/article'
 import type { Meta, StoryObj } from '@storybook/react'
 import { ListView } from './ListView'
 

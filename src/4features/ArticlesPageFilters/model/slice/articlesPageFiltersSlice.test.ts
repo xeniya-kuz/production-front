@@ -1,4 +1,4 @@
-import { ArticleSortField, ArticleType, ArticleView } from '5entities/Article'
+import { ArticleSortField, ArticleType, ArticleView } from '@/5entities/Article'
 import { type ArticlesPageFiltersSchema } from '../types/articlesPageFiltersSchema'
 import { articlesPageFiltersActions, articlesPageFiltersReducer } from './articlesPageFiltersSlice'
 

@@ -1,9 +1,9 @@
-import { type DropdownDirection } from '6shared/types/ui'
+import { type DropdownDirection } from '@/6shared/types/ui'
 import { Popover as HPopover } from '@headlessui/react'
 import { type ReactNode, type JSX } from 'react'
 import popupStyles from '../styles/popup.module.scss'
 import styles from './Popover.module.scss'
-import { classNames } from '6shared/lib/classNames/classNames'
+import { classNames } from '@/6shared/lib/classNames/classNames'
 import { mapDirectionsClass } from '../styles/const'
 
 interface PopoverProps {

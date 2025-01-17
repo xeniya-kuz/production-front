@@ -1,6 +1,6 @@
-import { TestAsyncThunk } from '6shared/lib/tests/TestAsyncThunk'
+import { TestAsyncThunk } from '@/6shared/lib/tests/TestAsyncThunk'
 import { updateProfileData } from './updateProfileData'
-import { profileMock } from '6shared/const/mocks/profile'
+import { profileMock } from '@/6shared/const/mocks/profile'
 import { ValidateProfileError } from '../../const/validate'
 
 describe('updateProfileData', () => {

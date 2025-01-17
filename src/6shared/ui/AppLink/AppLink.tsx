@@ -1,4 +1,4 @@
-import { classNames } from '6shared/lib/classNames/classNames'
+import { classNames } from '@/6shared/lib/classNames/classNames'
 import { forwardRef, type ReactNode } from 'react'
 import { Link, type LinkProps } from 'react-router-dom'
 import styles from './AppLink.module.scss'

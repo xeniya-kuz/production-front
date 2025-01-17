@@ -1,6 +1,6 @@
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { type User, type UserSchema } from '../types/user'
-import { USER_LOCALSTORAGE_KEY } from '6shared/const/localstorage'
+import { USER_LOCALSTORAGE_KEY } from '@/6shared/const/localstorage'
 
 const initialState: UserSchema = {
   _mounted: false

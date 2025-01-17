@@ -1,8 +1,8 @@
-import { classNames } from '6shared/lib/classNames/classNames'
+import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './styles.module.scss'
 import { type JSX, memo } from 'react'
-import { Skeleton } from '6shared/ui/Skeleton/Skeleton'
-import { VStack } from '6shared/ui/Stack'
+import { Skeleton } from '@/6shared/ui/Skeleton/Skeleton'
+import { VStack } from '@/6shared/ui/Stack'
 
 interface SketelonArticleProps {
   className?: string

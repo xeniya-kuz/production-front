@@ -1,11 +1,11 @@
-import { userReducer } from '5entities/User'
+import { userReducer } from '@/5entities/User'
 import { configureStore, type ReducersMapObject } from '@reduxjs/toolkit'
 import { type CombinedState, type Reducer } from 'redux'
 import { type ThunkExtraArg, type StateSchema } from './StateSchema'
 import { createReducerManager } from './reducerManager'
-import { $api } from '6shared/api/api'
-import { pageReducer } from '3widgets/Page'
-import { rtkApi } from '6shared/api/rtkApi'
+import { $api } from '@/6shared/api/api'
+import { pageReducer } from '@/3widgets/Page'
+import { rtkApi } from '@/6shared/api/rtkApi'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function createReduxStore (

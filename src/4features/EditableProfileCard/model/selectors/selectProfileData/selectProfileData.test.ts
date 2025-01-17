@@ -1,6 +1,6 @@
-import { type StateSchema } from '1app/providers/StoreProvider'
+import { type StateSchema } from '@/1app/providers/StoreProvider'
 import { selectProfileData } from './selectProfileData'
-import { profileMock } from '6shared/const/mocks/profile'
+import { profileMock } from '@/6shared/const/mocks/profile'
 
 describe('selectProfileData', () => {
   test('should return profile data', () => {

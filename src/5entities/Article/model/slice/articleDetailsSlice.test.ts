@@ -1,4 +1,4 @@
-import { articleMock } from '6shared/const/mocks/article'
+import { articleMock } from '@/6shared/const/mocks/article'
 import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById'
 import { type ArticleDetailsSchema } from '../types/articleDetailsSchema'
 import { articleDetailsReducer } from './articleDetailsSlice'

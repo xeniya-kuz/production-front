@@ -1,9 +1,9 @@
-import { classNames } from '6shared/lib/classNames/classNames'
+import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './Code.module.scss'
 import { type JSX, memo, useCallback } from 'react'
 import { Button, ButtonTheme } from '../Button/Button'
 import { Icon, IconColors } from '../Icon/Icon'
-import CopyIcon from '6shared/assets/icons/copy-20-20.svg'
+import CopyIcon from '@/6shared/assets/icons/copy-20-20.svg'
 import { useTranslation } from 'react-i18next'
 
 interface CodeProps {
