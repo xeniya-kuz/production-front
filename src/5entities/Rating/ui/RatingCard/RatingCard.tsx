@@ -10,6 +10,7 @@ import { Button, ButtonSize, ButtonTheme } from '@/6shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { BrowserView, MobileView } from 'react-device-detect'
 import { Drawer } from '@/6shared/ui/Drawer'
+import styles from './RatingCard.module.scss'
 
 interface RatingCardProps {
   className?: string
@@ -18,6 +19,8 @@ interface RatingCardProps {
   hasFeedback?: boolean
   onCancel?: (starsCount: number) => void
   onAccept?: (starsCount: number, feedback?: string) => void
+  rate?: number
+  fullWidth?: boolean
 }
 
 export const RatingCard = memo(function RatingCard
@@ -27,11 +30,13 @@ export const RatingCard = memo(function RatingCard
   feedbackTitle,
   hasFeedback = true,
   onCancel,
-  title
+  title,
+  rate = 0,
+  fullWidth = false
 }: RatingCardProps): JSX.Element {
   const { t } = useTranslation('buttons')
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [starsCount, setStarsCount] = useState(0)
+  const [starsCount, setStarsCount] = useState(rate)
   const [feedback, setFeedback] = useState('')
 
   const onSelectStarsHandle = useCallback((starNumber: number) => {
@@ -65,10 +70,10 @@ export const RatingCard = memo(function RatingCard
   )
 
   return (
-      <Card className={classNames(className)}>
+      <Card className={classNames(className, [], { [styles.full]: fullWidth })}>
           <VStack align='center' gap='8'>
-              <Text title={title}/>
-              <StarRating size={40} onSelect={onSelectStarsHandle}/>
+              <Text title={starsCount ? 'Спасибо за оценку!' : title}/>
+              <StarRating size={40} onSelect={onSelectStarsHandle} selectedStars={starsCount}/>
           </VStack>
           <BrowserView>
               <Modal isOpen={isModalOpen} onClose={cancelHandle} lazy>

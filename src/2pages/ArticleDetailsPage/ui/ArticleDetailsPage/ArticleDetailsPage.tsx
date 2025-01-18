@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
 import styles from './ArticleDetailsPage.module.scss'
+import { ArticleRating } from '@/4features/ArticleRating'
 
 interface ArticleDetailsPageProps {
   className?: string
@@ -31,6 +32,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element
           <VStack gap='16' max>
               <ArticleDetailsPageHeader/>
               <ArticleDetails articleId={articleId}/>
+              <ArticleRating articleId={articleId}/>
               <ArticleRecommendations/>
               <ArticleComments articleId={articleId}/>
           </VStack>

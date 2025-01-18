@@ -12,10 +12,11 @@ interface StarRatingProps {
 }
 
 const stars = [1, 2, 3, 4, 5]
+
 export const StarRating = memo(function StarRating
 ({ className, onSelect, selectedStars = 0, size = 30 }: StarRatingProps): JSX.Element {
   const [isSelected, setIsSelected] = useState(!!selectedStars)
-  const [currentStarNumber, setCurrentStarNumber] = useState(0)
+  const [currentStarNumber, setCurrentStarNumber] = useState(selectedStars)
 
   const onHover = (starNumber: number) => () => {
     if (!isSelected) {
