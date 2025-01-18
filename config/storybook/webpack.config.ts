@@ -14,7 +14,7 @@ export default ({ config }: { config: webpack.Configuration }): webpack.Configur
     html: '',
     src: path.resolve(__dirname, '..', '..', 'src'),
     buildLocales: path.resolve(__dirname, '..', '..', 'build', 'locales'),
-    locales: path.resolve(__dirname, '..', '..', 'public', 'locales')
+    locales: path.resolve(__dirname, '..', '..', 'src', 'locales')
   }
 
   config.resolve?.modules?.push(paths.src)

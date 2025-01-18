@@ -17,7 +17,7 @@ export default (env: BuildEnv): webpack.Configuration => {
     html: path.resolve(__dirname, 'public', 'index.html'),
     src: path.resolve(__dirname, 'src'),
     buildLocales: path.resolve(__dirname, 'build', 'locales'),
-    locales: path.resolve(__dirname, 'public', 'locales')
+    locales: path.resolve(__dirname, 'src', 'locales')
   }
 
   const mode = env.mode ?? 'development'

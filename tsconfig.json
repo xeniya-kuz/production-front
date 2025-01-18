@@ -9,6 +9,7 @@
     //способы модульной сборки (т.е. common js или обычный import)
     "module": "ESNext",
     //в какую спецификацию комплириуем: для поддержки большинства браузеров
+    // "target": "ES2015",
     "target": "es5",
     //чтобы можно было писать onClick={}
     "jsx": "react-jsx",
@@ -60,6 +61,6 @@
     "public/locales/en/index.ts",
     "public/locales/index.ts",
     "./src/5entities/Article/model/const/article",
-    "./src/*",
+    "./vite.config.ts",
   ],
 }
