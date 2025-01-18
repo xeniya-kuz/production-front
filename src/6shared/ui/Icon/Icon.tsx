@@ -13,19 +13,17 @@ export const enum IconColors {
   INVERTED_SECONDARY_STROKE = 'invertedSecondaryStroke'
 }
 
-interface IconProps {
+interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'color'> {
   className?: string
   Svg: FC<SVGProps<SVGSVGElement>>
   color?: IconColors | IconColors[]
 }
 
 export const Icon = memo(function Icon
-({ className, Svg, color = IconColors.PRIMARY_FILL }: IconProps): JSX.Element {
+({ className, Svg, color = IconColors.PRIMARY_FILL, ...props }: IconProps): JSX.Element {
   const colorStyles = Array.isArray(color)
     ? color.map(c => styles[c])
     : [styles[color]]
 
-  return (
-      <Svg className={classNames(styles.icon, [className, ...colorStyles])}/>
-  )
+  return <Svg className={classNames(styles.icon, [className, ...colorStyles])} {...props}/>
 })

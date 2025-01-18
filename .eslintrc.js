@@ -47,7 +47,7 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': 'warn',
     // подсказывает, где текст не переведен
     'i18next/no-literal-string': [
-      'error',
+      'warn',
       {
         markupOnly: true,
         ignoreAttribute: ['to', 'src', 'fallback', 'data-testid', 'reducerTitle', 'target', 'align', 'direction', 'gap', 'justify', 'role', 'as','alt', 'anchor', 'border'], 

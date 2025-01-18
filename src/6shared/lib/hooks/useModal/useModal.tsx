@@ -32,7 +32,6 @@ export const useModal = ({
 
   // используем useCallback, потому что он мемоизирует ссылку и возвращает всегда одну и ту же
   const onKeyDown = useCallback((e: globalThis.KeyboardEvent): void => {
-    console.log('onKeyDown', e.key)
     if (e.key === 'Escape') {
       close()
     }

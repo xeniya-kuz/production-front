@@ -25,18 +25,20 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize
   disabled?: boolean
   children?: ReactNode
+  fullWidth?: boolean
 }
 
 // обычно в качестве children кнопки передается строка, поэтому используем memo
 // (обычно, если в компоненте есть children, то memo не используем)
 export const Button = memo(function Button (props: ButtonProps) {
-  const { className, children, theme = ButtonTheme.OUTLINE, square = false, size = ButtonSize.M, disabled = false, ...otherProps } = props
+  const { className, children, theme = ButtonTheme.OUTLINE, square = false, size = ButtonSize.M, disabled = false, fullWidth, ...otherProps } = props
 
   const mods: Mods = {
     [styles.square]: square,
     [styles[theme]]: theme,
     [styles[size]]: size,
-    [styles.disabled]: disabled
+    [styles.disabled]: disabled,
+    [styles.fullWidth]: fullWidth
   }
 
   return (

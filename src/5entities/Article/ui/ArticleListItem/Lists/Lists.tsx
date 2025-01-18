@@ -22,7 +22,8 @@ export const Lists = memo(function Lists
 (props: ListsProps): JSX.Element {
   const { className, articles, onLoadNextArticles, Header, target, selectedArticleId, isLoading, virtualized } = props
 
-  const renderArticle = (index: number, article: Article): JSX.Element => <ListView article={article} target={target} index={index} className={styles.list}/>
+  const renderArticle = (index: number, article: Article): JSX.Element =>
+      <ListView article={article} target={target} index={index} className={styles.list} key={index}/>
 
   const components = { Header, Footer: () => <Footer isLoading={isLoading} /> }
 
