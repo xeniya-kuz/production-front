@@ -3,7 +3,7 @@ import { CountryDropdown } from './CountryDropdown'
 import { Country } from '../../model/const/country'
 
 const meta = {
-  title: 'entities/CountryDropdown',
+  title: 'features/CountryDropdown',
   component: CountryDropdown,
   parameters: {
     layout: 'fullscreen'

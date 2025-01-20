@@ -3,7 +3,7 @@ import { NotificationItem } from './NotificationItem'
 import { notificationMock } from '@/6shared/const/mocks/notification'
 
 const meta = {
-  title: 'entities/NotificationItem',
+  title: 'entities/Notification/NotificationItem',
   component: NotificationItem,
   parameters: {
     layout: 'fullscreen'

@@ -5,7 +5,7 @@ import { Page } from './Page'
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
 
 const meta = {
-  title: 'shared/Page',
+  title: 'widgets/Page',
   component: Page,
   tags: ['autodocs'],
   args: {

@@ -7,7 +7,7 @@ import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreD
 const loginFormState = { username: '123', password: '123', isLoading: false }
 
 const meta = {
-  title: 'features/LoginForm',
+  title: 'features/AuthByUsername/LoginForm',
   component: LoginForm,
   tags: ['autodocs'],
   decorators: [StoreDecorator({ loginForm: loginFormState })]

@@ -76,3 +76,10 @@ export const articleMock: Article = {
 
 export const articlesMock: Article[] = new Array(3).fill(0)
   .map((_, index) => ({ ...articleMock, id: String(index) }))
+
+export const articleEntities: any = {}
+articlesMock.forEach(article => {
+  articleEntities[article.id] = article
+})
+
+export const articleIds = articlesMock.map((article) => article.id)

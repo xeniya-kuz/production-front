@@ -4,7 +4,7 @@ import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeD
 import { ListBox } from './ListBox'
 
 const meta = {
-  title: 'shared/ListBox',
+  title: 'shared/Popups/ListBox',
   component: ListBox,
   tags: ['autodocs'],
   args: {

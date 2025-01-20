@@ -2,7 +2,7 @@ import { type Article } from '@/5entities/Article'
 import { type ArticleInfiniteListSchema } from '../types/articleInfiniteListSchema'
 import { articleInfiniteListActions, articleInfiniteListReducer } from './articleInfiniteListSlice'
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList'
-import { articlesMock } from '@/6shared/const/mocks/article'
+import { articleEntities, articleIds, articlesMock } from '@/6shared/const/mocks/article'
 import { createEntityAdapter } from '@reduxjs/toolkit'
 
 describe('articleInfiniteListReducer', () => {
@@ -44,19 +44,14 @@ describe('articleInfiniteListReducer', () => {
       limit: 2
     }
 
-    const entities: any = {}
-    articlesMock.forEach(article => {
-      entities[article.id] = article
-    })
-
     expect(articleInfiniteListReducer(
       state as ArticleInfiniteListSchema,
       fetchArticlesList.fulfilled(articlesMock, '', {}, articlesAdapter)
     )).toEqual({
       isLoading: false,
-      ids: ['0', '1', '2'],
+      ids: articleIds,
       hasMore: true,
-      entities,
+      entities: articleEntities,
       page: 1,
       limit: 2
     })

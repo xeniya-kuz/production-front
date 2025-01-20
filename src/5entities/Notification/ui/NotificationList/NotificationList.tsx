@@ -12,6 +12,10 @@ export const NotificationList = memo(function NotificationList
 ({ className }: NotificationListProps): JSX.Element {
   const { error, isLoading, data: notifications } = useNotifications(null, { pollingInterval: 5000 })
 
+  if (!notifications?.length) {
+    return <p>There is no notifications</p>
+  }
+
   return (
       <VStack gap={'16'} max className={className}>
           {isLoading

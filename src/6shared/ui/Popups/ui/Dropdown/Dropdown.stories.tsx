@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Dropdown } from './Dropdown'
 
 const meta = {
-  title: 'shared/Dropdown',
+  title: 'shared/Popups/Dropdown',
   component: Dropdown,
   tags: ['autodocs'],
   args: {

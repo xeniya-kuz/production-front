@@ -1,16 +1,16 @@
 /* eslint-disable i18next/no-literal-string */
 import type { Meta, StoryObj } from '@storybook/react'
-import { Flex } from './Flex'
+import { VStack } from './VStack'
 
 const meta = {
-  title: 'shared/Stack/Flex',
-  component: Flex,
+  title: 'shared/Stack/VStack',
+  component: VStack,
   tags: ['autodocs'],
   args: {
 
   }
 
-} satisfies Meta<typeof Flex>
+} satisfies Meta<typeof VStack>
 
 export default meta
 type Story = StoryObj<typeof meta>
