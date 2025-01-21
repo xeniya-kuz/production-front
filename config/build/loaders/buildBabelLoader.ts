@@ -6,7 +6,7 @@ interface BuildBabelLoaderProps {
   isTsx?: boolean
 }
 
-export function buildBabelLoader ({ isTsx }: BuildBabelLoaderProps) {
+export function buildBabelLoader ({ isTsx }: BuildBabelLoaderProps): any {
   return {
     test: isTsx ? /\.(jsx|tsx)$/ : /\.(js|ts)$/,
     exclude: /node_modules/,

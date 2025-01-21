@@ -24,6 +24,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
+
   },
   plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'fsd-path-checker-sia355'],
   settings: {
@@ -56,7 +57,7 @@ module.exports = {
     //сдедит за правильностью написания хуков и их зависимостей
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error', //checks effect dependencies
-    'fsd-path-checker-sia355/path-checker': 'error', //самодельный плагин,
+    'fsd-path-checker-sia355/path-checker': ['error', {alias: '@'}], //самодельный плагин
   },
   globals: {
     __IS_DEV__: true,
@@ -66,7 +67,7 @@ module.exports = {
   // отключили правило i18next/no-literal-string для тестовых файлов
   overrides: [
     {
-      files: ['**/src/**/*.test.{ts,tsx}'],
+      files: ['**/src/**/*.test.{ts,tsx}', '**/src/**/*.stories.{ts,tsx}'],
       rules: { 
         'i18next/no-literal-string': 'off'  
       },

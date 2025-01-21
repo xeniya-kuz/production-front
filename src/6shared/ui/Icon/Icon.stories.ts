@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Theme } from '@/1app/providers/ThemeProvider'
-import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Icon, IconColors } from './Icon'
 import EyeIcon from '@/6shared/assets/icons/eye-20-20.svg'
 
