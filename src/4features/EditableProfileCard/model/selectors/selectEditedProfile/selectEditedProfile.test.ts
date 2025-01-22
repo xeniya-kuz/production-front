@@ -1,6 +1,6 @@
 import { type StateSchema } from '@/1app/providers/StoreProvider'
 import { selectEditedProfile } from './selectEditedProfile'
-import { profileMock } from '@/6shared/const/mocks/profile'
+import { profileMock } from '@/5entities/Profile'
 
 describe('selectEditedProfile', () => {
   test('should edited profile', () => {

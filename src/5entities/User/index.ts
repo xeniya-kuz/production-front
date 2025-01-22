@@ -1,3 +1,5 @@
+export { userMock } from './model/const/mocks'
+
 export { UserRole } from './model/const/userRole'
 export { selectUserRoles } from './model/selectors/selectUserRoles/selectUserRoles'
 

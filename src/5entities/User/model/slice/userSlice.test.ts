@@ -1,4 +1,4 @@
-import { userMock } from '@/6shared/const/mocks/user'
+import { userMock } from '../const/mocks'
 import { type UserSchema } from '../types/user'
 import { userActions, userReducer } from './userSlice'
 

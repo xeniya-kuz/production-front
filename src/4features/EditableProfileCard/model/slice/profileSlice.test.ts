@@ -1,9 +1,9 @@
 import { profileActions, profileReducer } from './profileSlice'
 import { updateProfileData } from '../services'
-import { profileMock } from '@/6shared/const/mocks/profile'
-import { Currency } from '@/4features/CurrencyDropdown'
 import { type ProfileSchema } from '../types/profile'
 import { ValidateProfileError } from '../const/validate'
+import { profileMock } from '@/5entities/Profile'
+import { Currency } from '@/5entities/CurrencyDropdown'
 
 describe('profileSlice', () => {
   test('setReadonly', async () => {

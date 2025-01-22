@@ -1,4 +1,4 @@
-import { type Notification } from '@/5entities/Notification'
+import { type Notification } from '../types/notification'
 
 export const notificationMock: Notification = {
   id: '2',

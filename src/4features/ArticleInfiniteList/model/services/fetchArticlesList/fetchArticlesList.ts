@@ -3,6 +3,7 @@ import { type ThunkConfig } from '@/1app/providers/StoreProvider'
 import { ArticleType, type Article } from '@/5entities/Article'
 import { selectArticlesLimit } from '../../selectors/selectArticlesLimit/selectArticlesLimit'
 import { addQueryParams } from '@/6shared/lib/url/addQueryParams/addQueryParams'
+// eslint-disable-next-line fsd-path-checker-sia355/layer-imports
 import { selectArticlesSort, selectArticlesOrder, selectArticlesSearch, selectArticlesType } from '@/4features/ArticlesPageFilters'
 
 import { selectArticlesNum } from '../../selectors/selectArticlesNum/selectArticlesNum'

@@ -2,7 +2,7 @@ import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeD
 import { StyleDecorator } from '@/6shared/config/storybook/StyleDecorator/StyleDecorator'
 import { type Preview } from '@storybook/react'
 import { RouterDecorator } from '@/6shared/config/storybook/RouterDecorator/RouterDecorator'
-import { Theme } from '@/1app/providers/ThemeProvider'
+import { Theme } from '@/6shared/const/themes'
 
 const preview: Preview = {
   parameters: {

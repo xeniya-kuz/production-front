@@ -1,5 +1,5 @@
-import { type Country } from '@/4features/CountryDropdown'
-import { type Currency } from '@/4features/CurrencyDropdown'
+import { type Country } from '@/5entities/CountryDropdown'
+import { type Currency } from '@/5entities/CurrencyDropdown'
 
 export interface Profile {
   firstname?: string

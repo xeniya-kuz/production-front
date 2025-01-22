@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { NotificationList } from './NotificationList'
-import { notificationMock } from '@/6shared/const/mocks/notification'
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
+import { notificationMock } from '../../model/const/mocks'
 
 const meta = {
   title: 'entities/Notification/NotificationList',

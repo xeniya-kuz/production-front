@@ -1,3 +1,4 @@
+/* eslint-disable fsd-path-checker-sia355/layer-imports */
 import { ArticleSortDropdown } from '@/4features/ArticleSortDropdown'
 import { ViewSwitcher } from '@/4features/ViewSwitcher'
 import { type ArticleSortField, ArticleType, type ArticleView } from '@/5entities/Article'

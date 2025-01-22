@@ -1,4 +1,4 @@
-import { Theme } from '@/1app/providers/ThemeProvider'
+import { Theme } from '@/6shared/const/themes'
 import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import type { Meta, StoryObj } from '@storybook/react'
 import ProfilePage from './ProfilePage'

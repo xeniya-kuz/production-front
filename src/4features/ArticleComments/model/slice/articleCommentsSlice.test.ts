@@ -4,8 +4,8 @@ import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId/f
 import { type ArticleCommentsSchema } from '../types/ArticleCommentsSchema'
 import { articleCommentsReducer } from './articleCommentsSlice'
 import { type Comment } from '@/5entities/Comment'
-import { commentsMock } from '@/6shared/const/mocks/comment'
 import { type StateSchema } from '@/1app/providers/StoreProvider'
+import { commentsMock } from '@/5entities/Comment'
 
 describe('articleCommentsSlice', () => {
   jest.mock('@reduxjs/toolkit')

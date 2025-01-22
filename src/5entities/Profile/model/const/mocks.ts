@@ -1,6 +1,6 @@
-import { Country } from '@/4features/CountryDropdown'
-import { Currency } from '@/4features/CurrencyDropdown'
-import { type Profile } from '@/5entities/Profile'
+import { Currency } from '@/5entities/CurrencyDropdown'
+import { type Profile } from '../types/profile'
+import { Country } from '@/5entities/CountryDropdown'
 
 export const profileMock: Profile = {
   firstname: 'Trevor',

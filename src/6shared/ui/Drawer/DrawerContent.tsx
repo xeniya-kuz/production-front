@@ -1,4 +1,4 @@
-import { useTheme } from '@/1app/providers/ThemeProvider'
+import { useTheme } from '@/6shared/lib/hooks'
 import { useAnimationLibs } from '@/6shared/lib/components/AnimationProvider/AnimationProvider'
 import { memo, useCallback, useEffect } from 'react'
 import { Portal } from '../Portal/Portal'

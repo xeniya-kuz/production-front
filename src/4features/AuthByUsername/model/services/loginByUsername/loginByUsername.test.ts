@@ -1,7 +1,6 @@
-import { userActions } from '@/5entities/User'
+import { userActions, userMock } from '@/5entities/User'
 import { TestAsyncThunk } from '@/6shared/lib/tests/TestAsyncThunk'
 import { loginByUsername } from './loginByUsername'
-import { userMock } from '@/6shared/const/mocks/user'
 
 // замокали axios
 // jest.mock('axios')

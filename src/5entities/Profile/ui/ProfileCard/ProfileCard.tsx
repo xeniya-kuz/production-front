@@ -1,5 +1,3 @@
-import { CountryDropdown } from '@/4features/CountryDropdown'
-import { type Currency, CurrencyDropdown } from '@/4features/CurrencyDropdown'
 import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import { Avatar } from '@/6shared/ui/Avatar/Avatar'
 import { Error } from '@/6shared/ui/Error/Error'
@@ -10,6 +8,8 @@ import { useTranslation } from 'react-i18next'
 import { type Profile } from '../../model/types/profile'
 import styles from './ProfileCard.module.scss'
 import { type JSX } from 'react'
+import { type Currency, CurrencyDropdown } from '@/5entities/CurrencyDropdown'
+import { CountryDropdown } from '@/5entities/CountryDropdown'
 
 interface ProfileCardProps {
   className?: string

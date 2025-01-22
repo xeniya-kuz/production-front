@@ -1,3 +1,4 @@
+export { useTheme } from './useTheme/useTheme'
 export { useAppDispatch } from './useAppDispatch/useAppDispatch'
 export { useInitialEffect } from './useInitialEffect/useInitialEffect'
 export { useDebounce } from './useDebounce/useDebounce'

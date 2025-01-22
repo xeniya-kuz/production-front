@@ -1,7 +1,7 @@
 import { StoreProvider, type StateSchema } from '@/1app/providers/StoreProvider'
+import { articlesPageFiltersReducer } from '@/3widgets/ArticlesPageFilters'
 import { articleCommentsReducer } from '@/4features/ArticleComments'
 import { articleInfiniteListReducer } from '@/4features/ArticleInfiniteList'
-import { articlesPageFiltersReducer } from '@/4features/ArticlesPageFilters'
 import { loginReducer } from '@/4features/AuthByUsername'
 import { profileReducer } from '@/4features/EditableProfileCard'
 import { articleDetailsReducer } from '@/5entities/Article'

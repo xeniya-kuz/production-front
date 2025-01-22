@@ -1,7 +1,7 @@
 import { TestAsyncThunk } from '@/6shared/lib/tests/TestAsyncThunk'
 import { addArticleComment } from './addArticleComment'
-import { userMock } from '@/6shared/const/mocks/user'
-import { commentMock } from '@/6shared/const/mocks/comment'
+import { userMock } from '@/5entities/User'
+import { commentMock } from '@/5entities/Comment'
 
 describe('addArticleComment', () => {
   test('success', async () => {

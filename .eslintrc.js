@@ -54,14 +54,20 @@ module.exports = {
         ignoreAttribute: ['to', 'src', 'fallback', 'data-testid', 'reducerTitle', 'target', 'align', 'direction', 'gap', 'justify', 'role', 'as','alt', 'anchor', 'border'], 
       },
     ],
-    //сдедит за правильностью написания хуков и их зависимостей
+    //следит за правильностью написания хуков и их зависимостей
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error', //checks effect dependencies
     'fsd-path-checker-sia355/path-checker': ['error', {alias: '@'}], //самодельный плагин
-    'fsd-path-checker-sia355/public-api-imports': ['error', {//самодельный плагин
+    'fsd-path-checker-sia355/public-api-imports': ['error', { //самодельный плагин
       alias: '@',
       testFilesPatterns: ['**/*.test.*', '**/*.stories.*', '**/StoreDecorator.tsx']
-    }], 
+    }],
+    'fsd-path-checker-sia355/layer-imports': ['error', {
+                alias: '@',
+                ignoreImportPatterns: ['**/StoreProvider', '**/testing', '**/ErrorBoundary/**', '@/1app/types/router'],
+                ignoreFiles: ['**/ThemeDecorator.tsx', '**/StoreDecorator.tsx']
+            },
+        ], 
   },
   globals: {
     __IS_DEV__: true,

@@ -1,4 +1,4 @@
-import { useTheme } from '@/1app/providers/ThemeProvider'
+import { useTheme } from '@/6shared/lib/hooks'
 import IconTheme from '@/6shared/assets/icons/theme.svg'
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { Button, ButtonTheme } from '@/6shared/ui/Button/Button'

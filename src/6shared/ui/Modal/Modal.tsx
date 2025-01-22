@@ -1,6 +1,5 @@
-import { useTheme } from '@/1app/providers/ThemeProvider'
 import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
-import { useModal } from '@/6shared/lib/hooks'
+import { useModal, useTheme } from '@/6shared/lib/hooks'
 import { type JSX, type ReactNode } from 'react'
 import { Overlay } from '../Overlay/Overlay'
 import { Portal } from '../Portal/Portal'
