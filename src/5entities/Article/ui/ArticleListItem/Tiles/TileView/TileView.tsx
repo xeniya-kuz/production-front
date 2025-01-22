@@ -1,4 +1,4 @@
-import { routePaths } from '@/6shared/config/routeConfig/routeConfig'
+import { routePaths } from '@/6shared/const/router'
 import { AppLink } from '@/6shared/ui/AppLink/AppLink'
 import { Card } from '@/6shared/ui/Card/Card'
 import { Icon, IconColors } from '@/6shared/ui/Icon/Icon'

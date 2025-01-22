@@ -1,7 +1,7 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { type JSX, memo, useCallback } from 'react'
 import { Button } from '@/6shared/ui/Button/Button'
-import { routePaths } from '@/6shared/config/routeConfig/routeConfig'
+import { routePaths } from '@/6shared/const/router'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { selectArticleDetails } from '@/5entities/Article'

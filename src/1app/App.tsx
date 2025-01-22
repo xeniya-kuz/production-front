@@ -10,7 +10,7 @@ import { selectUserMounted, userActions } from '@/5entities/User'
 import { useAppDispatch } from '@/6shared/lib/hooks'
 import { useSelector } from 'react-redux'
 import { ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY, ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY } from '@/6shared/const/localstorage'
-import { routePaths } from '@/6shared/config/routeConfig/routeConfig'
+import { routePaths } from '@/6shared/const/router'
 import { useLocation } from 'react-router-dom'
 
 export default function App (): JSX.Element {

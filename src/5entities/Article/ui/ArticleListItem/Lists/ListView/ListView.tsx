@@ -1,4 +1,4 @@
-import { routePaths } from '@/6shared/config/routeConfig/routeConfig'
+import { routePaths } from '@/6shared/const/router'
 import { ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY } from '@/6shared/const/localstorage'
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { AppLink } from '@/6shared/ui/AppLink/AppLink'

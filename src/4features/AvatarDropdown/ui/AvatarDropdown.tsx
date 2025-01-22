@@ -1,7 +1,7 @@
 import { type JSX, memo, useCallback } from 'react'
 import { Dropdown } from '@/6shared/ui/Popups'
 import { Avatar } from '@/6shared/ui/Avatar/Avatar'
-import { routePaths } from '@/6shared/config/routeConfig/routeConfig'
+import { routePaths } from '@/6shared/const/router'
 import { useSelector } from 'react-redux'
 import { isUserAdmin, isUserManager, selectUserAuthData, userActions } from '@/5entities/User'
 import { useAppDispatch } from '@/6shared/lib/hooks'
