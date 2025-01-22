@@ -58,7 +58,10 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error', //checks effect dependencies
     'fsd-path-checker-sia355/path-checker': ['error', {alias: '@'}], //самодельный плагин
-    'fsd-path-checker-sia355/public-api-imports': ['error', {alias: '@'}], //самодельный плагин
+    'fsd-path-checker-sia355/public-api-imports': ['error', {//самодельный плагин
+      alias: '@',
+      testFilesPatterns: ['**/*.test.*', '**/*.stories.*', '**/StoreDecorator.tsx']
+    }], 
   },
   globals: {
     __IS_DEV__: true,
