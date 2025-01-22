@@ -1,4 +1,4 @@
-export { articleEntities, articleIds, articlesMock } from './model/const/mocks'
+export { articleEntities, articleIds, articlesMock, articleMock } from './model/const/mocks'
 export { ArticleBlockType, ArticleType, ArticleView, ArticleSortField } from './model/const/article'
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails'
 export { type Article } from './model/types/article'

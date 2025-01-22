@@ -1,6 +1,6 @@
 import { Theme } from '@/6shared/const/themes'
 import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { articlesMock } from '@/6shared/const/mocks/article'
+import { articlesMock } from '../../model/const/mocks'
 import type { Meta, StoryObj } from '@storybook/react'
 import { ArticleView } from '../../model/const/article'
 import { ArticleList } from './ArticleList'

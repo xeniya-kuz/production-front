@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { AvatarDropdown } from './AvatarDropdown'
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
-import { userMock } from '@/6shared/const/mocks/user'
+import { userMock } from '@/5entities/User'
 
 const meta = {
   title: 'features/AvatarDropdown',

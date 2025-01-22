@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ArticleInfiniteList } from './ArticleInfiniteList'
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
-import { ArticleView } from '@/5entities/Article'
-import { articleEntities, articleIds } from '@/6shared/const/mocks/article'
+import { articleEntities, articleIds, ArticleView } from '@/5entities/Article'
 
 const meta = {
   title: 'features/Article/ArticleInfiniteList',

@@ -1,6 +1,6 @@
-import { profileMock } from '@/6shared/const/mocks/profile'
 import type { Meta, StoryObj } from '@storybook/react'
 import { ProfileCard } from './ProfileCard'
+import { profileMock } from '../../model/const/mocks'
 
 const meta = {
   title: 'entities/ProfileCard',

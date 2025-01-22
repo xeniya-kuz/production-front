@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import ArticleComments from './ArticleComments'
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
-import { commentsMock } from '@/6shared/const/mocks/comment'
+import { commentsMock } from '@/5entities/Comment'
 
 const meta = {
   title: 'features/Article/ArticleComments',

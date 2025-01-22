@@ -1,7 +1,7 @@
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
 import type { Meta, StoryObj } from '@storybook/react'
 import ArticleEditPage from './ArticleEditPage'
-import { articleMock } from '@/6shared/const/mocks/article'
+import { articleMock } from '@/5entities/Article'
 
 const meta = {
   title: 'pages/Article/ArticleEditPage',
