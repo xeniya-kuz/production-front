@@ -4,7 +4,6 @@ import { useAppDispatch, useInitialEffect } from '@/6shared/lib/hooks'
 import { memo, useCallback, type JSX } from 'react'
 import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
-import { selectArticlesError } from '../model/selectors/selectArticlesError/selectArticlesError'
 import { selectArticlesIsLoading } from '../model/selectors/selectArticlesIsLoading/selectArticlesIsLoading'
 import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage'
 import { init } from '../model/services/initArticlesPage/initArticlesPage'
@@ -25,7 +24,6 @@ export const ArticleInfiniteList = memo(function AddArticleCommentForm
 
   const articles = useSelector(selectArticles.selectAll)
   const isLoading = useSelector(selectArticlesIsLoading)
-  const error = useSelector(selectArticlesError)
 
   // useSearchParams можно заменить new URLSearchParams(window.location.search)
   const [searchParams] = useSearchParams()

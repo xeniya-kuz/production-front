@@ -26,9 +26,9 @@ describe('EditableProfileCard', () => {
   const editBtn = 'editableProfileCardHeader.EditBtn'
   const cancelBtn = 'editableProfileCardHeader.CancelBtn'
   const firstname = 'profileCard.Firstname'
-  const lastname = 'profileCard.Lastname'
+  // const lastname = 'profileCard.Lastname'
   const saveBtn = 'editableProfileCardHeader.SaveBtn'
-  const validateError = 'editableProfileErrors.Text'
+  // const validateError = 'editableProfileErrors.Text'
 
   test('Режим readonly переключается на false', async () => {
     ComponentRender(<EditableProfileCard profileId={profileMock.id}/>,

@@ -26,7 +26,13 @@ module.exports = {
     sourceType: 'module',
 
   },
-  plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'fsd-path-checker-sia355'],
+  plugins: [
+    'react',
+    '@typescript-eslint',
+    'i18next',
+    'react-hooks',
+    'fsd-path-checker-sia355'
+  ],
   settings: {
     react: {
       version: 'detect',
@@ -34,7 +40,7 @@ module.exports = {
   },
   rules: {
     'react/jsx-indent': [2, 4],
-    "react/jsx-indent-props": ["error", 4],
+    'react/jsx-indent-props': ['error', 4],
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [
       2,
@@ -42,7 +48,7 @@ module.exports = {
     ],
     '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'warn',
-    "@typescript-eslint/no-invalid-void-type": 'off',
+    '@typescript-eslint/no-invalid-void-type': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/consistent-type-imports': 'warn',
@@ -67,7 +73,7 @@ module.exports = {
                 ignoreImportPatterns: ['**/StoreProvider', '**/testing', '**/ErrorBoundary/**', '@/1app/types/router'],
                 ignoreFiles: ['**/ThemeDecorator.tsx', '**/StoreDecorator.tsx']
             },
-        ], 
+        ],
   },
   globals: {
     __IS_DEV__: true,

@@ -10,7 +10,6 @@ import { useSelector } from 'react-redux'
 import { useAppDispatch } from '@/6shared/lib/hooks'
 import { HStack } from '@/6shared/ui/Stack'
 import { selectAddArticleCommentFormText } from '../../model/selectors/selectAddCommentFormText/selectAddCommentFormText'
-import { selectAddArticleCommentFormError } from '../../model/selectors/selectAddCommentFormError/selectAddCommentFormError'
 
 interface AddArticleCommentFormProps {
   className?: string
@@ -26,7 +25,6 @@ const CommentForm = memo(function ArticleComments
   const dispatch = useAppDispatch()
   const { t } = useTranslation('comments')
   const value = useSelector(selectAddArticleCommentFormText)
-  const error = useSelector(selectAddArticleCommentFormError)
 
   const onChange = useCallback(({ name, value }: { name: string, value: string }) => {
     dispatch(commentFormActions.setComment(value))

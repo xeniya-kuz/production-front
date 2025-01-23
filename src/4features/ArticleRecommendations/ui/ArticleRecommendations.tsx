@@ -14,7 +14,7 @@ interface ArticleRecommendationsProps {
 export const ArticleRecommendations = memo(function ArticleRecommendations
 ({ className }: ArticleRecommendationsProps): JSX.Element | null {
   const { t } = useTranslation('articles')
-  const { isLoading, error, data: recommendations } = useArticleRecommendations(3)
+  const { isLoading, data: recommendations } = useArticleRecommendations(3)
 
   if (recommendations === undefined) {
     return null
