@@ -8,7 +8,9 @@ const meta = {
   parameters: {
     layout: 'fullscreen'
   },
-
+  args: {
+    onChange: () => {}
+  },
   tags: ['autodocs']
 } satisfies Meta<typeof CurrencyDropdown>
 

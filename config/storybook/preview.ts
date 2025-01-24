@@ -1,12 +1,12 @@
-import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { StyleDecorator } from '@/6shared/config/storybook/StyleDecorator/StyleDecorator'
 import { type Preview } from '@storybook/react'
 import { RouterDecorator } from '@/6shared/config/storybook/RouterDecorator/RouterDecorator'
 import { Theme } from '@/6shared/const/themes'
+import { withThemeByClassName } from '@storybook/addon-themes'
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: '^on[A-Z].*' },
+    actions: {},
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -16,7 +16,16 @@ const preview: Preview = {
     layout: 'fullscreen',
     tags: ['autodocs']
   },
-  decorators: [ThemeDecorator(Theme.LIGHT), StyleDecorator, RouterDecorator]
+  decorators: [StyleDecorator, RouterDecorator,
+    withThemeByClassName({
+      themes: {
+        light: Theme.LIGHT,
+        dark: Theme.DARK,
+        orange: Theme.ORANGE
+      },
+      defaultTheme: 'light'
+    })
+  ]
 }
 
 export default preview

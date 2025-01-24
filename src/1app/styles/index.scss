@@ -12,13 +12,13 @@
 
 body {
 	font: var(--font-m);
+	color: var(--primary-color);
 	background: var(--bg-color);
 }
 
 .app,
 .app_drawer {
 	min-height: 100vh;
-	color: var(--primary-color);
 }
 
 .content-page {

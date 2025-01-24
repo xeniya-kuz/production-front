@@ -13,7 +13,8 @@ const meta = {
       { value: 'value1', label: 'content1111111' },
       { value: 'value2', label: 'content2222222' },
       { value: 'value3', label: 'content3333333' }
-    ]
+    ],
+    onChange: () => {}
   },
   decorators: [
     Story => <div style={{ padding: '200px' }}><Story/></div>

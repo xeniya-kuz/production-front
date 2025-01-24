@@ -6,7 +6,9 @@ const meta = {
   title: 'features/Article/ArticlesPageFilters',
   component: ArticlesPageFilters,
   tags: ['autodocs'],
-  args: { },
+  args: {
+    fetchData: () => {}
+  },
   decorators: [StoreDecorator({})]
 
 } satisfies Meta<typeof ArticlesPageFilters>

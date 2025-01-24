@@ -8,7 +8,9 @@ const meta = {
   tags: ['autodocs'],
   args: {
     sort: ArticleSortField.TITLE,
-    order: 'asc'
+    order: 'asc',
+    onChangeOrder: () => {},
+    onChangeSort: () => {}
   }
 
 } satisfies Meta<typeof ArticleSortDropdown>
@@ -17,5 +19,4 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
-
 }

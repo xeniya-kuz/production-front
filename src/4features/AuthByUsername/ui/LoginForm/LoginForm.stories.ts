@@ -10,7 +10,10 @@ const meta = {
   title: 'features/AuthByUsername/LoginForm',
   component: LoginForm,
   tags: ['autodocs'],
-  decorators: [StoreDecorator({ loginForm: loginFormState })]
+  decorators: [StoreDecorator({ loginForm: loginFormState })],
+  args: {
+    onSuccess: () => {}
+  }
 
 } satisfies Meta<typeof LoginForm>
 
