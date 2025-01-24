@@ -12,6 +12,12 @@ interface UseModalReturn {
   isMounted: boolean
 }
 
+/**
+ * Переиспользуемый хук для модальных компонентов (drawer/modal)
+ * @param delay
+ * @param isOpen
+ * @param onClose
+ */
 export const useModal = ({
   isOpen,
   onClose,
