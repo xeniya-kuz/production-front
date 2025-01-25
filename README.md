@@ -4,6 +4,7 @@
 - npm run generate:slice
 - комментарии на скрипты
 - добавить переводы везде
+- loki в git actions падает, потому что "Failed fetching stories because the server is down"
 
 
 

@@ -33,7 +33,7 @@ jobs:
        run: npm run test:jest
      - name: build storybook
        if: always()
-       run: npm run storybook:build
+       run: npm run storybook
      - name: screenshot testing
        if: always()
        run: npm run test:loki:ci
