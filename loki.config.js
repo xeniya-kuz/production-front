@@ -10,6 +10,7 @@ module.exports = {
     'chrome.iphone7': {
       target: 'chrome.app',
       preset: 'iPhone 7'
-    }
+    },
+    staticDir: './storybook-static' // Укажите путь к папке со статическим билдом
   }
 }
