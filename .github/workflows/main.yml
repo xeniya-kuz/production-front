@@ -31,21 +31,28 @@ jobs:
      - name: unit testing
        if: always()
        run: npm run test:jest
-     - name: build storybook
+    #  - name: build storybook
+    #    if: always()
+    #    run: npm run storybook:build
+    #  - name: screenshot testing
+    #    if: always()
+    #    run: npm run test:loki:ci
+    #  - name: upload loki artifact on failure
+    #    if: failure()
+    #    uses: actions/upload-artifact@v4
+    #    with:
+    #     name: loki-artifact
+    #     path: .loki
+    #     overwrite: true
+    #     include-hidden-files: true
+     - name: start Storybook
        if: always()
-       run: npm run storybook
-     - name: screenshot testing
-       if: always()
-       run: npm run test:loki:ci
-     - name: upload loki artifact on failure
-       if: failure()
-       uses: actions/upload-artifact@v4
-       with:
-        name: loki-artifact
-        path: .loki
-        overwrite: true
-        include-hidden-files: true
- 
-
+       run: npm run storybook -- --ci --port 6006 &
+       env:
+          NODE_ENV: development
+     - name: Wait for Storybook to be ready
+       run: npx wait-on http://localhost:6006
+     - name: Run Loki tests
+       run: npx loki test
 
 
