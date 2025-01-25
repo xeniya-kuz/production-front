@@ -20,6 +20,7 @@ export const ArticleRecommendations = memo(function ArticleRecommendations
     return null
   }
 
+  console.log('recommendations', recommendations)
   return (
       <VStack gap='8' max className={classNames(styles.articleRecommendations, [className])}>
           <Text title={t('recommendations')} size={TextSize.S}/>

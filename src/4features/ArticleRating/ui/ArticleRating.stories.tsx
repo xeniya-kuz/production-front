@@ -1,14 +1,13 @@
 import { type Meta, type StoryObj } from '@storybook/react'
 import ArticleRating from './ArticleRating'
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
-import withMock from 'storybook-addon-mock'
 import { articleRatingMock } from '@/5entities/Rating'
 
 const meta = {
   title: 'features/Article/ArticleRating',
   component: ArticleRating,
   tags: ['autodocs'],
-  decorators: [StoreDecorator({}), withMock],
+  decorators: [StoreDecorator({})],
   args: { articleId: '1' },
   parameters: {
     mockData: [
