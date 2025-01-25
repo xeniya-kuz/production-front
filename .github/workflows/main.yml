@@ -43,6 +43,8 @@ jobs:
        with:
         name: loki-artifact
         path: .loki
+        overwrite: true
+        include-hidden-files: true
  
 
 
