@@ -2,7 +2,6 @@ import { LoginModal } from '@/4features/AuthByUsername'
 import { AvatarDropdown } from '@/4features/AvatarDropdown'
 import { NotificationButton } from '@/4features/NotificationButton'
 import { selectUserAuthData } from '@/5entities/User'
-import { routePaths } from '@/6shared/const/router'
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { AppLink, AppLinkTheme } from '@/6shared/ui/AppLink/AppLink'
 import { Button, ButtonTheme } from '@/6shared/ui/Button/Button'
@@ -12,6 +11,7 @@ import { type JSX, memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import styles from './Navbar.module.scss'
+import { getRouteArticleCreate } from '@/6shared/const/router'
 
 interface NavbarProps {
   className?: string
@@ -32,7 +32,7 @@ export const Navbar = memo(function Navbar ({ className }: NavbarProps): JSX.Ele
             {/* eslint-disable-next-line i18next/no-literal-string */}
             <Text className={styles.appName} title='Production project' theme={TextTheme.INVERTED}/>
             <AppLink
-                to={routePaths['article-create']}
+                to={getRouteArticleCreate()}
                 theme={AppLinkTheme.INVERTED}
                 className={styles.create}
              >

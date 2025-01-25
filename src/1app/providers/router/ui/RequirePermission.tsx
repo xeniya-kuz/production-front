@@ -1,5 +1,5 @@
 import { type UserRole, selectUserRoles } from '@/5entities/User'
-import { routePaths } from '@/6shared/const/router'
+import { getRouteForbidden } from '@/6shared/const/router'
 import { type JSX, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, useLocation } from 'react-router-dom'
@@ -25,7 +25,7 @@ export const RequirePermission = ({ children, roles }: RequirePermissionProps): 
   }, [roles, userRoles])
 
   if (!hasRequiredRoles) {
-    return <Navigate to={routePaths.forbidden} state={{ from: location }} replace />
+    return <Navigate to={getRouteForbidden()} state={{ from: location }} replace />
   }
 
   return children

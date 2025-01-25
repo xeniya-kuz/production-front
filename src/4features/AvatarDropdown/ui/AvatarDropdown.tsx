@@ -1,11 +1,11 @@
 import { type JSX, memo, useCallback } from 'react'
 import { Dropdown } from '@/6shared/ui/Popups'
 import { Avatar } from '@/6shared/ui/Avatar/Avatar'
-import { routePaths } from '@/6shared/const/router'
 import { useSelector } from 'react-redux'
 import { isUserAdmin, isUserManager, selectUserAuthData, userActions } from '@/5entities/User'
 import { useAppDispatch } from '@/6shared/lib/hooks'
 import { useTranslation } from 'react-i18next'
+import { getRouteAdmin, getRouteProfile } from '@/6shared/const/router'
 
 interface AvatarDropdownProps {
   className?: string
@@ -25,26 +25,26 @@ export const AvatarDropdown = memo(function AvatarDropdown
     dispatch(userActions.logout())
   }, [dispatch])
 
+  if (authData === undefined) {
+    return null
+  }
+
   const dropdownItems = [
     ...(isAdminPanelAvailabal
       ? [{
           content: t('profile:admin-panel'),
-          href: `${routePaths['admin-panel']}`
+          href: getRouteAdmin()
         }]
       : []),
     {
       content: t('profile:profile'),
-      href: `${routePaths.profile}/${authData?.id}`
+      href: getRouteProfile(authData.id)
     },
     {
       content: t('Выйти'),
       onClick: onLogout
     }
   ]
-
-  if (authData === undefined) {
-    return null
-  }
 
   return (
       <Dropdown

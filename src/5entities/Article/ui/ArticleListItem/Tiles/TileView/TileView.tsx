@@ -1,4 +1,3 @@
-import { routePaths } from '@/6shared/const/router'
 import { AppLink } from '@/6shared/ui/AppLink/AppLink'
 import { Card } from '@/6shared/ui/Card/Card'
 import { Icon, IconColors } from '@/6shared/ui/Icon/Icon'
@@ -9,6 +8,7 @@ import styles from '../styles.module.scss'
 
 import EyeIcon from '@/6shared/assets/icons/eye-20-20.svg'
 import { ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY } from '@/6shared/const/localstorage'
+import { getRouteArticleDetails } from '@/6shared/const/router'
 
 interface TileViewProps {
   article: Article
@@ -32,7 +32,7 @@ export const TileView = memo(function TileView
 
   return (
       <AppLink
-          to={`${routePaths['article-details']}/${article.id}`}
+          to={getRouteArticleDetails(article.id)}
           target={target}
           className={className}
           onClick={handleButtonClick}

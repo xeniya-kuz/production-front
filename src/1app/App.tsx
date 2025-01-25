@@ -10,8 +10,8 @@ import { selectUserMounted, userActions } from '@/5entities/User'
 
 import { useSelector } from 'react-redux'
 import { ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY, ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY } from '@/6shared/const/localstorage'
-import { routePaths } from '@/6shared/const/router'
 import { useLocation } from 'react-router-dom'
+import { getRouteArticleDetails, getRouteArticles } from '@/6shared/const/router'
 
 export default function App (): JSX.Element {
   const dispatch = useAppDispatch()
@@ -21,7 +21,7 @@ export default function App (): JSX.Element {
   useEffect(() => {
     dispatch(userActions.initAuthData())
 
-    if (!pathname.includes(routePaths.articles) || !pathname.includes(routePaths['article-details'])) {
+    if (!pathname.includes(getRouteArticles()) || !pathname.includes(getRouteArticleDetails(':articleId'))) {
       localStorage.removeItem(ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY)
       localStorage.removeItem(ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY)
     }

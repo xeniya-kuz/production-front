@@ -1,5 +1,5 @@
 import { selectUserAuthData } from '@/5entities/User'
-import { routePaths } from '@/6shared/const/router'
+import { getRouteMain } from '@/6shared/const/router'
 import { type JSX } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, useLocation } from 'react-router-dom'
@@ -13,7 +13,7 @@ export function RequireAuth ({ children }: { children: JSX.Element }): JSX.Eleme
     // trying to go to when they were redirected. This allows us to send them
     // along to that page after they login, which is a nicer user experience
     // than dropping them off on the home page.
-    return <Navigate to={routePaths.main} state={{ from: location }} replace/>
+    return <Navigate to={getRouteMain()} state={{ from: location }} replace/>
   }
 
   return children

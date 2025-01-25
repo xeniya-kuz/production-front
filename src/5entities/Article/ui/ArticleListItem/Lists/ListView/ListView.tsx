@@ -1,4 +1,3 @@
-import { routePaths } from '@/6shared/const/router'
 import { ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY } from '@/6shared/const/localstorage'
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { AppLink } from '@/6shared/ui/AppLink/AppLink'
@@ -15,6 +14,7 @@ import styles from './ListView.module.scss'
 
 import EyeIcon from '@/6shared/assets/icons/eye-20-20.svg'
 import { ArticleBlockType } from '../../../../model/const/article'
+import { getRouteArticleDetails } from '@/6shared/const/router'
 
 interface ListViewProps {
   article: Article
@@ -55,7 +55,7 @@ export const ListView = memo(function ListView
           )}
           <div className={styles.footer}>
               <AppLink
-                  to={`${routePaths['article-details']}/${article.id}`}
+                  to={getRouteArticleDetails(article.id)}
                   target={target}
               >
                   <Button onClick={handleButtonClick}>

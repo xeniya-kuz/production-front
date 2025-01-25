@@ -1,21 +1,21 @@
 import { selectUserAuthData } from '@/5entities/User'
 import { createSelector } from '@reduxjs/toolkit'
 import { type SidebarItemType } from '../../types/sidebar'
-import { routePaths } from '@/6shared/const/router'
 import MainIcon from '@/6shared/assets/icons/main-20-20.svg'
 import AboutIcon from '@/6shared/assets/icons/about-20-20.svg'
 import ProfileIcon from '@/6shared/assets/icons/profile-20-20.svg'
 import ArticleIcon from '@/6shared/assets/icons/article-20-20.svg'
+import { getRouteAbout, getRouteArticles, getRouteMain, getRouteProfile } from '@/6shared/const/router'
 
 export const selectSidebarItems = createSelector(selectUserAuthData, (user) => {
   let sidebarItemsList: SidebarItemType[] = [
     {
-      path: routePaths.main,
+      path: getRouteMain(),
       text: 'translation:Главная',
       Icon: MainIcon
     },
     {
-      path: routePaths.about,
+      path: getRouteAbout(),
       text: 'about:about-us',
       Icon: AboutIcon
     }
@@ -23,13 +23,13 @@ export const selectSidebarItems = createSelector(selectUserAuthData, (user) => {
 
   if (user !== undefined) {
     sidebarItemsList = [...sidebarItemsList, {
-      path: `${routePaths.profile}/${user.id}`,
+      path: getRouteProfile(user.id),
       text: 'profile:profile',
       Icon: ProfileIcon,
       isPrivate: true
     },
     {
-      path: routePaths.articles,
+      path: getRouteArticles(),
       text: 'articles:articles',
       Icon: ArticleIcon,
       isPrivate: true

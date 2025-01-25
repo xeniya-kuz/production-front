@@ -1,13 +1,13 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { type JSX, memo, useCallback } from 'react'
 import { Button } from '@/6shared/ui/Button/Button'
-import { routePaths } from '@/6shared/const/router'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { selectArticleDetails } from '@/5entities/Article'
 import { HStack } from '@/6shared/ui/Stack'
 import { useSelector } from 'react-redux'
 import { selectIsArticleAuthor } from '@/4features/ArticleComments'
+import { getRouteArticleEdit, getRouteArticles } from '@/6shared/const/router'
 
 interface ArticleDetailsPageHeaderProps {
   className?: string
@@ -21,12 +21,12 @@ export const ArticleDetailsPageHeader = memo(function ArticleDetailsPageHeader
   const article = useSelector(selectArticleDetails)
 
   const onBackToList = useCallback(() => {
-    navigate(routePaths.articles)
+    navigate(getRouteArticles())
   }, [navigate])
 
   const onEditArticle = useCallback(() => {
     if (article !== undefined) {
-      navigate(`${routePaths.articles}/${article?.id}/edit`)
+      navigate(getRouteArticleEdit(article?.id))
     }
   }, [navigate, article])
 
