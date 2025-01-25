@@ -1,6 +1,6 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './Page.module.scss'
-import { type JSX, memo, type RefObject, useRef, type ReactNode, type UIEvent } from 'react'
+import { type JSX, memo, useRef, type ReactNode, type UIEvent } from 'react'
 import { useAppDispatch, useInfiniteScroll, useInitialEffect, useThrottle } from '@/6shared/lib/hooks'
 import { useSelector } from 'react-redux'
 import { pageActions } from '../model/slice/pageSlice'
@@ -16,8 +16,8 @@ interface PageProps {
 
 export const Page = memo(function Page
 ({ className, children, onScrollEnd }: PageProps): JSX.Element {
-  const wrapperRef = useRef(null) as RefObject<HTMLDivElement | null>
-  const triggerRef = useRef(null) as RefObject<HTMLDivElement | null>
+  const wrapperRef = useRef<HTMLDivElement | null>(null)
+  const triggerRef = useRef<HTMLDivElement | null>(null)
   const dispatch = useAppDispatch()
   const { pathname } = useLocation()
   const scrollPosition = useSelector((state: StateSchema) => selectScrollByPath(state, pathname))
