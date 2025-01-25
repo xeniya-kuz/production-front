@@ -1,4 +1,3 @@
-import { useTheme } from '@/6shared/lib/hooks'
 import { useAnimationLibs } from '@/6shared/lib/components/AnimationProvider/AnimationProvider'
 import { memo, useCallback, useEffect } from 'react'
 import { Portal } from '../Portal/Portal'
@@ -16,7 +15,6 @@ export const DrawerContent = memo(function DrawerContent (props: DrawerProps) {
     onClose,
     isOpen
   } = props
-  const { theme } = useTheme()
   const { Spring, Gesture } = useAnimationLibs()
   const [{ y }, api] = Spring.useSpring(() => ({ y: height }))
 
@@ -87,7 +85,7 @@ export const DrawerContent = memo(function DrawerContent (props: DrawerProps) {
 
   return (
       <Portal>
-          <div className={classNames(styles.drawer, [className, theme, 'app_drawer'])}>
+          <div className={classNames(styles.drawer, [className, 'app_drawer'])}>
               <Overlay onClick={close} />
               {/* @ts-expect-error - проблема типизации: ругается на className и children */}
               <Spring.a.div

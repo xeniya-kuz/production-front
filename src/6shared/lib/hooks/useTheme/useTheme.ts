@@ -12,7 +12,9 @@ export function useTheme (): UseThemeResult {
   const { theme, setTheme } = useContext(ThemeContext)
 
   useEffect(() => {
-    document.body.className = theme
+    if (__PROJECT__ !== 'storybook') {
+      document.body.className = theme
+    }
   }, [theme])
 
   const toggleTheme = useCallback((): void => {

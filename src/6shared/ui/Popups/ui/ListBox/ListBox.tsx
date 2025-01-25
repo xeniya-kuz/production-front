@@ -68,8 +68,8 @@ export const ListBox = <T extends string> (props: ListBoxProps<T>): JSX.Element 
                                       [styles.disabled]: disabled
                                     })}>
                                       {selected && <Icon
-                                       Svg={DoneIcon} 
-                                       color={active ? IconColors.INVERTED_PRIMARY_FILL : IconColors.PRIMARY_FILL}
+                                          Svg={DoneIcon}
+                                          color={active ? IconColors.INVERTED_PRIMARY_FILL : IconColors.PRIMARY_FILL}
                                        />}
                                       {option.label}
                                   </li>

@@ -1,5 +1,5 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
-import { useTheme, useAppDispatch } from '@/6shared/lib/hooks'
+import { useAppDispatch } from '@/6shared/lib/hooks'
 import { Navbar } from '@/3widgets/Navbar'
 import { Sidebar } from '@/3widgets/Sidebar'
 import { type JSX, Suspense, useEffect } from 'react'
@@ -15,7 +15,6 @@ import { useLocation } from 'react-router-dom'
 
 export default function App (): JSX.Element {
   const dispatch = useAppDispatch()
-  const { theme } = useTheme()
   const isMounted = useSelector(selectUserMounted)
   const { pathname } = useLocation()
 
@@ -29,7 +28,7 @@ export default function App (): JSX.Element {
   }, [dispatch, pathname])
 
   return (
-      <div className={classNames('app', [theme])}>
+      <div className={classNames('app')}>
           {/* Здесь Suspense нужен, т.к. переводы из i18n будут подгружаться чанками */}
           <Suspense fallback={<PageLoader/>}>
               <Navbar />

@@ -23,7 +23,7 @@ const preview: Preview = {
         dark: Theme.DARK,
         orange: Theme.ORANGE
       },
-      defaultTheme: 'light'
+      defaultTheme: Theme.LIGHT
     })
   ]
 }

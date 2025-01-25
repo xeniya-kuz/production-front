@@ -1,7 +1,7 @@
 import { type FC, type ReactNode, useMemo, useState } from 'react'
 import {
   ThemeContext
-} from '../../../../6shared/lib/context/ThemeContext'
+} from '@/6shared/lib/context/ThemeContext'
 import { LOCAL_STORAGE_THEME_KEY } from '@/6shared/const/localstorage'
 import { Theme } from '@/6shared/const/themes'
 
