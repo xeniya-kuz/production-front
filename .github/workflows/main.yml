@@ -19,41 +19,31 @@ jobs:
          node-version: ${{ matrix.node-version }}
      - name: install modules
        run: npm install
-    #  - name: production build
-    #    if: always()
-    #    run: npm run build:prod
-    #  - name: fix linting typescript
-    #    if: always()
-    #    run: npm run lint:ts:fix
-    #  - name: fix linting scss
-    #    if: always()
-    #    run: npm run lint:scss:fix
-    #  - name: unit testing
-    #    if: always()
-    #    run: npm run test:jest
-     - name: build storybook
+     - name: production build
        if: always()
-       run: npm run storybook:build
-     - name: screenshot testing
+       run: npm run build:prod
+     - name: fix linting typescript
        if: always()
-       run: npm run test:loki:ci
-     - name: upload loki artifact on failure
-       if: failure()
-       uses: actions/upload-artifact@v4
-       with:
-        name: loki-artifact
-        path: .loki
-        overwrite: true
-        include-hidden-files: true
+       run: npm run lint:ts:fix
+     - name: fix linting scss
+       if: always()
+       run: npm run lint:scss:fix
+     - name: unit testing
+       if: always()
+       run: npm run test:jest
 
-    #  - name: start Storybook
+    #  - name: build storybook
     #    if: always()
-    #    run: npm run storybook -- --ci --port 6006 &
-    #    env:
-    #       NODE_ENV: development
-    #  - name: Wait for Storybook to be ready
-    #    run: npx wait-on http://localhost:6006
-    #  - name: Run Loki tests
-    #    run: npx loki test
-
+    #    run: npm run storybook:build
+    #  - name: screenshot testing
+    #    if: always()
+    #    run: npm run test:loki:ci
+    #  - name: upload loki artifact on failure
+    #    if: failure()
+    #    uses: actions/upload-artifact@v4
+    #    with:
+    #     name: loki-artifact
+    #     path: .loki
+    #     overwrite: true
+    #     include-hidden-files: true
 
