@@ -6,13 +6,12 @@ import { Input } from '@/6shared/ui/Input/Input'
 import { Text, TextTheme } from '@/6shared/ui/Text/Text'
 import { type JSX, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
-import { selectLoginError } from '../../model/selectors/selectLoginError/selectLoginError'
-import { selectLoginIsLoading } from '../../model/selectors/selectLoginIsLoading/selectLoginIsLoading'
-import { selectLoginPassword } from '../../model/selectors/selectLoginPassword/selectLoginPassword'
-import { selectLoginUsername } from '../../model/selectors/selectLoginUsername.ts/selectLoginUsername'
+import { useLoginError } from '../../model/selectors/selectLoginError/selectLoginError'
+import { useLoginIsLoading } from '../../model/selectors/selectLoginIsLoading/selectLoginIsLoading'
+import { useLoginPassword } from '../../model/selectors/selectLoginPassword/selectLoginPassword'
+import { useLoginUsername } from '../../model/selectors/selectLoginUsername.ts/selectLoginUsername'
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
-import { loginActions, loginReducer } from '../../model/slice/loginSlice'
+import { loginReducer, useLoginActions } from '../../model/slice/loginSlice'
 import styles from './LoginForm.module.scss'
 
 export interface LoginFormProps {
@@ -27,18 +26,19 @@ const initialReducer: ReducerList = {
 const LoginForm = memo(function LoginForm ({ className, onSuccess }: LoginFormProps): JSX.Element {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
-  const username = useSelector(selectLoginUsername)
-  const password = useSelector(selectLoginPassword)
-  const isLoading = useSelector(selectLoginIsLoading)
-  const error = useSelector(selectLoginError)
+  const username = useLoginUsername()
+  const password = useLoginPassword()
+  const isLoading = useLoginIsLoading()
+  const error = useLoginError()
+  const { setPassword, setUsername } = useLoginActions()
 
   const onChangeUsername = useCallback(({ value }: { name: string, value: string }) => {
-    dispatch(loginActions.setUsername(value))
-  }, [dispatch])
+    setUsername(value)
+  }, [setUsername])
 
   const onChangePassword = useCallback(({ value }: { name: string, value: string }) => {
-    dispatch(loginActions.setPassword(value))
-  }, [dispatch])
+    setPassword(value)
+  }, [setPassword])
 
   const onLoginClick = useCallback(async () => {
     const result = await dispatch(loginByUsername({ username, password }))

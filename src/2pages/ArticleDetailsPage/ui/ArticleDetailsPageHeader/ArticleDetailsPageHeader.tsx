@@ -3,10 +3,9 @@ import { type JSX, memo, useCallback } from 'react'
 import { Button } from '@/6shared/ui/Button/Button'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { selectArticleDetails } from '@/5entities/Article'
+import { selectArticleDetails, selectIsArticleAuthor } from '@/5entities/Article'
 import { HStack } from '@/6shared/ui/Stack'
 import { useSelector } from 'react-redux'
-import { selectIsArticleAuthor } from '@/4features/ArticleComments'
 import { getRouteArticleEdit, getRouteArticles } from '@/6shared/const/router'
 
 interface ArticleDetailsPageHeaderProps {
