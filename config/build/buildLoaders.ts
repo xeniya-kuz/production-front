@@ -20,8 +20,8 @@ export function buildLoaders (isDev: boolean): webpack.RuleSetRule[] {
     use: [{ loader: 'file-loader' }]
   }
 
-  const codebabelLoader = buildBabelLoader({ isTsx: false })
-  const tsxCodebabelLoader = buildBabelLoader({ isTsx: true })
+  const codebabelLoader = buildBabelLoader({ isTsx: false, isDev })
+  const tsxCodebabelLoader = buildBabelLoader({ isTsx: true, isDev })
 
   //! порядок, при котором лоудеры возвращаются, имеет значение
   return [fileLoader, svgLoader, codebabelLoader, tsxCodebabelLoader, cssLoader]

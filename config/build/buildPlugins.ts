@@ -20,12 +20,6 @@ export function buildPlugins ({
       template: paths.html
     }),
     new webpack.ProgressPlugin(),
-    // чтобы css было не в файлах js, а отдельно
-    // css/ - папка, куда попадают все css файлы
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:8].css',
-      chunkFilename: 'css/[name].[contenthash:8].css'
-    }),
     // помогает прокидывать глобальные переменные (окружения??) в сам проект
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
@@ -65,6 +59,13 @@ export function buildPlugins ({
       { openAnalyzer: false }
     ))
   } else {
+    // чтобы css было не в файлах js, а отдельно
+    // css/ - папка, куда попадают все css файлы
+    plugins.push(new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:8].css',
+      chunkFilename: 'css/[name].[contenthash:8].css'
+    }))
+
     plugins.push(new CopyPlugin(
       // копируем переводы из public в build
       {

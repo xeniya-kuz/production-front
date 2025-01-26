@@ -36,8 +36,8 @@ export default function buildWebpackConfig (
     },
 
     resolve: buildResolvers(options),
-    // помогает четко видеть, где в коде произошла ошибка
-    devtool: isDev ? 'inline-source-map' : undefined,
+    // ? source-map
+    devtool: isDev ? 'eval-cheap-module-source-map' : undefined,
     // локальный сервер (port:3000 и hot reloading)
     devServer: isDev ? buildDevServer(options) : undefined
   }
