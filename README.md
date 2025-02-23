@@ -83,7 +83,7 @@ the custom ESLint plugin *eslint-plugin-ulbi-tv-plugin* is used,
 which includes three rules:
 1) `path-checker` - Prohibits absolute imports within the same module
 2) `layer-imports` - Checks for correct layer usage according to FSD principles
-   (e.g., widgets should not be used in features or entities)
+   (e.g., widgets should not be used in 4features or entities)
 3) `public-api-imports` - Allows imports from other modules only via public API (supports auto-fix)
 
 ##### Running Linters
@@ -111,12 +111,12 @@ Example:
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Button, ButtonSize, ButtonTheme } from './Button';
-import { Theme } from '@/shared/const/theme';
+import { Theme } from '@/6shared/const/theme';
 
 export default {
-    title: 'shared/Button',
+    title: '6shared/Button',
     component: Button,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -171,37 +171,34 @@ Pre-commit hooks enforce linting, configuration in `/.husky`
 Data interaction is done using Redux Toolkit.
 Where possible, reusable entities should be normalized using `EntityAdapter`.
 
-Server requests are made via [RTK Query](/src/shared/api/rtkApi.ts).
+Server requests are made via [RTK Query](/src/6shared/api/rtkApi.ts).
 
 To asynchronously connect reducers (to avoid pulling them into the global bundle), the
-[DynamicModuleLoader](/src/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader.tsx) is used.
+[DynamicModuleLoader](/src/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader.tsx) is used.
 
 ----
 
 ## Entities
 
-- [Article](/src/entities/Article)
-- [Comment](/src/entities/Comment)
-- [Counter](/src/entities/Counter)
-- [Country](/src/entities/Country)
-- [Currency](/src/entities/Currency)
-- [Notification](/src/entities/Notification)
-- [Profile](/src/entities/Profile)
-- [Rating](/src/entities/Rating)
-- [User](/src/entities/User)
+- [Article](/src/5entities/Article)
+- [Comment](/src/5entities/Comment)
+- [Country](/src/5entities/CountryDropdown)
+- [Currency](/src/5entities/CurrencyDropdown)
+- [Notification](/src/5entities/Notification)
+- [Profile](/src/5entities/Profile)
+- [Rating](/src/5entities/Rating/)
+- [User](/src/5entities/User)
+- [CommentForm](/src/5entities/CommentForm)
 
 ## Features
 
-- [addCommentForm](/src/features/addCommentForm)
-- [articleEditForm](/src/features/articleEditForm)
-- [articleRating](/src/features/articleRating)
-- [articleRecommendationsList](/src/features/articleRecommendationsList)
-- [AuthByUsername](/src/features/AuthByUsername)
-- [avatarDropdown](/src/features/avatarDropdown)
-- [editableProfileCard](/src/features/editableProfileCard)
-- [LangSwitcher](/src/features/LangSwitcher)
-- [notificationButton](/src/features/notificationButton)
-- [profileRating](/src/features/profileRating)
-- [ThemeSwitcher](/src/features/ThemeSwitcher)
-- [UI](/src/features/UI)
+- [articleComments](/src/4features/ArticleComments)
+- [articleRating](/src/4features/ArticleRating)
+- [articleRecommendations](/src/4features/ArticleRecommendations)
+- [AuthByUsername](/src/4features/AuthByUsername)
+- [avatarDropdown](/src/4features/AvatarDropdown)
+- [editableProfileCard](/src/4features/EditableProfileCard)
+- [LangSwitcher](/src/4features/LangSwitcher)
+- [ThemeSwitcher](/src/4features/ThemeSwitcher)
+- [ViewSwitcher](/src/4features/ViewSwitcher)
 
