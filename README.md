@@ -180,25 +180,25 @@ To asynchronously connect reducers (to avoid pulling them into the global bundle
 
 ## Entities
 
-- [Article](/src/5entities/Article)
-- [Comment](/src/5entities/Comment)
-- [Country](/src/5entities/CountryDropdown)
-- [Currency](/src/5entities/CurrencyDropdown)
-- [Notification](/src/5entities/Notification)
-- [Profile](/src/5entities/Profile)
-- [Rating](/src/5entities/Rating/)
-- [User](/src/5entities/User)
-- [CommentForm](/src/5entities/CommentForm)
+- [Article](/src/5entities/Article/README.md)
+- [Comment](/src/5entities/Comment/README.md)
+- [Country](/src/5entities/CountryDropdown/README.md)
+- [Currency](/src/5entities/CurrencyDropdown/README.md)
+- [Notification](/src/5entities/Notification/README.md)
+- [Profile](/src/5entities/Profile/README.md)
+- [Rating](/src/5entities/Rating/README.md)
+- [User](/src/5entities/User/README.md)
+- [CommentForm](/src/5entities/CommentForm/README.md)
 
 ## Features
 
-- [articleComments](/src/4features/ArticleComments)
-- [articleRating](/src/4features/ArticleRating)
-- [articleRecommendations](/src/4features/ArticleRecommendations)
-- [AuthByUsername](/src/4features/AuthByUsername)
-- [avatarDropdown](/src/4features/AvatarDropdown)
-- [editableProfileCard](/src/4features/EditableProfileCard)
-- [LangSwitcher](/src/4features/LangSwitcher)
-- [ThemeSwitcher](/src/4features/ThemeSwitcher)
-- [ViewSwitcher](/src/4features/ViewSwitcher)
+- [articleComments](/src/4features/ArticleComments/README.md)
+- [articleRating](/src/4features/ArticleRating/README.md)
+- [articleRecommendations](/src/4features/ArticleRecommendations/README.md)
+- [AuthByUsername](/src/4features/AuthByUsername/README.md)
+- [avatarDropdown](/src/4features/AvatarDropdown/README.md)
+- [editableProfileCard](/src/4features/EditableProfileCard/README.md)
+- [LangSwitcher](/src/4features/LangSwitcher/README.md)
+- [ThemeSwitcher](/src/4features/ThemeSwitcher/README.md)
+- [ViewSwitcher](/src/4features/ViewSwitcher/README.md)
 
