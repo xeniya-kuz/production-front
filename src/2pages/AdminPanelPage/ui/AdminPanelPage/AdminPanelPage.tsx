@@ -7,7 +7,7 @@ const AdminPanelPage = memo(function AdminPanelPage
   const { t } = useTranslation('profile')
 
   return (
-      <Page >
+      <Page data-testid='AdminPanelPage'>
           {t('admin-panel')}
       </Page>
   )

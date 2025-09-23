@@ -12,7 +12,7 @@ const ProfilePage = memo(function ProfilePage ({ className }: ProfilePageProps):
   const { profileId } = useParams<{ profileId: string }>()
 
   return (
-      <Page className={classNames(undefined, [className])}>
+      <Page data-testid='ProfilePage' className={classNames(undefined, [className])}>
           <EditableProfileCard profileId={profileId}/>
       </Page>
   )

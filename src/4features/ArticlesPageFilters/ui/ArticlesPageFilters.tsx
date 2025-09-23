@@ -5,7 +5,7 @@ import { type ArticleSortField, ArticleType, type ArticleView } from '@/5entitie
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { DynamicModuleLoader, type ReducerList } from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch, useDebounce, useInitialEffect } from '@/6shared/lib/hooks'
-import { type SortOrder } from '@/6shared/types/order'
+import { type SortOrder } from '@/6shared/types/sort'
 import { Card } from '@/6shared/ui/Card/Card'
 import { Input } from '@/6shared/ui/Input/Input'
 import { type TabItem, Tabs } from '@/6shared/ui/Tabs/Tabs'

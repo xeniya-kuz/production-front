@@ -10,7 +10,7 @@ interface NotFoundPageProps {
 export const NotFoundPage = memo(function NotFoundPage ({ className }: NotFoundPageProps): JSX.Element {
   const { t } = useTranslation()
   return (
-      <main className={classNames(styles.notFoundPage, [className])}>
+      <main data-testid='NotFoundPage' className={classNames(styles.notFoundPage, [className])}>
           {t('Страница не найдена')}
       </main>
   )

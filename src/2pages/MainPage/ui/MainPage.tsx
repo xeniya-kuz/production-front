@@ -7,7 +7,7 @@ const MainPage = memo(function MainPage (): JSX.Element {
   const { t } = useTranslation()
 
   return (
-      <Page>
+      <Page data-testid='MainPage'>
           {t('Главная страница')}
           <div><BugButton/></div>
       </Page>

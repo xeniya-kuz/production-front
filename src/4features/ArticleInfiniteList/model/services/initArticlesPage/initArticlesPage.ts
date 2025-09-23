@@ -4,7 +4,7 @@ import { selectArticlesInited } from '../../selectors/selectArticlesInited/selec
 import { articleInfiniteListActions } from '../../slice/articleInfiniteListSlice'
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList'
 import { type ArticleType, type ArticleSortField } from '@/5entities/Article'
-import { type SortOrder } from '@/6shared/types/order'
+import { type SortOrder } from '@/6shared/types/sort'
 // eslint-disable-next-line fsd-path-checker-sia355/layer-imports
 import { articlesPageFiltersActions, selectArticlesView } from '@/4features/ArticlesPageFilters'
 

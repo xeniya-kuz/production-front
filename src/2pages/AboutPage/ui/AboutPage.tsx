@@ -6,7 +6,7 @@ const AboutPage = memo(function AboutPage (): JSX.Element {
   // about.json
   const { t } = useTranslation('about')
 
-  return <Page>{t('about-us')}</Page>
+  return <Page data-testid='AboutPage'>{t('about-us')}</Page>
 })
 
 export default AboutPage

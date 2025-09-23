@@ -1,6 +1,6 @@
 import { ArticleSortField } from '@/5entities/Article'
 import { classNames } from '@/6shared/lib/classNames/classNames'
-import { type SortOrder } from '@/6shared/types/order'
+import { type SortOrder } from '@/6shared/types/sort'
 import { ListBox, type ListBoxOption } from '@/6shared/ui/Popups'
 import { type JSX, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'

@@ -7,7 +7,7 @@ export const ForbiddenPage = memo(function ForbiddenPage
   const { t } = useTranslation()
 
   return (
-      <Page>
+      <Page data-testid='ForbiddenPage'>
           {t('errors:no-access-page')}
       </Page>
 

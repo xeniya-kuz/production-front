@@ -7,15 +7,16 @@ import { pageActions } from '../model/slice/pageSlice'
 import { useLocation } from 'react-router-dom'
 import { selectScrollByPath } from '../model/selectors/selectScrollByPath/selectScrollByPath'
 import { type StateSchema } from '@/1app/providers/StoreProvider'
+import { type TestProps } from '@/6shared/types/tests'
 
-interface PageProps {
+interface PageProps extends TestProps {
   className?: string
   children: ReactNode
   onScrollEnd?: () => void
 }
 
 export const Page = memo(function Page
-({ className, children, onScrollEnd }: PageProps): JSX.Element {
+({ className, children, onScrollEnd, ...testProps }: PageProps): JSX.Element {
   const wrapperRef = useRef<HTMLDivElement | null>(null)
   const triggerRef = useRef<HTMLDivElement | null>(null)
   const dispatch = useAppDispatch()
@@ -41,6 +42,7 @@ export const Page = memo(function Page
           ref={wrapperRef}
           className={classNames(styles.page, [className])}
           onScroll={onScroll}
+          data-testid={testProps['data-testid']}
       >
           {children}
           {onScrollEnd !== undefined && <div className={styles.trigger} ref={triggerRef}/>}
