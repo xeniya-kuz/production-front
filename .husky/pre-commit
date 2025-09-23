@@ -3,6 +3,6 @@
 
 
 npm run lint:ts
-# npm run lint:scss:fix
-# npm run test:jest
+npm run lint:scss:fix
+npm run test:jest
 # npm run test:loki
