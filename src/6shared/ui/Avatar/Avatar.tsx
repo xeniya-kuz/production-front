@@ -1,6 +1,10 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './Avatar.module.scss'
 import { type CSSProperties, type JSX, useMemo } from 'react'
+import { AppImage } from '../AppImage'
+import UserIcon from '../../assets/icons/user-20-20.svg'
+import { Icon } from '../Icon'
+import { Skeleton } from '../Skeleton'
 
 interface AvatarProps {
   className?: string
@@ -9,23 +13,37 @@ interface AvatarProps {
   size?: number
 }
 
-export const Avatar = ({ className, src, alt, size }: AvatarProps): JSX.Element => {
+export const Avatar = ({ className, src, alt, size = 100 }: AvatarProps): JSX.Element => {
   const inlineStyles = useMemo<CSSProperties>(() => {
     return {
-      width: size ?? 100,
-      height: size ?? 100
+      width: size,
+      height: size
     }
   }, [size])
 
+  const fallback =
+      <Skeleton
+          width={size}
+          height={size}
+          border='50%'
+          />
+
+  const errorFallback =
+      <Icon
+          Svg={UserIcon}
+          width={size}
+          height={size}
+      />
+
   return (
-      <>
-          {src !== undefined &&
-          <img src={src}
-              alt={alt}
-              className={classNames(styles.avatar, [className])}
-              style={inlineStyles}
+      <AppImage
+          src={src}
+          alt={alt}
+          className={classNames(styles.avatar, [className])}
+          style={inlineStyles}
+          fallback={fallback}
+          errorFallback={errorFallback}
            />
-           }
-      </>
+
   )
 }

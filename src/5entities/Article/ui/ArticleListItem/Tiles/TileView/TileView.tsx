@@ -9,6 +9,8 @@ import styles from '../styles.module.scss'
 import EyeIcon from '@/6shared/assets/icons/eye-20-20.svg'
 import { ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY } from '@/6shared/const/localstorage'
 import { getRouteArticleDetails } from '@/6shared/const/router'
+import { AppImage } from '@/6shared/ui/AppImage'
+import { Skeleton } from '@/6shared/ui/Skeleton'
 
 interface TileViewProps {
   article: Article
@@ -19,7 +21,7 @@ interface TileViewProps {
 
 export const TileView = memo(function TileView
 ({ article, target, className, index }: TileViewProps): JSX.Element {
-  // вынести
+  // TODO: вынести
   const types = <Text text={article.type.join(', ')} className={styles.types}/>
   const views = <>
       <Text text={String(article.views)} className={styles.views}/>
@@ -39,7 +41,20 @@ export const TileView = memo(function TileView
       >
           <Card className={styles.card}>
               <div className={styles.imageWrapper}>
-                  <img src={article.img} alt={article.title} className={styles.img}/>
+                  <AppImage
+                      src={article.img}
+                      alt={article.title}
+                      className={styles.img}
+                      fallback={<Skeleton width={200} height={200}/>}
+                      errorFallback={
+                          // TODO: вынести
+                          <img
+                              src='src/6shared/assets/images/no-image.png'
+                              style={{ width: '100%', height: '100%' }}
+                              className={styles.img}
+                          />
+                        }
+                     />
                   <Text text={article.createdAt} className={styles.date}/>
               </div>
               <div className={styles.infoWrapper}>

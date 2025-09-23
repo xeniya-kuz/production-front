@@ -1,8 +1,8 @@
-@import "./reset";
-@import "./themes/dark";
-@import "./themes/light";
-@import "./themes/orange";
-@import "./variables/global";
+@use "./reset";
+@use "./themes/dark";
+@use "./themes/light";
+@use "./themes/orange";
+@use "./variables/global";
 
 * {
 	box-sizing: border-box;

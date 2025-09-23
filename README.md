@@ -5,6 +5,7 @@
 - Comments on scripts
 - Add translations everywhere
 - Loki fails in Git Actions because of "Failed fetching stories because the server is down"
+- скролл отскакивает наверх при прокрутке статей
 
 
 ## Project Launch

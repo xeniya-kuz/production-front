@@ -10,7 +10,7 @@ export default defineConfig((env: ConfigEnv) => {
 
   return {
     plugins: [
-      svgr({ svgrOptions: { exportType: 'default' } }),
+      svgr({ include: '**/*.svg' }),
       react()
     ],
     resolve: {

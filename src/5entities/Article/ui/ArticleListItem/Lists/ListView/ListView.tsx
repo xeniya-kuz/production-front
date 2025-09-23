@@ -15,6 +15,8 @@ import styles from './ListView.module.scss'
 import EyeIcon from '@/6shared/assets/icons/eye-20-20.svg'
 import { ArticleBlockType } from '../../../../model/const/article'
 import { getRouteArticleDetails } from '@/6shared/const/router'
+import { AppImage } from '@/6shared/ui/AppImage'
+import { Skeleton } from '@/6shared/ui/Skeleton'
 
 interface ListViewProps {
   article: Article
@@ -26,7 +28,7 @@ interface ListViewProps {
 export const ListView = memo(function ListView
 ({ article, target, index, className }: ListViewProps): JSX.Element {
   const { t } = useTranslation('buttons')
-  // вынести
+  // TODO: вынести
   const types = <Text text={article.type.join(', ')} className={styles.types}/>
   const views = <>
       <Text text={String(article.views)} className={styles.views}/>
@@ -49,7 +51,20 @@ export const ListView = memo(function ListView
           </div>
           <Text title={article.title} className={styles.title}/>
           {types}
-          <img src={article.img} alt={article.title} className={styles.img}/>
+          <AppImage
+              src={article.img}
+              alt={article.title}
+              className={styles.img}
+              fallback={<Skeleton width={'100%'} height={250}/>}
+              errorFallback={
+                  // TODO: вынести
+                  <img
+                      src='src/6shared/assets/images/no-image.png'
+                      style={{ width: '100%', height: '100%' }}
+                      className={styles.img}
+                          />
+                        }
+           />
           {textBlock !== undefined && (
               <ArticleTextBlock block={textBlock} className={styles.textBlock}/>
           )}
