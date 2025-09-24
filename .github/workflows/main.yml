@@ -93,7 +93,7 @@ jobs:
       #   run: npx loki --requireReference --reactUri http://192.168.100.7:6006
       #   if: always()
       - name: Start Storybook and run Loki
-        run: npx start-storybook -p 6006 -c ./config/storybook -h 0.0.0.0 & STORYBOOK_PID=$!npx wait-on http://localhost:6006 npx loki --requireReference --reactUri http://192.168.100.7:6006   kill $STORYBOOK_PID
+        run: npx start-storybook -p 6006 -c ./config/storybook -h 0.0.0.0 & STORYBOOK_PID=$! npx wait-on http://localhost:6006 npx loki --requireReference --reactUri http://192.168.100.7:6006   kill $STORYBOOK_PID
       - name: generate HTML report
         run: npm run test:loki:report
         if: always()
