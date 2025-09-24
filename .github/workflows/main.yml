@@ -82,11 +82,14 @@ jobs:
       - name: production build
         run: npm run build:prod
         if: always()
-      - name: build storybook
+      - name: Build storybook
         run: npm run storybook:build
         if: always()
-      - name: screenshot testing
-        run: npm run test:loki:ci
+      - name: Start Storybook server
+        run: npx http-server storybook-static -p 6006
+      - name: Screenshot testing
+        # run: npm run test:loki:ci
+        run: npx loki --requireReference --reactUri http://localhost:6006
         if: always()
       - name: generate HTML report
         run: npm run test:loki:report
