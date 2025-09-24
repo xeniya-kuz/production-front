@@ -42,7 +42,7 @@ export const Page = memo(function Page
           ref={wrapperRef}
           className={classNames(styles.page, [className])}
           onScroll={onScroll}
-          data-testid={testProps['data-testid']}
+          data-testid={testProps['data-testid'] ?? 'Page'}
       >
           {children}
           {onScrollEnd !== undefined && <div className={styles.trigger} ref={triggerRef}/>}
