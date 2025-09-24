@@ -12,5 +12,6 @@ module.exports = {
       preset: 'iPhone 7'
     }
   },
-  staticDir: './storybook-static' // путь к папке со статическим билдом
+  staticDir: './storybook-static', // путь к папке со статическим билдом
+  reactUri: 'http://localhost:6006'
 }
