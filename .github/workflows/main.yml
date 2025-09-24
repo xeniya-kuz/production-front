@@ -86,7 +86,7 @@ jobs:
         run: npm run storybook:build
         if: always()
       - name: Start Storybook server
-        run: npx http-server storybook-static -p 6006
+        run: npx http-server storybook-static -p 6006 &
       - name: Screenshot testing
         # run: npm run test:loki:ci
         run: npx loki --requireReference --reactUri http://localhost:6006
