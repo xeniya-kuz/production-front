@@ -13,5 +13,5 @@ module.exports = {
     }
   },
   staticDir: './storybook-static', // путь к папке со статическим билдом
-  reactUri: 'http://localhost:6006'
+  reactUri: 'http://192.168.100.7:6006'
 }
