@@ -86,10 +86,11 @@ jobs:
         run: npm run storybook:build
         if: always()
       - name: Start Storybook server
-        run: npx http-server storybook-static -p 6006 &
+        run: npx start-storybook -p 6006 -c ./config/storybook -h 0.0.0.0 &
+          npx wait-on http://192.168.100.7:6006
       - name: Screenshot testing
         # run: npm run test:loki:ci
-        run: npx start-storybook -p 6006 -c ./config/storybook -h 0.0.0.0 & npx wait-on http://localhost:6006
+        run: npx loki --requireReference --reactUri http://192.168.100.7:6006
         if: always()
       - name: generate HTML report
         run: npm run test:loki:report
