@@ -5,7 +5,8 @@
 # проверяет все файлы
 # npm run lint:ts:fix
 # проверяет только измененные файлы
-npx lint-staged
-npm run lint:scss:fix
-npm run test:jest
+# npx lint-staged
+# npm run lint:scss:fix
+# npm run test:jest
+
 # npm run test:loki

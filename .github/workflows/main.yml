@@ -88,21 +88,21 @@ jobs:
       - name: screenshot testing
         run: npm run test:loki:ci
         if: always()
-      - name: Generate HTML report
+      - name: generate HTML report
         run: npm run test:loki:report
         if: always()
-      - name: Setup Pages
+      - name: setup Pages
         uses: actions/configure-pages@v2
         if: always()
-      - name: Upload artifact
+      - name: upload artifact
         uses: actions/upload-pages-artifact@v4
         if: always()
         with:
           path: '.loki'
-      - name: Deploy to GitHub Pages
+      - name: deploy to GitHub Pages
         id: deployment
         if: always()
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
 
   checks:
     runs-on: windows-latest
