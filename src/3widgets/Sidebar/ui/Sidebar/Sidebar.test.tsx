@@ -1,4 +1,4 @@
-import { fireEvent, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { Sidebar } from './Sidebar'
 import { ComponentRender } from '@/6shared/lib/tests/ComponentRender'
 import userEvent from '@testing-library/user-event'
