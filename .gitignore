@@ -3,4 +3,4 @@
 # скрытая папка в WebStorm
 .idea
 /storybook-static
-/reports
+/reports/unit
