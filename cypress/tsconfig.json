@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es6", //es5
+    "lib": ["es6", "dom"], //es5
+    "sourceMap": true,
+    "types": ["cypress", "node"], 
+    "allowJs": true,
+  },
+  "extends": "../tsconfig.json",
+  "include": ["**/*.ts"],
+  "files": ["../src/1app/types/global.d.ts"]
+}

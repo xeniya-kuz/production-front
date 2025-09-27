@@ -4,6 +4,8 @@ import { type JSX, memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import styles from './ArticlesPage.module.scss'
 import { useAppDispatch } from '@/6shared/lib/hooks'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
+import { Page } from '@/3widgets/Page'
 
 const ArticlesPage = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -17,7 +19,9 @@ const ArticlesPage = (): JSX.Element => {
   const Header = (): JSX.Element => <ArticlesPageFilters className={styles.header} fetchData={fetchData}/>
 
   return (
-      <ArticleInfiniteList view={view} Header={Header}/>
+      <Page data-testid={DATA_TEST_ID.articlesPage}> 
+        <ArticleInfiniteList view={view} Header={Header}/>
+      </Page>
   )
 }
 

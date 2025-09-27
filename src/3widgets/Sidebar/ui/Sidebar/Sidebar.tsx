@@ -8,6 +8,7 @@ import styles from './Sidebar.module.scss'
 import { useSelector } from 'react-redux'
 import { selectSidebarItems } from '../../module/selectors/selectSidebarItems/selectSidebarItems'
 import { VStack } from '@/6shared/ui/Stack'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface SidebarProps {
   className?: string
@@ -32,13 +33,13 @@ export const Sidebar = memo(
 
     return (
         <aside
-            data-testid='sidebar'
+            data-testid={DATA_TEST_ID.sidebar}
             className={classNames(styles.sidebar, [className], {
               [styles.collapsed]: collapsed
             })}
         >
             <Button
-                data-testid='sidebar-toggle'
+                data-testid={DATA_TEST_ID.sidebarToggle}
                 className={styles.collapseBtn}
                 square size={ButtonSize.L}
                 theme={ButtonTheme.BACKGROUND_INVERTED}

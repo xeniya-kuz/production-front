@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom'
 import { selectScrollByPath } from '../model/selectors/selectScrollByPath/selectScrollByPath'
 import { type StateSchema } from '@/1app/providers/StoreProvider'
 import { type TestProps } from '@/6shared/types/tests'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface PageProps extends TestProps {
   className?: string
@@ -42,7 +43,7 @@ export const Page = memo(function Page
           ref={wrapperRef}
           className={classNames(styles.page, [className])}
           onScroll={onScroll}
-          data-testid={testProps['data-testid'] ?? 'Page'}
+          data-testid={testProps['data-testid'] ?? DATA_TEST_ID.page}
       >
           {children}
           {onScrollEnd !== undefined && <div className={styles.trigger} ref={triggerRef}/>}

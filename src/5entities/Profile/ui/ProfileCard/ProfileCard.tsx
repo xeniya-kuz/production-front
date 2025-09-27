@@ -10,6 +10,7 @@ import styles from './ProfileCard.module.scss'
 import { type JSX } from 'react'
 import { type Currency, CurrencyDropdown } from '@/5entities/CurrencyDropdown'
 import { CountryDropdown } from '@/5entities/CountryDropdown'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface ProfileCardProps {
   className?: string
@@ -68,7 +69,7 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
               placeholder={t('first-name')}
               onChange={onTextChange}
               readOnly={readonly}
-              data-testid='profileCard.Firstname'
+              data-testid={DATA_TEST_ID.profileCardFirstname}
               />
           <Input
               // eslint-disable-next-line i18next/no-literal-string
@@ -77,7 +78,7 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
               placeholder={t('last-name')}
               onChange={onTextChange}
               readOnly={readonly}
-              data-testid='profileCard.Lastname'
+              data-testid={DATA_TEST_ID.profileCardLastname}
               />
           <Input
               // eslint-disable-next-line i18next/no-literal-string
@@ -86,7 +87,7 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
               placeholder={t('age')}
               onChange={onNumberChange}
               readOnly={readonly}
-              data-testid='profileCard.Age'
+              data-testid={DATA_TEST_ID.profileCardAge}
               />
           <Input
               // eslint-disable-next-line i18next/no-literal-string
@@ -95,7 +96,7 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
               placeholder={t('city')}
               onChange={onTextChange}
               readOnly={readonly}
-              data-testid='profileCard.City'
+              data-testid={DATA_TEST_ID.profileCardCity}
               />
           <Input
               // eslint-disable-next-line i18next/no-literal-string
@@ -104,7 +105,7 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
               placeholder={t('username')}
               onChange={onTextChange}
               readOnly={readonly}
-              data-testid='profileCard.Username'
+              data-testid={DATA_TEST_ID.profileCardUsername}
               />
           <CurrencyDropdown
               value={profile?.currency}

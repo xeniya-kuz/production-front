@@ -9,6 +9,7 @@ import { HStack } from '@/6shared/ui/Stack'
 import { selectProfileData, selectProfileReadonly } from '../../model/selectors'
 import { profileActions } from '../../model/slice'
 import { updateProfileData } from '../../model/services'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface ProfilePageHeaderProps {
   className?: string
@@ -43,7 +44,7 @@ export const EditableProfileCardHeader = ({ className }: ProfilePageHeaderProps)
                 ? <Button
                         theme={ButtonTheme.OUTLINE}
                         onClick={onEdit}
-                        data-testid='editableProfileCardHeader.EditBtn'
+                        data-testid={DATA_TEST_ID.editableProfileCardHeaderEditBtn}
                   >
                     {t('edit') }
                 </Button>
@@ -51,14 +52,14 @@ export const EditableProfileCardHeader = ({ className }: ProfilePageHeaderProps)
                     <Button
                         theme={ButtonTheme.OUTLINE}
                         onClick={onSave}
-                        data-testid='editableProfileCardHeader.SaveBtn'
+                        data-testid={DATA_TEST_ID.editableProfileCardHeaderSaveBtn}
                 >
                         {t('save') }
                     </Button>
                     <Button
                         theme={ButtonTheme.OUTLINE_RED}
                         onClick={onCancelEdit}
-                        data-testid='editableProfileCardHeader.CancelBtn'
+                        data-testid={DATA_TEST_ID.editableProfileCardHeaderCancelBtn}
                 >
                         {t('cancel') }
                     </Button>

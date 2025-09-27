@@ -1,5 +1,6 @@
 import { Page } from '@/3widgets/Page'
 import { EditableProfileCard } from '@/4features/EditableProfileCard'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { type JSX, memo } from 'react'
 import { useParams } from 'react-router-dom'
@@ -12,7 +13,7 @@ const ProfilePage = memo(function ProfilePage ({ className }: ProfilePageProps):
   const { profileId } = useParams<{ profileId: string }>()
 
   return (
-      <Page data-testid='ProfilePage' className={classNames(undefined, [className])}>
+      <Page data-testid={DATA_TEST_ID.profilePage} className={classNames(undefined, [className])}>
           <EditableProfileCard profileId={profileId}/>
       </Page>
   )

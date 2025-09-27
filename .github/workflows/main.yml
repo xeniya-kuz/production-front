@@ -30,14 +30,14 @@
 #        run: npm run lint:scss:fix
 #      - name: unit testing
 #        if: always()
-#        run: npm run test:jest
+#        run: npm run test:unit
 
 #      - name: build storybook
 #        if: always()
 #        run: npm run storybook:build
 #      - name: screenshot testing
 #        if: always()
-#        run: npm run test:loki:ci
+#        run: npm run test:ui:ci
 #      - name: upload loki artifact on failure
 #        if: failure()
 #        uses: actions/upload-artifact@v4
@@ -90,14 +90,14 @@ jobs:
       #   run: npx start-storybook -p 6006 -c ./config/storybook -h 0.0.0.0 &
       #     npx wait-on http://192.168.100.7:6006
       # - name: Screenshot testing
-      #   # run: npm run test:loki:ci
+      #   # run: npm run test:ui:ci
       #   run: npx loki --requireReference --reactUri http://192.168.100.7:6006
       #   if: always()
 
       - name: unit testing
-        run: npm run test:jest
+        run: npm run test:unit
       - name: generate HTML report
-        run: npm run test:loki:report
+        run: npm run test:ui:report
         if: always()
       - name: move .loki to reports/
         run: mv .loki reports/
