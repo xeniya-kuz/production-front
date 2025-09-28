@@ -7,6 +7,7 @@
 - Loki fails in Git Actions because of "Failed fetching stories because the server is down"
 - скролл отскакивает наверх при прокрутке статей
 - add/check/fix tests
+- fix db (user-profile)
 
 
 ## Project Launch

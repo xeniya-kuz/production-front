@@ -1,4 +1,5 @@
-import { login } from './commands/login'
+import * as commonCommands from './commands/common'
+import * as profileCommands from './commands/profile'
 
 /// <reference types="cypress" />
 // ***********************************************
@@ -15,10 +16,9 @@ import { login } from './commands/login'
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
-Cypress.Commands.add(
-  'login',
-  login
-)
+Cypress.Commands.addAll(commonCommands)
+Cypress.Commands.addAll(profileCommands)
+
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
@@ -41,13 +41,5 @@ Cypress.Commands.add(
 //     }
 //   }
 // }
-
-declare global {
-  namespace Cypress {
-    interface Chainable {
-      login(username?: string, password?: string): Chainable<void>
-    }
-  }
-}
 
 export {}

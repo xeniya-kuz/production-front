@@ -630,7 +630,7 @@
   "profile": [
     {
       "id": "1",
-      "first": "Иван12",
+      "firstname": "Иван12",
       "lastname": "Петров",
       "age": 22,
       "city": "Москва",
@@ -641,7 +641,7 @@
     },
     {
       "id": "2",
-      "first": "ulbi tv",
+      "firstname": "ulbi tv",
       "lastname": "asf",
       "age": 465,
       "currency": "RUB",
@@ -649,6 +649,17 @@
       "city": "Moscow",
       "username": "ulbi tv",
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
+    },
+    {
+      "id": "3",
+      "firstname": "test",
+      "lastname": "user",
+      "age": 465,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "test user",
+      "avatar": ""
     }
   ],
   "article-ratings": [

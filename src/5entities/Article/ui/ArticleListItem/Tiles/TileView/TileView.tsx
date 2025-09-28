@@ -11,6 +11,7 @@ import { ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY } from '@/6shared/const/locals
 import { getRouteArticleDetails } from '@/6shared/const/router'
 import { AppImage } from '@/6shared/ui/AppImage'
 import { Skeleton } from '@/6shared/ui/Skeleton'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface TileViewProps {
   article: Article
@@ -39,7 +40,7 @@ export const TileView = memo(function TileView
           className={className}
           onClick={handleButtonClick}
       >
-          <Card className={styles.card}>
+          <Card className={styles.card} data-testid={DATA_TEST_ID.articleListItem}>
               <div className={styles.imageWrapper}>
                   <AppImage
                       src={article.img}

@@ -17,6 +17,7 @@ import { ArticleBlockType } from '../../../../model/const/article'
 import { getRouteArticleDetails } from '@/6shared/const/router'
 import { AppImage } from '@/6shared/ui/AppImage'
 import { Skeleton } from '@/6shared/ui/Skeleton'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface ListViewProps {
   article: Article
@@ -42,7 +43,7 @@ export const ListView = memo(function ListView
   }
 
   return (
-      <Card className={classNames(styles.card, [className])} >
+      <Card className={classNames(styles.card, [className])} data-testid={DATA_TEST_ID.articleListItem}>
           <div className={styles.header}>
               {/* eslint-disable-next-line i18next/no-literal-string */}
               <Avatar size={30} src={article.user?.avatar} alt='avatar'/>

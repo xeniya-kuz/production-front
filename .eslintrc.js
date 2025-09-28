@@ -9,19 +9,10 @@ module.exports = {
     'plugin:i18next/recommended',
     'plugin:storybook/recommended',
   ],
-  overrides: [
-    {
-      env: {
-        node: true,
-      },
-      //files: ['.eslintrc.{js,cjs}'],
-      files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
-      parserOptions: {
-        sourceType: 'script',
-      },
-    },
-  ],
   parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
     ecmaVersion: 'latest',
     sourceType: 'module',
 
@@ -74,16 +65,31 @@ module.exports = {
                 ignoreFiles: ['**/ThemeDecorator.tsx', '**/StoreDecorator.tsx']
             },
         ],
+    "@typescript-eslint/no-namespace": [
+      "error",
+      { "allowDeclarations": true }
+    ]
   },
   globals: {
     __IS_DEV__: true,
     __API__: true,
     __PROJECT__:true,
   },
-  // отключили правило i18next/no-literal-string для тестовых файлов
+  
   overrides: [
+    //   {
+    //     env: {
+    //       node: true,
+    //     },
+    //     //files: ['.eslintrc.{js,cjs}'],
+    //     files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
+    //     parserOptions: {
+    //       sourceType: 'script',
+    //     },
+    //   },
     {
-      files: ['**/src/**/*.test.{ts,tsx}', '**/src/**/*.stories.{ts,tsx}'],
+      files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
+      // отключили правило i18next/no-literal-string для тестовых файлов
       rules: { 
         'i18next/no-literal-string': 'off'  
       },

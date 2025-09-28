@@ -8,6 +8,7 @@ import { Lists } from '../ArticleListItem/Lists/Lists'
 import { Tiles } from '../ArticleListItem/Tiles/Tiles'
 import styles from './ArticleList.module.scss'
 import { ArticleView } from '../../model/const/article'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface ArticleListProps {
   className?: string
@@ -41,7 +42,7 @@ export const ArticleList = memo(function ArticleList
   }
 
   return (
-      <div className={classNames(styles.articleList, [className])}>
+      <div className={classNames(styles.articleList, [className])} data-testid={DATA_TEST_ID.articleList}>
           {view === ArticleView.LIST
             ? <Lists Header={Header} articles={articles} onLoadNextArticles={onLoadNextArticles} selectedArticleId={selectedArticleId} isLoading={isLoading} target={target} virtualized={virtualized}/>
             : <Tiles Header={Header} articles={articles} onLoadNextArticles={onLoadNextArticles} selectedArticleId={selectedArticleId} isLoading={isLoading} target={target} virtualized={virtualized}/>

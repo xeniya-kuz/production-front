@@ -64,7 +64,7 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
               }
           <Input
               // eslint-disable-next-line i18next/no-literal-string
-              name='first'
+              name='firstname'
               value={profile?.firstname}
               placeholder={t('first-name')}
               onChange={onTextChange}

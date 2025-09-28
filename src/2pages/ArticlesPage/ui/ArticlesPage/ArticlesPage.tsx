@@ -19,8 +19,8 @@ const ArticlesPage = (): JSX.Element => {
   const Header = (): JSX.Element => <ArticlesPageFilters className={styles.header} fetchData={fetchData}/>
 
   return (
-      <Page data-testid={DATA_TEST_ID.articlesPage}> 
-        <ArticleInfiniteList view={view} Header={Header}/>
+      <Page data-testid={DATA_TEST_ID.articlesPage}>
+          <ArticleInfiniteList view={view} Header={Header}/>
       </Page>
   )
 }

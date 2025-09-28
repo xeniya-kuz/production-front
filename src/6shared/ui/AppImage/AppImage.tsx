@@ -11,8 +11,6 @@ export const AppImage = memo(function AppImage
 ({ className, fallback, errorFallback, ...otherProps }: AppImageProps): JSX.Element {
   const [isLoading, setIsLoading] = useState(true)
   const [hasError, setHasError] = useState(false)
-  console.log('AppImage errorFallback', errorFallback)
-  console.log('AppImage hasError', hasError)
 
   // вызовется до того, как компонент вмонтируется
   useLayoutEffect(() => {
@@ -26,7 +24,6 @@ export const AppImage = memo(function AppImage
 
     // слушатель событий на возникновение ошибки
     img.onerror = () => {
-      console.log('onerror')
       setIsLoading(false)
       setHasError(true)
     }

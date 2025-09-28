@@ -49,19 +49,17 @@
     }
   },
 	"include": [
-    "./config/jest/setupTests.ts",
 		"./src/**/*.ts",
 		"./src/**/*.tsx",
 		"./config/**/*.ts",
 		"./config/**/*.tsx",
-		"./webpack.config.ts",
     "./**/*.js",
     "./**/*.jsx",
     "json-server/index.js", 
-    "public/locales/ru/index.ts",
-    "public/locales/en/index.ts",
+    "public/locales/*/index.ts",
     "public/locales/index.ts",
     "./src/5entities/Article/model/const/article",
-    "./vite.config.ts",
+    "./*.config.ts",
+    "./*.config.js",
   ],
 }

@@ -3,7 +3,7 @@ import styles from './Avatar.module.scss'
 import { type CSSProperties, type JSX, useMemo } from 'react'
 import { AppImage } from '../AppImage'
 import UserIcon from '../../assets/icons/user-20-20.svg'
-import { Icon } from '../Icon'
+import { Icon, IconColors } from '../Icon'
 import { Skeleton } from '../Skeleton'
 
 interface AvatarProps {
@@ -33,6 +33,7 @@ export const Avatar = ({ className, src, alt, size = 100 }: AvatarProps): JSX.El
           Svg={UserIcon}
           width={size}
           height={size}
+          color={IconColors.INVERTED_PRIMARY_FILL}
       />
 
   return (
