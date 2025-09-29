@@ -26,8 +26,6 @@ server.post('/login', (req, res) => {
     const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'))
     const { users = [] } = db
 
-    console.log('users', users)
-
     const userFromBd = users.find(
       (user) => user.username === username && user.password === password
     )

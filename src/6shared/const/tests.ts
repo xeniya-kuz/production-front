@@ -27,5 +27,12 @@ export const DATA_TEST_ID = {
   commentForm: 'CommentForm',
   commentFormInput: 'CommentForm.Input',
   commentFormBtn: 'CommentForm.Btn',
-  commentCard: 'CommentCard'
+  commentCard: 'CommentCard',
+  article: 'Article',
+  articleInfo: 'Article.Info',
+  ratingCard: 'RatingCard',
+  ratingCardClose: 'RatingCard.Close',
+  ratingCardSend: 'RatingCard.Send',
+  ratingCardText: 'RatingCard.Input',
+  starRating: 'StarRating.'
 }

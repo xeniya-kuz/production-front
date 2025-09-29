@@ -1,6 +1,8 @@
 import { API } from '../const'
 import { type Article } from '../../../src/5entities/Article'
-import { articleMock } from '../../../src/5entities/Article/model/const/mocks'
+import { getArticleMock } from 'cypress/helpers/getArticleMock'
+
+const articleMock = getArticleMock()
 
 export const createArticle = (article?: Article): Cypress.Chainable<Article> => {
   return cy.request({
@@ -8,7 +10,8 @@ export const createArticle = (article?: Article): Cypress.Chainable<Article> => 
     url: `${API}/articles`,
     headers: { Authorization: 'asas' },
     body: article ?? articleMock
-  }).then(({ body }) => body)
+  })
+    .then(({ body }) => body)
 }
 
 export const removeArticle = (articleId: string): Cypress.Chainable<Cypress.Response<any>> => {

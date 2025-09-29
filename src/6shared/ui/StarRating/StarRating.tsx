@@ -3,6 +3,7 @@ import styles from './StarRating.module.scss'
 import { type JSX, memo, useState } from 'react'
 import { Icon, IconColors } from '../Icon/Icon'
 import StarIcon from '../../assets/icons/star.svg'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface StarRatingProps {
   className?: string
@@ -39,7 +40,7 @@ export const StarRating = memo(function StarRating
   }
 
   return (
-      <div className={classNames(styles.starrating, [className])}>
+      <div className={classNames(styles.starRating, [className])}>
           {stars.map(star => (
               <Icon
                   key={star}
@@ -54,6 +55,8 @@ export const StarRating = memo(function StarRating
                   onMouseEnter={onHover(star)}
                   onMouseLeave={onLeave}
                   onClick={onClick(star)}
+                  data-testid={DATA_TEST_ID.starRating + star}
+                  data-selected={star <= currentStarNumber}
               />
           ))}
       </div>

@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next'
 import { BrowserView, MobileView } from 'react-device-detect'
 import { Drawer } from '@/6shared/ui/Drawer'
 import styles from './RatingCard.module.scss'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface RatingCardProps {
   className?: string
@@ -65,12 +66,12 @@ export const RatingCard = memo(function RatingCard
   const modalContent = (
       <>
           <Text title={feedbackTitle}/>
-          <Input placeholder='Ваш отзыв' value={feedback} onChange={onChangeHandle}/>
+          <Input placeholder='Ваш отзыв' value={feedback} onChange={onChangeHandle} data-testid={DATA_TEST_ID.ratingCardText}/>
       </>
   )
 
   return (
-      <Card className={classNames(className, [], { [styles.full]: fullWidth })}>
+      <Card className={classNames(className, [], { [styles.full]: fullWidth })} data-testid={DATA_TEST_ID.ratingCard}>
           <VStack align='center' gap='8'>
               <Text title={starsCount ? 'Спасибо за оценку!' : title}/>
               <StarRating size={40} onSelect={onSelectStarsHandle} selectedStars={starsCount}/>
@@ -80,10 +81,10 @@ export const RatingCard = memo(function RatingCard
                   <VStack max gap='32'>
                       {modalContent}
                       <HStack max gap='16' justify='end'>
-                          <Button theme={ButtonTheme.OUTLINE} onClick={cancelHandle}>
+                          <Button theme={ButtonTheme.OUTLINE} onClick={cancelHandle} data-testid={DATA_TEST_ID.ratingCardClose}>
                               {t('cancel')}
                           </Button>
-                          <Button onClick={acceptHandle}>
+                          <Button onClick={acceptHandle} data-testid={DATA_TEST_ID.ratingCardSend}>
                               {t('send')}
                           </Button>
                       </HStack>
@@ -91,10 +92,10 @@ export const RatingCard = memo(function RatingCard
               </Modal>
           </BrowserView>
           <MobileView>
-              <Drawer isOpen={isModalOpen} onClose={cancelHandle} >
+              <Drawer isOpen={isModalOpen} onClose={cancelHandle} data-testid={DATA_TEST_ID.ratingCardClose}>
                   <VStack max gap='4' justify='center'>
                       {modalContent}
-                      <Button onClick={acceptHandle} size={ButtonSize.L} fullWidth>
+                      <Button onClick={acceptHandle} size={ButtonSize.L} fullWidth data-testid={DATA_TEST_ID.ratingCardSend}>
                           {t('send')}
                       </Button>
                   </VStack>

@@ -2,7 +2,6 @@ import { DATA_TEST_ID } from '../../../src/6shared/const/tests'
 import { getRouteArticleDetails } from '../../../src/6shared/const/router'
 
 let currentArticleId = ''
-const commentId = ''
 
 describe('User visits article details page', () => {
   beforeEach(() => {
@@ -18,16 +17,22 @@ describe('User visits article details page', () => {
   })
 
   it('Sees the article content', () => {
-    cy.getByTestId(DATA_TEST_ID.articleDetails).should('exist')
+    cy.getByTestId(DATA_TEST_ID.article).should('exist')
   })
   it('Sees recommendation list', () => {
     cy.getByTestId(DATA_TEST_ID.articleRecommendationList).should('exist')
   })
+  // комментарии удаляются вместе со статьей
   it('Sends a comment', () => {
-    cy.getByTestId(DATA_TEST_ID.articleDetails).should('exist')
+    cy.getByTestId(DATA_TEST_ID.article).should('exist')
     cy.getByTestId(DATA_TEST_ID.commentForm).scrollIntoView()
-    cy.addComment('test')// .then((comment) => { commentId = comment.id })
+    cy.addComment('555')
     cy.getByTestId(DATA_TEST_ID.commentCard).should('have.length', 1)
-    // cy.removeComment(commentId)
+  })
+  it('Rates the article', () => {
+    cy.getByTestId(DATA_TEST_ID.article).should('exist')
+    cy.getByTestId(DATA_TEST_ID.ratingCard).scrollIntoView()
+    cy.setRating(5, 'well done')
+    cy.get('[data-selected=true]').should('have.length', 5)
   })
 })

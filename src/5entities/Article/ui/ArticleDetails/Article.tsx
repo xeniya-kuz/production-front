@@ -12,6 +12,7 @@ import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
 import { HStack, VStack } from '@/6shared/ui/Stack'
 import { ArticleBlockType } from '../../model/const/article'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface ArticleProps {
   className?: string
@@ -47,11 +48,11 @@ export const Article = memo(function Article
   }, [])
 
   return (
-      <article className={classNames(styles.article, [className])}>
+      <article className={classNames(styles.article, [className])} data-testid={DATA_TEST_ID.article}>
           <HStack justify='center' max>
               <Avatar size={200} src={article?.img} alt={article?.title} className={styles.avatar}/>
           </HStack>
-          <VStack gap='4' max>
+          <VStack gap='4' max data-testid={DATA_TEST_ID.articleInfo}>
               <Text title={article?.title} text={article?.subtitle} size={TextSize.L}/>
               {articleInfo.map((info, index) => (
                   <HStack gap='8' key={index}>
