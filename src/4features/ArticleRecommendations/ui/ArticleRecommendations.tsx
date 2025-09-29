@@ -6,6 +6,7 @@ import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useArticleRecommendations } from '../api/articleRecommendationsApi'
 import styles from './ArticleRecommendations.module.scss'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface ArticleRecommendationsProps {
   className?: string
@@ -20,9 +21,8 @@ export const ArticleRecommendations = memo(function ArticleRecommendations
     return null
   }
 
-  console.log('recommendations', recommendations)
   return (
-      <VStack gap='8' max className={classNames(styles.articleRecommendations, [className])}>
+      <VStack gap='8' max className={classNames(styles.articleRecommendations, [className])} data-testid={DATA_TEST_ID.articleRecommendationList}>
           <Text title={t('recommendations')} size={TextSize.S}/>
           <ArticleList
               articles={recommendations}

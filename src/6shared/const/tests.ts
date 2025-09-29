@@ -21,5 +21,11 @@ export const DATA_TEST_ID = {
   profileCardLastname: 'profileCard.Lastname',
   profileCardAge: 'profileCard.Age',
   profileCardCity: 'profileCard.City',
-  profileCardUsername: 'profileCard.Username'
+  profileCardUsername: 'profileCard.Username',
+  articleDetails: 'ArticleDetails',
+  articleRecommendationList: 'ArticleRecommendationList',
+  commentForm: 'CommentForm',
+  commentFormInput: 'CommentForm.Input',
+  commentFormBtn: 'CommentForm.Btn',
+  commentCard: 'CommentCard'
 }

@@ -13,6 +13,7 @@ import { selectArticleDetailsError } from '../../model/selectors/selectArticleDe
 import { selectArticleDetails } from '../../model/selectors/selectArticleDetails/selectArticleDetails'
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById'
 import { VStack } from '@/6shared/ui/Stack'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface ArticleDetailsProps {
   className?: string
@@ -51,7 +52,7 @@ export const ArticleDetails = memo(
 
     return (
         <DynamicModuleLoader reducers={initialReducer}>
-            <VStack gap='16' max className={classNames(styles.articleDetails, [className])}>
+            <VStack gap='16' max className={classNames(styles.articleDetails, [className])} data-testid={DATA_TEST_ID.articleDetails}>
                 {content}
             </VStack>
         </DynamicModuleLoader>

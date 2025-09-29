@@ -3,6 +3,8 @@ import AppRouter from './AppRouter'
 import { getRouteAbout, getRouteAdmin, getRouteProfile } from '@/6shared/const/router'
 import { screen } from '@testing-library/react'
 import { UserRole } from '@/5entities/User'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
+import { profileMock } from '@/5entities/Profile'
 
 describe('app/router/AppRouter', function () {
   test('Page should mount', async () => {
@@ -10,7 +12,7 @@ describe('app/router/AppRouter', function () {
       route: getRouteAbout()
     })
 
-    const page = await screen.findByTestId('AboutPage')
+    const page = await screen.findByTestId(DATA_TEST_ID.aboutPage)
     expect(page).toBeInTheDocument()
   })
 
@@ -19,22 +21,22 @@ describe('app/router/AppRouter', function () {
       route: '/asasasas'
     })
 
-    const page = await screen.findByTestId('NotFoundPage')
+    const page = await screen.findByTestId(DATA_TEST_ID.notFoundPage)
     expect(page).toBeInTheDocument()
   })
 
   test('Redirect unauthorized user to the main page', async () => {
     ComponentRender(<AppRouter/>, {
-      route: getRouteProfile('1')
+      route: getRouteProfile(profileMock.id ?? '1')
     })
 
-    const page = await screen.findByTestId('MainPage')
+    const page = await screen.findByTestId(DATA_TEST_ID.mainPage)
     expect(page).toBeInTheDocument()
   })
 
   test('Access to the private page for an authorized user', async () => {
     ComponentRender(<AppRouter/>, {
-      route: getRouteProfile('1'),
+      route: getRouteProfile(profileMock.id ?? '1'),
       initialState: {
         user: {
           _mounted: true,
@@ -43,7 +45,7 @@ describe('app/router/AppRouter', function () {
       }
     })
 
-    const page = await screen.findByTestId('ProfilePage')
+    const page = await screen.findByTestId(DATA_TEST_ID.profilePage)
     expect(page).toBeInTheDocument()
   })
 
@@ -58,7 +60,7 @@ describe('app/router/AppRouter', function () {
       }
     })
 
-    const page = await screen.findByTestId('ForbiddenPage')
+    const page = await screen.findByTestId(DATA_TEST_ID.forbiddenPage)
     expect(page).toBeInTheDocument()
   })
 
@@ -73,7 +75,7 @@ describe('app/router/AppRouter', function () {
       }
     })
 
-    const page = await screen.findByTestId('AdminPanelPage')
+    const page = await screen.findByTestId(DATA_TEST_ID.adminPanelPage)
     expect(page).toBeInTheDocument()
   })
 })

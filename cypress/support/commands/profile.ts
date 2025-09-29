@@ -1,4 +1,6 @@
-import { DATA_TEST_ID } from '@/6shared/const/tests'
+import { profileMock } from '../../../src/5entities/Profile/model/const/mocks'
+import { DATA_TEST_ID } from '../../../src/6shared/const/tests'
+import { API } from '../const'
 
 export const updateProfile = (firstname: string, lastname: string): void => {
   cy.getByTestId(DATA_TEST_ID.editableProfileCardHeaderEditBtn).click()
@@ -10,19 +12,9 @@ export const updateProfile = (firstname: string, lastname: string): void => {
 export const resetProfile = (profileId: string): void => {
   cy.request({
     method: 'PUT',
-    url: `http://localhost:8000/profile/${profileId}`,
+    url: `${API}/profile/${profileId}`,
     headers: { Authorization: 'asas' },
-    body: {
-      id: '3',
-      firstname: 'test',
-      lastname: 'user',
-      age: 465,
-      currency: 'RUB',
-      country: 'Russia',
-      city: 'Moscow',
-      username: 'test user',
-      avatar: ''
-    }
+    body: profileMock
   })
 }
 

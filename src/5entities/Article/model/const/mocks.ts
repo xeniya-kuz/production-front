@@ -1,9 +1,9 @@
-import { userMock } from '@/5entities/User'
+// иначе cypress ругается
+import { userMock } from '@/5entities/User/model/const/mocks'
 import { type Article } from '../types/article'
 import { ArticleBlockType, ArticleType } from './article'
 
-export const articleMock: Article = {
-  id: '1',
+export const articleMock: Omit<Article, 'id'> = {
   user: userMock,
   title: 'Javascript news',
   subtitle: 'Что нового в JS за 2022 год?',

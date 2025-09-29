@@ -9,6 +9,7 @@ import { AppLink } from '@/6shared/ui/AppLink/AppLink'
 import { SkeletonCommentCard } from './SkeletonCommentCard'
 import { HStack, VStack } from '@/6shared/ui/Stack'
 import { getRouteProfile } from '@/6shared/const/router'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface CommentCardProps {
   className?: string
@@ -27,7 +28,7 @@ export const CommentCard = memo(function CommentCard
   }
 
   return (
-      <VStack gap='16' max className={classNames(styles.commentCard, [className])} >
+      <VStack gap='16' max className={classNames(styles.commentCard, [className])} data-testid={DATA_TEST_ID.commentCard}>
           <AppLink to={getRouteProfile(comment.user.id)}>
               <HStack gap='4'>
                   <Avatar size={30} alt={comment.user.username} src={comment.user.avatar ?? AvatarMock}/>

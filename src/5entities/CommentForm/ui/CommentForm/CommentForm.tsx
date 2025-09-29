@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux'
 import { useAppDispatch } from '@/6shared/lib/hooks'
 import { HStack } from '@/6shared/ui/Stack'
 import { selectAddArticleCommentFormText } from '../../model/selectors/selectAddCommentFormText/selectAddCommentFormText'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface AddArticleCommentFormProps {
   className?: string
@@ -37,9 +38,9 @@ const CommentForm = memo(function ArticleComments
 
   return (
       <DynamicModuleLoader reducers={initialReducer}>
-          <HStack max justify='between' className={classNames(styles.commentForm, [className])}>
-              <Input placeholder={t('input-comment')} value={value} onChange={onChange} className={styles.input}/>
-              <Button onClick={onSendHandler}>{t('buttons:send')}</Button>
+          <HStack max justify='between' className={classNames(styles.commentForm, [className])} data-testid={DATA_TEST_ID.commentForm}>
+              <Input placeholder={t('input-comment')} value={value} onChange={onChange} className={styles.input} data-testid={DATA_TEST_ID.commentFormInput}/>
+              <Button onClick={onSendHandler} data-testid={DATA_TEST_ID.commentFormBtn}>{t('buttons:send')}</Button>
           </HStack>
       </DynamicModuleLoader>
   )
