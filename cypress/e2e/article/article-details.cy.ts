@@ -29,7 +29,8 @@ describe('User visits article details page', () => {
     cy.addComment('555')
     cy.getByTestId(DATA_TEST_ID.commentCard).should('have.length', 1)
   })
-  it('Rates the article', () => {
+  it('Rates the article (пример со стабом на фикстурах)', () => {
+    cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' })
     cy.getByTestId(DATA_TEST_ID.article).should('exist')
     cy.getByTestId(DATA_TEST_ID.ratingCard).scrollIntoView()
     cy.setRating(5, 'well done')
