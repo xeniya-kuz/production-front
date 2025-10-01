@@ -1,6 +1,6 @@
 import { USER_LOCALSTORAGE_KEY } from '../../../src/6shared/const/localstorage'
 import { type User } from '../../../src/5entities/User'
-import { selectByTestId } from 'cypress/helpers/selectByTestId'
+import { selectByTestId } from '../../helpers/selectByTestId'
 import { API } from '../const'
 
 export const login = (username: string = 'test', password: string = '123'): Cypress.Chainable<User> => {

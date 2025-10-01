@@ -1,0 +1,11 @@
+ {
+      "id": "1",
+      "firstname": "FROM",
+      "lastname": "JSON",
+      "age": 20,
+      "username": "test user",
+      "city": "San Francisco",
+      "currency": "EUR",
+      "country": "Armenia",
+      "avatar": ""
+}

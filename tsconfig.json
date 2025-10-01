@@ -49,17 +49,19 @@
     }
   },
 	"include": [
-		"./src/**/*.ts",
-		"./src/**/*.tsx",
+		// "./src/**/*.ts",
+		// "./src/**/*.tsx",
 		"./config/**/*.ts",
 		"./config/**/*.tsx",
+    "./*.config.ts",
+    "./*.config.js",
     "./**/*.js",
     "./**/*.jsx",
+    "./**/*.ts",
+    "./**/*.tsx",
     "json-server/index.js", 
     "public/locales/*/index.ts",
     "public/locales/index.ts",
-    "./src/5entities/Article/model/const/article",
-    "./*.config.ts",
-    "./*.config.js",
+    "cypress"
   ],
 }

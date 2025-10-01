@@ -1,6 +1,6 @@
 import { API } from '../const'
 import { type Article } from '../../../src/5entities/Article'
-import { getArticleMock } from 'cypress/helpers/getArticleMock'
+import { getArticleMock } from '../../helpers/getArticleMock'
 
 const articleMock = getArticleMock()
 

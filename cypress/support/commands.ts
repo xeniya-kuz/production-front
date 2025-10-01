@@ -27,8 +27,8 @@ Cypress.Commands.addAll(ratingCommands)
 
 // TODO: разобраться в автоматизированном сохранении и чтении фикстур
 Cypress.Commands.overwrite('intercept', (originalFn, ...args) => {
-  const FIXTURE_MODE = process.env.FIXTURE_MODE
-  const api = process.env.__API__
+  const FIXTURE_MODE = process.env?.FIXTURE_MODE
+  const api = process.env?.__API__
   console.log('FIXTURE_MODE', FIXTURE_MODE)
   console.log('api', api)
   console.log('originalFn', originalFn)

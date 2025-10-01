@@ -39,7 +39,7 @@ export const EditableProfileCard = memo(function EditableProfileCard
 
   return (
       <DynamicModuleLoader reducers={initialReducer}>
-          <VStack gap='16' max>
+          <VStack gap='16' max className={className}>
               <EditableProfileCardHeader/>
               <EditableProfileErrors/>
               <ProfileCard

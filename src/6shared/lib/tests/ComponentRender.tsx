@@ -1,4 +1,4 @@
-import { Suspense, type ReactNode } from 'react'
+import { type JSX, Suspense, type ReactNode } from 'react'
 import { I18nextProvider } from 'react-i18next'
 import { render } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
@@ -12,19 +12,29 @@ export interface componentRenderProps {
   asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function ComponentRender (component: ReactNode, props: componentRenderProps = {}) {
-  const { route = '/', initialState, asyncReducers } = props
+interface TestProviderProps {
+  children: ReactNode
+  options?: componentRenderProps
+}
 
-  return render(
+export function TestProvider ({ children, options = {} }: TestProviderProps): JSX.Element {
+  const { route = '/', initialState, asyncReducers } = options
+
+  return (
       <MemoryRouter initialEntries={[route]}>
           <StoreProvider asyncReducers={asyncReducers} initialState={initialState}>
               <I18nextProvider i18n={i18nForTests}>
                   <Suspense fallback={''}>
-                      {component}
+                      {children}
                   </Suspense>
               </I18nextProvider>
           </StoreProvider>
       </MemoryRouter>
+  )
+}
+
+export function ComponentRender (component: ReactNode, props: componentRenderProps = {}) {
+  return render(
+      <TestProvider options={props}>{component}</TestProvider>
   )
 }

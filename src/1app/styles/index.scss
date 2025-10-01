@@ -10,15 +10,19 @@
 	padding: 0;
 }
 
-body {
-	font: var(--font-m);
-	color: var(--primary-color);
-	background: var(--bg-color);
-}
+// если стили указать тут, а не в .app, то при тестировании компонентов в cypress/support/component стили нарушаются
+// body {
+// font: var(--font-m);
+// color: var(--primary-color);
+// background: var(--bg-color);
+// }
 
 .app,
 .app_drawer {
 	min-height: 100vh;
+	font: var(--font-m);
+	color: var(--primary-color);
+	background: var(--bg-color);
 }
 
 .content-page {
