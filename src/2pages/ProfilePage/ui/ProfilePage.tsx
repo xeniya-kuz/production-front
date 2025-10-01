@@ -6,17 +6,22 @@ import { type JSX, memo } from 'react'
 import { useParams } from 'react-router-dom'
 
 interface ProfilePageProps {
-  className?: string
+    className?: string
 }
 
-const ProfilePage = memo(function ProfilePage ({ className }: ProfilePageProps): JSX.Element {
-  const { profileId } = useParams<{ profileId: string }>()
+const ProfilePage = memo(function ProfilePage({
+    className,
+}: ProfilePageProps): JSX.Element {
+    const { profileId } = useParams<{ profileId: string }>()
 
-  return (
-      <Page data-testid={DATA_TEST_ID.profilePage} className={classNames(undefined, [className])}>
-          <EditableProfileCard profileId={profileId}/>
-      </Page>
-  )
+    return (
+        <Page
+            data-testid={DATA_TEST_ID.profilePage}
+            className={classNames(undefined, [className])}
+        >
+            <EditableProfileCard profileId={profileId} />
+        </Page>
+    )
 })
 
 export default ProfilePage

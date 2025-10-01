@@ -4,25 +4,22 @@ import ArticleDetailsPage from './ArticleDetailsPage'
 import { articleMock } from '@/5entities/Article'
 
 const meta = {
-  title: 'pages/Article/ArticleDetailsPage',
-  component: ArticleDetailsPage,
-  tags: ['autodocs'],
-  args: {
-
-  },
-  decorators: [StoreDecorator({
-    articleDetails:
-    {
-      article: articleMock
-    }
-  })]
-
+    title: 'pages/Article/ArticleDetailsPage',
+    component: ArticleDetailsPage,
+    tags: ['autodocs'],
+    args: {},
+    decorators: [
+        StoreDecorator({
+            articleDetails: {
+                article: articleMock,
+            },
+        }),
+    ],
 } satisfies Meta<typeof ArticleDetailsPage>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Error: Story = {
-  args: {
-  }
+    args: {},
 }

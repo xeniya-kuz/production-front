@@ -5,23 +5,22 @@ import { PageLoader } from './PageLoader'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: 'widgets/PageLoader',
-  component: PageLoader,
-  tags: ['autodocs'],
-  parameters: {
-    loki: { skip: true }
-  }
-
+    title: 'widgets/PageLoader',
+    component: PageLoader,
+    tags: ['autodocs'],
+    parameters: {
+        loki: { skip: true },
+    },
 } satisfies Meta<typeof PageLoader>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Light: Story = {
-  args: { }
+    args: {},
 }
 
 export const Dark: Story = {
-  args: { },
-  decorators: [ThemeDecorator(Theme.DARK)]
+    args: {},
+    decorators: [ThemeDecorator(Theme.DARK)],
 }

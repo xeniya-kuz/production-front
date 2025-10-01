@@ -3,17 +3,14 @@ import { NotificationButton } from './NotificationButton'
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
 
 const meta = {
-  title: 'features/NotificationButton',
-  component: NotificationButton,
-  tags: ['autodocs'],
-  args: {},
-  decorators: [StoreDecorator({})]
-
+    title: 'features/NotificationButton',
+    component: NotificationButton,
+    tags: ['autodocs'],
+    args: {},
+    decorators: [StoreDecorator({})],
 } satisfies Meta<typeof NotificationButton>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {
-
-}
+export const Primary: Story = {}

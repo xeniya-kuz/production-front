@@ -5,29 +5,29 @@ import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList'
 jest.mock('../fetchArticlesList/fetchArticlesList')
 
 describe('initArticlesPage', () => {
-  const searchParams = new URLSearchParams(window.location.search)
+    const searchParams = new URLSearchParams(window.location.search)
 
-  test('state was not initialized before', async () => {
-    const thunk = new TestAsyncThunk(init, {
-      articleInfiniteList: { _inited: false }
+    test('state was not initialized before', async () => {
+        const thunk = new TestAsyncThunk(init, {
+            articleInfiniteList: { _inited: false },
+        })
+
+        await thunk.callThunk(searchParams)
+
+        expect(fetchArticlesList).toHaveBeenCalled()
+        // dispatch(articlesPageActions...), dispatch(fetchArticlesList(...)), initArticlesPage.pending, initArticlesPage.fulfilled
+        expect(thunk.dispatch).toHaveBeenCalledTimes(4)
     })
 
-    await thunk.callThunk(searchParams)
+    test('state was initialized before', async () => {
+        const thunk = new TestAsyncThunk(init, {
+            articleInfiniteList: { _inited: true },
+        })
 
-    expect(fetchArticlesList).toHaveBeenCalled()
-    // dispatch(articlesPageActions...), dispatch(fetchArticlesList(...)), initArticlesPage.pending, initArticlesPage.fulfilled
-    expect(thunk.dispatch).toHaveBeenCalledTimes(4)
-  })
+        await thunk.callThunk(searchParams)
 
-  test('state was initialized before', async () => {
-    const thunk = new TestAsyncThunk(init, {
-      articleInfiniteList: { _inited: true }
+        expect(fetchArticlesList).not.toHaveBeenCalled()
+        // initArticlesPage.pending, initArticlesPage.fulfilled
+        expect(thunk.dispatch).toHaveBeenCalledTimes(2)
     })
-
-    await thunk.callThunk(searchParams)
-
-    expect(fetchArticlesList).not.toHaveBeenCalled()
-    // initArticlesPage.pending, initArticlesPage.fulfilled
-    expect(thunk.dispatch).toHaveBeenCalledTimes(2)
-  })
 })

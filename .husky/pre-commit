@@ -2,10 +2,12 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 
+
+npm run prettier
 # проверяет все файлы
 # npm run lint:ts:fix
 # проверяет только измененные файлы
 # npx lint-staged
-# npm run lint:scss:fix
-# npm run test:unit
+npm run lint:scss:fix
+npm run test:unit
 # npm run test:ui

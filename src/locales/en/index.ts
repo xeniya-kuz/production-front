@@ -8,4 +8,14 @@ import articles from './articles.json'
 import comments from './comments.json'
 import filters from './filters.json'
 
-export const en = { about, alerts, buttons, profile, translation, errors, articles, comments, filters }
+export const en = {
+    about,
+    alerts,
+    buttons,
+    profile,
+    translation,
+    errors,
+    articles,
+    comments,
+    filters,
+}

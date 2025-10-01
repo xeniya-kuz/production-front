@@ -14,50 +14,62 @@ import styles from './Navbar.module.scss'
 import { getRouteArticleCreate } from '@/6shared/const/router'
 
 interface NavbarProps {
-  className?: string
+    className?: string
 }
 
-export const Navbar = memo(function Navbar ({ className }: NavbarProps): JSX.Element {
-  const { t } = useTranslation()
-  const authData = useSelector(selectUserAuthData)
-  const [isAuthModal, setIsAuthModal] = useState(false)
+export const Navbar = memo(function Navbar({
+    className,
+}: NavbarProps): JSX.Element {
+    const { t } = useTranslation()
+    const authData = useSelector(selectUserAuthData)
+    const [isAuthModal, setIsAuthModal] = useState(false)
 
-  const onToggleModal = useCallback(() => {
-    setIsAuthModal(prev => !prev)
-  }, [])
+    const onToggleModal = useCallback(() => {
+        setIsAuthModal((prev) => !prev)
+    }, [])
 
-  if (authData !== undefined) {
+    if (authData !== undefined) {
+        return (
+            <header className={classNames(styles.navbar, [className])}>
+                {/* eslint-disable-next-line i18next/no-literal-string */}
+                <Text
+                    className={styles.appName}
+                    title="Production project"
+                    theme={TextTheme.INVERTED}
+                />
+                <AppLink
+                    to={getRouteArticleCreate()}
+                    theme={AppLinkTheme.INVERTED}
+                    className={styles.create}
+                >
+                    {t('articles:article-creation')}
+                </AppLink>
+                <HStack
+                    gap={'16'}
+                    className={styles.actions}
+                >
+                    <NotificationButton />
+                    <AvatarDropdown />
+                </HStack>
+            </header>
+        )
+    }
+
     return (
         <header className={classNames(styles.navbar, [className])}>
-            {/* eslint-disable-next-line i18next/no-literal-string */}
-            <Text className={styles.appName} title='Production project' theme={TextTheme.INVERTED}/>
-            <AppLink
-                to={getRouteArticleCreate()}
-                theme={AppLinkTheme.INVERTED}
-                className={styles.create}
-             >
-                {t('articles:article-creation')}
-            </AppLink>
-            <HStack gap={'16'} className={styles.actions}>
-                <NotificationButton/>
-                <AvatarDropdown/>
-            </HStack>
+            <Button
+                className={styles.links}
+                theme={ButtonTheme.CLEAR_INVERTED}
+                onClick={onToggleModal}
+            >
+                {t('Войти')}
+            </Button>
+            {isAuthModal && (
+                <LoginModal
+                    isOpen={isAuthModal}
+                    onClose={onToggleModal}
+                />
+            )}
         </header>
     )
-  }
-
-  return (
-      <header className={classNames(styles.navbar, [className])}>
-          <Button className={styles.links}
-              theme={ButtonTheme.CLEAR_INVERTED}
-              onClick={onToggleModal}
-          >
-              {t('Войти')}
-          </Button>
-          {isAuthModal && <LoginModal
-              isOpen={isAuthModal}
-              onClose={onToggleModal}
-          />}
-      </header>
-  )
 })

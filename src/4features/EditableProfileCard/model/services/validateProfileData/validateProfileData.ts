@@ -3,33 +3,35 @@
 import { type Profile } from '@/5entities/Profile'
 import { ValidateProfileError } from '../../const/validate'
 
-export const validateProfileData = (profile?: Profile): ValidateProfileError[] => {
-  if (profile === undefined) {
-    return [ValidateProfileError.NO_DATA]
-  }
+export const validateProfileData = (
+    profile?: Profile,
+): ValidateProfileError[] => {
+    if (profile === undefined) {
+        return [ValidateProfileError.NO_DATA]
+    }
 
-  const { firstname, lastname, age, country } = profile
-  const errors: ValidateProfileError[] = []
+    const { firstname, lastname, age, country } = profile
+    const errors: ValidateProfileError[] = []
 
-  if (!firstname || !lastname) {
-    errors.push(ValidateProfileError.NAME)
-  }
+    if (!firstname || !lastname) {
+        errors.push(ValidateProfileError.NAME)
+    }
 
-  if (!age || (!Number.isInteger(age) && age > 0 && age < 200)) {
-    errors.push(ValidateProfileError.AGE)
-  }
+    if (!age || (!Number.isInteger(age) && age > 0 && age < 200)) {
+        errors.push(ValidateProfileError.AGE)
+    }
 
-  if (!country) {
-    errors.push(ValidateProfileError.COUNTRY)
-  }
+    if (!country) {
+        errors.push(ValidateProfileError.COUNTRY)
+    }
 
-  return errors
+    return errors
 }
 
 export const validateProfileErrorsTranslations = {
-  [ValidateProfileError.NAME]: 'errors:name',
-  [ValidateProfileError.AGE]: 'errors:age',
-  [ValidateProfileError.NO_DATA]: 'errors:no-data',
-  [ValidateProfileError.COUNTRY]: 'errors:country',
-  [ValidateProfileError.SERVER]: 'errors:server'
+    [ValidateProfileError.NAME]: 'errors:name',
+    [ValidateProfileError.AGE]: 'errors:age',
+    [ValidateProfileError.NO_DATA]: 'errors:no-data',
+    [ValidateProfileError.COUNTRY]: 'errors:country',
+    [ValidateProfileError.SERVER]: 'errors:server',
 }

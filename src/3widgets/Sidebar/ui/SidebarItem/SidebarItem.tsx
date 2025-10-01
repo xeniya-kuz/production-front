@@ -9,17 +9,19 @@ import { Icon, IconColors } from '@/6shared/ui/Icon/Icon'
 import { type SidebarItemType } from '../../module/types/sidebar'
 
 interface SidebarItemProps {
-  item: SidebarItemType
-  collapsed: boolean
+    item: SidebarItemType
+    collapsed: boolean
 }
 
-export const SidebarItem = memo(
-  function SidebarItem ({ item, collapsed }: SidebarItemProps): JSX.Element | null {
+export const SidebarItem = memo(function SidebarItem({
+    item,
+    collapsed,
+}: SidebarItemProps): JSX.Element | null {
     const { t } = useTranslation()
     const isAuth = Boolean(useSelector(selectUserAuthData))
 
     if (!isAuth && Boolean(item.isPrivate)) {
-      return null
+        return null
     }
 
     return (
@@ -28,12 +30,15 @@ export const SidebarItem = memo(
                 theme={AppLinkTheme.INVERTED}
                 to={item?.path}
                 className={classNames(styles.item, [], {
-                  [styles.collapsed]: collapsed
+                    [styles.collapsed]: collapsed,
                 })}
-              >
-                <Icon Svg={item.Icon} color={IconColors.INVERTED_PRIMARY_FILL}/>
+            >
+                <Icon
+                    Svg={item.Icon}
+                    color={IconColors.INVERTED_PRIMARY_FILL}
+                />
                 <span className={styles.link}>{t(item.text)}</span>
             </AppLink>
         </li>
     )
-  })
+})

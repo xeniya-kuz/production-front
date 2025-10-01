@@ -1,13 +1,16 @@
 {
-  //enables transforms for ES2015+, hrlps jest to обработать ts
-  "presets": [
-		"@babel/preset-env", 
-		"@babel/preset-typescript", 
-		// для @testing-library/jest-dom
-		 ["@babel/preset-react", {
-       "runtime": "automatic"
-   }]
-	],
-  //вытаскивает переводы в отдельную папку и подтягивает переводы
-  "plugins": ["i18next-extract"]
+    //enables transforms for ES2015+, hrlps jest to обработать ts
+    "presets": [
+        "@babel/preset-env",
+        "@babel/preset-typescript",
+        // для @testing-library/jest-dom
+        [
+            "@babel/preset-react",
+            {
+                "runtime": "automatic"
+            }
+        ]
+    ],
+    //вытаскивает переводы в отдельную папку и подтягивает переводы
+    "plugins": ["i18next-extract"]
 }

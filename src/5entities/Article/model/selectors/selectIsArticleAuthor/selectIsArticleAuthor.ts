@@ -3,12 +3,13 @@ import { createSelector } from '@reduxjs/toolkit'
 import { selectArticleDetails } from '../selectArticleDetails/selectArticleDetails'
 
 export const selectIsArticleAuthor = createSelector(
-  selectUserAuthData,
-  selectArticleDetails,
-  (user, article) => {
-    if (user === undefined || article === undefined) {
-      return false
-    }
+    selectUserAuthData,
+    selectArticleDetails,
+    (user, article) => {
+        if (user === undefined || article === undefined) {
+            return false
+        }
 
-    return article.user.id === user.id
-  })
+        return article.user.id === user.id
+    },
+)

@@ -5,32 +5,31 @@ import Backend from 'i18next-http-backend'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { resources } from '../../../../src/locales'
 
-i18n
-  .use(Backend)
-  // detect user language
-  // learn more: https://github.com/i18next/i18next-browser-languageDetector
-  .use(LanguageDetector)
-  // pass the i18n instance to react-i18next.
-  .use(initReactI18next)
-  // init i18next
-  // for all options read: https://www.i18next.com/overview/configuration-options
-  .init({
-    // язык по умолчанию
-    fallbackLng: 'ru',
-    // __IS_DEV__ - переменная окружения
-    // debug: Boolean(__IS_DEV__),
-    debug: false,
-    resources,
-    // ns: Object.keys(resources.ru),
-    interpolation: {
-      escapeValue: false // not needed for react as it escapes by default
-    },
-    react: {
-      useSuspense: false // без этого в Brave Suspense не останавливается
-    }
-  })
-  .catch((err: any) => {
-    console.error(err)
-  })
+i18n.use(Backend)
+    // detect user language
+    // learn more: https://github.com/i18next/i18next-browser-languageDetector
+    .use(LanguageDetector)
+    // pass the i18n instance to react-i18next.
+    .use(initReactI18next)
+    // init i18next
+    // for all options read: https://www.i18next.com/overview/configuration-options
+    .init({
+        // язык по умолчанию
+        fallbackLng: 'ru',
+        // __IS_DEV__ - переменная окружения
+        // debug: Boolean(__IS_DEV__),
+        debug: false,
+        resources,
+        // ns: Object.keys(resources.ru),
+        interpolation: {
+            escapeValue: false, // not needed for react as it escapes by default
+        },
+        react: {
+            useSuspense: false, // без этого в Brave Suspense не останавливается
+        },
+    })
+    .catch((err: any) => {
+        console.error(err)
+    })
 
 export default i18n

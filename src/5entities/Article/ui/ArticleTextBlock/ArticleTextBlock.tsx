@@ -4,21 +4,30 @@ import { type ArticleTextBlock as ArticleTextBlockType } from '../../model/types
 import { Text } from '@/6shared/ui/Text/Text'
 
 interface ArticleTextBlockProps {
-  className?: string
-  block: ArticleTextBlockType
+    className?: string
+    block: ArticleTextBlockType
 }
 
-export const ArticleTextBlock = memo(function ArticleTextBlock ({ className, block }: ArticleTextBlockProps): JSX.Element {
-  return (
-      <div className={className}>
-          {block.title !== undefined && (
-          <Text title={block.title} className={styles.title}/>
-          )}
+export const ArticleTextBlock = memo(function ArticleTextBlock({
+    className,
+    block,
+}: ArticleTextBlockProps): JSX.Element {
+    return (
+        <div className={className}>
+            {block.title !== undefined && (
+                <Text
+                    title={block.title}
+                    className={styles.title}
+                />
+            )}
 
-          {block.paragraphs.map((paragraph, index) =>
-              <Text text={paragraph} className={styles.paragraph} key={index}/>
-          )}
-
-      </div>
-  )
+            {block.paragraphs.map((paragraph, index) => (
+                <Text
+                    text={paragraph}
+                    className={styles.paragraph}
+                    key={index}
+                />
+            ))}
+        </div>
+    )
 })

@@ -1,8 +1,8 @@
 {
-  "age": "Incorrect age",
-  "country": "Type country please",
-  "name": "Type name please",
-  "no-data": "Profile data is empty",
-  "server": "Error occur on server. Please try again",
-  "no-access-page": "No access to the page"
+    "age": "Incorrect age",
+    "country": "Type country please",
+    "name": "Type name please",
+    "no-data": "Profile data is empty",
+    "server": "Error occur on server. Please try again",
+    "no-access-page": "No access to the page"
 }

@@ -1,1 +1,1 @@
-declare module 'storybook-addon-mock';
+declare module 'storybook-addon-mock'

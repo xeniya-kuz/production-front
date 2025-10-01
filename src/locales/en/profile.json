@@ -1,12 +1,12 @@
 {
-  "profile": "Profile",
-  "first-name": "First name",
-  "last-name": "Last name",
-  "age":"Age",
-  "currency":"Currency",
-  "country":"Country",
-  "city":"City",
-  "username":"Username",
-  "avatar":"Avatar",
-  "admin-panel": "Admin. panel"
+    "profile": "Profile",
+    "first-name": "First name",
+    "last-name": "Last name",
+    "age": "Age",
+    "currency": "Currency",
+    "country": "Country",
+    "city": "City",
+    "username": "Username",
+    "avatar": "Avatar",
+    "admin-panel": "Admin. panel"
 }

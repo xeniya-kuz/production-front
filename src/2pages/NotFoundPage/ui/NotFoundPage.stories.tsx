@@ -5,20 +5,19 @@ import { NotFoundPage } from './NotFoundPage'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: 'pages/NotFoundPage',
-  component: NotFoundPage,
-  tags: ['autodocs']
-
+    title: 'pages/NotFoundPage',
+    component: NotFoundPage,
+    tags: ['autodocs'],
 } satisfies Meta<typeof NotFoundPage>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Light: Story = {
-  args: { }
+    args: {},
 }
 
 export const Dark: Story = {
-  args: { },
-  decorators: [ThemeDecorator(Theme.DARK)]
+    args: {},
+    decorators: [ThemeDecorator(Theme.DARK)],
 }

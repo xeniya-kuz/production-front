@@ -5,21 +5,20 @@ import { ForbiddenPage } from './ForbiddenPage'
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
 
 const meta = {
-  title: 'pages/ForbiddenPage',
-  component: ForbiddenPage,
-  tags: ['autodocs'],
-  decorators: [StoreDecorator({})]
-
+    title: 'pages/ForbiddenPage',
+    component: ForbiddenPage,
+    tags: ['autodocs'],
+    decorators: [StoreDecorator({})],
 } satisfies Meta<typeof ForbiddenPage>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Light: Story = {
-  args: { }
+    args: {},
 }
 
 export const Dark: Story = {
-  args: { },
-  decorators: [ThemeDecorator(Theme.DARK)]
+    args: {},
+    decorators: [ThemeDecorator(Theme.DARK)],
 }

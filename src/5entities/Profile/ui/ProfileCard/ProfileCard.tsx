@@ -13,110 +13,146 @@ import { CountryDropdown } from '@/5entities/CountryDropdown'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface ProfileCardProps {
-  className?: string
-  profile: Profile | undefined
-  isLoading?: boolean
-  error?: string
-  onChange?: (name: keyof Profile, value: string | number) => void
-  readonly?: boolean
+    className?: string
+    profile: Profile | undefined
+    isLoading?: boolean
+    error?: string
+    onChange?: (name: keyof Profile, value: string | number) => void
+    readonly?: boolean
 }
 
 export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
-  const { className, profile, isLoading, error, onChange, readonly } = props
-  const { t } = useTranslation(['profile', 'buttons', 'alerts'])
+    const { className, profile, isLoading, error, onChange, readonly } = props
+    const { t } = useTranslation(['profile', 'buttons', 'alerts'])
 
-  if (isLoading === true) {
-    return (
-        <HStack justify='center' max className={classNames(styles.profileCard, [className, styles.loader])}>
-            <Loader/>
-        </HStack>
-    )
-  }
-
-  if (error !== undefined) {
-    return (
-        <HStack justify='center' max className={classNames(styles.profileCard, [className, styles.error])}>
-            <Error/>
-        </HStack>
-    )
-  }
-
-  const onTextChange = ({ name, value }: { name: string | Currency, value: string }): void => {
-    onChange?.(name as keyof Profile, value)
-  }
-
-  const onNumberChange = ({ name, value }: { name: string, value: string }): void => {
-    if (!isNaN(+value)) {
-      onChange?.(name as keyof Profile, +value === 0 ? '' : +value)
+    if (isLoading === true) {
+        return (
+            <HStack
+                justify="center"
+                max
+                className={classNames(styles.profileCard, [
+                    className,
+                    styles.loader,
+                ])}
+            >
+                <Loader />
+            </HStack>
+        )
     }
-  }
 
-  const mods: Mods = {
-    [styles.editing]: readonly !== true
-  }
+    if (error !== undefined) {
+        return (
+            <HStack
+                justify="center"
+                max
+                className={classNames(styles.profileCard, [
+                    className,
+                    styles.error,
+                ])}
+            >
+                <Error />
+            </HStack>
+        )
+    }
 
-  return (
-      <VStack gap='16' max className={classNames(styles.profileCard, [className], mods)}>
-          {profile?.avatar !== undefined &&
-              <HStack justify='center' max>
-                  <Avatar src={profile?.avatar} alt={t('profile:avatar')}/>
-              </HStack>
-              }
-          <Input
-              // eslint-disable-next-line i18next/no-literal-string
-              name='firstname'
-              value={profile?.firstname}
-              placeholder={t('first-name')}
-              onChange={onTextChange}
-              readOnly={readonly}
-              data-testid={DATA_TEST_ID.profileCardFirstname}
-              />
-          <Input
-              // eslint-disable-next-line i18next/no-literal-string
-              name='lastname'
-              value={profile?.lastname}
-              placeholder={t('last-name')}
-              onChange={onTextChange}
-              readOnly={readonly}
-              data-testid={DATA_TEST_ID.profileCardLastname}
-              />
-          <Input
-              // eslint-disable-next-line i18next/no-literal-string
-              name='age'
-              value={profile?.age}
-              placeholder={t('age')}
-              onChange={onNumberChange}
-              readOnly={readonly}
-              data-testid={DATA_TEST_ID.profileCardAge}
-              />
-          <Input
-              // eslint-disable-next-line i18next/no-literal-string
-              name='city'
-              value={profile?.city}
-              placeholder={t('city')}
-              onChange={onTextChange}
-              readOnly={readonly}
-              data-testid={DATA_TEST_ID.profileCardCity}
-              />
-          <Input
-              // eslint-disable-next-line i18next/no-literal-string
-              name='username'
-              value={profile?.username}
-              placeholder={t('username')}
-              onChange={onTextChange}
-              readOnly={readonly}
-              data-testid={DATA_TEST_ID.profileCardUsername}
-              />
-          <CurrencyDropdown
-              value={profile?.currency}
-              disabled={readonly}
-              onChange={onTextChange}
-              />
-          <CountryDropdown
-              value={profile?.country}
-              disabled={readonly}
-              onChange={onTextChange}
-              />
-      </VStack>
-  )
+    const onTextChange = ({
+        name,
+        value,
+    }: {
+        name: string | Currency
+        value: string
+    }): void => {
+        onChange?.(name as keyof Profile, value)
+    }
+
+    const onNumberChange = ({
+        name,
+        value,
+    }: {
+        name: string
+        value: string
+    }): void => {
+        if (!isNaN(+value)) {
+            onChange?.(name as keyof Profile, +value === 0 ? '' : +value)
+        }
+    }
+
+    const mods: Mods = {
+        [styles.editing]: readonly !== true,
+    }
+
+    return (
+        <VStack
+            gap="16"
+            max
+            className={classNames(styles.profileCard, [className], mods)}
+        >
+            {profile?.avatar !== undefined && (
+                <HStack
+                    justify="center"
+                    max
+                >
+                    <Avatar
+                        src={profile?.avatar}
+                        alt={t('profile:avatar')}
+                    />
+                </HStack>
+            )}
+            <Input
+                // eslint-disable-next-line i18next/no-literal-string
+                name="firstname"
+                value={profile?.firstname}
+                placeholder={t('first-name')}
+                onChange={onTextChange}
+                readOnly={readonly}
+                data-testid={DATA_TEST_ID.profileCardFirstname}
+            />
+            <Input
+                // eslint-disable-next-line i18next/no-literal-string
+                name="lastname"
+                value={profile?.lastname}
+                placeholder={t('last-name')}
+                onChange={onTextChange}
+                readOnly={readonly}
+                data-testid={DATA_TEST_ID.profileCardLastname}
+            />
+            <Input
+                // eslint-disable-next-line i18next/no-literal-string
+                name="age"
+                value={profile?.age}
+                placeholder={t('age')}
+                onChange={onNumberChange}
+                readOnly={readonly}
+                data-testid={DATA_TEST_ID.profileCardAge}
+            />
+            <Input
+                // eslint-disable-next-line i18next/no-literal-string
+                name="city"
+                value={profile?.city}
+                placeholder={t('city')}
+                onChange={onTextChange}
+                readOnly={readonly}
+                data-testid={DATA_TEST_ID.profileCardCity}
+            />
+            <Input
+                // eslint-disable-next-line i18next/no-literal-string
+                name="username"
+                value={profile?.username}
+                placeholder={t('username')}
+                onChange={onTextChange}
+                readOnly={readonly}
+                data-testid={DATA_TEST_ID.profileCardUsername}
+            />
+            <CurrencyDropdown
+                value={profile?.currency}
+                disabled={readonly}
+                onChange={onTextChange}
+            />
+            <CountryDropdown
+                value={profile?.country}
+                disabled={readonly}
+                onChange={onTextChange}
+            />
+        </VStack>
+    )
 }

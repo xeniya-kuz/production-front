@@ -8,42 +8,41 @@ import { pageReducer } from '@/3widgets/Page'
 import { rtkApi } from '@/6shared/api/rtkApi'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function createReduxStore (
-  initialState?: StateSchema,
-  asyncReducers?: ReducersMapObject<StateSchema>
+export function createReduxStore(
+    initialState?: StateSchema,
+    asyncReducers?: ReducersMapObject<StateSchema>,
 ) {
-  const rootReducers: ReducersMapObject<StateSchema> = {
-    ...asyncReducers,
-    user: userReducer,
-    page: pageReducer,
-    [rtkApi.reducerPath]: rtkApi.reducer
-  }
+    const rootReducers: ReducersMapObject<StateSchema> = {
+        ...asyncReducers,
+        user: userReducer,
+        page: pageReducer,
+        [rtkApi.reducerPath]: rtkApi.reducer,
+    }
 
-  const reducerManager = createReducerManager(rootReducers)
+    const reducerManager = createReducerManager(rootReducers)
 
-  const extraArg: ThunkExtraArg = {
-    api: $api
-  }
+    const extraArg: ThunkExtraArg = {
+        api: $api,
+    }
 
-  const store = configureStore({
-    reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
-    devTools: __IS_DEV__,
-    // для тестирования
-    preloadedState: initialState,
-    // чтобы не экспортировать везде $api
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        thunk: {
-          extraArgument: extraArg
-        }
-      }).concat(rtkApi.middleware)
+    const store = configureStore({
+        reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
+        devTools: __IS_DEV__,
+        // для тестирования
+        preloadedState: initialState,
+        // чтобы не экспортировать везде $api
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware({
+                thunk: {
+                    extraArgument: extraArg,
+                },
+            }).concat(rtkApi.middleware),
+    })
 
-  })
+    // @ts-expect-error - temporary
+    store.reducerManager = reducerManager
 
-  // @ts-expect-error - temporary
-  store.reducerManager = reducerManager
-
-  return store
+    return store
 }
 
 export const store = createReduxStore()

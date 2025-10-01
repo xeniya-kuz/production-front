@@ -8,11 +8,12 @@ import { useTranslation } from 'react-i18next'
 import styles from './ThemeSwitcher.module.scss'
 
 interface ThemeSwitcherProps {
-  className?: string
+    className?: string
 }
 
-export const ThemeSwitcher = memo(
-  function ThemeSwitcher ({ className }: ThemeSwitcherProps): JSX.Element {
+export const ThemeSwitcher = memo(function ThemeSwitcher({
+    className,
+}: ThemeSwitcherProps): JSX.Element {
     const { toggleTheme } = useTheme()
     const { t } = useTranslation('buttons')
 
@@ -23,7 +24,10 @@ export const ThemeSwitcher = memo(
             theme={ButtonTheme.CLEAR}
             title={t('change-theme')}
         >
-            <Icon Svg={IconTheme} color={IconColors.INVERTED_PRIMARY_FILL} />
+            <Icon
+                Svg={IconTheme}
+                color={IconColors.INVERTED_PRIMARY_FILL}
+            />
         </Button>
     )
-  })
+})

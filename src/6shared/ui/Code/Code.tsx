@@ -7,30 +7,36 @@ import CopyIcon from '@/6shared/assets/icons/copy-20-20.svg'
 import { useTranslation } from 'react-i18next'
 
 interface CodeProps {
-  className?: string
-  code: string
-  color?: IconColors
+    className?: string
+    code: string
+    color?: IconColors
 }
 
-export const Code = memo(function Code
-({ className, code, color = IconColors.PRIMARY_STROKE }: CodeProps): JSX.Element {
-  const { t } = useTranslation('buttons')
+export const Code = memo(function Code({
+    className,
+    code,
+    color = IconColors.PRIMARY_STROKE,
+}: CodeProps): JSX.Element {
+    const { t } = useTranslation('buttons')
 
-  const onCopy = useCallback(
-    () => {
-      void navigator.clipboard.writeText(code)
-    },
-    [code]
-  )
+    const onCopy = useCallback(() => {
+        void navigator.clipboard.writeText(code)
+    }, [code])
 
-  return (
-      <pre className={classNames(styles.code, [className])}>
-          <Button className={styles.copyBtn} theme={ButtonTheme.CLEAR} title={t('copy')} onClick={onCopy}>
-              <Icon Svg={CopyIcon} color={color}/>
-          </Button>
-          <code>
-              {code}
-          </code>
-      </pre>
-  )
+    return (
+        <pre className={classNames(styles.code, [className])}>
+            <Button
+                className={styles.copyBtn}
+                theme={ButtonTheme.CLEAR}
+                title={t('copy')}
+                onClick={onCopy}
+            >
+                <Icon
+                    Svg={CopyIcon}
+                    color={color}
+                />
+            </Button>
+            <code>{code}</code>
+        </pre>
+    )
 })

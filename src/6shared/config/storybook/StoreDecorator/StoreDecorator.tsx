@@ -10,20 +10,26 @@ import { type ReducerList } from '@/6shared/lib/components/DynamicModuleLoader/D
 import { type StoryFn } from '@storybook/react'
 
 const defaultAsyncReducers: ReducerList = {
-  loginForm: loginReducer,
-  profile: profileReducer,
-  articleDetails: articleDetailsReducer,
-  commentForm: commentFormReducer,
-  articleComments: articleCommentsReducer,
-  articleInfiniteList: articleInfiniteListReducer,
-  articlesPageFilters: articlesPageFiltersReducer
+    loginForm: loginReducer,
+    profile: profileReducer,
+    articleDetails: articleDetailsReducer,
+    commentForm: commentFormReducer,
+    articleComments: articleCommentsReducer,
+    articleInfiniteList: articleInfiniteListReducer,
+    articlesPageFilters: articlesPageFiltersReducer,
 }
 
-export const StoreDecorator = (state: DeepPartial<StateSchema>, asyncReducers?: ReducerList) =>
-  function StoreDecorator (StoryComponent: StoryFn) {
-    return (
-        <StoreProvider initialState={state} asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}>
-            <StoryComponent/>
-        </StoreProvider>
-    )
-  }
+export const StoreDecorator = (
+    state: DeepPartial<StateSchema>,
+    asyncReducers?: ReducerList,
+) =>
+    function StoreDecorator(StoryComponent: StoryFn) {
+        return (
+            <StoreProvider
+                initialState={state}
+                asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}
+            >
+                <StoryComponent />
+            </StoreProvider>
+        )
+    }

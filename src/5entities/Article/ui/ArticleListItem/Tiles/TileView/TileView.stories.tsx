@@ -5,20 +5,19 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { TileView } from './TileView'
 
 const meta = {
-  title: 'entities/Article/TileView',
-  component: TileView,
+    title: 'entities/Article/TileView',
+    component: TileView,
 
-  parameters: {
-    layout: 'fullscreen'
-  },
-  tags: ['autodocs'],
-  args: {
-    article: articleMock,
-    index: 0
-    // types: <Text text={`${ArticleType.IT}, ${ArticleType.ECONOMICS}`} />,
-    // views: <Text text={'1042'}/>
-  }
-
+    parameters: {
+        layout: 'fullscreen',
+    },
+    tags: ['autodocs'],
+    args: {
+        article: articleMock,
+        index: 0,
+        // types: <Text text={`${ArticleType.IT}, ${ArticleType.ECONOMICS}`} />,
+        // views: <Text text={'1042'}/>
+    },
 } satisfies Meta<typeof TileView>
 
 export default meta
@@ -27,5 +26,5 @@ type Story = StoryObj<typeof meta>
 export const Primary: Story = {}
 
 export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)]
+    decorators: [ThemeDecorator(Theme.DARK)],
 }

@@ -6,16 +6,18 @@ import { selectArticlesIsLoading } from '../../selectors/selectArticlesIsLoading
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList'
 import { articleInfiniteListActions } from '../../slice/articleInfiniteListSlice'
 
-export const fetchNextArticlesPage = createAsyncThunk<void, void, ThunkConfig<string>>(
-  'articleInfiniteList/fetchNextArticlesPageProps',
-  async (_, thunkAPI) => {
+export const fetchNextArticlesPage = createAsyncThunk<
+    void,
+    void,
+    ThunkConfig<string>
+>('articleInfiniteList/fetchNextArticlesPageProps', async (_, thunkAPI) => {
     const { getState, dispatch } = thunkAPI
     const hasMore = selectArticlesHasMore(getState())
     const page = selectArticlesNum(getState())
     const isLoading = selectArticlesIsLoading(getState())
 
     if (hasMore === true && isLoading !== true) {
-      dispatch(articleInfiniteListActions.setPage(page + 1))
-      void dispatch(fetchArticlesList({}))
+        dispatch(articleInfiniteListActions.setPage(page + 1))
+        void dispatch(fetchArticlesList({}))
     }
-  })
+})

@@ -1,10 +1,10 @@
 {
-  "cancel": "Cancel",
-  "edit": "Edit",
-  "save": "Save",
-  "copy":"Copy",
-  "change-theme": "Change theme",
-  "send": "Send",
-  "read-more": "Read more...",
-  "back-to-list": "Back to the list"
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "save": "Save",
+    "copy": "Copy",
+    "change-theme": "Change theme",
+    "send": "Send",
+    "read-more": "Read more...",
+    "back-to-list": "Back to the list"
 }

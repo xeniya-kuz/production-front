@@ -4,24 +4,25 @@ import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeD
 import { Theme } from '@/6shared/const/themes'
 
 const meta = {
-  title: 'shared/Code',
-  component: Code,
-  parameters: {
-    layout: 'fullscreen'
-  },
+    title: 'shared/Code',
+    component: Code,
+    parameters: {
+        layout: 'fullscreen',
+    },
 
-  tags: ['autodocs'],
-  args: {
-    code: 'import type { Meta, StoryObj } from \'@storybook/react\'\n' +
-          'import { Code } from \'./Code\'\n' +
-          '\n' +
-          'const meta = {\n' +
-          'title: \'shared/Code\',\n' +
-          '  component: Code,\n' +
-          '  parameters: {\n' +
-          '    layout: \'fullscreen\'\n' +
-          '  },`\n'
-  }
+    tags: ['autodocs'],
+    args: {
+        code:
+            "import type { Meta, StoryObj } from '@storybook/react'\n" +
+            "import { Code } from './Code'\n" +
+            '\n' +
+            'const meta = {\n' +
+            "title: 'shared/Code',\n" +
+            '  component: Code,\n' +
+            '  parameters: {\n' +
+            "    layout: 'fullscreen'\n" +
+            '  },`\n',
+    },
 } satisfies Meta<typeof Code>
 
 export default meta

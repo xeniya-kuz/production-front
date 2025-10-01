@@ -4,38 +4,37 @@ import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeD
 import { AppLink, AppLinkTheme } from './AppLink'
 
 const meta = {
-  title: 'shared/AppLink',
-  component: AppLink,
-  tags: ['autodocs'],
-  args: { to: '/', children: 'Text' }
-
+    title: 'shared/AppLink',
+    component: AppLink,
+    tags: ['autodocs'],
+    args: { to: '/', children: 'Text' },
 } satisfies Meta<typeof AppLink>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const PrimaryLight: Story = {
-  args: {
-    theme: AppLinkTheme.PRIMARY
-  }
+    args: {
+        theme: AppLinkTheme.PRIMARY,
+    },
 }
 
 export const SecondaryLight: Story = {
-  args: {
-    theme: AppLinkTheme.INVERTED
-  }
+    args: {
+        theme: AppLinkTheme.INVERTED,
+    },
 }
 
 export const PrimaryDark: Story = {
-  args: {
-    theme: AppLinkTheme.PRIMARY
-  },
-  decorators: [ThemeDecorator(Theme.DARK)]
+    args: {
+        theme: AppLinkTheme.PRIMARY,
+    },
+    decorators: [ThemeDecorator(Theme.DARK)],
 }
 
 export const SecondaryDark: Story = {
-  args: {
-    theme: AppLinkTheme.INVERTED
-  },
-  decorators: [ThemeDecorator(Theme.DARK)]
+    args: {
+        theme: AppLinkTheme.INVERTED,
+    },
+    decorators: [ThemeDecorator(Theme.DARK)],
 }

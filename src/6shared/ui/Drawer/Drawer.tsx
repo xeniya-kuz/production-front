@@ -4,9 +4,9 @@ import { DrawerAsync } from './Drawer.async'
 import { type DrawerProps } from './types'
 
 export const Drawer = (props: DrawerProps): JSX.Element => {
-  return (
-      <AnimationPropvider>
-          <DrawerAsync {...props} />
-      </AnimationPropvider>
-  )
+    return (
+        <AnimationPropvider>
+            <DrawerAsync {...props} />
+        </AnimationPropvider>
+    )
 }

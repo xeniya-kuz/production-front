@@ -7,44 +7,50 @@ import { Icon, IconColors } from '../Icon'
 import { Skeleton } from '../Skeleton'
 
 interface AvatarProps {
-  className?: string
-  src?: string
-  alt: string
-  size?: number
+    className?: string
+    src?: string
+    alt: string
+    size?: number
 }
 
-export const Avatar = ({ className, src, alt, size = 100 }: AvatarProps): JSX.Element => {
-  const inlineStyles = useMemo<CSSProperties>(() => {
-    return {
-      width: size,
-      height: size
-    }
-  }, [size])
+export const Avatar = ({
+    className,
+    src,
+    alt,
+    size = 100,
+}: AvatarProps): JSX.Element => {
+    const inlineStyles = useMemo<CSSProperties>(() => {
+        return {
+            width: size,
+            height: size,
+        }
+    }, [size])
 
-  const fallback =
-      <Skeleton
-          width={size}
-          height={size}
-          border='50%'
-          />
+    const fallback = (
+        <Skeleton
+            width={size}
+            height={size}
+            border="50%"
+        />
+    )
 
-  const errorFallback =
-      <Icon
-          Svg={UserIcon}
-          width={size}
-          height={size}
-          color={IconColors.INVERTED_PRIMARY_FILL}
-      />
+    const errorFallback = (
+        <Icon
+            Svg={UserIcon}
+            width={size}
+            height={size}
+            color={IconColors.INVERTED_PRIMARY_FILL}
+        />
+    )
 
-  return (
-      <AppImage
-          src={src}
-          alt={alt}
-          className={classNames(styles.avatar, [className])}
-          style={inlineStyles}
-          fallback={fallback}
-          errorFallback={errorFallback}
-           />
-
-  )
+    return (
+        <AppImage
+            src={src}
+            alt={alt}
+            className={classNames(styles.avatar, [className])}
+            style={inlineStyles}
+            fallback={fallback}
+            errorFallback={errorFallback}
+        />
+    )
 }

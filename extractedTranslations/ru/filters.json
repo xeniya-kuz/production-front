@@ -1,9 +1,9 @@
 {
-  "asc": "asc",
-  "creation-date": "creation-date",
-  "desc": "desc",
-  "search": "search",
-  "sort-by": "sort-by",
-  "title": "title",
-  "views": "views"
+    "asc": "asc",
+    "creation-date": "creation-date",
+    "desc": "desc",
+    "search": "search",
+    "sort-by": "sort-by",
+    "title": "title",
+    "views": "views"
 }

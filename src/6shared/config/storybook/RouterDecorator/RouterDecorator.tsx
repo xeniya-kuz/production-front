@@ -5,7 +5,8 @@ import { type JSX } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
 // export const StyleDecorator = (story: () => StoryFn) => story()
-export const RouterDecorator = (Story: StoryFn): JSX.Element =>
+export const RouterDecorator = (Story: StoryFn): JSX.Element => (
     <BrowserRouter>
-        <Story/>
+        <Story />
     </BrowserRouter>
+)

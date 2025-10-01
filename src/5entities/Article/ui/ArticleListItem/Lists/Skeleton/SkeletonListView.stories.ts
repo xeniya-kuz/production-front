@@ -4,26 +4,23 @@ import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeD
 import { Theme } from '@/6shared/const/themes'
 
 const meta = {
-  title: 'entities/Article/SkeletonListView',
-  component: SkeletonListView,
+    title: 'entities/Article/SkeletonListView',
+    component: SkeletonListView,
 
-  parameters: {
-    layout: 'fullscreen'
-  },
-  tags: ['autodocs']
-
+    parameters: {
+        layout: 'fullscreen',
+    },
+    tags: ['autodocs'],
 } satisfies Meta<typeof SkeletonListView>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
-  args: {
-  }
+    args: {},
 }
 
 export const Dark: Story = {
-  args: {
-  },
-  decorators: [ThemeDecorator(Theme.DARK)]
+    args: {},
+    decorators: [ThemeDecorator(Theme.DARK)],
 }

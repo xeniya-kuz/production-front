@@ -12,32 +12,39 @@ import styles from './ArticleDetailsPage.module.scss'
 import { ArticleRating } from '@/4features/ArticleRating'
 
 interface ArticleDetailsPageProps {
-  className?: string
+    className?: string
 }
 
-const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element => {
-  const { t } = useTranslation()
-  const { articleId } = useParams<{ articleId: string }>()
+const ArticleDetailsPage = ({
+    className,
+}: ArticleDetailsPageProps): JSX.Element => {
+    const { t } = useTranslation()
+    const { articleId } = useParams<{ articleId: string }>()
 
-  if (articleId === undefined) {
+    if (articleId === undefined) {
+        return (
+            <Page
+                className={classNames(styles.articleDetailsPage, [className])}
+            >
+                {t('article-not-found')}
+            </Page>
+        )
+    }
+
     return (
         <Page className={classNames(styles.articleDetailsPage, [className])}>
-            { t('article-not-found')}
+            <VStack
+                gap="16"
+                max
+            >
+                <ArticleDetailsPageHeader />
+                <ArticleDetails articleId={articleId} />
+                <ArticleRating articleId={articleId} />
+                <ArticleRecommendations />
+                <ArticleComments articleId={articleId} />
+            </VStack>
         </Page>
     )
-  }
-
-  return (
-      <Page className={classNames(styles.articleDetailsPage, [className])}>
-          <VStack gap='16' max>
-              <ArticleDetailsPageHeader/>
-              <ArticleDetails articleId={articleId}/>
-              <ArticleRating articleId={articleId}/>
-              <ArticleRecommendations/>
-              <ArticleComments articleId={articleId}/>
-          </VStack>
-      </Page>
-  )
 }
 
 export default memo(ArticleDetailsPage)

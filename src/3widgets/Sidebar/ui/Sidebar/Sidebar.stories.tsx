@@ -4,25 +4,28 @@ import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreD
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: 'widgets/Sidebar',
-  component: Sidebar,
-  tags: ['autodocs'],
-  decorators: [StoreDecorator({
-    user: { authData: {} }
-  })]
-
+    title: 'widgets/Sidebar',
+    component: Sidebar,
+    tags: ['autodocs'],
+    decorators: [
+        StoreDecorator({
+            user: { authData: {} },
+        }),
+    ],
 } satisfies Meta<typeof Sidebar>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Light: Story = {
-  args: { }
+    args: {},
 }
 
 export const NoAuth: Story = {
-  args: { },
-  decorators: [StoreDecorator({
-    user: { }
-  })]
+    args: {},
+    decorators: [
+        StoreDecorator({
+            user: {},
+        }),
+    ],
 }

@@ -3,42 +3,46 @@ import { ValidateProfileError } from '../../const/validate'
 import { profileMock } from '@/5entities/Profile'
 
 describe('validateProfileData', () => {
-  test('success', async () => {
-    const result = validateProfileData(profileMock)
+    test('success', async () => {
+        const result = validateProfileData(profileMock)
 
-    expect(result).toEqual([])
-  })
+        expect(result).toEqual([])
+    })
 
-  test('no first name', async () => {
-    const result = validateProfileData({ ...profileMock, firstname: '' })
+    test('no first name', async () => {
+        const result = validateProfileData({ ...profileMock, firstname: '' })
 
-    expect(result).toEqual([ValidateProfileError.NAME])
-  })
+        expect(result).toEqual([ValidateProfileError.NAME])
+    })
 
-  test('no country', async () => {
-    const result = validateProfileData({ ...profileMock, country: undefined })
+    test('no country', async () => {
+        const result = validateProfileData({
+            ...profileMock,
+            country: undefined,
+        })
 
-    expect(result).toEqual([ValidateProfileError.COUNTRY])
-  })
+        expect(result).toEqual([ValidateProfileError.COUNTRY])
+    })
 
-  test('incorrect age', async () => {
-    const result = validateProfileData({ ...profileMock, age: 0 })
+    test('incorrect age', async () => {
+        const result = validateProfileData({ ...profileMock, age: 0 })
 
-    expect(result).toEqual([ValidateProfileError.AGE])
-  })
+        expect(result).toEqual([ValidateProfileError.AGE])
+    })
 
-  test('incorrect all', async () => {
-    const result = validateProfileData({})
+    test('incorrect all', async () => {
+        const result = validateProfileData({})
 
-    expect(result).toEqual([
-      ValidateProfileError.NAME,
-      ValidateProfileError.AGE,
-      ValidateProfileError.COUNTRY])
-  })
+        expect(result).toEqual([
+            ValidateProfileError.NAME,
+            ValidateProfileError.AGE,
+            ValidateProfileError.COUNTRY,
+        ])
+    })
 
-  test('no data', async () => {
-    const result = validateProfileData()
+    test('no data', async () => {
+        const result = validateProfileData()
 
-    expect(result).toEqual([ValidateProfileError.NO_DATA])
-  })
+        expect(result).toEqual([ValidateProfileError.NO_DATA])
+    })
 })

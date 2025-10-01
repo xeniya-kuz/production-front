@@ -3,18 +3,18 @@ import { selectProfileData } from './selectProfileData'
 import { profileMock } from '@/5entities/Profile'
 
 describe('selectProfileData', () => {
-  test('should return profile data', () => {
-    const state: DeepPartial<StateSchema> = {
-      profile: {
-        profile: profileMock, isLoading: false
-      }
-    }
-    expect(selectProfileData(state as StateSchema)).toEqual(profileMock)
-  })
+    test('should return profile data', () => {
+        const state: DeepPartial<StateSchema> = {
+            profile: {
+                profile: profileMock,
+                isLoading: false,
+            },
+        }
+        expect(selectProfileData(state as StateSchema)).toEqual(profileMock)
+    })
 
-  test('should work with empty state', () => {
-    const state: DeepPartial<StateSchema> = { }
-    expect(selectProfileData(state as StateSchema)).toBe(undefined)
-  })
-}
-)
+    test('should work with empty state', () => {
+        const state: DeepPartial<StateSchema> = {}
+        expect(selectProfileData(state as StateSchema)).toBe(undefined)
+    })
+})

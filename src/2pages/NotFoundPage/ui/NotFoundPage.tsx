@@ -5,14 +5,19 @@ import { type JSX, memo } from 'react'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface NotFoundPageProps {
-  className?: string
+    className?: string
 }
 
-export const NotFoundPage = memo(function NotFoundPage ({ className }: NotFoundPageProps): JSX.Element {
-  const { t } = useTranslation()
-  return (
-      <main data-testid={DATA_TEST_ID.notFoundPage} className={classNames(styles.notFoundPage, [className])}>
-          {t('Страница не найдена')}
-      </main>
-  )
+export const NotFoundPage = memo(function NotFoundPage({
+    className,
+}: NotFoundPageProps): JSX.Element {
+    const { t } = useTranslation()
+    return (
+        <main
+            data-testid={DATA_TEST_ID.notFoundPage}
+            className={classNames(styles.notFoundPage, [className])}
+        >
+            {t('Страница не найдена')}
+        </main>
+    )
 })

@@ -8,94 +8,101 @@ import { type DrawerProps } from './types'
 
 const height = window.innerHeight - 100
 
-export const DrawerContent = memo(function DrawerContent (props: DrawerProps) {
-  const {
-    className,
-    children,
-    onClose,
-    isOpen
-  } = props
-  const { Spring, Gesture } = useAnimationLibs()
-  const [{ y }, api] = Spring.useSpring(() => ({ y: height }))
+export const DrawerContent = memo(function DrawerContent(props: DrawerProps) {
+    const { className, children, onClose, isOpen } = props
+    const { Spring, Gesture } = useAnimationLibs()
+    const [{ y }, api] = Spring.useSpring(() => ({ y: height }))
 
-  const openDrawer = useCallback(() => {
-    Promise.all(api.start(
-      {
-        y: 0,
-        immediate: false
-      }))
-      .catch((e) => {
-        console.log(e)
-      })
-  }, [api])
-
-  useEffect(() => {
-    if (isOpen) {
-      openDrawer()
-    }
-  }, [api, isOpen, openDrawer])
-
-  const close = (velocity = 0): void => {
-    Promise.all(api.start({
-      y: height,
-      immediate: false,
-      config: { ...Spring.config.stiff, velocity },
-      onResolve: onClose
-    }))
-      .catch((e) => {
-        console.log(e)
-      })
-  }
-
-  const bind = Gesture.useDrag(
-    ({
-      last,
-      velocity: [, vy],
-      direction: [, dy],
-      movement: [, my],
-      cancel
-    }) => {
-      if (my < -70) cancel()
-
-      if (last) {
-        if (my > height * 0.5 || (vy > 0.5 && dy > 0)) {
-          close()
-        } else {
-          openDrawer()
-        }
-      } else {
-        Promise.all(api.start({
-          y: my, immediate: true
-        }))
-          .catch((e) => {
+    const openDrawer = useCallback(() => {
+        Promise.all(
+            api.start({
+                y: 0,
+                immediate: false,
+            }),
+        ).catch((e) => {
             console.log(e)
-          })
-      }
-    },
-    {
-      from: () => [0, y.get()], filterTaps: true, bounds: { top: 0 }, rubberband: true
+        })
+    }, [api])
+
+    useEffect(() => {
+        if (isOpen) {
+            openDrawer()
+        }
+    }, [api, isOpen, openDrawer])
+
+    const close = (velocity = 0): void => {
+        Promise.all(
+            api.start({
+                y: height,
+                immediate: false,
+                config: { ...Spring.config.stiff, velocity },
+                onResolve: onClose,
+            }),
+        ).catch((e) => {
+            console.log(e)
+        })
     }
-  )
 
-  if (!isOpen) {
-    return null
-  }
+    const bind = Gesture.useDrag(
+        ({
+            last,
+            velocity: [, vy],
+            direction: [, dy],
+            movement: [, my],
+            cancel,
+        }) => {
+            if (my < -70) cancel()
 
-  const display = y.to((py) => (py < height ? 'block' : 'none'))
+            if (last) {
+                if (my > height * 0.5 || (vy > 0.5 && dy > 0)) {
+                    close()
+                } else {
+                    openDrawer()
+                }
+            } else {
+                Promise.all(
+                    api.start({
+                        y: my,
+                        immediate: true,
+                    }),
+                ).catch((e) => {
+                    console.log(e)
+                })
+            }
+        },
+        {
+            from: () => [0, y.get()],
+            filterTaps: true,
+            bounds: { top: 0 },
+            rubberband: true,
+        },
+    )
 
-  return (
-      <Portal>
-          <div className={classNames(styles.drawer, [className, 'app_drawer'])}>
-              <Overlay onClick={close} />
-              {/* @ts-expect-error - проблема типизации: ругается на className и children */}
-              <Spring.a.div
-                  className={styles.content}
-                  style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
-                  {...bind()}
-              >
-                  {children}
-              </Spring.a.div>
-          </div>
-      </Portal>
-  )
+    if (!isOpen) {
+        return null
+    }
+
+    const display = y.to((py) => (py < height ? 'block' : 'none'))
+
+    return (
+        <Portal>
+            <div
+                className={classNames(styles.drawer, [className, 'app_drawer'])}
+            >
+                <Overlay onClick={close} />
+                {/* @ts-expect-error - проблема типизации: ругается на className и children */}
+                <Spring.a.div
+                    className={styles.content}
+                    style={{
+                        display,
+                        bottom: `calc(-100vh + ${height - 100}px)`,
+                        y,
+                    }}
+                    {...bind()}
+                >
+                    {children}
+                </Spring.a.div>
+            </div>
+        </Portal>
+    )
 })

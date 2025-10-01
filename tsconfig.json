@@ -1,67 +1,67 @@
 {
-  "compilerOptions": {
-    "skipLibCheck": true,
-    //место, куда производится сборка, но в нашем случае это не так важно, т.к. сборка происходит с помощью вебпака
-    "outDir": "./build/",
-    // Подсвечивает все места где не указан тип
-    // Однако это не означает, что теперь вовсе нельзя использовать any.
-    // Это означает лишь, что в подобных ситуация разработчик должен явно писать any,
-    "noImplicitAny": true,
-    //способы модульной сборки (т.е. common js или обычный import)
-    "module": "ESNext",
-    //в какую спецификацию комплириуем: для поддержки большинства браузеров
-    // "target": "ES2015",
-    "target": "es5",
-    //чтобы можно было писать onClick={}
-    "jsx": "react-jsx",
-    // Компилятор будет обрабатывать не только TS файлы, но и JS файлы
-    "allowJs": true,
-    "moduleResolution": "node",
-    // Для абсолютного импорта
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-    // Если какая-либо библиотека не имеет default import,
-    // лоадеры вроде ts-loader или babel-loader автоматически создают их.
-    // Вместо такого импорта
-    // import * as React from 'react';
-    // можно писать такой
-    // import React from 'react';
-    "allowSyntheticDefaultImports": true,
-    // esModuleInterop позволяет работать с пакетами, которые используют
-    // common js как с обычными пакета с помощью import (require() module.export) = common js
-    // import Moment from 'moment';
-    // без флага esModuleInterop результат undefined
-    // console.log(Moment);
-    // c флагом результат [object Object]
-    // console.log(Moment);
-    "esModuleInterop": true,
-		"strictNullChecks": true,
-    "strict": true,
-    //чтобы импортировать .json файлы без ошибок
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-  },
-  "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
-    }
-  },
-	"include": [
-		// "./src/**/*.ts",
-		// "./src/**/*.tsx",
-		"./config/**/*.ts",
-		"./config/**/*.tsx",
-    "./*.config.ts",
-    "./*.config.js",
-    "./**/*.js",
-    "./**/*.jsx",
-    "./**/*.ts",
-    "./**/*.tsx",
-    "json-server/index.js", 
-    "public/locales/*/index.ts",
-    "public/locales/index.ts",
-    "cypress"
-  ],
+        "skipLibCheck": true,
+        //место, куда производится сборка, но в нашем случае это не так важно, т.к. сборка происходит с помощью вебпака
+        "outDir": "./build/",
+        // Подсвечивает все места где не указан тип
+        // Однако это не означает, что теперь вовсе нельзя использовать any.
+        // Это означает лишь, что в подобных ситуация разработчик должен явно писать any,
+        "noImplicitAny": true,
+        //способы модульной сборки (т.е. common js или обычный import)
+        "module": "ESNext",
+        //в какую спецификацию комплириуем: для поддержки большинства браузеров
+        // "target": "ES2015",
+        "target": "es5",
+        //чтобы можно было писать onClick={}
+        "jsx": "react-jsx",
+        // Компилятор будет обрабатывать не только TS файлы, но и JS файлы
+        "allowJs": true,
+        "moduleResolution": "node",
+        // Для абсолютного импорта
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+        // Если какая-либо библиотека не имеет default import,
+        // лоадеры вроде ts-loader или babel-loader автоматически создают их.
+        // Вместо такого импорта
+        // import * as React from 'react';
+        // можно писать такой
+        // import React from 'react';
+        "allowSyntheticDefaultImports": true,
+        // esModuleInterop позволяет работать с пакетами, которые используют
+        // common js как с обычными пакета с помощью import (require() module.export) = common js
+        // import Moment from 'moment';
+        // без флага esModuleInterop результат undefined
+        // console.log(Moment);
+        // c флагом результат [object Object]
+        // console.log(Moment);
+        "esModuleInterop": true,
+        "strictNullChecks": true,
+        "strict": true,
+        //чтобы импортировать .json файлы без ошибок
+        "resolveJsonModule": true,
+        "isolatedModules": true
+    },
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
+    },
+    "include": [
+        // "./src/**/*.ts",
+        // "./src/**/*.tsx",
+        "./config/**/*.ts",
+        "./config/**/*.tsx",
+        "./*.config.ts",
+        "./*.config.js",
+        "./**/*.js",
+        "./**/*.jsx",
+        "./**/*.ts",
+        "./**/*.tsx",
+        "json-server/index.js",
+        "public/locales/*/index.ts",
+        "public/locales/index.ts",
+        "cypress"
+    ]
 }

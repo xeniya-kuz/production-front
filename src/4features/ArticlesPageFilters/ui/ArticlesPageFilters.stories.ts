@@ -3,20 +3,18 @@ import { ArticlesPageFilters } from './ArticlesPageFilters'
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
 
 const meta = {
-  title: 'features/Article/ArticlesPageFilters',
-  component: ArticlesPageFilters,
-  tags: ['autodocs'],
-  args: {
-    fetchData: () => {}
-  },
-  decorators: [StoreDecorator({})]
-
+    title: 'features/Article/ArticlesPageFilters',
+    component: ArticlesPageFilters,
+    tags: ['autodocs'],
+    args: {
+        fetchData: () => {},
+    },
+    decorators: [StoreDecorator({})],
 } satisfies Meta<typeof ArticlesPageFilters>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
-  args: {
-  }
+    args: {},
 }

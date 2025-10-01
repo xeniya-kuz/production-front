@@ -4,13 +4,13 @@ import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeD
 import { Theme } from '@/6shared/const/themes'
 
 const meta = {
-  title: 'entities/Article/SkeletonTileView',
-  component: SkeletonTileView,
+    title: 'entities/Article/SkeletonTileView',
+    component: SkeletonTileView,
 
-  parameters: {
-    layout: 'fullscreen'
-  },
-  tags: ['autodocs']
+    parameters: {
+        layout: 'fullscreen',
+    },
+    tags: ['autodocs'],
 } satisfies Meta<typeof SkeletonTileView>
 
 export default meta
@@ -19,5 +19,5 @@ type Story = StoryObj<typeof meta>
 export const Primary: Story = {}
 
 export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)]
+    decorators: [ThemeDecorator(Theme.DARK)],
 }

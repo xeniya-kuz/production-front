@@ -3,26 +3,26 @@ import { fetchArticlesList } from './fetchArticlesList'
 import { articlesMock } from '@/5entities/Article'
 
 describe('fetchArticlesList', () => {
-  test('success', async () => {
-    const thunk = new TestAsyncThunk(fetchArticlesList, {
-      articleInfiniteList: { limit: 5, page: 2 }
+    test('success', async () => {
+        const thunk = new TestAsyncThunk(fetchArticlesList, {
+            articleInfiniteList: { limit: 5, page: 2 },
+        })
+        thunk.api.get.mockReturnValue(Promise.resolve({ data: articlesMock }))
+
+        const result = await thunk.callThunk({})
+
+        // eslint-disable-next-line @typescript-eslint/unbound-method
+        expect(thunk.api.get).toHaveBeenCalled()
+        expect(result.meta.requestStatus).toBe('fulfilled')
+        expect(result.payload).toEqual(articlesMock)
     })
-    thunk.api.get.mockReturnValue(Promise.resolve({ data: articlesMock }))
 
-    const result = await thunk.callThunk({})
-
-    // eslint-disable-next-line @typescript-eslint/unbound-method
-    expect(thunk.api.get).toHaveBeenCalled()
-    expect(result.meta.requestStatus).toBe('fulfilled')
-    expect(result.payload).toEqual(articlesMock)
-  })
-
-  test('error', async () => {
-    const thunk = new TestAsyncThunk(fetchArticlesList, {
-      articleInfiniteList: { page: 2 }
+    test('error', async () => {
+        const thunk = new TestAsyncThunk(fetchArticlesList, {
+            articleInfiniteList: { page: 2 },
+        })
+        thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }))
+        const result = await thunk.callThunk({})
+        expect(result.meta.requestStatus).toBe('rejected')
     })
-    thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }))
-    const result = await thunk.callThunk({})
-    expect(result.meta.requestStatus).toBe('rejected')
-  })
 })

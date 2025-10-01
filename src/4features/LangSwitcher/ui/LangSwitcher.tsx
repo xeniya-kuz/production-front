@@ -5,18 +5,22 @@ import { type JSX, memo } from 'react'
 import styles from './LangSwitcher.module.scss'
 
 interface LangSwitcherProps {
-  className?: string
-  short?: boolean
+    className?: string
+    short?: boolean
 }
 
-export const LangSwitcher = memo(
-  function LangSwitcher ({ className, short = false }: LangSwitcherProps): JSX.Element {
+export const LangSwitcher = memo(function LangSwitcher({
+    className,
+    short = false,
+}: LangSwitcherProps): JSX.Element {
     const { t, i18n } = useTranslation()
 
     const onToggle = (): void => {
-      i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru').catch((err) => {
-        console.error(err)
-      })
+        i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru').catch(
+            (err) => {
+                console.error(err)
+            },
+        )
     }
 
     return (
@@ -24,8 +28,8 @@ export const LangSwitcher = memo(
             className={classNames(styles.langSwitcher, [className])}
             onClick={onToggle}
             theme={ButtonTheme.CLEAR_INVERTED}
-    >
+        >
             {t(short ? 'Короткий язык' : 'Язык')}
         </Button>
     )
-  })
+})

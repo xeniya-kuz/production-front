@@ -1,12 +1,12 @@
 {
-  "admin-panel": "admin-panel",
-  "age": "age",
-  "avatar": "avatar",
-  "city": "city",
-  "country": "country",
-  "currency": "currency",
-  "first-name": "first-name",
-  "last-name": "last-name",
-  "profile": "profile",
-  "username": "username"
+    "admin-panel": "admin-panel",
+    "age": "age",
+    "avatar": "avatar",
+    "city": "city",
+    "country": "country",
+    "currency": "currency",
+    "first-name": "first-name",
+    "last-name": "last-name",
+    "profile": "profile",
+    "username": "username"
 }

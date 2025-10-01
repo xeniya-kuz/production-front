@@ -4,27 +4,25 @@ import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreD
 import { articlesMock } from '@/5entities/Article'
 
 const meta = {
-  title: 'features/Article/ArticleRecommendations',
-  component: ArticleRecommendations,
-  tags: ['autodocs'],
-  decorators: [StoreDecorator({})],
-  parameters: {
-    mockData: [
-      {
-        url: `${__API__}/articles?_limit=3`,
-        method: 'GET',
-        status: 200,
-        response: articlesMock
-      }
-    ]
-  }
-
+    title: 'features/Article/ArticleRecommendations',
+    component: ArticleRecommendations,
+    tags: ['autodocs'],
+    decorators: [StoreDecorator({})],
+    parameters: {
+        mockData: [
+            {
+                url: `${__API__}/articles?_limit=3`,
+                method: 'GET',
+                status: 200,
+                response: articlesMock,
+            },
+        ],
+    },
 } satisfies Meta<typeof ArticleRecommendations>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
-  args: {
-  }
+    args: {},
 }

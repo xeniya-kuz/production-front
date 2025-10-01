@@ -4,14 +4,13 @@ import { Popover } from './Popover'
 import { Button } from '../../../Button/Button'
 
 const meta = {
-  title: 'shared/Popups/Popover',
-  component: Popover,
-  tags: ['autodocs'],
-  args: {
-    trigger: <Button>trigger</Button>,
-    children: <div>dflfknkjdfjkdfjkdfk</div>
-  }
-
+    title: 'shared/Popups/Popover',
+    component: Popover,
+    tags: ['autodocs'],
+    args: {
+        trigger: <Button>trigger</Button>,
+        children: <div>dflfknkjdfjkdfjkdfk</div>,
+    },
 } satisfies Meta<typeof Popover>
 
 export default meta

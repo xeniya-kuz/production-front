@@ -6,49 +6,66 @@ import { useTranslation } from 'react-i18next'
 import { Text, TextSize } from '@/6shared/ui/Text/Text'
 import { CommentList } from '@/5entities/Comment'
 import { useAppDispatch, useInitialEffect } from '@/6shared/lib/hooks'
-import { DynamicModuleLoader, type ReducerList } from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import {
+    DynamicModuleLoader,
+    type ReducerList,
+} from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { articleCommentsReducer } from '../model/slice/articleCommentsSlice'
-import { useArticleCommentsIsLoading, useComments } from '../model/selectors/comments/comments'
+import {
+    useArticleCommentsIsLoading,
+    useComments,
+} from '../model/selectors/comments/comments'
 import { addArticleComment } from '../model/services/addArticleComment/addArticleComment'
 import { VStack } from '@/6shared/ui/Stack'
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 
 export interface AddArticleCommentFormProps {
-  className?: string
-  articleId: string
+    className?: string
+    articleId: string
 }
 
 const initialReducer: ReducerList = {
-  articleComments: articleCommentsReducer
+    articleComments: articleCommentsReducer,
 }
 
-const ArticleComments = memo(function ArticleComments
-({ className, articleId }: AddArticleCommentFormProps): JSX.Element {
-  const dispatch = useAppDispatch()
-  const { t } = useTranslation('comments')
-  const comments = useComments()
-  const commentsisLoading = useArticleCommentsIsLoading()
+const ArticleComments = memo(function ArticleComments({
+    className,
+    articleId,
+}: AddArticleCommentFormProps): JSX.Element {
+    const dispatch = useAppDispatch()
+    const { t } = useTranslation('comments')
+    const comments = useComments()
+    const commentsisLoading = useArticleCommentsIsLoading()
 
-  useInitialEffect(() => {
-    void dispatch(fetchCommentsByArticleId(articleId))
-  })
+    useInitialEffect(() => {
+        void dispatch(fetchCommentsByArticleId(articleId))
+    })
 
-  const onSendComment = useCallback((comment: string) => {
-    void dispatch(addArticleComment(comment))
-  }, [dispatch])
+    const onSendComment = useCallback(
+        (comment: string) => {
+            void dispatch(addArticleComment(comment))
+        },
+        [dispatch],
+    )
 
-  return (
-      <DynamicModuleLoader reducers={initialReducer}>
-          <VStack gap='16' className={classNames(styles.addCommentForm, [className])}>
-              <Text title={t('comments')} size={TextSize.S}/>
-              <CommentForm onSend={onSendComment}/>
-              <CommentList
-                  comments={comments}
-                  isLoading={commentsisLoading}
-              />
-          </VStack>
-      </DynamicModuleLoader>
-  )
+    return (
+        <DynamicModuleLoader reducers={initialReducer}>
+            <VStack
+                gap="16"
+                className={classNames(styles.addCommentForm, [className])}
+            >
+                <Text
+                    title={t('comments')}
+                    size={TextSize.S}
+                />
+                <CommentForm onSend={onSendComment} />
+                <CommentList
+                    comments={comments}
+                    isLoading={commentsisLoading}
+                />
+            </VStack>
+        </DynamicModuleLoader>
+    )
 })
 
 export default ArticleComments

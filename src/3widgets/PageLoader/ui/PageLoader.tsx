@@ -4,13 +4,15 @@ import { Loader } from '@/6shared/ui/Loader/Loader'
 import { type JSX, memo } from 'react'
 
 interface PageLoaderProps {
-  className?: string
+    className?: string
 }
 
-export const PageLoader = memo(function PageLoader ({ className }: PageLoaderProps): JSX.Element {
-  return (
-      <div className={classNames(styles.pageLoader, [className])}>
-          <Loader/>
-      </div>
-  )
+export const PageLoader = memo(function PageLoader({
+    className,
+}: PageLoaderProps): JSX.Element {
+    return (
+        <div className={classNames(styles.pageLoader, [className])}>
+            <Loader />
+        </div>
+    )
 })

@@ -11,44 +11,54 @@ import { VStack } from '@/6shared/ui/Stack'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface SidebarProps {
-  className?: string
+    className?: string
 }
 
-export const Sidebar = memo(
-  function Sidebar ({ className }: SidebarProps): JSX.Element {
+export const Sidebar = memo(function Sidebar({
+    className,
+}: SidebarProps): JSX.Element {
     const [collapsed, setCollapsed] = useState<boolean>(false)
     const sidebarItemList = useSelector(selectSidebarItems)
 
     const onToggle = (): void => {
-      setCollapsed((prev) => !prev)
+        setCollapsed((prev) => !prev)
     }
 
-    const itemsList = useMemo(() => sidebarItemList.map((item) => (
-        <SidebarItem
-            key={item.path}
-            item={item}
-            collapsed={collapsed}
-        />
-    )), [collapsed, sidebarItemList])
+    const itemsList = useMemo(
+        () =>
+            sidebarItemList.map((item) => (
+                <SidebarItem
+                    key={item.path}
+                    item={item}
+                    collapsed={collapsed}
+                />
+            )),
+        [collapsed, sidebarItemList],
+    )
 
     return (
         <aside
             data-testid={DATA_TEST_ID.sidebar}
             className={classNames(styles.sidebar, [className], {
-              [styles.collapsed]: collapsed
+                [styles.collapsed]: collapsed,
             })}
         >
             <Button
                 data-testid={DATA_TEST_ID.sidebarToggle}
                 className={styles.collapseBtn}
-                square size={ButtonSize.L}
+                square
+                size={ButtonSize.L}
                 theme={ButtonTheme.BACKGROUND_INVERTED}
                 onClick={onToggle}
-              >
+            >
                 {collapsed ? '>' : '<'}
             </Button>
             <nav>
-                <VStack gap='8' role='list' className={styles.items}>
+                <VStack
+                    gap="8"
+                    role="list"
+                    className={styles.items}
+                >
                     {itemsList}
                 </VStack>
             </nav>
@@ -57,9 +67,12 @@ export const Sidebar = memo(
                     <ThemeSwitcher />
                 </li>
                 <li className={styles.li}>
-                    <LangSwitcher className={styles.lang} short={collapsed}/>
+                    <LangSwitcher
+                        className={styles.lang}
+                        short={collapsed}
+                    />
                 </li>
             </ul>
         </aside>
     )
-  })
+})

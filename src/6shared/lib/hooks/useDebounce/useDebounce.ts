@@ -6,15 +6,21 @@ import { useCallback, useRef } from 'react'
  * @param callback
  * @param delay - задержка в мс
  */
-export const useDebounce = (callback: (...args: any[]) => void, delay: number): () => void => {
-  const timer = useRef<any>(null)
+export const useDebounce = (
+    callback: (...args: any[]) => void,
+    delay: number,
+): (() => void) => {
+    const timer = useRef<any>(null)
 
-  return useCallback((...args: any[]) => {
-    if (timer.current !== null) {
-      clearTimeout(timer.current)
-    }
-    timer.current = setTimeout(() => {
-      callback(...args)
-    }, delay)
-  }, [callback, delay])
+    return useCallback(
+        (...args: any[]) => {
+            if (timer.current !== null) {
+                clearTimeout(timer.current)
+            }
+            timer.current = setTimeout(() => {
+                callback(...args)
+            }, delay)
+        },
+        [callback, delay],
+    )
 }

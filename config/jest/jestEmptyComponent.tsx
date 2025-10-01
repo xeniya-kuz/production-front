@@ -1,7 +1,7 @@
 import { type JSX } from 'react'
 
 const jestEmptyComponent = function (): JSX.Element {
-  return <div />
+    return <div />
 }
 
 export default jestEmptyComponent

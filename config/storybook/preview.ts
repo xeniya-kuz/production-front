@@ -5,27 +5,29 @@ import { Theme } from '@/6shared/const/themes'
 import { withThemeByClassName } from '@storybook/addon-themes'
 
 const preview: Preview = {
-  parameters: {
-    actions: {},
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i
-      }
+    parameters: {
+        actions: {},
+        controls: {
+            matchers: {
+                color: /(background|color)$/i,
+                date: /Date$/i,
+            },
+        },
+        layout: 'fullscreen',
+        tags: ['autodocs'],
     },
-    layout: 'fullscreen',
-    tags: ['autodocs']
-  },
-  decorators: [StyleDecorator, RouterDecorator,
-    withThemeByClassName({
-      themes: {
-        light: Theme.LIGHT,
-        dark: Theme.DARK,
-        orange: Theme.ORANGE
-      },
-      defaultTheme: 'light'
-    })
-  ]
+    decorators: [
+        StyleDecorator,
+        RouterDecorator,
+        withThemeByClassName({
+            themes: {
+                light: Theme.LIGHT,
+                dark: Theme.DARK,
+                orange: Theme.ORANGE,
+            },
+            defaultTheme: 'light',
+        }),
+    ],
 }
 
 export default preview

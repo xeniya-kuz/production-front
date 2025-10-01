@@ -8,49 +8,67 @@ import styles from './styles.module.scss'
 import { type Article } from '../../../model/types/article'
 
 interface ListsProps {
-  className?: string
-  articles: Article[]
-  onLoadNextArticles?: () => void
-  Header?: () => JSX.Element
-  target?: HTMLAttributeAnchorTarget
-  selectedArticleId: number
-  isLoading?: boolean
-  virtualized?: boolean
+    className?: string
+    articles: Article[]
+    onLoadNextArticles?: () => void
+    Header?: () => JSX.Element
+    target?: HTMLAttributeAnchorTarget
+    selectedArticleId: number
+    isLoading?: boolean
+    virtualized?: boolean
 }
 
-export const Lists = memo(function Lists
-(props: ListsProps): JSX.Element {
-  const { className, articles, onLoadNextArticles, Header, target, selectedArticleId, isLoading, virtualized } = props
+export const Lists = memo(function Lists(props: ListsProps): JSX.Element {
+    const {
+        className,
+        articles,
+        onLoadNextArticles,
+        Header,
+        target,
+        selectedArticleId,
+        isLoading,
+        virtualized,
+    } = props
 
-  const renderArticle = (index: number, article: Article): JSX.Element =>
-      <ListView article={article} target={target} index={index} className={styles.list} key={index}/>
-
-  const components = { Header, Footer: () => <Footer isLoading={isLoading} /> }
-
-  if (virtualized === true) {
-      <Virtuoso
-          data={articles}
-          itemContent={renderArticle}
-          endReached={onLoadNextArticles}
-          initialTopMostItemIndex={selectedArticleId}
-          components={components}
-          className={classNames(undefined, [className])}
-/>
-  }
-
-  if (isLoading === true) {
-    return (
-        <>
-            {Header !== undefined && <Header/>}
-            <Footer/>
-        </>
+    const renderArticle = (index: number, article: Article): JSX.Element => (
+        <ListView
+            article={article}
+            target={target}
+            index={index}
+            className={styles.list}
+            key={index}
+        />
     )
-  }
 
-  return (
-      <div className={classNames(styles.tilesContainer, [className])}>
-          {Header !== undefined && <Header/>}
-          {articles.map((article, index) => renderArticle(index, article))}
-      </div>
-  )
+    const components = {
+        Header,
+        Footer: () => <Footer isLoading={isLoading} />,
+    }
+
+    if (virtualized === true) {
+        ;<Virtuoso
+            data={articles}
+            itemContent={renderArticle}
+            endReached={onLoadNextArticles}
+            initialTopMostItemIndex={selectedArticleId}
+            components={components}
+            className={classNames(undefined, [className])}
+        />
+    }
+
+    if (isLoading === true) {
+        return (
+            <>
+                {Header !== undefined && <Header />}
+                <Footer />
+            </>
+        )
+    }
+
+    return (
+        <div className={classNames(styles.tilesContainer, [className])}>
+            {Header !== undefined && <Header />}
+            {articles.map((article, index) => renderArticle(index, article))}
+        </div>
+    )
 })

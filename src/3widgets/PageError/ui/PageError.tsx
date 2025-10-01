@@ -5,20 +5,22 @@ import { Button } from '@/6shared/ui/Button/Button'
 import { type JSX, memo } from 'react'
 
 interface PageErrorProps {
-  className?: string
+    className?: string
 }
 
-export const PageError = memo(function PageError ({ className }: PageErrorProps): JSX.Element {
-  const { t } = useTranslation()
+export const PageError = memo(function PageError({
+    className,
+}: PageErrorProps): JSX.Element {
+    const { t } = useTranslation()
 
-  const reloadPage = (): void => {
-    location.reload()
-  }
+    const reloadPage = (): void => {
+        location.reload()
+    }
 
-  return (
-      <div className={classNames(styles.pageError, [className])}>
-          <p>{t('Произошла непредвиденная ошибка')}</p>
-          <Button onClick={reloadPage}>{t('Обновить страницу')}</Button>
-      </div>
-  )
+    return (
+        <div className={classNames(styles.pageError, [className])}>
+            <p>{t('Произошла непредвиденная ошибка')}</p>
+            <Button onClick={reloadPage}>{t('Обновить страницу')}</Button>
+        </div>
+    )
 })

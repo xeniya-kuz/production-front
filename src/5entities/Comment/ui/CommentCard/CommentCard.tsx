@@ -12,30 +12,56 @@ import { getRouteProfile } from '@/6shared/const/router'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface CommentCardProps {
-  className?: string
-  comment: Comment
-  isLoading?: boolean
+    className?: string
+    comment: Comment
+    isLoading?: boolean
 }
 
-export const CommentCard = memo(function CommentCard
-({ className, comment, isLoading }: CommentCardProps): JSX.Element {
-  if (isLoading === true) {
+export const CommentCard = memo(function CommentCard({
+    className,
+    comment,
+    isLoading,
+}: CommentCardProps): JSX.Element {
+    if (isLoading === true) {
+        return (
+            <VStack
+                gap="16"
+                max
+                className={classNames(styles.commentCard, [
+                    className,
+                    styles.loading,
+                ])}
+            >
+                <SkeletonCommentCard />
+            </VStack>
+        )
+    }
+
     return (
-        <VStack gap='16' max className={classNames(styles.commentCard, [className, styles.loading])}>
-            <SkeletonCommentCard />
+        <VStack
+            gap="16"
+            max
+            className={classNames(styles.commentCard, [className])}
+            data-testid={DATA_TEST_ID.commentCard}
+        >
+            <AppLink to={getRouteProfile(comment.user.id)}>
+                <HStack gap="4">
+                    <Avatar
+                        size={30}
+                        alt={comment.user.username}
+                        src={comment.user.avatar ?? AvatarMock}
+                    />
+                    <Text
+                        title={comment.user.username}
+                        className={styles.username}
+                        size={TextSize.S}
+                    />
+                </HStack>
+            </AppLink>
+            <Text
+                text={comment.text}
+                className={styles.text}
+            />
         </VStack>
     )
-  }
-
-  return (
-      <VStack gap='16' max className={classNames(styles.commentCard, [className])} data-testid={DATA_TEST_ID.commentCard}>
-          <AppLink to={getRouteProfile(comment.user.id)}>
-              <HStack gap='4'>
-                  <Avatar size={30} alt={comment.user.username} src={comment.user.avatar ?? AvatarMock}/>
-                  <Text title={comment.user.username} className={styles.username} size={TextSize.S}/>
-              </HStack>
-          </AppLink>
-          <Text text={comment.text} className={styles.text} />
-      </VStack>
-  )
 })

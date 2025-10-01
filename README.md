@@ -8,7 +8,7 @@
 - скролл отскакивает наверх при прокрутке статей
 - add/check/fix tests
 - fix db (user-profile)
-
+- везде проверить, что меняется язык
 
 ## Project Launch
 
@@ -17,7 +17,7 @@ npm install
 npm run start:dev or npm run start:dev:vite
 ```
 
-----
+---
 
 ## Scripts
 
@@ -44,7 +44,7 @@ npm run start:dev or npm run start:dev:vite
 - `npm run prepare` - Pre-commit hooks
 - `npm run generate:slice` - Script for generating FSD slices
 
-----
+---
 
 ## Project Architecture
 
@@ -52,7 +52,7 @@ The project is written following the Feature Sliced Design methodology.
 
 Documentation link - [Feature Sliced Design](https://feature-sliced.design/docs/get-started/tutorial)
 
-----
+---
 
 ## Working with Translations
 
@@ -63,39 +63,43 @@ For a better experience, we recommend installing a plugin for WebStorm/VScode.
 
 i18next Documentation - [https://react.i18next.com/](https://react.i18next.com/)
 
-----
+---
 
 ## Testing
 
 The project includes 4 types of tests:
-1) Standard unit tests with Jest - `npm run test:unit`
-2) Component tests with React Testing Library - `npm run test:unit`
-3) Screenshot testing with Loki - `npm run test:ui`
-4) e2e testing with Cypress - `npm run test:e2e`
+
+1. Standard unit tests with Jest - `npm run test:unit`
+2. Component tests with React Testing Library - `npm run test:unit`
+3. Screenshot testing with Loki - `npm run test:ui`
+4. e2e testing with Cypress - `npm run test:e2e`
 
 More details about tests - [Testing Documentation](/docs/tests.md)
 
-----
+---
 
 ## Linting
 
 The project uses ESLint for TypeScript code and Stylelint for style files.
 
 Additionally, to enforce strict architectural principles,
-the custom ESLint plugin *eslint-plugin-ulbi-tv-plugin* is used,
+the custom ESLint plugin _eslint-plugin-ulbi-tv-plugin_ is used,
 which includes three rules:
-1) `path-checker` - Prohibits absolute imports within the same module
-2) `layer-imports` - Checks for correct layer usage according to FSD principles
+
+1. `path-checker` - Prohibits absolute imports within the same module
+2. `layer-imports` - Checks for correct layer usage according to FSD principles
    (e.g., widgets should not be used in 4features or entities)
-3) `public-api-imports` - Allows imports from other modules only via public API (supports auto-fix)
+3. `public-api-imports` - Allows imports from other modules only via public API (supports auto-fix)
 
 ##### Running Linters
+
 - `npm run lint:ts` - Check TypeScript files with linter
 - `npm run lint:ts:fix` - Fix TypeScript files with linter
 - `npm run lint:scss` - Check SCSS files with style linter
 - `npm run lint:scss:fix` - Fix SCSS files with style linter
 
-----
+---
+
 ## Storybook
 
 Story cases are described for each component in the project.
@@ -104,6 +108,7 @@ Server requests are mocked using `storybook-addon-mock`.
 The story file is created next to the component with the `.stories.tsx` extension.
 
 Launch Storybook with:
+
 - `npm run storybook`
 
 More details about [Storybook](/docs/storybook.md)
@@ -140,17 +145,19 @@ Clear.args = {
 };
 ```
 
-----
+---
 
 ## Project Configuration
 
 For development, the project has two configurations:
+
 1. Webpack - `./config/build`
 2. Vite - `vite.config.ts`
 
 Both bundlers are adapted to the main features of the application.
 
 All configurations are stored in `/config`:
+
 - `/config/babel` - Babel
 - `/config/build` - Webpack configuration
 - `/config/jest` - Test environment configuration
@@ -158,7 +165,7 @@ All configurations are stored in `/config`:
 
 Various scripts for refactoring, simplifying code writing, and report generation are in the `scripts` folder.
 
-----
+---
 
 ## CI Pipeline and Pre-Commit Hooks
 
@@ -167,7 +174,7 @@ CI runs all types of tests, project and Storybook builds, and linting.
 
 Pre-commit hooks enforce linting, configuration in `/.husky`
 
-----
+---
 
 ### Working with Data
 
@@ -179,7 +186,7 @@ Server requests are made via [RTK Query](/src/6shared/api/rtkApi.ts).
 To asynchronously connect reducers (to avoid pulling them into the global bundle), the
 [DynamicModuleLoader](/src/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader.tsx) is used.
 
-----
+---
 
 ## Entities
 
@@ -204,4 +211,3 @@ To asynchronously connect reducers (to avoid pulling them into the global bundle
 - [LangSwitcher](/src/4features/LangSwitcher/README.md)
 - [ThemeSwitcher](/src/4features/ThemeSwitcher/README.md)
 - [ViewSwitcher](/src/4features/ViewSwitcher/README.md)
-

@@ -1,5 +1,8 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
-import { DynamicModuleLoader, type ReducerList } from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import {
+    DynamicModuleLoader,
+    type ReducerList,
+} from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch, useInitialEffect } from '@/6shared/lib/hooks'
 import { type JSX, memo } from 'react'
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
@@ -16,16 +19,18 @@ import { VStack } from '@/6shared/ui/Stack'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface ArticleDetailsProps {
-  className?: string
-  articleId: string
+    className?: string
+    articleId: string
 }
 
 const initialReducer: ReducerList = {
-  articleDetails: articleDetailsReducer
+    articleDetails: articleDetailsReducer,
 }
 
-export const ArticleDetails = memo(
-  function ArticleDetails ({ className, articleId }: ArticleDetailsProps): JSX.Element {
+export const ArticleDetails = memo(function ArticleDetails({
+    className,
+    articleId,
+}: ArticleDetailsProps): JSX.Element {
     const dispatch = useAppDispatch()
     const isLoading = useSelector(selectArticleDetailsIsLoading)
 
@@ -33,28 +38,38 @@ export const ArticleDetails = memo(
     const article = useSelector(selectArticleDetails)
 
     useInitialEffect(() => {
-      void dispatch(fetchArticleById(articleId))
+        void dispatch(fetchArticleById(articleId))
     })
 
     let content
 
     if (isLoading === true) {
-      content = <SketelonArticle/>
+        content = <SketelonArticle />
     }
 
     if (error !== undefined) {
-      content = <Error title={error} text=''/>
+        content = (
+            <Error
+                title={error}
+                text=""
+            />
+        )
     }
 
     if (article !== undefined) {
-      content = <Article article={article}/>
+        content = <Article article={article} />
     }
 
     return (
         <DynamicModuleLoader reducers={initialReducer}>
-            <VStack gap='16' max className={classNames(styles.articleDetails, [className])} data-testid={DATA_TEST_ID.articleDetails}>
+            <VStack
+                gap="16"
+                max
+                className={classNames(styles.articleDetails, [className])}
+                data-testid={DATA_TEST_ID.articleDetails}
+            >
                 {content}
             </VStack>
         </DynamicModuleLoader>
     )
-  })
+})

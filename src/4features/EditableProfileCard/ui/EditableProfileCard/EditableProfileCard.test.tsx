@@ -7,89 +7,93 @@ import { $api } from '@/6shared/api/api'
 import { profileMock } from '@/5entities/Profile'
 
 const options = {
-  initialState: {
-    profile: {
-      profile: { ...profileMock },
-      editedProfile: { ...profileMock },
-      readonly: true
+    initialState: {
+        profile: {
+            profile: { ...profileMock },
+            editedProfile: { ...profileMock },
+            readonly: true,
+        },
+        user: {
+            authData: { id: profileMock.id, username: profileMock.username },
+            _mounted: true,
+        },
     },
-    user: {
-      authData: { id: profileMock.id, username: profileMock.username },
-      _mounted: true
-    }
-  },
-  // такой объект может пригодиться, когда стэйт монтируется в родителе
-  asyncReducers: { profile: profileReducer }
+    // такой объект может пригодиться, когда стэйт монтируется в родителе
+    asyncReducers: { profile: profileReducer },
 }
 
 describe('EditableProfileCard', () => {
-  const editBtn = 'editableProfileCardHeader.EditBtn'
-  const cancelBtn = 'editableProfileCardHeader.CancelBtn'
-  const firstname = 'profileCard.Firstname'
-  // const lastname = 'profileCard.Lastname'
-  const saveBtn = 'editableProfileCardHeader.SaveBtn'
-  // const validateError = 'editableProfileErrors.Text'
+    const editBtn = 'editableProfileCardHeader.EditBtn'
+    const cancelBtn = 'editableProfileCardHeader.CancelBtn'
+    const firstname = 'profileCard.Firstname'
+    // const lastname = 'profileCard.Lastname'
+    const saveBtn = 'editableProfileCardHeader.SaveBtn'
+    // const validateError = 'editableProfileErrors.Text'
 
-  test('Режим readonly переключается на false', async () => {
-    ComponentRender(<EditableProfileCard profileId={profileMock.id}/>,
-      options
-    )
+    test('Режим readonly переключается на false', async () => {
+        ComponentRender(
+            <EditableProfileCard profileId={profileMock.id} />,
+            options,
+        )
 
-    await userEvent.click(screen.getByTestId(editBtn))
-    expect(screen.getByTestId(cancelBtn)).toBeInTheDocument()
-  })
+        await userEvent.click(screen.getByTestId(editBtn))
+        expect(screen.getByTestId(cancelBtn)).toBeInTheDocument()
+    })
 
-  //! инпут не очищается и не печатается
-  // test('При отмене редактирования значения должны обнуляться', async () => {
-  //   ComponentRender(<EditableProfileCard profileId={profileMock.id}/>,
-  //     options
-  //   )
-  //   await userEvent.click(screen.getByTestId(editBtn))
-  //   await userEvent.click(screen.getByTestId(firstname))
+    //! инпут не очищается и не печатается
+    // test('При отмене редактирования значения должны обнуляться', async () => {
+    //   ComponentRender(<EditableProfileCard profileId={profileMock.id}/>,
+    //     options
+    //   )
+    //   await userEvent.click(screen.getByTestId(editBtn))
+    //   await userEvent.click(screen.getByTestId(firstname))
 
-  //   await userEvent.clear(screen.getByTestId(firstname))
-  //   await userEvent.clear(screen.getByTestId(lastname))
+    //   await userEvent.clear(screen.getByTestId(firstname))
+    //   await userEvent.clear(screen.getByTestId(lastname))
 
-  //   expect(screen.getByTestId(firstname)).toHaveValue('')
-  //   expect(screen.getByTestId(lastname)).toHaveValue('')
+    //   expect(screen.getByTestId(firstname)).toHaveValue('')
+    //   expect(screen.getByTestId(lastname)).toHaveValue('')
 
-  //   await userEvent.type(screen.getByTestId(firstname), 'test1')
-  //   await userEvent.type(screen.getByTestId(lastname), 'test123')
+    //   await userEvent.type(screen.getByTestId(firstname), 'test1')
+    //   await userEvent.type(screen.getByTestId(lastname), 'test123')
 
-  //   expect(screen.getByTestId(firstname)).toHaveValue('test1')
-  //   expect(screen.getByTestId(lastname)).toHaveValue('test123')
+    //   expect(screen.getByTestId(firstname)).toHaveValue('test1')
+    //   expect(screen.getByTestId(lastname)).toHaveValue('test123')
 
-  //   await userEvent.click(screen.getByTestId(cancelBtn))
+    //   await userEvent.click(screen.getByTestId(cancelBtn))
 
-  //   expect(screen.getByTestId(firstname)).toHaveValue(profileMock.firstname)
-  //   expect(screen.getByTestId(lastname)).toHaveValue(profileMock.lastname)
-  // })
+    //   expect(screen.getByTestId(firstname)).toHaveValue(profileMock.firstname)
+    //   expect(screen.getByTestId(lastname)).toHaveValue(profileMock.lastname)
+    // })
 
-  //! инпут не очищается
-  // test('Появляется ошибка валидации имени', async () => {
-  //   ComponentRender(<EditableProfileCard profileId={profileMock.id}/>,
-  //     options
-  //   )
+    //! инпут не очищается
+    // test('Появляется ошибка валидации имени', async () => {
+    //   ComponentRender(<EditableProfileCard profileId={profileMock.id}/>,
+    //     options
+    //   )
 
-  //   await userEvent.click(screen.getByTestId(editBtn))
+    //   await userEvent.click(screen.getByTestId(editBtn))
 
-  //   await userEvent.clear(screen.getByTestId(firstname))
+    //   await userEvent.clear(screen.getByTestId(firstname))
 
-  //   await userEvent.click(screen.getByTestId(saveBtn))
+    //   await userEvent.click(screen.getByTestId(saveBtn))
 
-  //   expect(screen.getByTestId(validateError)).toBeInTheDocument()
-  // })
+    //   expect(screen.getByTestId(validateError)).toBeInTheDocument()
+    // })
 
-  //! инпут не очищается
-  test('Если нет ошибок валидации, то на сервер должен уйти PUT запрос', async () => {
-    const mockPutReq = jest.spyOn($api, 'put')
-    ComponentRender(<EditableProfileCard profileId={profileMock.id}/>, options)
-    await userEvent.click(screen.getByTestId(editBtn))
+    //! инпут не очищается
+    test('Если нет ошибок валидации, то на сервер должен уйти PUT запрос', async () => {
+        const mockPutReq = jest.spyOn($api, 'put')
+        ComponentRender(
+            <EditableProfileCard profileId={profileMock.id} />,
+            options,
+        )
+        await userEvent.click(screen.getByTestId(editBtn))
 
-    await userEvent.type(screen.getByTestId(firstname), 'user')
+        await userEvent.type(screen.getByTestId(firstname), 'user')
 
-    await userEvent.click(screen.getByTestId(saveBtn))
+        await userEvent.click(screen.getByTestId(saveBtn))
 
-    expect(mockPutReq).toHaveBeenCalled()
-  })
+        expect(mockPutReq).toHaveBeenCalled()
+    })
 })

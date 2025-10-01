@@ -4,17 +4,17 @@ import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeD
 import { Theme } from '@/6shared/const/themes'
 
 const meta = {
-  title: 'shared/Error',
-  component: Error,
-  parameters: {
-    layout: 'fullscreen'
-  },
+    title: 'shared/Error',
+    component: Error,
+    parameters: {
+        layout: 'fullscreen',
+    },
 
-  tags: ['autodocs'],
-  args: {
-    title: 'error title',
-    text: 'error text'
-  }
+    tags: ['autodocs'],
+    args: {
+        title: 'error title',
+        text: 'error text',
+    },
 } satisfies Meta<typeof Error>
 
 export default meta
@@ -23,5 +23,5 @@ type Story = StoryObj<typeof meta>
 export const Primary: Story = {}
 
 export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)]
+    decorators: [ThemeDecorator(Theme.DARK)],
 }

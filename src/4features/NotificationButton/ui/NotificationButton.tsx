@@ -8,35 +8,46 @@ import { type JSX, memo, useCallback, useState } from 'react'
 import { BrowserView, MobileView } from 'react-device-detect'
 
 interface NotificationButtonProps {
-  className?: string
+    className?: string
 }
 
-export const NotificationButton = memo(function NotificationButton
-({ className }: NotificationButtonProps): JSX.Element {
-  const [isOpen, setIsOpen] = useState(false)
-  const toggleOpen = useCallback(() => { setIsOpen(prev => !prev) }, [setIsOpen])
+export const NotificationButton = memo(function NotificationButton({
+    className,
+}: NotificationButtonProps): JSX.Element {
+    const [isOpen, setIsOpen] = useState(false)
+    const toggleOpen = useCallback(() => {
+        setIsOpen((prev) => !prev)
+    }, [setIsOpen])
 
-  const trigger = <div onClick={toggleOpen}>
-      <Icon Svg={NotificationIcon} color={IconColors.INVERTED_PRIMARY_FILL}/>
-  </div>
+    const trigger = (
+        <div onClick={toggleOpen}>
+            <Icon
+                Svg={NotificationIcon}
+                color={IconColors.INVERTED_PRIMARY_FILL}
+            />
+        </div>
+    )
 
-  return (
-      <>
-          <BrowserView>
-              <Popover
-                  className={classNames(className)}
-                  direction='bottom left'
-                  trigger={trigger}>
-                  <NotificationList/>
-              </Popover>
-          </BrowserView>
-          <MobileView>
-              {trigger}
-              <Drawer onClose={toggleOpen} isOpen={isOpen}>
-                  <NotificationList/>
-              </Drawer>
-          </MobileView>
-      </>
-
-  )
+    return (
+        <>
+            <BrowserView>
+                <Popover
+                    className={classNames(className)}
+                    direction="bottom left"
+                    trigger={trigger}
+                >
+                    <NotificationList />
+                </Popover>
+            </BrowserView>
+            <MobileView>
+                {trigger}
+                <Drawer
+                    onClose={toggleOpen}
+                    isOpen={isOpen}
+                >
+                    <NotificationList />
+                </Drawer>
+            </MobileView>
+        </>
+    )
 })

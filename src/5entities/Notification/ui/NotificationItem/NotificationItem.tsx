@@ -7,25 +7,37 @@ import { Text } from '@/6shared/ui/Text/Text'
 import { AppLink } from '@/6shared/ui/AppLink/AppLink'
 
 interface NotificationItemProps {
-  className?: string
-  notification: Notification
+    className?: string
+    notification: Notification
 }
 
-export const NotificationItem = memo(function NotificationItem
-({ className, notification }: NotificationItemProps): JSX.Element {
-  const content = <Card theme={CardTheme.OUTLINE}
-      className={classNames(styles.notificationItem, [className])}
->
-      <Text title={notification.title} text={notification.description}/>
-  </Card>
-
-  if (notification.href) {
-    return (
-        <AppLink target='_blank' to={notification.href} className={styles.link}>
-            {content}
-        </AppLink>
+export const NotificationItem = memo(function NotificationItem({
+    className,
+    notification,
+}: NotificationItemProps): JSX.Element {
+    const content = (
+        <Card
+            theme={CardTheme.OUTLINE}
+            className={classNames(styles.notificationItem, [className])}
+        >
+            <Text
+                title={notification.title}
+                text={notification.description}
+            />
+        </Card>
     )
-  }
 
-  return content
+    if (notification.href) {
+        return (
+            <AppLink
+                target="_blank"
+                to={notification.href}
+                className={styles.link}
+            >
+                {content}
+            </AppLink>
+        )
+    }
+
+    return content
 })

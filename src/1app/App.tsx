@@ -9,34 +9,43 @@ import { AppRouter } from './providers/router'
 import { selectUserMounted, userActions } from '@/5entities/User'
 
 import { useSelector } from 'react-redux'
-import { ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY, ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY } from '@/6shared/const/localstorage'
+import {
+    ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY,
+    ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY,
+} from '@/6shared/const/localstorage'
 import { useLocation } from 'react-router-dom'
-import { getRouteArticleDetails, getRouteArticles } from '@/6shared/const/router'
+import {
+    getRouteArticleDetails,
+    getRouteArticles,
+} from '@/6shared/const/router'
 
-export default function App (): JSX.Element {
-  const dispatch = useAppDispatch()
-  const isMounted = useSelector(selectUserMounted)
-  const { pathname } = useLocation()
+export default function App(): JSX.Element {
+    const dispatch = useAppDispatch()
+    const isMounted = useSelector(selectUserMounted)
+    const { pathname } = useLocation()
 
-  useEffect(() => {
-    dispatch(userActions.initAuthData())
+    useEffect(() => {
+        dispatch(userActions.initAuthData())
 
-    if (!pathname.includes(getRouteArticles()) || !pathname.includes(getRouteArticleDetails(':articleId'))) {
-      localStorage.removeItem(ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY)
-      localStorage.removeItem(ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY)
-    }
-  }, [dispatch, pathname])
+        if (
+            !pathname.includes(getRouteArticles()) ||
+            !pathname.includes(getRouteArticleDetails(':articleId'))
+        ) {
+            localStorage.removeItem(ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY)
+            localStorage.removeItem(ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY)
+        }
+    }, [dispatch, pathname])
 
-  return (
-      <div className={classNames('app')}>
-          {/* Здесь Suspense нужен, т.к. переводы из i18n будут подгружаться чанками */}
-          <Suspense fallback={<PageLoader/>}>
-              <Navbar />
-              <div className="content-page">
-                  <Sidebar />
-                  {isMounted && <AppRouter />}
-              </div>
-          </Suspense>
-      </div>
-  )
+    return (
+        <div className={classNames('app')}>
+            {/* Здесь Suspense нужен, т.к. переводы из i18n будут подгружаться чанками */}
+            <Suspense fallback={<PageLoader />}>
+                <Navbar />
+                <div className="content-page">
+                    <Sidebar />
+                    {isMounted && <AppRouter />}
+                </div>
+            </Suspense>
+        </div>
+    )
 }

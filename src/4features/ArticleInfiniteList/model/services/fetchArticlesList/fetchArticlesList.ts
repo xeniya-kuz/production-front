@@ -4,17 +4,24 @@ import { ArticleType, type Article } from '@/5entities/Article'
 import { selectArticlesLimit } from '../../selectors/selectArticlesLimit/selectArticlesLimit'
 import { addQueryParams } from '@/6shared/lib/url/addQueryParams/addQueryParams'
 // eslint-disable-next-line fsd-path-checker-sia355/layer-imports
-import { selectArticlesSort, selectArticlesOrder, selectArticlesSearch, selectArticlesType } from '@/4features/ArticlesPageFilters'
+import {
+    selectArticlesSort,
+    selectArticlesOrder,
+    selectArticlesSearch,
+    selectArticlesType,
+} from '@/4features/ArticlesPageFilters'
 
 import { selectArticlesNum } from '../../selectors/selectArticlesNum/selectArticlesNum'
 
 interface FetchArticlesListProps {
-  replace?: boolean
+    replace?: boolean
 }
 
-export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlesListProps, ThunkConfig<string>>(
-  'articleInfiniteList/fetchArticlesList',
-  async (_, thunkAPI) => {
+export const fetchArticlesList = createAsyncThunk<
+    Article[],
+    FetchArticlesListProps,
+    ThunkConfig<string>
+>('articleInfiniteList/fetchArticlesList', async (_, thunkAPI) => {
     const { extra, rejectWithValue, getState } = thunkAPI
 
     const limit = selectArticlesLimit(getState())
@@ -25,27 +32,30 @@ export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlesListPr
     const type = selectArticlesType(getState())
 
     try {
-      addQueryParams({
-        sort, order, search, type
-      })
-      const response = await extra.api.get<Article[]>('/articles', {
-        params: {
-          _expand: 'user',
-          _limit: limit,
-          _page: page,
-          _sort: sort,
-          _order: order,
-          q: (search.length > 0) ? search : undefined,
-          type: type === ArticleType.ALL ? undefined : type
+        addQueryParams({
+            sort,
+            order,
+            search,
+            type,
+        })
+        const response = await extra.api.get<Article[]>('/articles', {
+            params: {
+                _expand: 'user',
+                _limit: limit,
+                _page: page,
+                _sort: sort,
+                _order: order,
+                q: search.length > 0 ? search : undefined,
+                type: type === ArticleType.ALL ? undefined : type,
+            },
+        })
+
+        if (response.data === undefined) {
+            throw new Error()
         }
-      })
 
-      if (response.data === undefined) {
-        throw new Error()
-      }
-
-      return response.data
+        return response.data
     } catch (error) {
-      return rejectWithValue('fetchArticlesList error')
+        return rejectWithValue('fetchArticlesList error')
     }
-  })
+})

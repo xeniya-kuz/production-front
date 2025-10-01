@@ -4,11 +4,11 @@ import { DrawerContent } from './DrawerContent'
 import { type DrawerProps } from './types'
 
 export const DrawerAsync = (props: DrawerProps): JSX.Element | null => {
-  const { isLoaded } = useAnimationLibs()
+    const { isLoaded } = useAnimationLibs()
 
-  if (!isLoaded) {
-    return null
-  }
+    if (!isLoaded) {
+        return null
+    }
 
-  return <DrawerContent {...props} />
+    return <DrawerContent {...props} />
 }

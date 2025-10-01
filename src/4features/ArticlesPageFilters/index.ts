@@ -5,7 +5,10 @@ export { selectArticlesType } from './model/selectors/selectArticlesType/selectA
 export { selectArticlesSort } from './model/selectors/selectArticlesSort/selectArticlesSort'
 
 export { ArticlesPageFilters } from './ui/ArticlesPageFilters'
-export { articlesPageFiltersActions, articlesPageFiltersReducer } from './model/slice/articlesPageFiltersSlice'
+export {
+    articlesPageFiltersActions,
+    articlesPageFiltersReducer,
+} from './model/slice/articlesPageFiltersSlice'
 export { selectArticlesView } from './model/selectors/selectArticlesView/selectArticlesView'
 
 export type { ArticlesPageFiltersSchema } from './model/types/articlesPageFiltersSchema'

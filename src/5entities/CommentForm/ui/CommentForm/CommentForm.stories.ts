@@ -5,24 +5,22 @@ import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeD
 import { Theme } from '@/6shared/const/themes'
 
 const meta = {
-  title: 'entities/Comment/CommentForm',
-  component: CommentForm,
-  tags: ['autodocs'],
-  args: {
-    onSend: () => {}
-  },
-  decorators: [StoreDecorator({})]
-
+    title: 'entities/Comment/CommentForm',
+    component: CommentForm,
+    tags: ['autodocs'],
+    args: {
+        onSend: () => {},
+    },
+    decorators: [StoreDecorator({})],
 } satisfies Meta<typeof CommentForm>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
-  args: {
-  }
+    args: {},
 }
 
 export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)]
+    decorators: [ThemeDecorator(Theme.DARK)],
 }

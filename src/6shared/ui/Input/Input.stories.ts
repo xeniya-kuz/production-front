@@ -4,26 +4,23 @@ import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeD
 import { Input } from './Input'
 
 const meta = {
-  title: 'shared/Input',
-  component: Input,
-  tags: ['autodocs'],
-  args: {
-    value: 'text',
-    placeholder: 'Введите текст'
-  }
-
+    title: 'shared/Input',
+    component: Input,
+    tags: ['autodocs'],
+    args: {
+        value: 'text',
+        placeholder: 'Введите текст',
+    },
 } satisfies Meta<typeof Input>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Light: Story = {
-  args: {
-  }
+    args: {},
 }
 
 export const Dark: Story = {
-  args: {
-  },
-  decorators: [ThemeDecorator(Theme.DARK)]
+    args: {},
+    decorators: [ThemeDecorator(Theme.DARK)],
 }

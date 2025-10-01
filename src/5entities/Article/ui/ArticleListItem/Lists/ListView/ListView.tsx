@@ -8,7 +8,10 @@ import { Icon, IconColors } from '@/6shared/ui/Icon/Icon'
 import { Text } from '@/6shared/ui/Text/Text'
 import { type JSX, memo, type HTMLAttributeAnchorTarget } from 'react'
 import { useTranslation } from 'react-i18next'
-import { type Article, type ArticleTextBlock as ArticleTextBlockType } from '../../../../model/types/article'
+import {
+    type Article,
+    type ArticleTextBlock as ArticleTextBlockType,
+} from '../../../../model/types/article'
 import { ArticleTextBlock } from '../../../ArticleTextBlock/ArticleTextBlock'
 import styles from './ListView.module.scss'
 
@@ -20,67 +23,113 @@ import { Skeleton } from '@/6shared/ui/Skeleton'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface ListViewProps {
-  article: Article
-  target?: HTMLAttributeAnchorTarget
-  index: number
-  className?: string
+    article: Article
+    target?: HTMLAttributeAnchorTarget
+    index: number
+    className?: string
 }
 
-export const ListView = memo(function ListView
-({ article, target, index, className }: ListViewProps): JSX.Element {
-  const { t } = useTranslation('buttons')
-  // TODO: вынести
-  const types = <Text text={article.type.join(', ')} className={styles.types}/>
-  const views = <>
-      <Text text={String(article.views)} className={styles.views}/>
-      <Icon Svg={EyeIcon} color={[IconColors.SECONDARY_STROKE, IconColors.SECONDARY_FILL]}/>
-  </>
+export const ListView = memo(function ListView({
+    article,
+    target,
+    index,
+    className,
+}: ListViewProps): JSX.Element {
+    const { t } = useTranslation('buttons')
+    // TODO: вынести
+    const types = (
+        <Text
+            text={article.type.join(', ')}
+            className={styles.types}
+        />
+    )
+    const views = (
+        <>
+            <Text
+                text={String(article.views)}
+                className={styles.views}
+            />
+            <Icon
+                Svg={EyeIcon}
+                color={[IconColors.SECONDARY_STROKE, IconColors.SECONDARY_FILL]}
+            />
+        </>
+    )
 
-  const textBlock = article.blocks.find(block => block.type === ArticleBlockType.TEXT) as ArticleTextBlockType
+    const textBlock = article.blocks.find(
+        (block) => block.type === ArticleBlockType.TEXT,
+    )!
 
-  const handleButtonClick = (): void => {
-    localStorage.setItem(ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY, JSON.stringify(index))
-  }
+    const handleButtonClick = (): void => {
+        localStorage.setItem(
+            ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY,
+            JSON.stringify(index),
+        )
+    }
 
-  return (
-      <Card className={classNames(styles.card, [className])} data-testid={DATA_TEST_ID.articleListItem}>
-          <div className={styles.header}>
-              {/* eslint-disable-next-line i18next/no-literal-string */}
-              <Avatar size={30} src={article.user?.avatar} alt='avatar'/>
-              <Text text={article.user?.username} className={styles.username}/>
-              <Text text={article.createdAt} className={styles.date}/>
-          </div>
-          <Text title={article.title} className={styles.title}/>
-          {types}
-          <AppImage
-              src={article.img}
-              alt={article.title}
-              className={styles.img}
-              fallback={<Skeleton width={'100%'} height={250}/>}
-              errorFallback={
-                  // TODO: вынести
-                  <img
-                      src='src/6shared/assets/images/no-image.png'
-                      style={{ width: '100%', height: '100%' }}
-                      className={styles.img}
-                          />
-                        }
-           />
-          {textBlock !== undefined && (
-              <ArticleTextBlock block={textBlock} className={styles.textBlock}/>
-          )}
-          <div className={styles.footer}>
-              <AppLink
-                  to={getRouteArticleDetails(article.id)}
-                  target={target}
-              >
-                  <Button onClick={handleButtonClick}>
-                      {t('read-more')}
-                  </Button>
-              </AppLink>
+    return (
+        <Card
+            className={classNames(styles.card, [className])}
+            data-testid={DATA_TEST_ID.articleListItem}
+        >
+            <div className={styles.header}>
+                {/* eslint-disable-next-line i18next/no-literal-string */}
+                <Avatar
+                    size={30}
+                    src={article.user?.avatar}
+                    alt="avatar"
+                />
+                <Text
+                    text={article.user?.username}
+                    className={styles.username}
+                />
+                <Text
+                    text={article.createdAt}
+                    className={styles.date}
+                />
+            </div>
+            <Text
+                title={article.title}
+                className={styles.title}
+            />
+            {types}
+            <AppImage
+                src={article.img}
+                alt={article.title}
+                className={styles.img}
+                fallback={
+                    <Skeleton
+                        width={'100%'}
+                        height={250}
+                    />
+                }
+                errorFallback={
+                    // TODO: вынести
+                    <img
+                        src="src/6shared/assets/images/no-image.png"
+                        style={{ width: '100%', height: '100%' }}
+                        className={styles.img}
+                    />
+                }
+            />
+            {textBlock !== undefined && (
+                <ArticleTextBlock
+                    block={textBlock}
+                    className={styles.textBlock}
+                />
+            )}
+            <div className={styles.footer}>
+                <AppLink
+                    to={getRouteArticleDetails(article.id)}
+                    target={target}
+                >
+                    <Button onClick={handleButtonClick}>
+                        {t('read-more')}
+                    </Button>
+                </AppLink>
 
-              {views}
-          </div>
-      </Card>
-  )
+                {views}
+            </div>
+        </Card>
+    )
 })

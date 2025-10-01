@@ -18,7 +18,10 @@ import './commands'
 
 import { mount, type MountOptions, type MountReturn } from 'cypress/react'
 import { type ReactNode } from 'react'
-import { type componentRenderProps, TestProvider } from '../../src/6shared/lib/tests/ComponentRender'
+import {
+    type componentRenderProps,
+    TestProvider,
+} from '../../src/6shared/lib/tests/ComponentRender'
 import { ThemeProvider } from '../../src/1app/providers/ThemeProvider'
 import '../../src/1app/styles/index.scss'
 import { Theme } from '@/6shared/const/themes'
@@ -34,35 +37,36 @@ import { Theme } from '@/6shared/const/themes'
 type Options = MountOptions & componentRenderProps & { theme?: Theme }
 
 declare global {
-  namespace Cypress {
-    interface Chainable {
-      /**
-       * Mounts a React node
-       * @param component React Node to mount
-       * @param options Additional options to pass into mount
-       */
-      mount: (
-        component: ReactNode,
-        options?: Options
-      ) => Cypress.Chainable<MountReturn>
-      // mount: typeof mount
-
+    namespace Cypress {
+        interface Chainable {
+            /**
+             * Mounts a React node
+             * @param component React Node to mount
+             * @param options Additional options to pass into mount
+             */
+            mount: (
+                component: ReactNode,
+                options?: Options,
+            ) => Cypress.Chainable<MountReturn>
+            // mount: typeof mount
+        }
     }
-  }
 }
 
 // TODO: в чем разница между .overwrite и .add и нужно ли тут переделывать на .overwrite?
-Cypress.Commands.add('mount', (component: React.ReactNode, options: Options = {}) => {
-  const theme = options.theme ?? Theme.DARK
+Cypress.Commands.add(
+    'mount',
+    (component: React.ReactNode, options: Options = {}) => {
+        const theme = options.theme ?? Theme.DARK
 
-  const wrapped =
-      <TestProvider options={options}>
-          <ThemeProvider initialTheme={theme}>
-              <div className={`app ${theme}`}>
-                  {component}
-              </div>
-          </ThemeProvider>
-      </TestProvider>
+        const wrapped = (
+            <TestProvider options={options}>
+                <ThemeProvider initialTheme={theme}>
+                    <div className={`app ${theme}`}>{component}</div>
+                </ThemeProvider>
+            </TestProvider>
+        )
 
-  return mount(wrapped, options)
-})
+        return mount(wrapped, options)
+    },
+)

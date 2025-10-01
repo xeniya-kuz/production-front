@@ -7,27 +7,35 @@ import { useTranslation } from 'react-i18next'
 import { VStack } from '@/6shared/ui/Stack'
 
 interface CommentListProps {
-  className?: string
-  comments: Comment[]
-  isLoading?: boolean
+    className?: string
+    comments: Comment[]
+    isLoading?: boolean
 }
 
-export const CommentList = memo(function CommentList
-({ className, comments, isLoading }: CommentListProps): JSX.Element {
-  const { t } = useTranslation('comments')
+export const CommentList = memo(function CommentList({
+    className,
+    comments,
+    isLoading,
+}: CommentListProps): JSX.Element {
+    const { t } = useTranslation('comments')
 
-  return (
-      <VStack gap='16' max className={classNames(className)}>
-          {(comments.length > 0)
-            ? comments.map(comment =>
-                <CommentCard
-                    key={comment.id}
-                    comment={comment}
-                    isLoading={isLoading}
-                />
-            )
-            : <Text text={t('no-comments')}/>
-         }
-      </VStack>
-  )
+    return (
+        <VStack
+            gap="16"
+            max
+            className={classNames(className)}
+        >
+            {comments.length > 0 ? (
+                comments.map((comment) => (
+                    <CommentCard
+                        key={comment.id}
+                        comment={comment}
+                        isLoading={isLoading}
+                    />
+                ))
+            ) : (
+                <Text text={t('no-comments')} />
+            )}
+        </VStack>
+    )
 })
