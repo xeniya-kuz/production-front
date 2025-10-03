@@ -2,10 +2,18 @@ import { type ConfigEnv, defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
 
+function getApiUrl(mode: string): string {
+    if (mode === 'production') {
+        return '/api'
+    }
+
+    return 'http://localhost:8000'
+}
+
 export default defineConfig((env: ConfigEnv) => {
     const mode = env.mode ?? 'development'
     const isDev = mode === 'development'
-    const apiUrl = 'http://localhost:8000'
+    const apiUrl = getApiUrl(mode)
     const project = 'frontend'
 
     return {

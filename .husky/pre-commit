@@ -5,7 +5,7 @@
 
 npm run prettier
 # проверяет все файлы
-# npm run lint:ts:fix
+npm run lint:ts:fix
 # проверяет только измененные файлы
 # npx lint-staged
 npm run lint:scss:fix

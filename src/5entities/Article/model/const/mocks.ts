@@ -1,7 +1,7 @@
 // иначе cypress ругается
 import { userMock } from '@/5entities/User/model/const/mocks'
 import { type Article } from '../types/article'
-import { ArticleBlockType, ArticleType } from './article'
+import { ArticleType } from './article'
 
 export const articleMock: Article = {
     id: '25',
