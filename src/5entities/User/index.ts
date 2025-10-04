@@ -1,3 +1,7 @@
+export { saveJsonSettings } from './model/services/saveJsonSettings'
+
+export { useJsonSettings } from './model/selectors/jsonSettings'
+
 export { userMock } from './model/const/mocks'
 
 export { UserRole } from './model/const/userRole'
