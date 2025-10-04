@@ -6,8 +6,8 @@
 - Add translations everywhere
 - Loki fails in Git Actions because of "Failed fetching stories because the server is down"
 - скролл отскакивает наверх при прокрутке статей
-- add/check/fix tests
-- fix db (user-profile)
+- tests
+- fix db (user-profile) - плохая структура
 - везде проверить, что меняется язык
 
 ## Project Launch
@@ -185,6 +185,25 @@ Server requests are made via [RTK Query](/src/6shared/api/rtkApi.ts).
 
 To asynchronously connect reducers (to avoid pulling them into the global bundle), the
 [DynamicModuleLoader](/src/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader.tsx) is used.
+
+---
+
+### Working with feature-flags
+
+Разрешено использование feature flags только с помощью хелпера toggleFeatures
+
+в него передается объект с опциями 
+
+{
+   name: название фича-флага, 
+   on: функция, которая отработает после Включения фичи 
+   of: функция, которая отработает после ВЫключения фичи
+}
+
+Для автоматического удаления фичи использовать скрипт remove-feature.ts,
+который принимает 2 аргумента
+1. Название удаляемого фича-флага
+2. Состояние (on\off)
 
 ---
 
