@@ -30,7 +30,8 @@
         "prepare": "husky install",
         "generate:slice": "node ./scripts/createSlice/index.js",
         "update imports:example": "npx ts-node ./scripts/updateImports.ts",
-        "postinstall:windows": "rmdir /s /q .\\node_modules\\.cache"
+        "postinstall:windows": "rmdir /s /q .\\node_modules\\.cache",
+        "remove-feature": "ts-node ./scripts/removeFeature/index.ts"
     },
     "keywords": [],
     "author": "",

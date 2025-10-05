@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
 import styles from './ArticleDetailsPage.module.scss'
 import { ArticleRating } from '@/4features/ArticleRating'
-import { toggleFeatures } from '@/6shared/lib/features'
+import { ToggleFeatures } from '@/6shared/lib/features'
 
 interface ArticleDetailsPageProps {
     className?: string
@@ -32,12 +32,12 @@ const ArticleDetailsPage = ({
         )
     }
 
-    // TODO: сделать правила в линте, чтобы нельзя было использовать тела в on и off
-    const isArticleRatingEnabled = toggleFeatures<JSX.Element>({
-        name: 'isArticleRatingEnabled',
-        on: () => <ArticleRating articleId={articleId} />,
-        off: () => <></>,
-    })
+    // TODO: сделать правила в линте, чтобы нельзя было использовать тела в on и off либо подправить функцию
+    // const isArticleRatingEnabled = toggleFeatures<JSX.Element>({
+    //     name: 'isArticleRatingEnabled',
+    //     on: () => <ArticleRating articleId={articleId} />,
+    //     off: () => <></>,
+    // })
 
     return (
         <Page className={classNames(styles.articleDetailsPage, [className])}>
@@ -47,7 +47,11 @@ const ArticleDetailsPage = ({
             >
                 <ArticleDetailsPageHeader />
                 <ArticleDetails articleId={articleId} />
-                {isArticleRatingEnabled}
+                <ToggleFeatures
+                    feature="isArticleRatingEnabled"
+                    on={<ArticleRating articleId={articleId} />}
+                    off={<></>}
+                />
                 <ArticleRecommendations />
                 <ArticleComments articleId={articleId} />
             </VStack>

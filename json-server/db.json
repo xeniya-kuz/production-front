@@ -612,7 +612,8 @@
       },
       "jsonSettings": {
         "theme": "dark_theme",
-        "isArticlesPageWasOpened": true
+        "isArticlesPageWasOpened": true,
+        "articlesView": "tile"
       }
     },
     {
@@ -628,7 +629,8 @@
       },
       "jsonSettings": {
         "theme": "orange_theme",
-        "isArticlesPageWasOpened": false
+        "isArticlesPageWasOpened": false,
+        "articlesView": "list"
       }
     },
     {
@@ -644,7 +646,8 @@
       },
       "jsonSettings": {
         "theme": "dark_theme",
-        "isArticlesPageWasOpened": false
+        "isArticlesPageWasOpened": false,
+        "articlesView": "list"
       }
     }
   ],
