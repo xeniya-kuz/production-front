@@ -611,8 +611,8 @@
         "isArticleRatingEnabled": true
       },
       "jsonSettings": {
-        "theme": "orange_theme",
-        "isArticlesPageWasOpened": false
+        "theme": "dark_theme",
+        "isArticlesPageWasOpened": true
       }
     },
     {

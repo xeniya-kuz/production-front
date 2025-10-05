@@ -66,7 +66,7 @@ export const Lists = memo(function Lists(props: ListsProps): JSX.Element {
     }
 
     return (
-        <div className={classNames(styles.tilesContainer, [className])}>
+        <div className={classNames(styles.listsContainer, [className])}>
             {Header !== undefined && <Header />}
             {articles.map((article, index) => renderArticle(index, article))}
         </div>

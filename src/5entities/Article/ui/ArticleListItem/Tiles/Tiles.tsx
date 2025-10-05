@@ -69,10 +69,19 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
         </Card>
     )
 
+    const WrappedHeader: FC = () =>
+        Header ? (
+            <div className={styles.header}>
+                <Header />
+            </div>
+        ) : (
+            <></>
+        )
+
     if (isLoading === true) {
         return (
             <>
-                {Header !== undefined && <Header />}
+                {WrappedHeader}
                 <div className={classNames(styles.tiles, [className])}>
                     {new Array(9).fill(0).map((_, index) => (
                         <Skeleton key={index} />
@@ -90,7 +99,10 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
                     ref={virtuosoGridRef}
                     totalCount={articles.length}
                     // skeleton подставляется на каждый элемент
-                    components={{ Header, ScrollSeekPlaceholder: Skeleton }}
+                    components={{
+                        Header: WrappedHeader,
+                        ScrollSeekPlaceholder: Skeleton,
+                    }}
                     // эта строчка вызывает Warning: Can't perform a React state update on an unmounted component
                     endReached={onLoadNextArticles}
                     data={articles}

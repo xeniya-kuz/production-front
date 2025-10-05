@@ -32,7 +32,10 @@ const ArticlesPage = (): JSX.Element => {
     )
 
     return (
-        <Page data-testid={DATA_TEST_ID.articlesPage}>
+        <Page
+            data-testid={DATA_TEST_ID.articlesPage}
+            className={styles.page}
+        >
             <ArticlePageGreeting />
             <ArticleInfiniteList
                 view={view}
