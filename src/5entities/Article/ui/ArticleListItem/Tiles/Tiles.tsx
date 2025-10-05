@@ -81,7 +81,7 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
     if (isLoading === true) {
         return (
             <>
-                {WrappedHeader}
+                <WrappedHeader />
                 <div className={classNames(styles.tiles, [className])}>
                     {new Array(9).fill(0).map((_, index) => (
                         <Skeleton key={index} />

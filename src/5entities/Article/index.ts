@@ -1,3 +1,5 @@
+export { DEFAULT_ARTICLE_VIEW } from './model/const/article'
+
 export {
     articleEntities,
     articleIds,

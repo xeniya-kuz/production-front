@@ -1,4 +1,4 @@
-import { ArticleList, type ArticleView } from '@/5entities/Article'
+import { ArticleList, DEFAULT_ARTICLE_VIEW } from '@/5entities/Article'
 import {
     DynamicModuleLoader,
     type ReducerList,
@@ -14,9 +14,9 @@ import {
     articleInfiniteListReducer,
     selectArticles,
 } from '../model/slice/articleInfiniteListSlice'
+import { useJsonSettings } from '@/5entities/User'
 
 interface AddArticleCommentFormProps {
-    view: ArticleView
     Header?: () => JSX.Element
 }
 
@@ -25,11 +25,11 @@ const initialReducer: ReducerList = {
 }
 
 export const ArticleInfiniteList = memo(function AddArticleCommentForm({
-    view,
     Header,
 }: AddArticleCommentFormProps): JSX.Element {
     const dispatch = useAppDispatch()
 
+    const { articlesView: view = DEFAULT_ARTICLE_VIEW } = useJsonSettings()
     const articles = useSelector(selectArticles.selectAll)
     const isLoading = useSelector(selectArticlesIsLoading)
 

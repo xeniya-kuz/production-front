@@ -1,4 +1,4 @@
-import { ArticleSortField, ArticleType, ArticleView } from '@/5entities/Article'
+import { ArticleSortField, ArticleType } from '@/5entities/Article'
 import { type ArticlesPageFiltersSchema } from '../types/articlesPageFiltersSchema'
 import {
     articlesPageFiltersActions,
@@ -6,17 +6,6 @@ import {
 } from './articlesPageFiltersSlice'
 
 describe('articleInfiniteListReducer', () => {
-    test('setView', async () => {
-        const state: DeepPartial<ArticlesPageFiltersSchema> = {}
-
-        expect(
-            articlesPageFiltersReducer(
-                state as ArticlesPageFiltersSchema,
-                articlesPageFiltersActions.setView(ArticleView.LIST),
-            ),
-        ).toEqual({ view: ArticleView.LIST })
-    })
-
     test('setOrder', async () => {
         const state: DeepPartial<ArticlesPageFiltersSchema> = {}
 

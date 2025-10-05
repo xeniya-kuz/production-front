@@ -5,17 +5,15 @@ import {
     type ArticleSortField,
     ArticleType,
     type ArticleView,
+    DEFAULT_ARTICLE_VIEW,
 } from '@/5entities/Article'
+import { saveJsonSettings, useJsonSettings } from '@/5entities/User'
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import {
     DynamicModuleLoader,
     type ReducerList,
 } from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import {
-    useAppDispatch,
-    useDebounce,
-    useInitialEffect,
-} from '@/6shared/lib/hooks'
+import { useAppDispatch, useDebounce } from '@/6shared/lib/hooks'
 import { type SortOrder } from '@/6shared/types/sort'
 import { Card } from '@/6shared/ui/Card/Card'
 import { Input } from '@/6shared/ui/Input/Input'
@@ -27,7 +25,6 @@ import { selectArticlesOrder } from '../model/selectors/selectArticlesOrder/sele
 import { selectArticlesSearch } from '../model/selectors/selectArticlesSearch/selectArticlesSearch'
 import { selectArticlesSort } from '../model/selectors/selectArticlesSort/selectArticlesSort'
 import { selectArticlesType } from '../model/selectors/selectArticlesType/selectArticlesType'
-import { selectArticlesView } from '../model/selectors/selectArticlesView/selectArticlesView'
 import {
     articlesPageFiltersActions,
     articlesPageFiltersReducer,
@@ -47,8 +44,8 @@ export const ArticlesPageFilters = memo(function ArticlesPageFilters({
     className,
     fetchData,
 }: ArticlesPageFiltersProps): JSX.Element {
-    const view = useSelector(selectArticlesView)
     const dispatch = useAppDispatch()
+    const { articlesView: view = DEFAULT_ARTICLE_VIEW } = useJsonSettings()
     const { t } = useTranslation(['filters', 'articles'])
     const sort = useSelector(selectArticlesSort)
     const order = useSelector(selectArticlesOrder)
@@ -65,16 +62,13 @@ export const ArticlesPageFilters = memo(function ArticlesPageFilters({
         [t],
     )
 
-    useInitialEffect(() => {
-        void dispatch(articlesPageFiltersActions.initState())
-    })
-
     const debouncedFetchData = useDebounce(fetchData, 500)
 
     const onViewChange = useCallback(
         (view: ArticleView) => {
-            dispatch(articlesPageFiltersActions.setView(view))
-            fetchData()
+            void dispatch(saveJsonSettings({ articlesView: view })).then(() => {
+                fetchData()
+            })
         },
         [dispatch, fetchData],
     )
