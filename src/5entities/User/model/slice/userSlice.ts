@@ -4,6 +4,7 @@ import { USER_LOCALSTORAGE_KEY } from '@/6shared/const/localstorage'
 import { setFeatureFlags } from '@/6shared/lib/features'
 import { saveJsonSettings } from '../services/saveJsonSettings'
 import { type JsonSettings } from '../types/jsonSettings'
+import { initAuthData } from '../services/initAuthData'
 
 const initialState: UserSchema = {
     _mounted: false,
@@ -17,28 +18,30 @@ export const userSlice = createSlice({
             state.authData = action.payload
             setFeatureFlags(action.payload.features)
         },
-        initAuthData: (state) => {
-            const userData = localStorage.getItem(USER_LOCALSTORAGE_KEY)
-            if (userData !== null) {
-                const json = JSON.parse(userData) as User
-                state.authData = json
-                setFeatureFlags(json.features)
-            }
-            state._mounted = true
-        },
         logout: (state) => {
             localStorage.removeItem(USER_LOCALSTORAGE_KEY)
 
             state.authData = undefined
         },
     },
-    extraReducers: (builder) => {
-        builder.addCase(
+    extraReducers: ({ addCase }) => {
+        addCase(
             saveJsonSettings.fulfilled,
             (state, { payload }: PayloadAction<JsonSettings>) => {
                 if (state.authData) {
                     state.authData.jsonSettings = payload
                 }
+            },
+        )
+        addCase(initAuthData.rejected, (state) => {
+            state._mounted = true
+        })
+        addCase(
+            initAuthData.fulfilled,
+            (state, { payload }: PayloadAction<User>) => {
+                state.authData = payload
+                setFeatureFlags(payload.features)
+                state._mounted = true
             },
         )
     },

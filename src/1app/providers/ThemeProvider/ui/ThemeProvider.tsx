@@ -15,6 +15,7 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
     const [theme, setTheme] = useState<Theme>(initialTheme ?? Theme.LIGHT)
     const [isThemeInited, setIsThemeInited] = useState(false)
 
+    // TODO: оптимизировать, это непрозрачно
     useEffect(() => {
         if (!isThemeInited && defaultTheme) {
             setTheme(defaultTheme)

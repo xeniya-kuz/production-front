@@ -6,7 +6,7 @@ import { type JSX, Suspense, useEffect } from 'react'
 import './styles/index.scss'
 import { PageLoader } from '@/3widgets/PageLoader'
 import { AppRouter } from './providers/router'
-import { selectUserMounted, userActions } from '@/5entities/User'
+import { selectUserMounted, initAuthData } from '@/5entities/User'
 
 import { useSelector } from 'react-redux'
 import {
@@ -25,7 +25,7 @@ export default function App(): JSX.Element {
     const { pathname } = useLocation()
 
     useEffect(() => {
-        dispatch(userActions.initAuthData())
+        void dispatch(initAuthData())
 
         if (
             !pathname.includes(getRouteArticles()) ||
@@ -35,6 +35,11 @@ export default function App(): JSX.Element {
             localStorage.removeItem(ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY)
         }
     }, [dispatch, pathname])
+
+    // TODO: можно сделать скелетон старницы с хедером и сайдбаром
+    if (!isMounted) {
+        return <PageLoader />
+    }
 
     return (
         <div className={classNames('app')}>
