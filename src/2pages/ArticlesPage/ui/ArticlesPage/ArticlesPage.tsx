@@ -13,6 +13,7 @@ import styles from './ArticlesPage.module.scss'
 import { useAppDispatch } from '@/6shared/lib/hooks'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 import { Page } from '@/3widgets/Page'
+import { ArticlePageGreeting } from '@/4features/AticlePageGreeting'
 
 const ArticlesPage = (): JSX.Element => {
     const dispatch = useAppDispatch()
@@ -32,6 +33,7 @@ const ArticlesPage = (): JSX.Element => {
 
     return (
         <Page data-testid={DATA_TEST_ID.articlesPage}>
+            <ArticlePageGreeting />
             <ArticleInfiniteList
                 view={view}
                 Header={Header}

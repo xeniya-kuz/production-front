@@ -1,6 +1,4 @@
-import { TestAsyncThunk } from '@/6shared/lib/tests/TestAsyncThunk'
 import { userMock } from '../const/mocks'
-import { initAuthData } from '../services/initAuthData'
 import { type UserSchema } from '../types/user'
 import { userActions, userReducer } from './userSlice'
 

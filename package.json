@@ -141,7 +141,7 @@
     },
     "lint-staged": {
         "**/*.{ts,tsx}": [
-            "prettier --list-different",
+            "prettier --write",
             "eslint"
         ]
     }

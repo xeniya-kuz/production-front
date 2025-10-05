@@ -611,7 +611,8 @@
         "isArticleRatingEnabled": true
       },
       "jsonSettings": {
-        "theme": "orange_theme"
+        "theme": "orange_theme",
+        "isArticlesPageWasOpened": false
       }
     },
     {
@@ -626,7 +627,8 @@
         "isArticleRatingEnabled": false
       },
       "jsonSettings": {
-        "theme": "orange_theme"
+        "theme": "orange_theme",
+        "isArticlesPageWasOpened": false
       }
     },
     {
@@ -641,7 +643,8 @@
         "isArticleRatingEnabled": true
       },
       "jsonSettings": {
-        "theme": "dark_theme"
+        "theme": "dark_theme",
+        "isArticlesPageWasOpened": false
       }
     }
   ],
