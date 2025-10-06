@@ -10,6 +10,7 @@ import { selectSidebarItems } from '../../module/selectors/selectSidebarItems/se
 import { VStack } from '@/6shared/ui/Stack'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 import { ToggleFeatures } from '@/6shared/lib/features'
+import { Logo } from '@/6shared/ui/Logo'
 
 interface SidebarProps {
     className?: string
@@ -83,13 +84,18 @@ export const Sidebar = memo(function Sidebar({
             on={
                 <aside
                     data-testid={DATA_TEST_ID.sidebar}
-                    className={classNames(styles.sidebar, [className], {
-                        [styles.collapsed]: collapsed,
-                    })}
+                    className={classNames(
+                        styles.sidebarRedesigned,
+                        [className],
+                        {
+                            [styles.collapsed]: collapsed,
+                        },
+                    )}
                 >
-                    new design
+                    <Logo className={styles.logo} />
                 </aside>
             }
+            // TODO: при использовании remove-feature Deprecated не удаляется, надо продумать
             off={<Deprecated />}
         />
     )

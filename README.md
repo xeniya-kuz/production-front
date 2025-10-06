@@ -6,9 +6,11 @@
 - Add translations everywhere
 - Loki fails in Git Actions because of "Failed fetching stories because the server is down"
 - скролл отскакивает наверх при прокрутке статей в плитках
-- tests
+- добавить и проверить написанные tests
 - fix db (user-profile) - плохая структура
 - везде проверить, что меняется язык
+- добавить сторисы
+- скролл в статьях
 
 ## Project Launch
 

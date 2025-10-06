@@ -7,11 +7,12 @@ import { AppLink, AppLinkTheme } from '@/6shared/ui/AppLink/AppLink'
 import { Button, ButtonTheme } from '@/6shared/ui/Button/Button'
 import { HStack } from '@/6shared/ui/Stack'
 import { Text, TextTheme } from '@/6shared/ui/Text/Text'
-import { type JSX, memo, useCallback, useState } from 'react'
+import { type FC, type JSX, memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import styles from './Navbar.module.scss'
 import { getRouteArticleCreate } from '@/6shared/const/router'
+import { ToggleFeatures } from '@/6shared/lib/features'
 
 interface NavbarProps {
     className?: string
@@ -28,30 +29,49 @@ export const Navbar = memo(function Navbar({
         setIsAuthModal((prev) => !prev)
     }, [])
 
+    const UserButtons: FC = () => (
+        <HStack
+            gap={'16'}
+            className={styles.actions}
+        >
+            <NotificationButton />
+            <AvatarDropdown />
+        </HStack>
+    )
+
+    const Deprecated: FC = () => (
+        <header className={classNames(styles.navbar, [className])}>
+            <Text
+                className={styles.appName}
+                title="Production project"
+                theme={TextTheme.INVERTED}
+            />
+            <AppLink
+                to={getRouteArticleCreate()}
+                theme={AppLinkTheme.INVERTED}
+                className={styles.create}
+            >
+                {t('articles:article-creation')}
+            </AppLink>
+            <UserButtons />
+        </header>
+    )
+
     if (authData !== undefined) {
         return (
-            <header className={classNames(styles.navbar, [className])}>
-                {/* eslint-disable-next-line i18next/no-literal-string */}
-                <Text
-                    className={styles.appName}
-                    title="Production project"
-                    theme={TextTheme.INVERTED}
-                />
-                <AppLink
-                    to={getRouteArticleCreate()}
-                    theme={AppLinkTheme.INVERTED}
-                    className={styles.create}
-                >
-                    {t('articles:article-creation')}
-                </AppLink>
-                <HStack
-                    gap={'16'}
-                    className={styles.actions}
-                >
-                    <NotificationButton />
-                    <AvatarDropdown />
-                </HStack>
-            </header>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <header
+                        className={classNames(styles.navbarRedesigned, [
+                            className,
+                        ])}
+                    >
+                        <UserButtons />
+                    </header>
+                }
+                off={<Deprecated />}
+            />
         )
     }
 

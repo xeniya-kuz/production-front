@@ -1,5 +1,5 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
-import { useAppDispatch } from '@/6shared/lib/hooks'
+import { useAppDispatch, useTheme } from '@/6shared/lib/hooks'
 import { Navbar } from '@/3widgets/Navbar'
 import { Sidebar } from '@/3widgets/Sidebar'
 import { type JSX, Suspense, useEffect } from 'react'
@@ -18,9 +18,12 @@ import {
     getRouteArticleDetails,
     getRouteArticles,
 } from '@/6shared/const/router'
+import { ToggleFeatures } from '@/6shared/lib/features'
+import { MainLayout } from '@/6shared/layouts/MainLayout'
 
 export default function App(): JSX.Element {
     const dispatch = useAppDispatch()
+    const { theme } = useTheme()
     const isMounted = useSelector(selectUserMounted)
     const { pathname } = useLocation()
 
@@ -42,15 +45,33 @@ export default function App(): JSX.Element {
     }
 
     return (
-        <div className={classNames('app')}>
-            {/* Здесь Suspense нужен, т.к. переводы из i18n будут подгружаться чанками */}
-            <Suspense fallback={<PageLoader />}>
-                <Navbar />
-                <div className="content-page">
-                    <Sidebar />
-                    {isMounted && <AppRouter />}
-                </div>
-            </Suspense>
-        </div>
+        <Suspense fallback={<PageLoader />}>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <div className={classNames('app_redesigned', [theme])}>
+                        {/* <Suspense fallback={<PageLoader />}> */}
+                        <MainLayout
+                            header={<Navbar />}
+                            content={<AppRouter />}
+                            sidebar={<Sidebar />}
+                        />
+                        {/* </Suspense> */}
+                    </div>
+                }
+                off={
+                    <div className={classNames('app', [theme])}>
+                        {/* Здесь Suspense нужен, т.к. переводы из i18n будут подгружаться чанками */}
+                        {/* <Suspense fallback={<PageLoader />}> */}
+                        <Navbar />
+                        <div className="content-page">
+                            <Sidebar />
+                            <AppRouter />
+                        </div>
+                        {/* </Suspense> */}
+                    </div>
+                }
+            />
+        </Suspense>
     )
 }

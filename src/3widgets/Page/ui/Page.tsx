@@ -14,6 +14,7 @@ import { selectScrollByPath } from '../model/selectors/selectScrollByPath/select
 import { type StateSchema } from '@/1app/providers/StoreProvider'
 import { type TestProps } from '@/6shared/types/tests'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
+import { toggleFeatures } from '@/6shared/lib/features'
 
 interface PageProps extends TestProps {
     className?: string
@@ -52,10 +53,17 @@ export const Page = memo(function Page({
         )
     }, 500)
 
+    // TODO: classPage при выполнении remove-toggle не удалится
+    const classPage = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => styles.pageRedesigned,
+        off: () => styles.page,
+    })
+
     return (
         <main
             ref={wrapperRef}
-            className={classNames(styles.page, [className])}
+            className={classNames(classPage, [className])}
             onScroll={onScroll}
             data-testid={testProps['data-testid'] ?? DATA_TEST_ID.page}
         >
