@@ -3,7 +3,7 @@ import styles from './ArticleComments.module.scss'
 import { type JSX, memo, useCallback } from 'react'
 import { CommentForm } from '@/5entities/CommentForm'
 import { useTranslation } from 'react-i18next'
-import { Text, TextSize } from '@/6shared/ui/Text/Text'
+import { Text, TextSize } from '@/6shared/ui/deprecated/Text/Text'
 import { CommentList } from '@/5entities/Comment'
 import { useAppDispatch, useInitialEffect } from '@/6shared/lib/hooks'
 import {
@@ -16,7 +16,7 @@ import {
     useComments,
 } from '../model/selectors/comments/comments'
 import { addArticleComment } from '../model/services/addArticleComment/addArticleComment'
-import { VStack } from '@/6shared/ui/Stack'
+import { VStack } from '@/6shared/ui/deprecated/Stack'
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 
 export interface AddArticleCommentFormProps {

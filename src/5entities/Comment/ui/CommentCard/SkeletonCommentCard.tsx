@@ -1,5 +1,5 @@
-import { Skeleton } from '@/6shared/ui/Skeleton/Skeleton'
-import { HStack, VStack } from '@/6shared/ui/Stack'
+import { Skeleton } from '@/6shared/ui/deprecated/Skeleton/Skeleton'
+import { HStack, VStack } from '@/6shared/ui/deprecated/Stack'
 import { type JSX, memo } from 'react'
 
 interface SkeletonCommentCardProps {

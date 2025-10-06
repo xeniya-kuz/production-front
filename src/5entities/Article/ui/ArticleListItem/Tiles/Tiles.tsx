@@ -1,6 +1,6 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { useInitialEffect } from '@/6shared/lib/hooks'
-import { Card } from '@/6shared/ui/Card/Card'
+import { Card } from '@/6shared/ui/deprecated/Card/Card'
 import {
     type FC,
     type HTMLAttributeAnchorTarget,

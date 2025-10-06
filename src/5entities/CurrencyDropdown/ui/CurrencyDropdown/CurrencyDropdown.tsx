@@ -1,5 +1,5 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
-import { ListBox } from '@/6shared/ui/Popups/ui/ListBox/ListBox'
+import { ListBox } from '@/6shared/ui/deprecated/Popups'
 import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Currency } from '../../model/const/currency'

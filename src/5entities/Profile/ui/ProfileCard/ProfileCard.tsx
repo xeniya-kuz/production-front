@@ -1,9 +1,9 @@
 import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
-import { Avatar } from '@/6shared/ui/Avatar/Avatar'
-import { Error } from '@/6shared/ui/Error/Error'
-import { Input } from '@/6shared/ui/Input/Input'
-import { Loader } from '@/6shared/ui/Loader/Loader'
-import { HStack, VStack } from '@/6shared/ui/Stack'
+import { Avatar } from '@/6shared/ui/deprecated/Avatar/Avatar'
+import { Error } from '@/6shared/ui/deprecated/Error/Error'
+import { Input } from '@/6shared/ui/deprecated/Input/Input'
+import { Loader } from '@/6shared/ui/deprecated/Loader/Loader'
+import { HStack, VStack } from '@/6shared/ui/deprecated/Stack'
 import { useTranslation } from 'react-i18next'
 import { type Profile } from '../../model/types/profile'
 import styles from './ProfileCard.module.scss'
@@ -95,6 +95,7 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
                     <Avatar
                         src={profile?.avatar}
                         alt={t('profile:avatar')}
+                        size={32}
                     />
                 </HStack>
             )}

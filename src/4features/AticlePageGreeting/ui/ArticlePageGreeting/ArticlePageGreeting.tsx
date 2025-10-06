@@ -1,8 +1,8 @@
 import { saveJsonSettings, useJsonSettings } from '@/5entities/User'
 import { useAppDispatch } from '@/6shared/lib/hooks'
-import { Drawer } from '@/6shared/ui/Drawer'
-import { Modal } from '@/6shared/ui/Modal'
-import { Text } from '@/6shared/ui/Text'
+import { Drawer } from '@/6shared/ui/deprecated/Drawer'
+import { Modal } from '@/6shared/ui/deprecated/Modal'
+import { Text } from '@/6shared/ui/deprecated/Text'
 import { memo, useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
 

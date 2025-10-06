@@ -1,6 +1,6 @@
 import { type JSX, memo, useCallback } from 'react'
-import { Dropdown } from '@/6shared/ui/Popups'
-import { Avatar } from '@/6shared/ui/Avatar/Avatar'
+import { Dropdown } from '@/6shared/ui/deprecated/Popups'
+import { Avatar } from '@/6shared/ui/deprecated/Avatar/Avatar'
 import { useSelector } from 'react-redux'
 import {
     isUserAdmin,

@@ -1,7 +1,7 @@
 import styles from './ArticleTextBlock.module.scss'
 import { type JSX, memo } from 'react'
 import { type ArticleTextBlock as ArticleTextBlockType } from '../../model/types/article'
-import { Text } from '@/6shared/ui/Text/Text'
+import { Text } from '@/6shared/ui/deprecated/Text/Text'
 
 interface ArticleTextBlockProps {
     className?: string

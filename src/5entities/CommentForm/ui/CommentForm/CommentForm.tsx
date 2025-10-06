@@ -1,9 +1,9 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './CommentForm.module.scss'
 import { type JSX, memo, useCallback } from 'react'
-import { Input } from '@/6shared/ui/Input/Input'
+import { Input } from '@/6shared/ui/deprecated/Input/Input'
 import { useTranslation } from 'react-i18next'
-import { Button } from '@/6shared/ui/Button/Button'
+import { Button } from '@/6shared/ui/deprecated/Button/Button'
 import {
     DynamicModuleLoader,
     type ReducerList,
@@ -14,7 +14,7 @@ import {
 } from '../../model/slice/commentFormSlice'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from '@/6shared/lib/hooks'
-import { HStack } from '@/6shared/ui/Stack'
+import { HStack } from '@/6shared/ui/deprecated/Stack'
 import { selectAddArticleCommentFormText } from '../../model/selectors/selectAddCommentFormText/selectAddCommentFormText'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 

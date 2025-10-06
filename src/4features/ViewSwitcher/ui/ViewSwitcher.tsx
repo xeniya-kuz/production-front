@@ -4,8 +4,8 @@ import { type JSX, memo } from 'react'
 import ListIcon from '@/6shared/assets/icons/list-24-24.svg'
 import TileIcon from '@/6shared/assets/icons/tile-24-24.svg'
 import { ArticleView } from '@/5entities/Article'
-import { Icon, IconColors } from '@/6shared/ui/Icon/Icon'
-import { Button, ButtonTheme } from '@/6shared/ui/Button/Button'
+import { Icon, IconColors } from '@/6shared/ui/deprecated/Icon/Icon'
+import { Button, ButtonTheme } from '@/6shared/ui/deprecated/Button/Button'
 
 interface ViewSwitcherProps {
     className?: string

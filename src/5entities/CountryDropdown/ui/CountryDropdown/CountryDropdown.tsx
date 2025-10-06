@@ -1,5 +1,5 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
-import { ListBox } from '@/6shared/ui/Popups/ui/ListBox/ListBox'
+import { ListBox } from '@/6shared/ui/deprecated/Popups/ui/ListBox/ListBox'
 import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Country } from '../../model/const/country'

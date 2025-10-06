@@ -2,9 +2,9 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './NotificationItem.module.scss'
 import { type JSX, memo } from 'react'
 import { type Notification } from '../../model/types/notification'
-import { Card, CardTheme } from '@/6shared/ui/Card/Card'
-import { Text } from '@/6shared/ui/Text/Text'
-import { AppLink } from '@/6shared/ui/AppLink/AppLink'
+import { Card, CardTheme } from '@/6shared/ui/deprecated/Card/Card'
+import { Text } from '@/6shared/ui/deprecated/Text/Text'
+import { AppLink } from '@/6shared/ui/deprecated/AppLink/AppLink'
 
 interface NotificationItemProps {
     className?: string

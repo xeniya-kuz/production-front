@@ -2,7 +2,7 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './ArticleImageBlock.module.scss'
 import { type JSX, memo } from 'react'
 import { type ArticleImageBlock as ArticleImageBlockType } from '../../model/types/article'
-import { Text, TextAlign, TextSize } from '@/6shared/ui/Text/Text'
+import { Text, TextAlign, TextSize } from '@/6shared/ui/deprecated/Text/Text'
 
 interface ArticleImageBlockProps {
     className?: string

@@ -3,7 +3,7 @@ import {
     ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY,
 } from '@/6shared/const/localstorage'
 import { classNames } from '@/6shared/lib/classNames/classNames'
-import { Text } from '@/6shared/ui/Text/Text'
+import { Text } from '@/6shared/ui/deprecated/Text/Text'
 import {
     type HTMLAttributeAnchorTarget,
     memo,

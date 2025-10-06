@@ -1,6 +1,6 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
-import { Button, ButtonTheme } from '@/6shared/ui/Button/Button'
+import { Button, ButtonTheme } from '@/6shared/ui/deprecated/Button/Button'
 import { type JSX, memo } from 'react'
 import styles from './LangSwitcher.module.scss'
 

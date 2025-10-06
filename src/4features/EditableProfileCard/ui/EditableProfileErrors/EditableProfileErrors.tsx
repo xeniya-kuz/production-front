@@ -1,6 +1,6 @@
 import { validateProfileErrorsTranslations } from '../../model/services'
 import { selectProfileValidateErrors } from '../../model/selectors'
-import { Text, TextTheme } from '@/6shared/ui/Text/Text'
+import { Text, TextTheme } from '@/6shared/ui/deprecated/Text/Text'
 import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'

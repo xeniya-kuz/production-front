@@ -1,9 +1,9 @@
 import { NotificationList } from '@/5entities/Notification'
 import NotificationIcon from '@/6shared/assets/icons/notification-20-20.svg'
 import { classNames } from '@/6shared/lib/classNames/classNames'
-import { Drawer } from '@/6shared/ui/Drawer/Drawer'
-import { Icon, IconColors } from '@/6shared/ui/Icon/Icon'
-import { Popover } from '@/6shared/ui/Popups'
+import { Drawer } from '@/6shared/ui/deprecated/Drawer/Drawer'
+import { Icon, IconColors } from '@/6shared/ui/deprecated/Icon/Icon'
+import { Popover } from '@/6shared/ui/deprecated/Popups'
 import { type JSX, memo, useCallback, useState } from 'react'
 import { BrowserView, MobileView } from 'react-device-detect'
 

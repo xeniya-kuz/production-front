@@ -1,13 +1,13 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { type JSX, memo, useCallback } from 'react'
-import { Button } from '@/6shared/ui/Button/Button'
+import { Button } from '@/6shared/ui/deprecated/Button/Button'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import {
     selectArticleDetails,
     selectIsArticleAuthor,
 } from '@/5entities/Article'
-import { HStack } from '@/6shared/ui/Stack'
+import { HStack } from '@/6shared/ui/deprecated/Stack'
 import { useSelector } from 'react-redux'
 import { getRouteArticleEdit, getRouteArticles } from '@/6shared/const/router'
 

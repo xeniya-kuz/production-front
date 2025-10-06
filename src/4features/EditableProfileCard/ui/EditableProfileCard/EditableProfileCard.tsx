@@ -4,7 +4,7 @@ import {
     type ReducerList,
 } from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch, useInitialEffect } from '@/6shared/lib/hooks'
-import { VStack } from '@/6shared/ui/Stack'
+import { VStack } from '@/6shared/ui/deprecated/Stack'
 import { type JSX, memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import {

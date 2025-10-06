@@ -1,11 +1,11 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './styles.module.scss'
 import { type JSX, memo, useCallback } from 'react'
-import { Avatar } from '@/6shared/ui/Avatar/Avatar'
+import { Avatar } from '@/6shared/ui/deprecated/Avatar/Avatar'
 import CalendarIcon from '@/6shared/assets/icons/calendar-20-20.svg'
 import EyeIcon from '@/6shared/assets/icons/eye-20-20.svg'
-import { Icon } from '@/6shared/ui/Icon/Icon'
-import { Text, TextSize } from '@/6shared/ui/Text/Text'
+import { Icon } from '@/6shared/ui/deprecated/Icon/Icon'
+import { Text, TextSize } from '@/6shared/ui/deprecated/Text/Text'
 import {
     type ArticleBlock,
     type Article as ArticleType,
@@ -13,7 +13,7 @@ import {
 import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock'
 import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
-import { HStack, VStack } from '@/6shared/ui/Stack'
+import { HStack, VStack } from '@/6shared/ui/deprecated/Stack'
 import { ArticleBlockType } from '../../model/const/article'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 

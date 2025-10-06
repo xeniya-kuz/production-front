@@ -1,4 +1,4 @@
-import { Skeleton } from '@/6shared/ui/Skeleton/Skeleton'
+import { Skeleton } from '@/6shared/ui/deprecated/Skeleton/Skeleton'
 import { type JSX, memo } from 'react'
 
 export const ArticleRatingSkeleton = memo(
