@@ -2,13 +2,14 @@ import { LangSwitcher } from '@/4features/LangSwitcher'
 import { ThemeSwitcher } from '@/4features/ThemeSwitcher'
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { Button, ButtonSize, ButtonTheme } from '@/6shared/ui/Button/Button'
-import { type JSX, memo, useMemo, useState } from 'react'
+import { type FC, type JSX, memo, useMemo, useState } from 'react'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
 import styles from './Sidebar.module.scss'
 import { useSelector } from 'react-redux'
 import { selectSidebarItems } from '../../module/selectors/selectSidebarItems/selectSidebarItems'
 import { VStack } from '@/6shared/ui/Stack'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
+import { ToggleFeatures } from '@/6shared/lib/features'
 
 interface SidebarProps {
     className?: string
@@ -36,7 +37,7 @@ export const Sidebar = memo(function Sidebar({
         [collapsed, sidebarItemList],
     )
 
-    return (
+    const Deprecated: FC = () => (
         <aside
             data-testid={DATA_TEST_ID.sidebar}
             className={classNames(styles.sidebar, [className], {
@@ -74,5 +75,22 @@ export const Sidebar = memo(function Sidebar({
                 </li>
             </ul>
         </aside>
+    )
+
+    return (
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={
+                <aside
+                    data-testid={DATA_TEST_ID.sidebar}
+                    className={classNames(styles.sidebar, [className], {
+                        [styles.collapsed]: collapsed,
+                    })}
+                >
+                    new design
+                </aside>
+            }
+            off={<Deprecated />}
+        />
     )
 })

@@ -1,75 +1,75 @@
 .icon {
-	stroke-width: 0.1px;
+  stroke-width: 0.1px;
 }
 
 .primaryFill {
-	color: var(--primary-color);
-	fill: var(--primary-color);
+  color: var(--primary-color);
+  fill: var(--primary-color);
 
-	&:hover {
-		color: var(--inverted-primary-color);
-		fill: var(--inverted-primary-color);
-	}
+  &:hover {
+    color: var(--inverted-primary-color);
+    fill: var(--inverted-primary-color);
+  }
 }
 
 .secondaryFill {
-	color: var(--secondary-color);
-	fill: var(--secondary-color);
+  color: var(--secondary-color);
+  fill: var(--secondary-color);
 
-	&:hover {
-		color: var(--primary-color);
-		fill: var(--primary-color);
-	}
+  &:hover {
+    color: var(--primary-color);
+    fill: var(--primary-color);
+  }
 }
 
 .invertedPrimaryFill {
-	color: var(--inverted-primary-color);
-	fill: var(--inverted-primary-color);
+  color: var(--inverted-primary-color);
+  fill: var(--inverted-primary-color);
 
-	&:hover {
-		color: var(--primary-color);
-		fill: var(--primary-color);
-	}
+  &:hover {
+    color: var(--primary-color);
+    fill: var(--primary-color);
+  }
 }
 
 .invertedSecondaryFill {
-	color: var(--inverted-secondary-color);
-	fill: var(--inverted-secondary-color);
+  color: var(--inverted-secondary-color);
+  fill: var(--inverted-secondary-color);
 
-	&:hover {
-		color: var(--inverted-primary-color);
-		fill: var(--inverted-primary-color);
-	}
+  &:hover {
+    color: var(--inverted-primary-color);
+    fill: var(--inverted-primary-color);
+  }
 }
 
 .primaryStroke {
-	stroke: var(--primary-color);
+  stroke: var(--primary-color);
 
-	&:hover {
-		stroke: var(--secondary-color);
-	}
+  &:hover {
+    stroke: var(--secondary-color);
+  }
 }
 
 .secondaryStroke {
-	stroke: var(--secondary-color);
+  stroke: var(--secondary-color);
 
-	&:hover {
-		stroke: var(--primary-color);
-	}
+  &:hover {
+    stroke: var(--primary-color);
+  }
 }
 
 .invertedPrimaryStroke {
-	stroke: var(--inverted-primary-color);
+  stroke: var(--inverted-primary-color);
 
-	&:hover {
-		stroke: var(--inverted-secondary-color);
-	}
+  &:hover {
+    stroke: var(--inverted-secondary-color);
+  }
 }
 
 .invertedSecondaryStroke {
-	stroke: var(--inverted-secondary-color);
+  stroke: var(--inverted-secondary-color);
 
-	&:hover {
-		stroke: var(--inverted-primary-color);
-	}
+  &:hover {
+    stroke: var(--inverted-primary-color);
+  }
 }

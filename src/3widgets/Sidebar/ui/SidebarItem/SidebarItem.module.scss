@@ -1,18 +1,18 @@
 .item {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .link {
-	margin-left: 10px;
-	opacity: 1;
+  margin-left: 10px;
+  opacity: 1;
 }
 
 .collapsed {
-	.link {
-		width: 0;
-		height: 0;
-		opacity: 0;
-		transition: 0.2s opacity;
-	}
+  .link {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: 0.2s opacity;
+  }
 }

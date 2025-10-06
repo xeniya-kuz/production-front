@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect } from 'react'
+import { useCallback, useContext } from 'react'
 import { ThemeContext } from '../../context/ThemeContext'
 import { Theme } from '@/6shared/const/themes'
 
@@ -9,12 +9,6 @@ interface UseThemeResult {
 
 export function useTheme(): UseThemeResult {
     const { theme, setTheme } = useContext(ThemeContext)
-
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            document.body.className = theme
-        }
-    }, [theme])
 
     const toggleTheme = useCallback(
         (saveAction: (theme: Theme) => void): void => {
