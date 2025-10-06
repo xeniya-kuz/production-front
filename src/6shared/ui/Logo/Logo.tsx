@@ -17,7 +17,11 @@ export const Logo = memo(function Logo({ className }: LogoProps): JSX.Element {
         >
             <div className={styles.gradientBig} />
             <div className={styles.gradientSmall} />
-            <AppSvg className={styles.logo} />
+            <AppSvg
+                className={styles.logo}
+                width={60}
+                height={60}
+            />
         </HStack>
     )
 })

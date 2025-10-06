@@ -1,6 +1,6 @@
 import { type FeatureFlags } from '@/6shared/types/featureFlags'
 
-let featureFlags: FeatureFlags
+let featureFlags: FeatureFlags = {}
 
 //! Фичи в ходе сессии не меняются, их необязательно делать реактивными
 export function setFeatureFlags(newFeatureFlags?: FeatureFlags): void {

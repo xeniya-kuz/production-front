@@ -1,5 +1,5 @@
 import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
-import { useModal } from '@/6shared/lib/hooks'
+import { useModal, useTheme } from '@/6shared/lib/hooks'
 import { type JSX, type ReactNode } from 'react'
 import { Overlay } from '../Overlay/Overlay'
 import { Portal } from '../Portal/Portal'
@@ -21,6 +21,7 @@ export const Modal = ({
     onClose,
     lazy = false,
 }: ModalProps): JSX.Element | null => {
+    const { theme } = useTheme()
     const { close, isClosing, isMounted } = useModal({
         isOpen,
         onClose,
@@ -38,7 +39,7 @@ export const Modal = ({
 
     return (
         <Portal>
-            <div className={classNames(styles.modal, [className], mods)}>
+            <div className={classNames(styles.modal, [theme, className], mods)}>
                 <Overlay onClick={close} />
                 <div className={styles.content}>{children}</div>
             </div>

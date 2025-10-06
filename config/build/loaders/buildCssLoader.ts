@@ -1,7 +1,8 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import { type RuleSetRule } from 'webpack'
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function buildCssLoader (isDev: boolean) {
+
+export function buildCssLoader (isDev: boolean): RuleSetRule {
   return {
     test: /\.s[ac]ss$/i,
     exclude: /node_modules/,

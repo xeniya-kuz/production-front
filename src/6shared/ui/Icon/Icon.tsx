@@ -23,6 +23,8 @@ export const Icon = memo(function Icon({
     className,
     Svg,
     color = IconColors.PRIMARY_FILL,
+    width = 20,
+    height = 20,
     ...props
 }: IconProps): JSX.Element {
     const colorStyles = Array.isArray(color)
@@ -32,6 +34,8 @@ export const Icon = memo(function Icon({
     return (
         <Svg
             className={classNames(styles.icon, [className, ...colorStyles])}
+            width={width}
+            height={height}
             {...props}
         />
     )

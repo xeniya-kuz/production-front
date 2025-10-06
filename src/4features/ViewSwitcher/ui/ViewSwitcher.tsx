@@ -45,6 +45,8 @@ export const ViewSwitcher = memo(function ArticlesViewSwitcher({
                         className={classNames(undefined, [], {
                             [styles.notSelected]: viewType.view !== view,
                         })}
+                        width={24}
+                        height={24}
                     />
                 </Button>
             ))}

@@ -631,7 +631,7 @@
       },
       "jsonSettings": {
         "theme": "orange_theme",
-        "isArticlesPageWasOpened": false,
+        "isArticlesPageWasOpened": true,
         "articlesView": "list"
       }
     },

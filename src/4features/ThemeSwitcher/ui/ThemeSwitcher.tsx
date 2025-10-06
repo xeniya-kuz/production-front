@@ -35,6 +35,8 @@ export const ThemeSwitcher = memo(function ThemeSwitcher({
             <Icon
                 Svg={IconTheme}
                 color={IconColors.INVERTED_PRIMARY_FILL}
+                width={40}
+                height={40}
             />
         </Button>
     )

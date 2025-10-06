@@ -17,7 +17,25 @@ export default defineConfig((env: ConfigEnv) => {
     const project = 'frontend'
 
     return {
-        plugins: [svgr({ include: '**/*.svg' }), react()],
+        plugins: [
+            svgr({
+                svgrOptions: {
+                    icon: true,
+                    svgoConfig: {
+                        plugins: [
+                            {
+                                name: 'convertColors',
+                                params: {
+                                    currentColor: true,
+                                },
+                            },
+                        ],
+                    },
+                },
+                include: '**/*.svg',
+            }),
+            react(),
+        ],
         resolve: {
             alias: [{ find: '@', replacement: '/src' }],
         },
