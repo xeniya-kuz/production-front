@@ -7,6 +7,7 @@ import { profileReducer } from '@/4features/EditableProfileCard'
 import { articleDetailsReducer } from '@/5entities/Article'
 import { commentFormReducer } from '@/5entities/CommentForm'
 import { type ReducerList } from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { type JSX, type ReactNode } from 'react'
 import { type StoryFn } from '@storybook/react'
 
 const defaultAsyncReducers: ReducerList = {
@@ -23,7 +24,7 @@ export const StoreDecorator = (
     state: DeepPartial<StateSchema>,
     asyncReducers?: ReducerList,
 ) =>
-    function StoreDecorator(StoryComponent: StoryFn) {
+    function StoreDecorator(StoryComponent: () => ReactNode): JSX.Element {
         return (
             <StoreProvider
                 initialState={state}

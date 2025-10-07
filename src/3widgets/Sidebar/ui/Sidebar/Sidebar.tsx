@@ -14,7 +14,9 @@ import { selectSidebarItems } from '../../module/selectors/selectSidebarItems/se
 import { VStack } from '@/6shared/ui/deprecated/Stack'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 import { ToggleFeatures } from '@/6shared/lib/features'
-import { Logo } from '@/6shared/ui/Logo'
+import { Logo } from '@/6shared/ui/redesigned/Logo'
+import { Icon } from '@/6shared/ui/redesigned/Icon'
+import ArrowIcon from '@/6shared/assets/icons/arrow-bottom.svg'
 
 interface SidebarProps {
     className?: string
@@ -96,7 +98,35 @@ export const Sidebar = memo(function Sidebar({
                         },
                     )}
                 >
-                    <Logo className={styles.logo} />
+                    <Logo
+                        className={styles.logo}
+                        size={collapsed ? 30 : 60}
+                    />
+
+                    <nav>
+                        <VStack
+                            gap="8"
+                            role="list"
+                            className={styles.items}
+                        >
+                            {itemsList}
+                        </VStack>
+                    </nav>
+                    <Icon
+                        data-testid={DATA_TEST_ID.sidebarToggle}
+                        className={styles.collapseBtn}
+                        onClick={onToggle}
+                        Svg={ArrowIcon}
+                        clickable
+                    />
+                    <ul className={styles.switchersRedesigned}>
+                        <li className={styles.li}>
+                            <ThemeSwitcher />
+                        </li>
+                        <li className={styles.li}>
+                            <LangSwitcher short={collapsed} />
+                        </li>
+                    </ul>
                 </aside>
             }
             // TODO: при использовании remove-feature Deprecated не удаляется, надо продумать

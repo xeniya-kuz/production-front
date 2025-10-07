@@ -1,14 +1,20 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './Logo.module.scss'
 import { type JSX, memo } from 'react'
-import { HStack } from '../deprecated/Stack'
+import { HStack } from '../../deprecated/Stack'
 import AppSvg from '@/6shared/assets/icons/app-image.svg'
 
 interface LogoProps {
     className?: string
+    size?: number
+    color?: string
 }
 
-export const Logo = memo(function Logo({ className }: LogoProps): JSX.Element {
+export const Logo = memo(function Logo({
+    className,
+    size,
+    color = 'black',
+}: LogoProps): JSX.Element {
     return (
         <HStack
             max
@@ -19,8 +25,9 @@ export const Logo = memo(function Logo({ className }: LogoProps): JSX.Element {
             <div className={styles.gradientSmall} />
             <AppSvg
                 className={styles.logo}
-                width={60}
-                height={60}
+                width={size}
+                height={size}
+                color={color}
             />
         </HStack>
     )

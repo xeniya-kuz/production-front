@@ -1,7 +1,10 @@
 import {
+    type ActionCreatorsMapObject,
     bindActionCreators,
+    type CaseReducerActions,
     createSlice,
     type CreateSliceOptions,
+    type Slice,
     type SliceCaseReducers,
 } from '@reduxjs/toolkit'
 import { useMemo } from 'react'
@@ -11,14 +14,22 @@ export function buildSlice<
     State,
     CaseReducers extends SliceCaseReducers<State>,
     Name extends string = string,
->(options: CreateSliceOptions<State, CaseReducers, Name>) {
+>(
+    options: CreateSliceOptions<State, CaseReducers, Name>,
+): Slice<State, CaseReducers, Name> & {
+    useActions: () => CaseReducerActions<CaseReducers, Name>
+} {
     const slice = createSlice(options)
 
     const useActions = (): typeof slice.actions => {
         const dispatch = useAppDispatch()
-        // @ts-expect-error - types error
+
         return useMemo(
-            () => bindActionCreators(slice.actions, dispatch),
+            () =>
+                bindActionCreators(
+                    slice.actions as unknown as ActionCreatorsMapObject,
+                    dispatch,
+                ) as typeof slice.actions,
             [dispatch],
         )
     }

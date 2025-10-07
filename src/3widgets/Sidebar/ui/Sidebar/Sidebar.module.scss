@@ -9,59 +9,107 @@
   background-color: var(--inverted-bg-color);
 
   transition: min-width 0.3s;
-}
 
-.switchers {
-  position: absolute;
-  bottom: 20px;
-
-  display: flex;
-  justify-content: center;
-
-  width: 100%;
-}
-
-.lang {
-  margin-left: 20px;
-}
-
-.collapseBtn {
-  cursor: pointer;
-
-  position: absolute;
-  z-index: var(--collaps-btn-z-index);
-  right: calc(var(--font-line-l) * -1);
-  bottom: var(--font-line-l);
-}
-
-.items {
-  margin-top: 20px;
-  margin-left: 30px;
-}
-
-.collapsed {
-  min-width: var(--sidebar-width-collapsed);
+  .items {
+    margin-top: 20px;
+    margin-left: 30px;
+  }
 
   .switchers {
-    flex-direction: column;
+    position: absolute;
+    bottom: 20px;
+
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
   }
 
   .lang {
-    margin-left: 0;
+    margin-left: 20px;
+  }
+
+  .collapseBtn {
+    cursor: pointer;
+
+    position: absolute;
+    z-index: var(--collaps-btn-z-index);
+    right: calc(var(--font-line-l) * -1);
+    bottom: var(--font-line-l);
+  }
+
+  &.collapsed {
+    min-width: var(--sidebar-width-collapsed);
+
+    .switchers {
+      flex-direction: column;
+    }
+
+    .lang {
+      margin-left: 0;
+    }
+  }
+
+  .li {
+    display: grid;
   }
 }
 
-.li {
-  display: grid;
-}
-
 .sidebarRedesigned {
+  position: relative;
+
   width: 220px;
   height: 100%;
+
   background: var(--light-bg-redesigned);
   border-radius: 32px;
-}
 
-.logo {
-  padding-top: 22px;
+  transition: width 0.3s;
+
+  .items {
+    margin-top: 40px;
+  }
+
+  .logo {
+    padding-top: 40px;
+  }
+
+  .switchersRedesigned {
+    position: absolute;
+    bottom: 40px;
+
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+  }
+
+  .collapseBtn {
+    cursor: pointer;
+
+    position: absolute;
+    z-index: var(--collaps-btn-z-index);
+    top: 50%;
+    right: 0;
+    transform: rotate(90deg);
+  }
+
+  &.collapsed {
+    width: 50px;
+
+    .items {
+      display: flex;
+      align-items: center;
+    }
+
+    .collapseBtn {
+      transform: rotate(-90deg);
+    }
+
+    .switchersRedesigned {
+      flex-direction: column;
+    }
+  }
 }

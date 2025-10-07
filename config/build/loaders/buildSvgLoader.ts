@@ -13,7 +13,7 @@ export function buildSvgLoader (): RuleSetRule {
             {
               name:'convertColors',
               params: {
-                currentColor: true
+               currentColor: true
               }
             }
           ]

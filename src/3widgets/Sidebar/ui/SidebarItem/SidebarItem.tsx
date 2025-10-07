@@ -1,12 +1,21 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
-import { AppLink, AppLinkTheme } from '@/6shared/ui/deprecated/AppLink/AppLink'
-import { type JSX, memo } from 'react'
+import {
+    AppLink as AppLinkDeprecated,
+    AppLinkTheme,
+} from '@/6shared/ui/deprecated/AppLink/AppLink'
+import { type FC, type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from './SidebarItem.module.scss'
 import { useSelector } from 'react-redux'
 import { selectUserAuthData } from '@/5entities/User'
-import { Icon, IconColors } from '@/6shared/ui/deprecated/Icon/Icon'
+import {
+    Icon as IconDeprecated,
+    IconColors,
+} from '@/6shared/ui/deprecated/Icon/Icon'
 import { type SidebarItemType } from '../../module/types/sidebar'
+import { ToggleFeatures } from '@/6shared/lib/features'
+import { AppLink } from '@/6shared/ui/redesigned/AppLink'
+import { Icon } from '@/6shared/ui/redesigned/Icon'
 
 interface SidebarItemProps {
     item: SidebarItemType
@@ -24,21 +33,42 @@ export const SidebarItem = memo(function SidebarItem({
         return null
     }
 
-    return (
-        <li className={styles.sidebaritem}>
-            <AppLink
+    const Deprecated: FC = () => (
+        <li className={styles.sidebarItem}>
+            <AppLinkDeprecated
                 theme={AppLinkTheme.INVERTED}
                 to={item?.path}
                 className={classNames(styles.item, [], {
                     [styles.collapsed]: collapsed,
                 })}
             >
-                <Icon
+                <IconDeprecated
                     Svg={item.Icon}
                     color={IconColors.INVERTED_PRIMARY_FILL}
                 />
                 <span className={styles.link}>{t(item.text)}</span>
-            </AppLink>
+            </AppLinkDeprecated>
         </li>
+    )
+
+    return (
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={
+                <li className={styles.sidebarItemRedesigned}>
+                    <AppLink
+                        to={item?.path}
+                        className={classNames(styles.item, [], {
+                            [styles.collapsed]: collapsed,
+                        })}
+                        activeClassName={styles.active}
+                    >
+                        <Icon Svg={item.Icon} />
+                        <span className={styles.link}>{t(item.text)}</span>
+                    </AppLink>
+                </li>
+            }
+            off={<Deprecated />}
+        />
     )
 })

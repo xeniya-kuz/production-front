@@ -21,6 +21,10 @@ export default defineConfig((env: ConfigEnv) => {
             svgr({
                 svgrOptions: {
                     icon: true,
+                    replaceAttrValues: {
+                        '#FFC700': 'currentColor',
+                        fill: 'currentColor',
+                    },
                     svgoConfig: {
                         plugins: [
                             {

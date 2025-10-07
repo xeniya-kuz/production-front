@@ -1,0 +1,21 @@
+.applink {
+  &:hover {
+    transition: 0.2s color;
+  }
+}
+
+.primary {
+  color: var(--text-redesigned);
+
+  &:hover {
+    color: var(--accent-redesigned);
+  }
+}
+
+.inverted {
+  color: var(--cancel-redesigned);
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

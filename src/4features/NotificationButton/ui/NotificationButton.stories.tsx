@@ -7,7 +7,7 @@ const meta = {
     component: NotificationButton,
     tags: ['autodocs'],
     args: {},
-    decorators: [StoreDecorator({})],
+    decorators: [(Story) => <Story />, StoreDecorator({})],
 } satisfies Meta<typeof NotificationButton>
 
 export default meta

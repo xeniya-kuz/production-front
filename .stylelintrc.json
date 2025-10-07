@@ -3,8 +3,10 @@
         "stylelint-config-standard-scss",
         "stylelint-config-clean-order"
     ],
+    "customSyntax": "postcss-scss",
     "rules": {
         "selector-class-pattern": null,
-        "unit-no-unknown": null
+        "unit-no-unknown": null,
+        "color-function-notation": ["modern", {"ignore": ["with-var-inside"]}]
     }
 }

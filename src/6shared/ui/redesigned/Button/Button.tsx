@@ -2,28 +2,36 @@ import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import { memo, type ButtonHTMLAttributes, type ReactNode } from 'react'
 import styles from './Button.module.scss'
 
-export enum ButtonTheme {
-    CLEAR = 'clear',
-    CLEAR_INVERTED = 'clearInverted',
-    OUTLINE = 'outline',
-    OUTLINE_RED = 'outlineRed',
-    OUTLINE_INVERTED = 'outlineInverted',
-    BACKGROUND = 'background',
-    BACKGROUND_INVERTED = 'backgroundInverted',
-}
+// type ButtonVariant = 'clear' | 'outline'
 
-export enum ButtonSize {
-    M = 'size_m',
-    L = 'size_l',
-    XL = 'size_xl',
-}
+// export enum ButtonTheme {
+//     CLEAR = 'clear',
+//     CLEAR_INVERTED = 'clearInverted',
+//     OUTLINE = 'outline',
+//     OUTLINE_RED = 'outlineRed',
+//     OUTLINE_INVERTED = 'outlineInverted',
+//     BACKGROUND = 'background',
+//     BACKGROUND_INVERTED = 'backgroundInverted',
+// }
 
+type ButtonSize = 'm' | 'l' | 'xl'
+
+// export enum ButtonSize {
+//     M = 'size_m',
+//     L = 'size_l',
+//     XL = 'size_xl',
+// }
+
+/**
+ * Устарел, используем новые компоненты из папки redesigned
+ * @deprecated
+ */
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string
     /**
      * Тема кнопки. Отвечает за визуал (в рамке, без стилей, противоположный теме приложения цвет и тд)
      */
-    theme?: ButtonTheme
+    // variant?: ButtonVariant
     /**
      * Флаг, делающий кнопку квадратной
      */
@@ -46,19 +54,15 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     fullWidth?: boolean
 }
 
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
 // обычно в качестве children кнопки передается строка, поэтому используем memo
 // (обычно, если в компоненте есть children, то memo не используем)
 export const Button = memo(function Button(props: ButtonProps) {
     const {
         className,
         children,
-        theme = ButtonTheme.OUTLINE,
+        // variant = 'outline',
         square = false,
-        size = ButtonSize.M,
+        size = 'm',
         disabled = false,
         fullWidth,
         ...otherProps
@@ -66,7 +70,7 @@ export const Button = memo(function Button(props: ButtonProps) {
 
     const mods: Mods = {
         [styles.square]: square,
-        [styles[theme]]: theme,
+        // [styles[variant]]: variant,
         [styles[size]]: size,
         [styles.disabled]: disabled,
         [styles.fullWidth]: fullWidth,
@@ -74,7 +78,11 @@ export const Button = memo(function Button(props: ButtonProps) {
 
     return (
         <button
-            className={classNames(styles.button, [className], mods)}
+            className={classNames(
+                styles.button,
+                [styles.clear, className],
+                mods,
+            )}
             disabled={disabled}
             {...otherProps}
         >

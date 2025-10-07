@@ -63,6 +63,7 @@ module.exports = {
                     'anchor',
                     'border',
                     'feature',
+                    'variant',
                 ],
             },
         ],

@@ -2,7 +2,7 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './StarRating.module.scss'
 import { type JSX, memo, useState } from 'react'
 import { Icon, IconColors } from '../Icon/Icon'
-import StarIcon from '../../assets/icons/star.svg'
+import StarIcon from '../../../assets/icons/star.svg'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface StarRatingProps {
