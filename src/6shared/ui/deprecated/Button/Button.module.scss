@@ -1,140 +1,140 @@
 // states
 .disabled {
-  opacity: 0.5;
+    opacity: 0.5;
 }
 
 .button {
-  cursor: pointer;
-  padding: 6px 15px;
-  color: var(--primary-color);
+    cursor: pointer;
+    padding: 6px 15px;
+    color: var(--primary-color);
 
-  &:hover {
-    color: var(--secondary-color);
-  }
+    &:hover {
+        color: var(--secondary-color);
+    }
 
-  &:disabled {
-    cursor: auto;
-  }
+    &:disabled {
+        cursor: auto;
+    }
 
-  &:not(:disabled) &:hover {
-    opacity: 0.7;
-    transition: 0.2s opacity;
-  }
+    &:not(:disabled) &:hover {
+        opacity: 0.7;
+        transition: 0.2s opacity;
+    }
 }
 
 // clear
 .clear,
 .clearInverted {
-  padding: 0;
-  background: none;
-  border: none;
-  outline: none;
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
 }
 
 .clearInverted {
-  color: var(--inverted-primary-color);
+    color: var(--inverted-primary-color);
 
-  &:hover {
-    color: var(--primary-color);
-  }
+    &:hover {
+        color: var(--primary-color);
+    }
 }
 
 .clear {
-  color: var(--primary-color);
+    color: var(--primary-color);
 
-  &:hover {
-    color: var(--inverted-secondary-color);
-  }
+    &:hover {
+        color: var(--inverted-secondary-color);
+    }
 }
 
 // outline
 .outline,
 .outlineInverted,
 .outlineRed {
-  background: none;
+    background: none;
 }
 
 .outline {
-  border: 1px solid var(--primary-color);
+    border: 1px solid var(--primary-color);
 
-  &:hover {
-    border: 1px solid var(--secondary-color);
-  }
+    &:hover {
+        border: 1px solid var(--secondary-color);
+    }
 }
 
 .outlineInverted {
-  color: var(--inverted-primary-color);
-  border: 1px solid var(--inverted-primary-color);
+    border: 1px solid var(--inverted-primary-color);
+    color: var(--inverted-primary-color);
 
-  &:hover {
-    color: var(--inverted-secondary-color);
-    border: 1px solid var(--inverted-secondary-color);
-  }
+    &:hover {
+        border: 1px solid var(--inverted-secondary-color);
+        color: var(--inverted-secondary-color);
+    }
 }
 
 .outlineRed {
-  color: var(--red-light);
-  border: 1px solid var(--red-light);
+    border: 1px solid var(--red-light);
+    color: var(--red-light);
 
-  &:hover {
-    color: var(--red-dark);
-    border: 1px solid var(--red-dark);
-  }
+    &:hover {
+        border: 1px solid var(--red-dark);
+        color: var(--red-dark);
+    }
 }
 
 .background {
-  background-color: var(--bg-color);
-  border: none;
+    border: none;
+    background-color: var(--bg-color);
 
-  &:hover {
-    background-color: var(--inverted-primary-color);
-  }
+    &:hover {
+        background-color: var(--inverted-primary-color);
+    }
 }
 
 .backgroundInverted {
-  color: var(--inverted-primary-color);
-  background-color: var(--inverted-bg-color);
-  border: none;
+    border: none;
+    color: var(--inverted-primary-color);
+    background-color: var(--inverted-bg-color);
 
-  &:hover {
-    color: var(--inverted-bg-color);
-    background-color: var(--inverted-primary-color);
-  }
+    &:hover {
+        color: var(--inverted-bg-color);
+        background-color: var(--inverted-primary-color);
+    }
 }
 
 // square
 .square {
-  padding: 0;
+    padding: 0;
 }
 
 .square.size_m {
-  width: var(--font-line-m);
-  height: var(--font-line-m);
+    width: var(--font-line-m);
+    height: var(--font-line-m);
 }
 
 .square.size_l {
-  width: var(--font-line-l);
-  height: var(--font-line-l);
+    width: var(--font-line-l);
+    height: var(--font-line-l);
 }
 
 .square.size_xl {
-  width: var(--font-line-xl);
-  height: var(--font-line-xl);
+    width: var(--font-line-xl);
+    height: var(--font-line-xl);
 }
 
 // size
 .size_m {
-  font: var(--font-m);
+    font: var(--font-m);
 }
 
 .size_l {
-  font: var(--font-l);
+    font: var(--font-l);
 }
 
 .size_xl {
-  font: var(--font-xl);
+    font: var(--font-xl);
 }
 
 .fullWidth {
-  width: 100%;
+    width: 100%;
 }

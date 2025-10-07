@@ -1,19 +1,19 @@
 .page {
-  overflow-y: auto;
-  flex-grow: 1;
+    overflow-y: auto;
+    flex-grow: 1;
 
-  width: 100%;
-  height: calc(100vh - var(--navbar-height));
-  padding: 20px 20px 20px 45px;
+    width: 100%;
+    height: calc(100vh - var(--navbar-height));
+    padding: 20px 20px 20px 45px;
 }
 
 .pageRedesigned {
-  overflow-y: auto;
-  width: 100%;
-  height: calc(100vh - var(--navbar-height));
+    overflow-y: auto;
+    width: 100%;
+    height: calc(100vh - var(--navbar-height));
 }
 
 .trigger {
-  width: 10px;
-  height: 20px;
+    width: 10px;
+    height: 20px;
 }

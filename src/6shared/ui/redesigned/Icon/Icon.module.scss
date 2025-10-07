@@ -1,20 +1,20 @@
 .icon {
-  color: var(--icon-redesigned);
+    color: var(--icon-redesigned);
 }
 
 .button {
-  cursor: pointer;
+    cursor: pointer;
 
-  display: grid;
+    display: grid;
 
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
 
-  background: none;
-  border: none;
-  outline: none;
+    background: none;
+    outline: none;
 
-  &:hover .icon {
-    color: var(--accent-redesigned);
-  }
+    &:hover .icon {
+        color: var(--accent-redesigned);
+    }
 }

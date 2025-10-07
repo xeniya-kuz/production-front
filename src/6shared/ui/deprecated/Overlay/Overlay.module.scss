@@ -1,16 +1,13 @@
 .overlay {
-  cursor: pointer;
+    cursor: pointer;
 
-  position: fixed;
-  z-index: var(--overlay-z-index);
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+    position: fixed;
+    z-index: var(--overlay-z-index);
+    inset: 0;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  background-color: var(--overlay-color);
+    background-color: var(--overlay-color);
 }

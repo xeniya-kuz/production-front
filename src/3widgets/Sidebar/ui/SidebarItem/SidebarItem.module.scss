@@ -1,48 +1,62 @@
 .sidebarItem {
-  .item {
-    display: flex;
-    align-items: center;
-  }
-
-  .link {
-    margin-left: 10px;
-    white-space: nowrap;
-    opacity: 1;
-  }
-
-  .collapsed {
-    .link {
-      width: 0;
-      height: 0;
-      margin-left: 0;
-
-      opacity: 0;
-
-      transition: 0.2s opacity;
+    .item {
+        display: flex;
+        align-items: center;
     }
-  }
+
+    .link {
+        margin-left: 10px;
+        white-space: nowrap;
+        opacity: 1;
+    }
+
+    .collapsed {
+        .link {
+            width: 0;
+            height: 0;
+            margin-left: 0;
+
+            opacity: 0;
+
+            transition: 0.2s opacity;
+        }
+    }
 }
 
 .sidebarItemRedesigned {
-  width: 100%;
+    width: 100%;
 
-  .item {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    padding: 0 16px;
-  }
+    .item {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        padding: 0 16px;
+    }
 
-  .active {
-    border-left: solid 2px var(--accent-redesigned);
-    color: var(--accent-redesigned);
+    .active {
+        border-left: solid 2px var(--accent-redesigned);
+        color: var(--accent-redesigned);
 
-    // background: linear-gradient(89.97deg, rgb(29 89 255 / 30%) 1.15%, rgb(94 211 243 / 0%) 99.97%);
-    background:
-      linear-gradient(
-        90deg,
-        rgb(var(--gradient-redesigned), 0.3) 1.15%,
-        rgb(var(--gradient-redesigned), 0) 99.97%
-      );
-  }
+        // background: linear-gradient(89.97deg, rgb(29 89 255 / 30%) 1.15%, rgb(94 211 243 / 0%) 99.97%);
+        background: linear-gradient(
+            90deg,
+            rgb(var(--gradient-redesigned), 0.3) 1.15%,
+            rgb(var(--gradient-redesigned), 0) 99.97%
+        );
+    }
+
+    .collapsed {
+        &.item {
+            gap: 0;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .link {
+            width: 0;
+            height: 0;
+            opacity: 0;
+            transition: 0.2s opacity;
+        }
+    }
 }

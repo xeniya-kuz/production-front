@@ -2,6 +2,4 @@
 build
 coverage
 *.html
-*.css
-*.scss
 node_modules

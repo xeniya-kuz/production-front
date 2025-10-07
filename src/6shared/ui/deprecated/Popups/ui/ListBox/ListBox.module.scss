@@ -1,25 +1,25 @@
 .trigger {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
 
-  background: none;
-  border: none;
-  outline: none;
+    background: none;
+    outline: none;
 }
 
 .options {
-  min-width: 100%;
-  background-color: var(--listbox-bg);
-  box-shadow: 4px 4px 8px var(--listbox-bg);
+    min-width: 100%;
+    background-color: var(--listbox-bg);
+    box-shadow: 4px 4px 8px var(--listbox-bg);
 }
 
 .option {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
 }
 
 .active {
-  color: var(--inverted-primary-color);
-  background-color: var(--primary-color);
+    color: var(--inverted-primary-color);
+    background-color: var(--primary-color);
 }

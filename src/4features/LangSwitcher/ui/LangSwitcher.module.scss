@@ -1,11 +1,11 @@
 .langSwitcher {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .langSwitcherRedesigned {
-  color: var(--icon-redesigned);
+    color: var(--icon-redesigned);
 
-  &:hover {
-    color: var(--accent-redesigned);
-  }
+    &:hover {
+        color: var(--accent-redesigned);
+    }
 }

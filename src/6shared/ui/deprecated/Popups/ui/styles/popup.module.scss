@@ -1,47 +1,47 @@
 .popup {
-  position: relative;
+    position: relative;
 }
 
 .content {
-  position: absolute;
-  z-index: var(--dropdown-z-index);
-  overflow-y: auto;
-  max-height: calc(100vh - var(--navbar-height));
+    position: absolute;
+    z-index: var(--dropdown-z-index);
+    overflow-y: auto;
+    max-height: calc(100vh - var(--navbar-height));
 
-  &.topLeft,
-  &.topRight {
-    bottom: 100%;
-    border-radius: 12px 12px 0 0;
-  }
+    &.topLeft,
+    &.topRight {
+        bottom: 100%;
+        border-radius: 12px 12px 0 0;
+    }
 
-  &.topRight,
-  &.bottomRight {
-    left: 0;
-  }
+    &.topRight,
+    &.bottomRight {
+        left: 0;
+    }
 
-  &.topLeft,
-  &.bottomLeft {
-    right: 0;
-  }
+    &.topLeft,
+    &.bottomLeft {
+        right: 0;
+    }
 
-  &.bottomLeft,
-  &.bottomRight {
-    top: 100%;
-    border-radius: 0 0 12px 12px;
-  }
+    &.bottomLeft,
+    &.bottomRight {
+        top: 100%;
+        border-radius: 0 0 12px 12px;
+    }
 }
 
 .disabled {
-  opacity: 0.5;
+    opacity: 0.5;
 }
 
 .trigger {
-  cursor: pointer;
+    cursor: pointer;
 
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
 
-  background: none;
-  border: none;
-  outline: none;
+    background: none;
+    outline: none;
 }

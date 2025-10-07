@@ -1,26 +1,23 @@
 .drawer {
-  position: fixed;
-  z-index: var(--modal-z-index);
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+    position: fixed;
+    z-index: var(--modal-z-index);
+    inset: 0;
 
-  display: flex;
-  align-items: flex-end;
+    display: flex;
+    align-items: flex-end;
 }
 
 .content {
-  touch-action: none;
+    touch-action: none;
 
-  position: fixed;
-  z-index: var(--modal-z-index);
-  left: 2vw;
+    position: fixed;
+    z-index: var(--modal-z-index);
+    left: 2vw;
 
-  width: 96vw;
-  height: calc(100vh + 100px);
-  padding: 15px;
+    width: 96vw;
+    height: calc(100vh + 100px);
+    padding: 15px;
+    border-radius: 12px 12px 0;
 
-  background: var(--bg-color);
-  border-radius: 12px 12px 0;
+    background: var(--bg-color);
 }

@@ -1,24 +1,24 @@
 .navbar {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 
-  width: 100%;
-  height: var(--navbar-height);
-  padding: 20px;
+    width: 100%;
+    height: var(--navbar-height);
+    padding: 20px;
 
-  background-color: var(--inverted-bg-color);
+    background-color: var(--inverted-bg-color);
 }
 
 .navbarRedesigned {
-  padding: 16px;
+    padding: 16px;
 }
 
 .links,
 .actions {
-  margin-left: auto;
+    margin-left: auto;
 }
 
 .appName {
-  width: var(--sidebar-width);
-  margin-left: 15px;
+    width: var(--sidebar-width);
+    margin-left: 15px;
 }
