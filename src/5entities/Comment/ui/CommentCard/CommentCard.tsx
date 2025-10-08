@@ -7,7 +7,7 @@ import { Text, TextSize } from '@/6shared/ui/deprecated/Text/Text'
 import AvatarMock from '@/6shared/assets/icons/user.png'
 import { AppLink } from '@/6shared/ui/deprecated/AppLink/AppLink'
 import { SkeletonCommentCard } from './SkeletonCommentCard'
-import { HStack, VStack } from '@/6shared/ui/deprecated/Stack'
+import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
 import { getRouteProfile } from '@/6shared/const/router'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 

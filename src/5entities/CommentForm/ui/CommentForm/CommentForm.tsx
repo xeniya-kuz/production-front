@@ -14,7 +14,7 @@ import {
 } from '../../model/slice/commentFormSlice'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from '@/6shared/lib/hooks'
-import { HStack } from '@/6shared/ui/deprecated/Stack'
+import { HStack } from '@/6shared/ui/redesigned/Stack'
 import { selectAddArticleCommentFormText } from '../../model/selectors/selectAddCommentFormText/selectAddCommentFormText'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 

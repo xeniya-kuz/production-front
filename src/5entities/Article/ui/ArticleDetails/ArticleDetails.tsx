@@ -15,7 +15,7 @@ import { selectArticleDetailsIsLoading } from '../../model/selectors/selectArtic
 import { selectArticleDetailsError } from '../../model/selectors/selectArticleDetailsError/selectArticleDetailsError'
 import { selectArticleDetails } from '../../model/selectors/selectArticleDetails/selectArticleDetails'
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById'
-import { VStack } from '@/6shared/ui/deprecated/Stack'
+import { VStack } from '@/6shared/ui/redesigned/Stack'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 
 interface ArticleDetailsProps {

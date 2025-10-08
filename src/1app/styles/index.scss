@@ -2,7 +2,8 @@
 @use './themes/dark';
 @use './themes/light';
 @use './themes/orange';
-@use './variables/global';
+
+@use 'variables';
 
 * {
     box-sizing: border-box;

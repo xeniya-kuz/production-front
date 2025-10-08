@@ -2,7 +2,7 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './styles.module.scss'
 import { type JSX, memo } from 'react'
 import { Skeleton } from '@/6shared/ui/deprecated/Skeleton/Skeleton'
-import { VStack } from '@/6shared/ui/deprecated/Stack'
+import { VStack } from '@/6shared/ui/redesigned/Stack'
 
 interface SketelonArticleProps {
     className?: string

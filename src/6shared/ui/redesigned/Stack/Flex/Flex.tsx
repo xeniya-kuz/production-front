@@ -18,10 +18,6 @@ type DivProps = DetailedHTMLProps<
     HTMLDivElement
 >
 
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
 export interface FlexProps extends DivProps {
     className?: string
     children: ReactNode

@@ -6,10 +6,6 @@ interface PortalProps {
     element?: HTMLElement
 }
 
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
 // Позволяет располагать компоненты по дом дереву где угодно
 export const Portal = ({
     children,

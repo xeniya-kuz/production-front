@@ -2,25 +2,7 @@ import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import { memo, type ButtonHTMLAttributes, type ReactNode } from 'react'
 import styles from './Button.module.scss'
 
-// type ButtonVariant = 'clear' | 'outline'
-
-// export enum ButtonTheme {
-//     CLEAR = 'clear',
-//     CLEAR_INVERTED = 'clearInverted',
-//     OUTLINE = 'outline',
-//     OUTLINE_RED = 'outlineRed',
-//     OUTLINE_INVERTED = 'outlineInverted',
-//     BACKGROUND = 'background',
-//     BACKGROUND_INVERTED = 'backgroundInverted',
-// }
-
 type ButtonSize = 'm' | 'l' | 'xl'
-
-// export enum ButtonSize {
-//     M = 'size_m',
-//     L = 'size_l',
-//     XL = 'size_xl',
-// }
 
 /**
  * Устарел, используем новые компоненты из папки redesigned
@@ -60,7 +42,6 @@ export const Button = memo(function Button(props: ButtonProps) {
     const {
         className,
         children,
-        // variant = 'outline',
         square = false,
         size = 'm',
         disabled = false,
@@ -70,7 +51,6 @@ export const Button = memo(function Button(props: ButtonProps) {
 
     const mods: Mods = {
         [styles.square]: square,
-        // [styles[variant]]: variant,
         [styles[size]]: size,
         [styles.disabled]: disabled,
         [styles.fullWidth]: fullWidth,

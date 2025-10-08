@@ -1,6 +1,6 @@
-import { type JSX, memo, useCallback } from 'react'
-import { Dropdown } from '@/6shared/ui/deprecated/Popups'
-import { Avatar } from '@/6shared/ui/deprecated/Avatar/Avatar'
+import { type FC, type JSX, memo, useCallback } from 'react'
+import { Dropdown as DropdownDeprecated } from '@/6shared/ui/deprecated/Popups'
+import { Avatar as AvatarDeprecated } from '@/6shared/ui/deprecated/Avatar/Avatar'
 import { useSelector } from 'react-redux'
 import {
     isUserAdmin,
@@ -11,6 +11,9 @@ import {
 import { useAppDispatch } from '@/6shared/lib/hooks'
 import { useTranslation } from 'react-i18next'
 import { getRouteAdmin, getRouteProfile } from '@/6shared/const/router'
+import { ToggleFeatures } from '@/6shared/lib/features'
+import { Dropdown } from '@/6shared/ui/redesigned/Popups'
+import { Avatar } from '@/6shared/ui/redesigned/Avatar'
 
 interface AvatarDropdownProps {
     className?: string
@@ -31,7 +34,7 @@ export const AvatarDropdown = memo(function AvatarDropdown({
         dispatch(userActions.logout())
     }, [dispatch])
 
-    if (authData === undefined) {
+    if (!authData) {
         return null
     }
 
@@ -54,18 +57,39 @@ export const AvatarDropdown = memo(function AvatarDropdown({
         },
     ]
 
-    return (
-        <Dropdown
+    const Deprecated: FC = () => (
+        <DropdownDeprecated
             className={className}
             direction="bottom left"
             trigger={
-                <Avatar
+                <AvatarDeprecated
                     alt="avatar"
                     size={30}
                     src={authData.avatar}
                 />
             }
             items={dropdownItems}
+        />
+    )
+
+    return (
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={
+                <Dropdown
+                    className={className}
+                    direction="bottom left"
+                    trigger={
+                        <Avatar
+                            alt="avatar"
+                            size={40}
+                            src={authData.avatar}
+                        />
+                    }
+                    items={dropdownItems}
+                />
+            }
+            off={<Deprecated />}
         />
     )
 })

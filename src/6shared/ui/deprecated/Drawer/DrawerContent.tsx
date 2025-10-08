@@ -1,8 +1,8 @@
 import { useAnimationLibs } from '@/6shared/lib/components/AnimationProvider/AnimationProvider'
 import { memo, useCallback, useEffect } from 'react'
-import { Portal } from '../Portal/Portal'
+import { Portal } from '../../redesigned/Portal/Portal'
 import { classNames } from '@/6shared/lib/classNames/classNames'
-import { Overlay } from '../Overlay/Overlay'
+import { Overlay } from '../../redesigned/Overlay/Overlay'
 import styles from './DrawerContent.module.scss'
 import { type DrawerProps } from './types'
 

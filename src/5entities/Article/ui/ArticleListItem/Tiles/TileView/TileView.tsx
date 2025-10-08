@@ -9,7 +9,7 @@ import styles from '../styles.module.scss'
 import EyeIcon from '@/6shared/assets/icons/eye-20-20.svg'
 import { ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY } from '@/6shared/const/localstorage'
 import { getRouteArticleDetails } from '@/6shared/const/router'
-import { AppImage } from '@/6shared/ui/deprecated/AppImage'
+import { AppImage } from '@/6shared/ui/redesigned/AppImage'
 import { Skeleton } from '@/6shared/ui/deprecated/Skeleton'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 

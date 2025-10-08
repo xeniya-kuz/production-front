@@ -1,0 +1,22 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    cursor: pointer;
+
+    width: 100%;
+    padding: 10px 25px;
+    border: none;
+
+    color: var(--text-redesigned);
+
+    background: none;
+    outline: none;
+}
+
+.activeTop,
+.activeBottom {
+    background: var(--light-bg-redesigned);
+}

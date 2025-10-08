@@ -1,7 +1,7 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { type JSX, memo, useCallback, useState } from 'react'
 import { Card } from '@/6shared/ui/deprecated/Card/Card'
-import { HStack, VStack } from '@/6shared/ui/deprecated/Stack'
+import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
 import { Text } from '@/6shared/ui/deprecated/Text/Text'
 import { StarRating } from '@/6shared/ui/deprecated/StarRating/StarRating'
 import { Modal } from '@/6shared/ui/deprecated/Modal/Modal'

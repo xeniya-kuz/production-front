@@ -13,7 +13,7 @@ import {
 import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock'
 import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
-import { HStack, VStack } from '@/6shared/ui/deprecated/Stack'
+import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
 import { ArticleBlockType } from '../../model/const/article'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 

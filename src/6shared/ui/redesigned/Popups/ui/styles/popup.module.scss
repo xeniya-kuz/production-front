@@ -1,0 +1,56 @@
+.popup {
+    position: relative;
+}
+
+// .menu {
+//     border: 1px solid var(--accent-redesigned);
+//     background: var(--dark-bg-redesigned);
+// }
+
+.content {
+    position: absolute;
+    z-index: var(--dropdown-z-index);
+
+    overflow-y: auto;
+
+    max-height: calc(100vh - var(--navbar-height));
+    border: 1px solid var(--accent-redesigned);
+    border-radius: 18px;
+
+    background: var(--dark-bg-redesigned);
+
+    &.topLeft,
+    &.topRight {
+        bottom: 100%;
+    }
+
+    &.topRight,
+    &.bottomRight {
+        left: 0;
+    }
+
+    &.topLeft,
+    &.bottomLeft {
+        right: 0;
+    }
+
+    &.bottomLeft,
+    &.bottomRight {
+        top: 100%;
+    }
+}
+
+.disabled {
+    opacity: 0.5;
+}
+
+.trigger {
+    cursor: pointer;
+
+    margin: 0;
+    padding: 0;
+    border: none;
+
+    background: none;
+    outline: none;
+}

@@ -16,7 +16,7 @@ import {
     useComments,
 } from '../model/selectors/comments/comments'
 import { addArticleComment } from '../model/services/addArticleComment/addArticleComment'
-import { VStack } from '@/6shared/ui/deprecated/Stack'
+import { VStack } from '@/6shared/ui/redesigned/Stack'
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 
 export interface AddArticleCommentFormProps {

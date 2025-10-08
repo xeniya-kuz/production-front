@@ -7,7 +7,7 @@ import {
     selectArticleDetails,
     selectIsArticleAuthor,
 } from '@/5entities/Article'
-import { HStack } from '@/6shared/ui/deprecated/Stack'
+import { HStack } from '@/6shared/ui/redesigned/Stack'
 import { useSelector } from 'react-redux'
 import { getRouteArticleEdit, getRouteArticles } from '@/6shared/const/router'
 

@@ -31,18 +31,28 @@
         gap: 8px;
         align-items: center;
         padding: 0 16px;
+
+        &:hover {
+            color: var(--accent-redesigned);
+
+            svg {
+                color: var(--accent-redesigned);
+            }
+        }
     }
 
     .active {
         border-left: solid 2px var(--accent-redesigned);
-        color: var(--accent-redesigned);
-
-        // background: linear-gradient(89.97deg, rgb(29 89 255 / 30%) 1.15%, rgb(94 211 243 / 0%) 99.97%);
         background: linear-gradient(
             90deg,
-            rgb(var(--gradient-redesigned), 0.3) 1.15%,
-            rgb(var(--gradient-redesigned), 0) 99.97%
+            color-mix(in srgb, var(--accent-redesigned) 30%, transparent) 1.15%,
+            color-mix(in srgb, var(--accent-redesigned) 0%, transparent) 99.97%
         );
+
+        &:hover {
+            cursor: default;
+            color: inherit;
+        }
     }
 
     .collapsed {

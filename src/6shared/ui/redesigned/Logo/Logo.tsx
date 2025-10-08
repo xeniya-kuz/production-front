@@ -1,7 +1,7 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './Logo.module.scss'
 import { type JSX, memo } from 'react'
-import { HStack } from '../../deprecated/Stack'
+import { HStack } from '../Stack'
 import AppSvg from '@/6shared/assets/icons/app-image.svg'
 
 interface LogoProps {

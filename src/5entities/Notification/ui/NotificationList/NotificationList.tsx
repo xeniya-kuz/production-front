@@ -1,4 +1,4 @@
-import { VStack } from '@/6shared/ui/deprecated/Stack'
+import { VStack } from '@/6shared/ui/redesigned/Stack'
 import { type JSX, memo } from 'react'
 import { useNotifications } from '../../api/notificationApi'
 import { NotificationItem } from '../NotificationItem/NotificationItem'
@@ -15,7 +15,7 @@ export const NotificationList = memo(function NotificationList({
         pollingInterval: 5000,
     })
 
-    if (!notifications?.length) {
+    if (!notifications?.length && !isLoading) {
         return <p>There is no notifications</p>
     }
 
