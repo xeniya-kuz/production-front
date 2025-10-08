@@ -36,7 +36,16 @@ export const Page = memo(function Page({
         selectScrollByPath(state, pathname),
     )
 
-    useInfiniteScroll({ wrapperRef, triggerRef, callback: onScrollEnd })
+    useInfiniteScroll({
+        // wrapperRef: toggleFeatures({
+        //     name: 'isAppRedesigned',
+        //     on: () => undefined,
+        //     off: () => wrapperRef,
+        // }),
+        wrapperRef,
+        triggerRef,
+        callback: onScrollEnd,
+    })
 
     useInitialEffect(() => {
         if (wrapperRef.current !== null) {

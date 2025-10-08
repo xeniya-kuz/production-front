@@ -9,7 +9,7 @@ import { type SortOrder } from '@/6shared/types/sort'
 import {
     articlesPageFiltersActions,
     selectArticlesView,
-} from '@/4features/ArticlesPageFilters'
+} from '@/3widgets/ArticlesPageFilters'
 
 export const init = createAsyncThunk<
     void,

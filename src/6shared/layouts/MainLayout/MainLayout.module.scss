@@ -16,9 +16,9 @@
     justify-self: center;
 
     width: 100%;
-    max-width: 1200px;
+    max-width: var(--content-width);
     min-height: 100%;
-    padding: 32px;
+    padding-top: 32px;
 }
 
 .rightbar {

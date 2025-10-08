@@ -114,7 +114,7 @@ export const Sidebar = memo(function Sidebar({
                     </nav>
                     <Icon
                         data-testid={DATA_TEST_ID.sidebarToggle}
-                        className={styles.collapseBtn}
+                        iconClassName={styles.collapseBtn}
                         onClick={onToggle}
                         Svg={ArrowIcon}
                         clickable

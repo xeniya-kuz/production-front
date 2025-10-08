@@ -1,13 +1,6 @@
-/* eslint-disable fsd-path-checker-sia355/layer-imports */
 import { ArticleSortDropdown } from '@/4features/ArticleSortDropdown'
-import { ViewSwitcher } from '@/4features/ViewSwitcher'
-import {
-    type ArticleSortField,
-    ArticleType,
-    type ArticleView,
-    DEFAULT_ARTICLE_VIEW,
-} from '@/5entities/Article'
-import { saveJsonSettings, useJsonSettings } from '@/5entities/User'
+import { ViewSelectorContainer } from '@/4features/ViewSwitcher'
+import { type ArticleSortField, ArticleType } from '@/5entities/Article'
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import {
     DynamicModuleLoader,
@@ -21,10 +14,10 @@ import { type TabItem, Tabs } from '@/6shared/ui/deprecated/Tabs/Tabs'
 import { type JSX, memo, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { selectArticlesOrder } from '../model/selectors/selectArticlesOrder/selectArticlesOrder'
-import { selectArticlesSearch } from '../model/selectors/selectArticlesSearch/selectArticlesSearch'
-import { selectArticlesSort } from '../model/selectors/selectArticlesSort/selectArticlesSort'
-import { selectArticlesType } from '../model/selectors/selectArticlesType/selectArticlesType'
+import { selectArticlesOrder } from '../selectors/selectArticlesOrder/selectArticlesOrder'
+import { selectArticlesSearch } from '../selectors/selectArticlesSearch/selectArticlesSearch'
+import { selectArticlesSort } from '../selectors/selectArticlesSort/selectArticlesSort'
+import { selectArticlesType } from '../selectors/selectArticlesType/selectArticlesType'
 import {
     articlesPageFiltersActions,
     articlesPageFiltersReducer,
@@ -45,7 +38,6 @@ export const ArticlesPageFilters = memo(function ArticlesPageFilters({
     fetchData,
 }: ArticlesPageFiltersProps): JSX.Element {
     const dispatch = useAppDispatch()
-    const { articlesView: view = DEFAULT_ARTICLE_VIEW } = useJsonSettings()
     const { t } = useTranslation(['filters', 'articles'])
     const sort = useSelector(selectArticlesSort)
     const order = useSelector(selectArticlesOrder)
@@ -63,15 +55,6 @@ export const ArticlesPageFilters = memo(function ArticlesPageFilters({
     )
 
     const debouncedFetchData = useDebounce(fetchData, 500)
-
-    const onViewChange = useCallback(
-        (view: ArticleView) => {
-            void dispatch(saveJsonSettings({ articlesView: view })).then(() => {
-                fetchData()
-            })
-        },
-        [dispatch, fetchData],
-    )
 
     const onChangeOrder = useCallback(
         ({ value }: { value: SortOrder }) => {
@@ -120,10 +103,7 @@ export const ArticlesPageFilters = memo(function ArticlesPageFilters({
                         onChangeOrder={onChangeOrder}
                         onChangeSort={onChangeSort}
                     />
-                    <ViewSwitcher
-                        view={view}
-                        onViewChange={onViewChange}
-                    />
+                    <ViewSelectorContainer fetchData={fetchData} />
                 </div>
                 <Card className={styles.search}>
                     <Input

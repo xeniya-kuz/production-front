@@ -4,12 +4,15 @@ import {
     articleInfiniteListActions,
     fetchArticlesList,
 } from '@/4features/ArticleInfiniteList'
-import { ArticlesPageFilters } from '@/4features/ArticlesPageFilters'
+import { ArticlesPageFilters } from '@/3widgets/ArticlesPageFilters'
 import { ArticlePageGreeting } from '@/4features/AticlePageGreeting'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 import { useAppDispatch } from '@/6shared/lib/hooks'
 import { type JSX, memo, useCallback } from 'react'
 import styles from './ArticlesPage.module.scss'
+import { ToggleFeatures } from '@/6shared/lib/features'
+import { StickyContentLayout } from '@/6shared/layouts/StickyContentLayout'
+import { ViewSelectorContainer } from '@/4features/ViewSwitcher'
 
 const ArticlesPage = (): JSX.Element => {
     const dispatch = useAppDispatch()
@@ -27,13 +30,33 @@ const ArticlesPage = (): JSX.Element => {
     )
 
     return (
-        <Page
-            data-testid={DATA_TEST_ID.articlesPage}
-            className={styles.page}
-        >
-            <ArticlePageGreeting />
-            <ArticleInfiniteList Header={Header} />
-        </Page>
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={
+                <StickyContentLayout
+                    content={
+                        <Page
+                            data-testid={DATA_TEST_ID.articlesPage}
+                            className={styles.pageRedesigned}
+                        >
+                            <ArticlePageGreeting />
+                            <ArticleInfiniteList />
+                        </Page>
+                    }
+                    left={<ViewSelectorContainer fetchData={fetchData} />}
+                    right={<div>ssddsd</div>}
+                />
+            }
+            off={
+                <Page
+                    data-testid={DATA_TEST_ID.articlesPage}
+                    className={styles.page}
+                >
+                    <ArticlePageGreeting />
+                    <ArticleInfiniteList Header={Header} />
+                </Page>
+            }
+        />
     )
 }
 

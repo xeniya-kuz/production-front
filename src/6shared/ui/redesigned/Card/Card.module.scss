@@ -1,7 +1,3 @@
-.card {
-    border-radius: 19px;
-}
-
 .primary {
     background-color: var(--dark-bg-redesigned);
 }
@@ -24,4 +20,12 @@
 
 .padding_24 {
     padding: 24px;
+}
+
+.normal {
+    border-radius: 19px;
+}
+
+.round {
+    border-radius: 32px;
 }

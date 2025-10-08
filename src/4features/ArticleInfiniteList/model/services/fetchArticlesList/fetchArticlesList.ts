@@ -9,7 +9,7 @@ import {
     selectArticlesOrder,
     selectArticlesSearch,
     selectArticlesType,
-} from '@/4features/ArticlesPageFilters'
+} from '@/3widgets/ArticlesPageFilters'
 
 import { selectArticlesNum } from '../../selectors/selectArticlesNum/selectArticlesNum'
 

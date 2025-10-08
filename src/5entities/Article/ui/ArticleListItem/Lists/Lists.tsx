@@ -45,8 +45,8 @@ export const Lists = memo(function Lists(props: ListsProps): JSX.Element {
         Footer: () => <Footer isLoading={isLoading} />,
     }
 
-    if (virtualized === true) {
-        ;<Virtuoso
+    if (virtualized === true)
+        <Virtuoso
             data={articles}
             itemContent={renderArticle}
             endReached={onLoadNextArticles}
@@ -54,7 +54,6 @@ export const Lists = memo(function Lists(props: ListsProps): JSX.Element {
             components={components}
             className={classNames(undefined, [className])}
         />
-    }
 
     if (isLoading === true) {
         return (
@@ -67,7 +66,7 @@ export const Lists = memo(function Lists(props: ListsProps): JSX.Element {
 
     return (
         <div className={classNames(styles.listsContainer, [className])}>
-            {Header !== undefined && <Header />}
+            {Header && <Header />}
             {articles.map((article, index) => renderArticle(index, article))}
         </div>
     )

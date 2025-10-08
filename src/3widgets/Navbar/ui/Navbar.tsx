@@ -3,16 +3,25 @@ import { AvatarDropdown } from '@/4features/AvatarDropdown'
 import { NotificationButton } from '@/4features/NotificationButton'
 import { selectUserAuthData } from '@/5entities/User'
 import { classNames } from '@/6shared/lib/classNames/classNames'
-import { AppLink, AppLinkTheme } from '@/6shared/ui/deprecated/AppLink/AppLink'
+import {
+    AppLink as AppLinkDeprecated,
+    AppLinkTheme,
+} from '@/6shared/ui/deprecated/AppLink/AppLink'
 import { Button, ButtonTheme } from '@/6shared/ui/deprecated/Button/Button'
 import { HStack } from '@/6shared/ui/redesigned/Stack'
-import { Text, TextTheme } from '@/6shared/ui/deprecated/Text/Text'
+import {
+    Text as TextDeprecated,
+    TextTheme,
+} from '@/6shared/ui/deprecated/Text/Text'
 import { type FC, type JSX, memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import styles from './Navbar.module.scss'
 import { getRouteArticleCreate } from '@/6shared/const/router'
 import { ToggleFeatures } from '@/6shared/lib/features'
+import { AppLink } from '@/6shared/ui/redesigned/AppLink'
+import { Icon } from '@/6shared/ui/redesigned/Icon'
+import NewArticleIcon from '@/6shared/assets/icons/pencil.svg'
 
 interface NavbarProps {
     className?: string
@@ -31,9 +40,18 @@ export const Navbar = memo(function Navbar({
 
     const UserButtons: FC = () => (
         <HStack
-            gap={'16'}
+            gap={'8'}
             className={styles.actions}
         >
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <AppLink to={getRouteArticleCreate()}>
+                        <Icon Svg={NewArticleIcon} />
+                    </AppLink>
+                }
+                off={<></>}
+            />
             <NotificationButton />
             <AvatarDropdown />
         </HStack>
@@ -41,18 +59,18 @@ export const Navbar = memo(function Navbar({
 
     const Deprecated: FC = () => (
         <header className={classNames(styles.navbar, [className])}>
-            <Text
+            <TextDeprecated
                 className={styles.appName}
                 title="Production project"
                 theme={TextTheme.INVERTED}
             />
-            <AppLink
+            <AppLinkDeprecated
                 to={getRouteArticleCreate()}
                 theme={AppLinkTheme.INVERTED}
                 className={styles.create}
             >
                 {t('articles:article-creation')}
-            </AppLink>
+            </AppLinkDeprecated>
             <UserButtons />
         </header>
     )

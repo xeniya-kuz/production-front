@@ -97,16 +97,7 @@ export const ListBox = <T extends string>(
                                             },
                                         )}
                                     >
-                                        {selected && (
-                                            <Icon
-                                                Svg={DoneIcon}
-                                                color={
-                                                    active
-                                                        ? IconColors.INVERTED_PRIMARY_FILL
-                                                        : IconColors.PRIMARY_FILL
-                                                }
-                                            />
-                                        )}
+                                        {selected && <Icon Svg={DoneIcon} />}
                                         {option.label}
                                     </li>
                                 </>

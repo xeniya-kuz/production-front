@@ -1,3 +1,32 @@
-.notSelected {
-    opacity: 0.5;
+.viewSwitcher {
+    .notSelected {
+        opacity: 0.5;
+    }
+}
+
+.viewSwitcherRedesigned {
+    overflow: hidden;
+    display: flex;
+    border-radius: 32px;
+    background: var(--dark-bg-redesigned);
+
+    .button {
+        padding: 10px;
+        border: solid 2px var(--dark-bg-redesigned);
+
+        &:first-of-type {
+            border-top-left-radius: 43px;
+            border-bottom-left-radius: 43px;
+        }
+
+        &:last-of-type {
+            border-top-right-radius: 43px;
+            border-bottom-right-radius: 43px;
+        }
+
+        &.selected {
+            cursor: default;
+            background: var(--bg-redesigned);
+        }
+    }
 }

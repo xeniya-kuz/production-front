@@ -1,5 +1,11 @@
 .icon {
-    color: var(--icon-redesigned);
+    &.primary {
+        color: var(--icon-redesigned);
+    }
+
+    &.secondary {
+        color: var(--light-bg-redesigned);
+    }
 }
 
 .button {
@@ -14,7 +20,7 @@
     background: none;
     outline: none;
 
-    &:hover .icon {
+    &:hover .hover.icon {
         color: var(--accent-redesigned);
     }
 }
