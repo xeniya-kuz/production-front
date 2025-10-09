@@ -9,7 +9,7 @@ interface ViewSelectorContainerProps {
     fetchData: () => void
 }
 
-export const ViewSelectorContainer = memo(function ViewSelectorContainer({
+export const ViewSwitcherContainer = memo(function ViewSelectorContainer({
     className,
     fetchData,
 }: ViewSelectorContainerProps) {

@@ -71,7 +71,7 @@
     cursor: pointer;
     display: block;
     width: 230px;
-    transition: 0.2s;
+    transition: var(--transition);
 
     &:hover {
         transform: scale(1.05);

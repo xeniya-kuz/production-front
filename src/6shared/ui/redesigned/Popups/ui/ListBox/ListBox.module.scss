@@ -2,24 +2,45 @@
     margin: 0;
     padding: 0;
     border: none;
-
     background: none;
-    outline: none;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.label {
+    overflow: hidden;
+    padding: 8px 8px 8px 16px;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
 }
 
 .options {
     min-width: 100%;
-    background-color: var(--dark-bg-redesigned);
-    box-shadow: 4px 4px 8px var(--dark-bg-redesigned);
+    background-color: var(--bg-redesigned);
 }
 
 .option {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 10px;
+    padding: 8px 16px;
 }
 
 .active {
-    color: var(--inverted-primary-color);
-    background-color: var(--primary-color);
+    background: var(--light-bg-redesigned);
+}
+
+.selected {
+    color: var(--accent-redesigned);
+}
+
+.arrow {
+    margin-right: 16px;
+    color: var(--hint-redesigned) !important;
+    transition: var(--transition) transform;
+
+    &.open {
+        transform: rotate(180deg);
+    }
 }

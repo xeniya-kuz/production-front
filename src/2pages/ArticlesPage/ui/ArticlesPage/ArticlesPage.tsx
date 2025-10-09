@@ -4,7 +4,6 @@ import {
     articleInfiniteListActions,
     fetchArticlesList,
 } from '@/4features/ArticleInfiniteList'
-import { ArticlesPageFilters } from '@/3widgets/ArticlesPageFilters'
 import { ArticlePageGreeting } from '@/4features/AticlePageGreeting'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 import { useAppDispatch } from '@/6shared/lib/hooks'
@@ -12,7 +11,11 @@ import { type JSX, memo, useCallback } from 'react'
 import styles from './ArticlesPage.module.scss'
 import { ToggleFeatures } from '@/6shared/lib/features'
 import { StickyContentLayout } from '@/6shared/layouts/StickyContentLayout'
-import { ViewSelectorContainer } from '@/4features/ViewSwitcher'
+import { ViewSwitcher } from '@/4features/ViewSwitcher'
+import {
+    ArticlesFiltersDeprecated,
+    ArticlesFilters,
+} from '@/3widgets/ArticlesPageFilters'
 
 const ArticlesPage = (): JSX.Element => {
     const dispatch = useAppDispatch()
@@ -23,7 +26,7 @@ const ArticlesPage = (): JSX.Element => {
     }, [dispatch])
 
     const Header = (): JSX.Element => (
-        <ArticlesPageFilters
+        <ArticlesFiltersDeprecated
             className={styles.header}
             fetchData={fetchData}
         />
@@ -43,8 +46,8 @@ const ArticlesPage = (): JSX.Element => {
                             <ArticleInfiniteList />
                         </Page>
                     }
-                    left={<ViewSelectorContainer fetchData={fetchData} />}
-                    right={<div>ssddsd</div>}
+                    left={<ViewSwitcher fetchData={fetchData} />}
+                    right={<ArticlesFilters fetchData={fetchData} />}
                 />
             }
             off={

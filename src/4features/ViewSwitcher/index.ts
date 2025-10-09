@@ -1,1 +1,1 @@
-export { ViewSelectorContainer } from './ui/ViewSelectorContainer'
+export { ViewSwitcherContainer as ViewSwitcher } from './ui/ViewSwitcherContainer'

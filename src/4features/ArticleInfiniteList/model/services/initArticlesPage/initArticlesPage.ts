@@ -3,55 +3,66 @@ import { type ThunkConfig } from '@/1app/providers/StoreProvider'
 import { selectArticlesInited } from '../../selectors/selectArticlesInited/selectArticlesInited'
 import { articleInfiniteListActions } from '../../slice/articleInfiniteListSlice'
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList'
-import { type ArticleType, type ArticleSortField } from '@/5entities/Article'
-import { type SortOrder } from '@/6shared/types/sort'
-// eslint-disable-next-line fsd-path-checker-sia355/layer-imports
 import {
-    articlesPageFiltersActions,
-    selectArticlesView,
-} from '@/3widgets/ArticlesPageFilters'
+    type ArticleType,
+    type ArticleSortField,
+    type ArticleView,
+} from '@/5entities/Article'
+import { type SortOrder } from '@/6shared/types/sort'
+// TODO: спустить в entities???
+// eslint-disable-next-line fsd-path-checker-sia355/layer-imports
+import { articlesPageFiltersActions } from '@/3widgets/ArticlesPageFilters'
 
 export const init = createAsyncThunk<
     void,
-    URLSearchParams,
+    { searchParams: URLSearchParams; view: ArticleView },
     ThunkConfig<string>
->('articleInfiniteList/initArticlesPage', async (searchParams, thunkAPI) => {
-    const { getState, dispatch } = thunkAPI
+>(
+    'articleInfiniteList/initArticlesPage',
+    async ({ searchParams, view }, thunkAPI) => {
+        const { getState, dispatch } = thunkAPI
+        const inited = selectArticlesInited(getState())
 
-    const inited = selectArticlesInited(getState())
-    const view = selectArticlesView(getState())
+        if (!inited) {
+            const orderFromURL = searchParams.get('order')
+            const sortFromURL = searchParams.get('sort')
+            const searchFromURL = searchParams.get('search')
+            const typeFromURL = searchParams.get('type')
 
-    if (inited !== true) {
-        const orderFromURL = searchParams.get('order')
-        const sortFromURL = searchParams.get('sort')
-        const searchFromURL = searchParams.get('search')
-        const typeFromURL = searchParams.get('type')
+            if (orderFromURL) {
+                dispatch(
+                    articlesPageFiltersActions.setOrder(
+                        orderFromURL as SortOrder,
+                    ),
+                )
+            }
 
-        if (orderFromURL !== null) {
+            if (sortFromURL) {
+                dispatch(
+                    articlesPageFiltersActions.setSort(
+                        sortFromURL as ArticleSortField,
+                    ),
+                )
+            }
+
+            if (searchFromURL) {
+                dispatch(articlesPageFiltersActions.setSearch(searchFromURL))
+            }
+
+            if (typeFromURL) {
+                dispatch(
+                    articlesPageFiltersActions.setType(
+                        typeFromURL as ArticleType,
+                    ),
+                )
+            }
+
             dispatch(
-                articlesPageFiltersActions.setOrder(orderFromURL as SortOrder),
+                articleInfiniteListActions.initState({
+                    view,
+                }),
             )
+            void dispatch(fetchArticlesList({}))
         }
-
-        if (sortFromURL !== null) {
-            dispatch(
-                articlesPageFiltersActions.setSort(
-                    sortFromURL as ArticleSortField,
-                ),
-            )
-        }
-
-        if (searchFromURL !== null) {
-            dispatch(articlesPageFiltersActions.setSearch(searchFromURL))
-        }
-
-        if (typeFromURL !== null) {
-            dispatch(
-                articlesPageFiltersActions.setType(typeFromURL as ArticleType),
-            )
-        }
-
-        dispatch(articleInfiniteListActions.initState({ view }))
-        void dispatch(fetchArticlesList({}))
-    }
-})
+    },
+)

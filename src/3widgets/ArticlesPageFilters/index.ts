@@ -1,14 +1,10 @@
-export { selectArticlesOrder } from './selectors/selectArticlesOrder/selectArticlesOrder'
-export { selectArticlesSearch } from './selectors/selectArticlesSearch/selectArticlesSearch'
-export { selectArticlesType } from './selectors/selectArticlesType/selectArticlesType'
+export { ArticlesFilters } from './ui/ArticlesFilters/ArticlesFilters'
 
-export { selectArticlesSort } from './selectors/selectArticlesSort/selectArticlesSort'
+export { ArticlesFiltersDeprecated } from './ui/ArticlesFiltersDeprecated/ArticlesFiltersDeprecated'
 
-export { ArticlesPageFilters } from './ui/ArticlesPageFilters'
 export {
-    articlesPageFiltersActions,
-    articlesPageFiltersReducer,
+    articlesFiltersActions as articlesPageFiltersActions,
+    articlesFiltersReducer as articlesPageFiltersReducer,
 } from './model/slice/articlesPageFiltersSlice'
-export { selectArticlesView } from './selectors/selectArticlesView/selectArticlesView'
 
 export type { ArticlesPageFiltersSchema } from './model/types/articlesPageFiltersSchema'

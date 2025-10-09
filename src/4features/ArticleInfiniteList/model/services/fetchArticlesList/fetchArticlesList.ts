@@ -1,17 +1,17 @@
+/* eslint-disable fsd-path-checker-sia355/layer-imports */
+/* eslint-disable fsd-path-checker-sia355/public-api-imports */
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type ThunkConfig } from '@/1app/providers/StoreProvider'
 import { ArticleType, type Article } from '@/5entities/Article'
 import { selectArticlesLimit } from '../../selectors/selectArticlesLimit/selectArticlesLimit'
 import { addQueryParams } from '@/6shared/lib/url/addQueryParams/addQueryParams'
-// eslint-disable-next-line fsd-path-checker-sia355/layer-imports
-import {
-    selectArticlesSort,
-    selectArticlesOrder,
-    selectArticlesSearch,
-    selectArticlesType,
-} from '@/3widgets/ArticlesPageFilters'
 
 import { selectArticlesNum } from '../../selectors/selectArticlesNum/selectArticlesNum'
+// TODO: перенести в entities??
+import { selectArticlesSort } from '@/3widgets/ArticlesPageFilters/selectors/selectArticlesSort/selectArticlesSort'
+import { selectArticlesOrder } from '@/3widgets/ArticlesPageFilters/selectors/selectArticlesOrder/selectArticlesOrder'
+import { selectArticlesSearch } from '@/3widgets/ArticlesPageFilters/selectors/selectArticlesSearch/selectArticlesSearch'
+import { selectArticlesType } from '@/3widgets/ArticlesPageFilters/selectors/selectArticlesType/selectArticlesType'
 
 interface FetchArticlesListProps {
     replace?: boolean

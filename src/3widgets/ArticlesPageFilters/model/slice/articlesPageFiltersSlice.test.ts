@@ -1,8 +1,8 @@
 import { ArticleSortField, ArticleType } from '@/5entities/Article'
 import { type ArticlesPageFiltersSchema } from '../types/articlesPageFiltersSchema'
 import {
-    articlesPageFiltersActions,
-    articlesPageFiltersReducer,
+    articlesFiltersActions,
+    articlesFiltersReducer,
 } from './articlesPageFiltersSlice'
 
 describe('articleInfiniteListReducer', () => {
@@ -10,9 +10,9 @@ describe('articleInfiniteListReducer', () => {
         const state: DeepPartial<ArticlesPageFiltersSchema> = {}
 
         expect(
-            articlesPageFiltersReducer(
+            articlesFiltersReducer(
                 state as ArticlesPageFiltersSchema,
-                articlesPageFiltersActions.setOrder('asc'),
+                articlesFiltersActions.setOrder('asc'),
             ),
         ).toEqual({ order: 'asc' })
     })
@@ -21,9 +21,9 @@ describe('articleInfiniteListReducer', () => {
         const state: DeepPartial<ArticlesPageFiltersSchema> = {}
 
         expect(
-            articlesPageFiltersReducer(
+            articlesFiltersReducer(
                 state as ArticlesPageFiltersSchema,
-                articlesPageFiltersActions.setSearch('search'),
+                articlesFiltersActions.setSearch('search'),
             ),
         ).toEqual({ search: 'search' })
     })
@@ -32,9 +32,9 @@ describe('articleInfiniteListReducer', () => {
         const state: DeepPartial<ArticlesPageFiltersSchema> = {}
 
         expect(
-            articlesPageFiltersReducer(
+            articlesFiltersReducer(
                 state as ArticlesPageFiltersSchema,
-                articlesPageFiltersActions.setSort(ArticleSortField.CREATED),
+                articlesFiltersActions.setSort(ArticleSortField.CREATED),
             ),
         ).toEqual({ sort: ArticleSortField.CREATED })
     })
@@ -43,9 +43,9 @@ describe('articleInfiniteListReducer', () => {
         const state: DeepPartial<ArticlesPageFiltersSchema> = {}
 
         expect(
-            articlesPageFiltersReducer(
+            articlesFiltersReducer(
                 state as ArticlesPageFiltersSchema,
-                articlesPageFiltersActions.setType(ArticleType.IT),
+                articlesFiltersActions.setType(ArticleType.IT),
             ),
         ).toEqual({ type: ArticleType.IT })
     })

@@ -1,12 +1,12 @@
 {
-    "all": "all",
-    "article-creation": "article-creation",
-    "article-edition": "article-edition",
-    "articles-not-found": "",
-    "create-acticle": "create-acticle",
-    "economics": "economics",
-    "it": "it",
-    "recommendations": "recommendations",
-    "science": "science",
-    "search": ""
+  "all": "all",
+  "article-creation": "article-creation",
+  "article-edition": "article-edition",
+  "articles-not-found": "",
+  "create-acticle": "create-acticle",
+  "economics": "economics",
+  "it": "it",
+  "recommendations": "recommendations",
+  "science": "science",
+  "search": ""
 }

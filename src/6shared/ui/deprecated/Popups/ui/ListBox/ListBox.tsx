@@ -19,7 +19,7 @@ export interface ListBoxOption {
 interface ListBoxProps<T extends string> {
     className?: string
     options: ListBoxOption[]
-    value?: string
+    value?: T
     onChange: ({ name, value }: { name: string; value: T }) => void
     name?: string
     disabled?: boolean

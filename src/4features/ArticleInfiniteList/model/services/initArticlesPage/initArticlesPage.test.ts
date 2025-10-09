@@ -1,6 +1,7 @@
 import { TestAsyncThunk } from '@/6shared/lib/tests/TestAsyncThunk'
 import { init } from './initArticlesPage'
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList'
+import { ArticleView } from '@/5entities/Article'
 
 jest.mock('../fetchArticlesList/fetchArticlesList')
 
@@ -12,7 +13,7 @@ describe('initArticlesPage', () => {
             articleInfiniteList: { _inited: false },
         })
 
-        await thunk.callThunk(searchParams)
+        await thunk.callThunk({ searchParams, view: ArticleView.LIST })
 
         expect(fetchArticlesList).toHaveBeenCalled()
         // dispatch(articlesPageActions...), dispatch(fetchArticlesList(...)), initArticlesPage.pending, initArticlesPage.fulfilled
@@ -24,7 +25,7 @@ describe('initArticlesPage', () => {
             articleInfiniteList: { _inited: true },
         })
 
-        await thunk.callThunk(searchParams)
+        await thunk.callThunk({ searchParams, view: ArticleView.LIST })
 
         expect(fetchArticlesList).not.toHaveBeenCalled()
         // initArticlesPage.pending, initArticlesPage.fulfilled

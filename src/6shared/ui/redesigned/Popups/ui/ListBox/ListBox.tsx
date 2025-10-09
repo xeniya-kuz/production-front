@@ -2,13 +2,12 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import { type DropdownDirection } from '@/6shared/types/ui'
 import { Listbox as HListbox } from '@headlessui/react'
 import { Fragment, type JSX, type ReactNode } from 'react'
-import DoneIcon from '@/6shared/assets/icons/done-20-20.svg'
 import { Button } from '../../../Button/Button'
-import { Icon } from '../../../Icon/Icon'
-import { HStack } from '../../../../redesigned/Stack'
 import { mapDirectionsClass } from '../styles/const'
 import styles from './ListBox.module.scss'
 import popupStyles from '../styles/popup.module.scss'
+import { Icon } from '../../../Icon'
+import ArrowIcon from '@/6shared/assets/icons/arrow-bottom.svg'
 
 export interface ListBoxOption {
     value: string
@@ -19,11 +18,10 @@ export interface ListBoxOption {
 interface ListBoxProps<T extends string> {
     className?: string
     options: ListBoxOption[]
-    value?: string
+    value?: T
     onChange: ({ name, value }: { name: string; value: T }) => void
     name?: string
     disabled?: boolean
-    label?: string
     direction?: DropdownDirection
 }
 
@@ -37,7 +35,6 @@ export const ListBox = <T extends string>(
         onChange,
         name = '',
         disabled,
-        label,
         direction = 'bottom left',
     } = props
 
@@ -48,64 +45,65 @@ export const ListBox = <T extends string>(
     const selectedOption = options.find((option) => option.value === value)
 
     return (
-        <HStack className={classNames(className, [])}>
-            {label !== undefined && (
-                <span
-                    className={classNames(styles.label, [], {
-                        [popupStyles.disabled]: disabled,
-                    })}
-                >{`${label}>`}</span>
-            )}
-            <HListbox
-                as="div"
-                value={value}
-                className={classNames(styles.listBox, [
-                    className,
-                    popupStyles.popup,
+        <HListbox
+            as="div"
+            value={value}
+            className={classNames(styles.listBox, [
+                className,
+                popupStyles.popup,
+            ])}
+            onChange={handleOnChange}
+            disabled={disabled}
+        >
+            <HListbox.Button className={classNames(styles.trigger)}>
+                {({ open, disabled }) => (
+                    <Button
+                        disabled={disabled}
+                        variant="filled"
+                        className={styles.button}
+                    >
+                        <p className={styles.label}>{selectedOption?.label}</p>
+                        <Icon
+                            Svg={ArrowIcon}
+                            iconClassName={classNames(styles.arrow, [], {
+                                [styles.open]: open,
+                            })}
+                        />
+                    </Button>
+                )}
+            </HListbox.Button>
+            <HListbox.Options
+                className={classNames(styles.options, [
+                    mapDirectionsClass[direction],
+                    popupStyles.content,
                 ])}
-                onChange={handleOnChange}
-                disabled={disabled}
             >
-                <HListbox.Button
-                    as={'div'}
-                    className={classNames(styles.trigger)}
-                >
-                    <Button disabled={disabled}>{selectedOption?.label}</Button>
-                </HListbox.Button>
-                <HListbox.Options
-                    className={classNames(styles.options, [
-                        mapDirectionsClass[direction],
-                        popupStyles.content,
-                    ])}
-                >
-                    {options.map((option) => (
-                        <HListbox.Option
-                            key={option.value}
-                            value={option.value}
-                            as={Fragment}
-                            disabled={option.disabled}
-                        >
-                            {({ active, selected, disabled }) => (
-                                <>
-                                    <li
-                                        className={classNames(
-                                            styles.option,
-                                            undefined,
-                                            {
-                                                [styles.active]: active,
-                                                [styles.disabled]: disabled,
-                                            },
-                                        )}
-                                    >
-                                        {selected && <Icon Svg={DoneIcon} />}
-                                        {option.label}
-                                    </li>
-                                </>
-                            )}
-                        </HListbox.Option>
-                    ))}
-                </HListbox.Options>
-            </HListbox>
-        </HStack>
+                {options.map((option) => (
+                    <HListbox.Option
+                        key={option.value}
+                        value={option.value}
+                        disabled={option.disabled}
+                    >
+                        {({ active, selected, disabled }) => (
+                            <>
+                                <li
+                                    className={classNames(
+                                        styles.option,
+                                        undefined,
+                                        {
+                                            [styles.active]: active,
+                                            [styles.disabled]: disabled,
+                                            [styles.selected]: selected,
+                                        },
+                                    )}
+                                >
+                                    {option.label}
+                                </li>
+                            </>
+                        )}
+                    </HListbox.Option>
+                ))}
+            </HListbox.Options>
+        </HListbox>
     )
 }

@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ArticlesPageFilters } from './ArticlesPageFilters'
+import { ArticlesFiltersDeprecated } from './ArticlesFiltersDeprecated'
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
 
 const meta = {
-    title: 'features/Article/ArticlesPageFilters',
-    component: ArticlesPageFilters,
+    title: 'features/Article/ArticlesFiltersDeprecated',
+    component: ArticlesFiltersDeprecated,
     tags: ['autodocs'],
     args: {
         fetchData: () => {},
     },
     decorators: [StoreDecorator({})],
-} satisfies Meta<typeof ArticlesPageFilters>
+} satisfies Meta<typeof ArticlesFiltersDeprecated>
 
 export default meta
 type Story = StoryObj<typeof meta>

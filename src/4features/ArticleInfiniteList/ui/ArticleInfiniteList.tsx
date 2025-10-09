@@ -37,7 +37,7 @@ export const ArticleInfiniteList = memo(function AddArticleCommentForm({
     const [searchParams] = useSearchParams()
 
     useInitialEffect(() => {
-        void dispatch(init(searchParams))
+        void dispatch(init({ searchParams, view }))
     })
 
     const onLoadNextArticles = useCallback(() => {

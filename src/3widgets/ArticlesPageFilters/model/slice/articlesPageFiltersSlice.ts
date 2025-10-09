@@ -1,4 +1,4 @@
-import { ArticleSortField, ArticleType, ArticleView } from '@/5entities/Article'
+import { ArticleSortField, ArticleType } from '@/5entities/Article'
 import { type SortOrder } from '@/6shared/types/sort'
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import { type ArticlesPageFiltersSchema } from '../types/articlesPageFiltersSchema'
@@ -7,7 +7,6 @@ const initialState: ArticlesPageFiltersSchema = {
     order: 'asc',
     sort: ArticleSortField.CREATED,
     search: '',
-    view: ArticleView.TILE,
     type: ArticleType.ALL,
 }
 
@@ -31,6 +30,6 @@ const articlesPageFiltersSlice = createSlice({
 })
 
 export const {
-    reducer: articlesPageFiltersReducer,
-    actions: articlesPageFiltersActions,
+    reducer: articlesFiltersReducer,
+    actions: articlesFiltersActions,
 } = articlesPageFiltersSlice

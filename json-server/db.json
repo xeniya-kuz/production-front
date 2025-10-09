@@ -612,9 +612,9 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "dark_theme",
+        "theme": "orange_theme",
         "isArticlesPageWasOpened": true,
-        "articlesView": "tile"
+        "articlesView": "list"
       }
     },
     {
@@ -631,7 +631,7 @@
       },
       "jsonSettings": {
         "theme": "orange_theme",
-        "isArticlesPageWasOpened": false,
+        "isArticlesPageWasOpened": true,
         "articlesView": "list"
       }
     },
@@ -662,7 +662,7 @@
       "age": 22,
       "city": "Москва",
       "username": "tra-ta-ta",
-      "currency": "USD",
+      "currency": "RUB",
       "country": "Kazakhstan",
       "avatar": "https://avatars.dzeninfra.ru/get-zen_doc/53963/pub_651011ddc419e8692e91c5dc_65101281d67f4c757ed51043/scale_1200"
     },

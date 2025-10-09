@@ -2,7 +2,7 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './Card.module.scss'
 import { type HTMLAttributes, type JSX, memo, type ReactNode } from 'react'
 
-type CardVariant = 'primary' | 'outline'
+type CardVariant = 'primary' | 'outline' | 'light'
 type CardPadding = '0' | '8' | '16' | '24'
 type CardRadius = 'normal' | 'round'
 

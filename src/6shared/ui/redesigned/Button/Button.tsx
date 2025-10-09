@@ -4,16 +4,14 @@ import styles from './Button.module.scss'
 
 type ButtonSize = 'm' | 'l' | 'xl'
 
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
+type ButtonVariant = 'clearWP' | 'clear' | 'filled' | 'outline'
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string
     /**
      * Тема кнопки. Отвечает за визуал (в рамке, без стилей, противоположный теме приложения цвет и тд)
      */
-    // variant?: ButtonVariant
+    variant?: ButtonVariant
     /**
      * Флаг, делающий кнопку квадратной
      */
@@ -46,6 +44,7 @@ export const Button = memo(function Button(props: ButtonProps) {
         size = 'm',
         disabled = false,
         fullWidth,
+        variant = 'clear',
         ...otherProps
     } = props
 
@@ -60,7 +59,7 @@ export const Button = memo(function Button(props: ButtonProps) {
         <button
             className={classNames(
                 styles.button,
-                [styles.clear, className],
+                [styles[variant], className],
                 mods,
             )}
             disabled={disabled}

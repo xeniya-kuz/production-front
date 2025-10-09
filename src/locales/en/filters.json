@@ -5,5 +5,9 @@
     "desc": "descending",
     "title": "title",
     "creation-date": "creation date",
-    "views": "views"
+    "views": "views",
+    "all": "All articles",
+    "it": "IT",
+    "science": "Science",
+    "economics": "Economics"
 }
