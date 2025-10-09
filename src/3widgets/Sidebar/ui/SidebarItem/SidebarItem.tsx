@@ -1,4 +1,4 @@
-import { classNames } from '@/6shared/lib/classNames/classNames'
+import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import {
     AppLink as AppLinkDeprecated,
     AppLinkTheme,
@@ -33,14 +33,16 @@ export const SidebarItem = memo(function SidebarItem({
         return null
     }
 
+    const mods: Mods = {
+        [styles.collapsed]: collapsed,
+    }
+
     const Deprecated: FC = () => (
         <li className={styles.sidebarItem}>
             <AppLinkDeprecated
                 theme={AppLinkTheme.INVERTED}
                 to={item?.path}
-                className={classNames(styles.item, [], {
-                    [styles.collapsed]: collapsed,
-                })}
+                className={classNames(styles.item, [], mods)}
             >
                 <IconDeprecated
                     Svg={item.Icon}
@@ -58,9 +60,7 @@ export const SidebarItem = memo(function SidebarItem({
                 <li className={styles.sidebarItemRedesigned}>
                     <AppLink
                         to={item?.path}
-                        className={classNames(styles.item, [], {
-                            [styles.collapsed]: collapsed,
-                        })}
+                        className={classNames(styles.item, [], mods)}
                         activeClassName={styles.active}
                     >
                         <Icon Svg={item.Icon} />

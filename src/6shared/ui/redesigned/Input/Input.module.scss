@@ -1,0 +1,49 @@
+.input {
+    width: 100%;
+    border: 1px transparent;
+
+    color: var(--text-redesigned);
+
+    background: none;
+    outline: transparent;
+
+    &::placeholder {
+        color: var(--hint-redesigned);
+    }
+}
+
+.inputWrapper {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    padding: 0 16px;
+    border: 1px solid var(--icon-redesigned);
+    border-radius: 48px;
+}
+
+.readonly {
+    opacity: 0.5;
+}
+
+.withAddonRight {
+    padding-right: 8px;
+}
+
+.withAddonLeft {
+    padding-left: 8px;
+}
+
+.addonLeft,
+.addonRight {
+    display: flex;
+}
+
+.focused {
+    border: 2px solid var(--accent-redesigned);
+
+    .addonLeft svg,
+    .addonRight svg {
+        color: var(--accent-redesigned);
+    }
+}

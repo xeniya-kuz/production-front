@@ -1,4 +1,4 @@
-import { classNames } from '@/6shared/lib/classNames/classNames'
+import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import { type JSX, memo, useCallback, useState } from 'react'
 import { Card } from '@/6shared/ui/deprecated/Card/Card'
 import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
@@ -87,9 +87,13 @@ export const RatingCard = memo(function RatingCard({
         </>
     )
 
+    const mods: Mods = {
+        [styles.full]: fullWidth,
+    }
+
     return (
         <Card
-            className={classNames(className, [], { [styles.full]: fullWidth })}
+            className={classNames(className, [], mods)}
             data-testid={DATA_TEST_ID.ratingCard}
         >
             <VStack

@@ -5,15 +5,8 @@
     background: none;
 }
 
-.button {
-    display: flex;
-    align-items: center;
-    padding: 0;
-}
-
 .label {
     overflow: hidden;
-    padding: 8px 8px 8px 16px;
     text-overflow: ellipsis;
     text-wrap: nowrap;
 }
@@ -36,9 +29,7 @@
 }
 
 .arrow {
-    margin-right: 16px;
-    color: var(--hint-redesigned) !important;
-    transition: var(--transition) transform;
+    transition: var(--transition) all;
 
     &.open {
         transform: rotate(180deg);

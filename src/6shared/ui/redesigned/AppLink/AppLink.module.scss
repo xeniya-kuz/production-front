@@ -1,11 +1,6 @@
-.applink {
-    &:hover {
-        transition: 0.2s color;
-    }
-}
-
 .primary {
     color: var(--text-redesigned);
+    transition: var(--transition) color;
 
     &:hover {
         color: var(--accent-redesigned);
@@ -14,6 +9,7 @@
 
 .inverted {
     color: var(--cancel-redesigned);
+    transition: var(--transition) color;
 
     &:hover {
         opacity: 0.8;

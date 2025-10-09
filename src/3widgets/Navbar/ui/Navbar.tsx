@@ -7,7 +7,10 @@ import {
     AppLink as AppLinkDeprecated,
     AppLinkTheme,
 } from '@/6shared/ui/deprecated/AppLink/AppLink'
-import { Button, ButtonTheme } from '@/6shared/ui/deprecated/Button/Button'
+import {
+    Button as ButtonDeprecated,
+    ButtonTheme,
+} from '@/6shared/ui/deprecated/Button/Button'
 import { HStack } from '@/6shared/ui/redesigned/Stack'
 import {
     Text as TextDeprecated,
@@ -95,13 +98,13 @@ export const Navbar = memo(function Navbar({
 
     return (
         <header className={classNames(styles.navbar, [className])}>
-            <Button
+            <ButtonDeprecated
                 className={styles.links}
                 theme={ButtonTheme.CLEAR_INVERTED}
                 onClick={onToggleModal}
             >
                 {t('Войти')}
-            </Button>
+            </ButtonDeprecated>
             {isAuthModal && (
                 <LoginModal
                     isOpen={isAuthModal}

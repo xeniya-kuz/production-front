@@ -4,7 +4,6 @@ import { type JSX, memo } from 'react'
 import { Card } from '@/6shared/ui/redesigned/Card'
 import { VStack } from '@/6shared/ui/redesigned/Stack'
 import { useTranslation } from 'react-i18next'
-import { Input } from '@/6shared/ui/deprecated/Input'
 import { ArticleSortDropdown } from '@/4features/ArticleSortDropdown'
 import { Tabs } from '@/6shared/ui/redesigned/Tabs'
 import { useArticleFilters } from '../../lib/hooks/useArticlesFilters'
@@ -13,6 +12,9 @@ import {
     type ReducerList,
 } from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { articlesFiltersReducer } from '../../model/slice/articlesPageFiltersSlice'
+import { Input } from '@/6shared/ui/redesigned/Input'
+import { Icon } from '@/6shared/ui/redesigned/Icon'
+import SearchIcon from '@/6shared/assets/icons/search.svg'
 
 interface ArticlesFiltersProps {
     className?: string
@@ -55,6 +57,7 @@ export const ArticlesFilters = memo(function ArticlesFilters({
                         placeholder={t('search')}
                         onChange={onChangeSearch}
                         value={search}
+                        addonLeft={<Icon Svg={SearchIcon} />}
                     />
 
                     <Tabs

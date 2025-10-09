@@ -32,6 +32,14 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
      * Увеличивает кнопку на всю свободную ширину
      */
     fullWidth?: boolean
+    /**
+     * Добавляет элемент слева
+     */
+    addonLeft?: ReactNode
+    /**
+     * Добавляет элемент справа
+     */
+    addonRight?: ReactNode
 }
 
 // обычно в качестве children кнопки передается строка, поэтому используем memo
@@ -45,6 +53,9 @@ export const Button = memo(function Button(props: ButtonProps) {
         disabled = false,
         fullWidth,
         variant = 'clear',
+        addonLeft,
+        addonRight,
+
         ...otherProps
     } = props
 
@@ -53,6 +64,9 @@ export const Button = memo(function Button(props: ButtonProps) {
         [styles[size]]: size,
         [styles.disabled]: disabled,
         [styles.fullWidth]: fullWidth,
+
+        [styles.withAddonRight]: !!addonRight,
+        [styles.withAddonLeft]: !!addonLeft,
     }
 
     return (
@@ -65,7 +79,9 @@ export const Button = memo(function Button(props: ButtonProps) {
             disabled={disabled}
             {...otherProps}
         >
+            <div className={styles.addonLeft}>{addonLeft}</div>
             {children}
+            <div className={styles.addonRight}>{addonRight}</div>
         </button>
     )
 })

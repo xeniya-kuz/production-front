@@ -1,3 +1,8 @@
+.addonLeft svg,
+.addonRight svg {
+    color: var(--hint-redesigned);
+}
+
 .button {
     cursor: pointer;
 
@@ -12,7 +17,12 @@
 
     &,
     &.clearWP {
-        padding: 8px 16px;
+        padding: 2px 16px;
+    }
+
+    .addonLeft svg,
+    .addonRight svg {
+        color: var(--hint-redesigned);
     }
 
     &:disabled {
@@ -22,6 +32,11 @@
 
     &:not(:disabled):hover {
         color: var(--accent-redesigned);
+
+        .addonLeft svg,
+        .addonRight svg {
+            color: var(--accent-redesigned);
+        }
     }
 
     &.filled {
@@ -76,4 +91,23 @@
 
 .fullWidth {
     width: 100%;
+}
+
+.withAddonRight {
+    padding-right: 8px;
+}
+
+.withAddonLeft {
+    padding-left: 8px;
+}
+
+.withAddonLeft,
+.withAddonRight {
+    display: flex;
+    align-items: center;
+}
+
+.addonLeft,
+.addonRight {
+    display: flex;
 }

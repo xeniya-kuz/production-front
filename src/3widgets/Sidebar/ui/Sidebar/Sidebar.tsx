@@ -1,6 +1,6 @@
 import { LangSwitcher } from '@/4features/LangSwitcher'
 import { ThemeSwitcher } from '@/4features/ThemeSwitcher'
-import { classNames } from '@/6shared/lib/classNames/classNames'
+import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import {
     Button,
     ButtonSize,
@@ -44,12 +44,14 @@ export const Sidebar = memo(function Sidebar({
         [collapsed, sidebarItemList],
     )
 
+    const mods: Mods = {
+        [styles.collapsed]: collapsed,
+    }
+
     const Deprecated: FC = () => (
         <aside
             data-testid={DATA_TEST_ID.sidebar}
-            className={classNames(styles.sidebar, [className], {
-                [styles.collapsed]: collapsed,
-            })}
+            className={classNames(styles.sidebar, [className], mods)}
         >
             <Button
                 data-testid={DATA_TEST_ID.sidebarToggle}
@@ -93,9 +95,7 @@ export const Sidebar = memo(function Sidebar({
                     className={classNames(
                         styles.sidebarRedesigned,
                         [className],
-                        {
-                            [styles.collapsed]: collapsed,
-                        },
+                        mods,
                     )}
                 >
                     <Logo

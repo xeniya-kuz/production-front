@@ -1,4 +1,4 @@
-import { classNames } from '@/6shared/lib/classNames/classNames'
+import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import { type DropdownDirection } from '@/6shared/types/ui'
 import { Listbox as HListbox } from '@headlessui/react'
 import { Fragment, type JSX, type ReactNode } from 'react'
@@ -51,13 +51,15 @@ export const ListBox = <T extends string>(
 
     const selectedOption = options.find((option) => option.value === value)
 
+    const mods: Mods = {
+        [popupStyles.disabled]: disabled,
+    }
+
     return (
         <HStack className={classNames(className, [])}>
             {label !== undefined && (
                 <span
-                    className={classNames(styles.label, [], {
-                        [popupStyles.disabled]: disabled,
-                    })}
+                    className={classNames(styles.label, [], mods)}
                 >{`${label}>`}</span>
             )}
             <HListbox

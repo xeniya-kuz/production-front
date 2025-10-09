@@ -1,13 +1,13 @@
+import ArrowIcon from '@/6shared/assets/icons/arrow-bottom.svg'
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { type DropdownDirection } from '@/6shared/types/ui'
 import { Listbox as HListbox } from '@headlessui/react'
-import { Fragment, type JSX, type ReactNode } from 'react'
+import { type JSX, type ReactNode } from 'react'
 import { Button } from '../../../Button/Button'
-import { mapDirectionsClass } from '../styles/const'
-import styles from './ListBox.module.scss'
-import popupStyles from '../styles/popup.module.scss'
 import { Icon } from '../../../Icon'
-import ArrowIcon from '@/6shared/assets/icons/arrow-bottom.svg'
+import { mapDirectionsClass } from '../styles/const'
+import popupStyles from '../styles/popup.module.scss'
+import styles from './ListBox.module.scss'
 
 export interface ListBoxOption {
     value: string
@@ -60,15 +60,16 @@ export const ListBox = <T extends string>(
                     <Button
                         disabled={disabled}
                         variant="filled"
-                        className={styles.button}
+                        addonRight={
+                            <Icon
+                                Svg={ArrowIcon}
+                                iconClassName={classNames(styles.arrow, [], {
+                                    [styles.open]: open,
+                                })}
+                            />
+                        }
                     >
                         <p className={styles.label}>{selectedOption?.label}</p>
-                        <Icon
-                            Svg={ArrowIcon}
-                            iconClassName={classNames(styles.arrow, [], {
-                                [styles.open]: open,
-                            })}
-                        />
                     </Button>
                 )}
             </HListbox.Button>

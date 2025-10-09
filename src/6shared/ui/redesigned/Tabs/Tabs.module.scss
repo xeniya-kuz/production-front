@@ -2,12 +2,12 @@
     cursor: pointer;
     display: flex;
     gap: 8px;
-}
 
-.active {
-    cursor: default;
+    .active {
+        cursor: default;
 
-    &:hover {
-        color: var(--text-redesigned) !important;
+        &:hover {
+            color: var(--text-redesigned);
+        }
     }
 }

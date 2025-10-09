@@ -51,6 +51,7 @@ export const Icon = memo(function Icon({
             {...props}
         />
     )
+
     if (clickable) {
         return (
             <button
