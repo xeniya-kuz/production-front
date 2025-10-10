@@ -41,6 +41,10 @@ export const Text = memo(function Text(props: TextProps): JSX.Element {
 
     const HeaderTag = mapSizeToHeaderTag[size]
 
+    if (!title && !text) {
+        return <></>
+    }
+
     return (
         <div
             className={classNames(styles.text, [
@@ -49,7 +53,7 @@ export const Text = memo(function Text(props: TextProps): JSX.Element {
             ])}
             data-testid={dataTestId}
         >
-            {title != null && (
+            {title && (
                 <HeaderTag
                     data-testid={`${dataTestId}.Title`}
                     className={styles.title}
@@ -57,7 +61,7 @@ export const Text = memo(function Text(props: TextProps): JSX.Element {
                     {title}
                 </HeaderTag>
             )}
-            {text != null && (
+            {text && (
                 <p
                     data-testid={`${dataTestId}.Text`}
                     className={styles.text}

@@ -57,6 +57,7 @@ export const EditableProfileCard = memo(function EditableProfileCard({
                 gap="16"
                 max
                 className={className}
+                align="center"
             >
                 <EditableProfileCardHeader />
                 <EditableProfileErrors />

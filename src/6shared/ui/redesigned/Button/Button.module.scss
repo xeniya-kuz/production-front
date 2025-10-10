@@ -17,7 +17,7 @@
 
     &,
     &.clearWP {
-        padding: 2px 16px;
+        padding: 0 16px;
     }
 
     .addonLeft svg,
@@ -77,16 +77,19 @@
 }
 
 // size
+.s {
+    // font: var(--font-m-redesigned);
+    height: 24px;
+}
+
 .m {
-    font: var(--font-m-redesigned);
+    // font: var(--font-l-redesigned);
+    height: 32px;
 }
 
 .l {
-    font: var(--font-l-redesigned);
-}
-
-.xl {
-    font: var(--font-xl-redesigned);
+    //  font: var(--font-xl-redesigned);
+    height: 38px;
 }
 
 .fullWidth {

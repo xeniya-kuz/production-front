@@ -66,6 +66,7 @@ export const ArticlesFilters = memo(function ArticlesFilters({
                         setActiveTab={onChangeType}
                         className={styles.tabs}
                         direction="column"
+                        size="l"
                     />
                     <ArticleSortDropdown
                         sort={sort}

@@ -1,3 +1,14 @@
+.inputWrapper {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 32px;
+    padding: 3px 16px;
+    border: 1px solid var(--icon-redesigned);
+    border-radius: 48px;
+}
+
 .input {
     width: 100%;
     border: 1px transparent;
@@ -12,14 +23,8 @@
     }
 }
 
-.inputWrapper {
-    display: flex;
-    align-items: center;
-
-    width: 100%;
-    padding: 0 16px;
-    border: 1px solid var(--icon-redesigned);
-    border-radius: 48px;
+.label {
+    text-wrap: nowrap;
 }
 
 .readonly {
@@ -46,4 +51,20 @@
     .addonRight svg {
         color: var(--accent-redesigned);
     }
+}
+
+// size
+.s {
+    // font: var(--font-m-redesigned);
+    height: 24px;
+}
+
+.m {
+    // font: var(--font-l-redesigned);
+    height: 32px;
+}
+
+.l {
+    //  font: var(--font-xl-redesigned);
+    height: 38px;
 }

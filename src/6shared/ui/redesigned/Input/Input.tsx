@@ -10,20 +10,25 @@ import {
     type ReactNode,
     useState,
 } from 'react'
+import { HStack } from '../Stack'
+import { Text } from '../Text'
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
-    'value' | 'onChange' | 'readOnly'
+    'value' | 'onChange' | 'readOnly' | 'size'
 >
 
+type InputSize = 's' | 'm' | 'l'
 interface InputProps extends HTMLInputProps {
     className?: string
     value?: string | number
     onChange?: ({ name, value }: { name: string; value: string }) => void
+    label?: string
     autofocus?: boolean
     readOnly?: boolean
     addonLeft?: ReactNode
     addonRight?: ReactNode
+    size?: InputSize
 }
 
 export const Input = memo(function Input(props: InputProps): JSX.Element {
@@ -38,6 +43,8 @@ export const Input = memo(function Input(props: InputProps): JSX.Element {
         readOnly,
         addonLeft,
         addonRight,
+        label,
+        size = 'm',
         ...otherProps
     } = props
 
@@ -69,26 +76,41 @@ export const Input = memo(function Input(props: InputProps): JSX.Element {
     }
 
     const onFocus = (): void => {
-        setIsFocused(true)
+        !readOnly && setIsFocused(true)
     }
 
     return (
-        <div className={classNames(styles.inputWrapper, [className], mods)}>
-            <div className={styles.addonLeft}>{addonLeft}</div>
-            <input
-                ref={ref}
-                value={value}
-                onChange={onChangeHandler}
-                type={type}
-                className={styles.input}
-                readOnly={readOnly}
-                placeholder={placeholder}
-                onBlur={onBlur}
-                onFocus={onFocus}
-                name="search"
-                {...otherProps}
+        <HStack
+            max
+            gap="8"
+        >
+            <Text
+                text={label}
+                className={styles.label}
             />
-            <div className={styles.addonRight}>{addonRight}</div>
-        </div>
+            <div
+                className={classNames(
+                    styles.inputWrapper,
+                    [className, styles[size]],
+                    mods,
+                )}
+            >
+                <div className={styles.addonLeft}>{addonLeft}</div>
+                <input
+                    ref={ref}
+                    value={value}
+                    onChange={onChangeHandler}
+                    type={type}
+                    className={styles.input}
+                    readOnly={readOnly}
+                    placeholder={placeholder}
+                    onBlur={onBlur}
+                    onFocus={onFocus}
+                    name="search"
+                    {...otherProps}
+                />
+                <div className={styles.addonRight}>{addonRight}</div>
+            </div>
+        </HStack>
     )
 })

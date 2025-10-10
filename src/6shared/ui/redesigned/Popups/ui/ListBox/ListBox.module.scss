@@ -6,8 +6,6 @@
 }
 
 .label {
-    overflow: hidden;
-    text-overflow: ellipsis;
     text-wrap: nowrap;
 }
 
@@ -34,4 +32,12 @@
     &.open {
         transform: rotate(180deg);
     }
+}
+
+.top {
+    bottom: 100%;
+}
+
+.bottom {
+    top: 100%;
 }

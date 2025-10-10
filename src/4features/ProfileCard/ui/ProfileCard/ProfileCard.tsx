@@ -1,154 +1,124 @@
-import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
-import { Avatar } from '@/6shared/ui/deprecated/Avatar/Avatar'
-import { Error } from '@/6shared/ui/deprecated/Error/Error'
-import { Input } from '@/6shared/ui/deprecated/Input/Input'
-import { Loader } from '@/6shared/ui/deprecated/Loader/Loader'
-import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
-import { useTranslation } from 'react-i18next'
-import { type Profile } from '@/5entities/Profile'
-import styles from './ProfileCard.module.scss'
-import { type JSX } from 'react'
-import { type Currency, CurrencyDropdown } from '@/5entities/CurrencyDropdown'
 import { CountryDropdown } from '@/5entities/CountryDropdown'
+import { CurrencyDropdown } from '@/5entities/CurrencyDropdown'
+import { type Profile } from '@/5entities/Profile'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
+import { classNames } from '@/6shared/lib/classNames/classNames'
+import { Avatar } from '@/6shared/ui/redesigned/Avatar'
+import { Card } from '@/6shared/ui/redesigned/Card'
+import { Input } from '@/6shared/ui/redesigned/Input'
+import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
+import { type JSX } from 'react'
+import { useTranslation } from 'react-i18next'
+import styles from './styles.module.scss'
 
 interface ProfileCardProps {
     className?: string
     profile: Profile | undefined
-    isLoading?: boolean
-    error?: string
-    onChange?: (name: keyof Profile, value: string | number) => void
     readonly?: boolean
+    onTextChange: ({ name, value }: { name: string; value: string }) => void
+    onNumberChange: ({ name, value }: { name: string; value: string }) => void
 }
 
 export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
-    const { className, profile, isLoading, error, onChange, readonly } = props
+    const { className, profile, readonly, onTextChange, onNumberChange } = props
     const { t } = useTranslation(['profile', 'buttons', 'alerts'])
 
-    if (isLoading) {
-        return (
-            <HStack
-                justify="center"
-                max
-                className={classNames(styles.profileCard, [
-                    className,
-                    styles.loader,
-                ])}
-            >
-                <Loader />
-            </HStack>
-        )
-    }
-
-    if (error) {
-        return (
-            <HStack
-                justify="center"
-                max
-                className={classNames(styles.profileCard, [
-                    className,
-                    styles.error,
-                ])}
-            >
-                <Error />
-            </HStack>
-        )
-    }
-
-    const onTextChange = ({
-        name,
-        value,
-    }: {
-        name: string | Currency
-        value: string
-    }): void => {
-        onChange?.(name as keyof Profile, value)
-    }
-
-    const onNumberChange = ({
-        name,
-        value,
-    }: {
-        name: string
-        value: string
-    }): void => {
-        if (!isNaN(+value)) {
-            onChange?.(name as keyof Profile, +value === 0 ? '' : +value)
-        }
-    }
-
-    const mods: Mods = {
-        [styles.editing]: readonly !== true,
-    }
-
     return (
-        <VStack
-            gap="16"
-            max
-            className={classNames(styles.profileCard, [className], mods)}
+        <Card
+            className={classNames(styles.profileCard, [className])}
+            padding="24"
         >
-            {profile?.avatar !== undefined && (
+            <VStack gap="32">
+                {profile?.avatar && (
+                    <HStack
+                        justify="center"
+                        max
+                    >
+                        <Avatar
+                            src={profile?.avatar}
+                            alt={t('profile:avatar')}
+                            size={128}
+                        />
+                    </HStack>
+                )}
+
                 <HStack
-                    justify="center"
+                    gap="24"
                     max
+                    align="start"
                 >
-                    <Avatar
-                        src={profile?.avatar}
-                        alt={t('profile:avatar')}
-                        size={32}
-                    />
+                    <VStack
+                        gap="16"
+                        max
+                    >
+                        <Input
+                            name="firstname"
+                            value={profile?.firstname}
+                            label={t('first-name')}
+                            onChange={onTextChange}
+                            readOnly={readonly}
+                            data-testid={DATA_TEST_ID.profileCardFirstname}
+                            placeholder="placeholder"
+                            size="l"
+                        />
+                        <Input
+                            name="lastname"
+                            value={profile?.lastname}
+                            label={t('last-name')}
+                            onChange={onTextChange}
+                            readOnly={readonly}
+                            data-testid={DATA_TEST_ID.profileCardLastname}
+                            placeholder="placeholder"
+                            size="l"
+                        />
+                        <Input
+                            name="age"
+                            value={profile?.age}
+                            label={t('age')}
+                            onChange={onNumberChange}
+                            readOnly={readonly}
+                            data-testid={DATA_TEST_ID.profileCardAge}
+                            placeholder="placeholder"
+                            size="l"
+                        />
+                        <Input
+                            name="city"
+                            value={profile?.city}
+                            label={t('city')}
+                            onChange={onTextChange}
+                            readOnly={readonly}
+                            data-testid={DATA_TEST_ID.profileCardCity}
+                            placeholder="placeholder"
+                            size="l"
+                        />
+                    </VStack>
+                    <VStack
+                        gap="16"
+                        max
+                    >
+                        <Input
+                            name="username"
+                            value={profile?.username}
+                            label={t('username')}
+                            onChange={onTextChange}
+                            readOnly={readonly}
+                            data-testid={DATA_TEST_ID.profileCardUsername}
+                            placeholder="placeholder"
+                            size="l"
+                        />
+                        <CurrencyDropdown
+                            value={profile?.currency}
+                            disabled={readonly}
+                            onChange={onTextChange}
+                        />
+                        <CountryDropdown
+                            value={profile?.country}
+                            disabled={readonly}
+                            onChange={onTextChange}
+                        />
+                    </VStack>
                 </HStack>
-            )}
-            <Input
-                name="firstname"
-                value={profile?.firstname}
-                placeholder={t('first-name')}
-                onChange={onTextChange}
-                readOnly={readonly}
-                data-testid={DATA_TEST_ID.profileCardFirstname}
-            />
-            <Input
-                name="lastname"
-                value={profile?.lastname}
-                placeholder={t('last-name')}
-                onChange={onTextChange}
-                readOnly={readonly}
-                data-testid={DATA_TEST_ID.profileCardLastname}
-            />
-            <Input
-                name="age"
-                value={profile?.age}
-                placeholder={t('age')}
-                onChange={onNumberChange}
-                readOnly={readonly}
-                data-testid={DATA_TEST_ID.profileCardAge}
-            />
-            <Input
-                name="city"
-                value={profile?.city}
-                placeholder={t('city')}
-                onChange={onTextChange}
-                readOnly={readonly}
-                data-testid={DATA_TEST_ID.profileCardCity}
-            />
-            <Input
-                name="username"
-                value={profile?.username}
-                placeholder={t('username')}
-                onChange={onTextChange}
-                readOnly={readonly}
-                data-testid={DATA_TEST_ID.profileCardUsername}
-            />
-            <CurrencyDropdown
-                value={profile?.currency}
-                disabled={readonly}
-                onChange={onTextChange}
-            />
-            <CountryDropdown
-                value={profile?.country}
-                disabled={readonly}
-                onChange={onTextChange}
-            />
-        </VStack>
+            </VStack>
+        </Card>
     )
 }

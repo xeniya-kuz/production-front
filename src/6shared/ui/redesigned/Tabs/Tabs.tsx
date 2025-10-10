@@ -2,7 +2,7 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './Tabs.module.scss'
 import { type JSX, useCallback, type ReactNode } from 'react'
 import { Flex, type FlexDirection } from '../Stack/Flex/Flex'
-import { Button } from '../Button'
+import { Button, type ButtonSize } from '../Button'
 
 export interface TabItem<T extends string> {
     value: T
@@ -16,6 +16,7 @@ interface TabsProps<T extends string> {
     activeTab: T
     setActiveTab: (tab: TabItem<T>) => void
     direction?: FlexDirection
+    size?: ButtonSize
 }
 
 export const Tabs = <T extends string>({
@@ -24,6 +25,7 @@ export const Tabs = <T extends string>({
     activeTab,
     setActiveTab,
     direction = 'row',
+    size = 'm',
 }: TabsProps<T>): JSX.Element => {
     const onClick = useCallback(
         (tab: TabItem<T>) => () => {
@@ -50,6 +52,7 @@ export const Tabs = <T extends string>({
                     variant={tab.value === activeTab ? 'filled' : 'clearWP'}
                     onClick={onClick(tab)}
                     disabled={tab.disabled}
+                    size={size}
                 >
                     {tab.label}
                 </Button>

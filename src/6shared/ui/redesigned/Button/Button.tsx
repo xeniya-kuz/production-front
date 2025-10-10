@@ -2,7 +2,7 @@ import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import { memo, type ButtonHTMLAttributes, type ReactNode } from 'react'
 import styles from './Button.module.scss'
 
-type ButtonSize = 'm' | 'l' | 'xl'
+export type ButtonSize = 's' | 'm' | 'l'
 
 type ButtonVariant = 'clearWP' | 'clear' | 'filled' | 'outline'
 

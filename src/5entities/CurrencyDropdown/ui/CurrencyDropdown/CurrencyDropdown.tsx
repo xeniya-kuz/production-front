@@ -1,8 +1,10 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
-import { ListBox } from '@/6shared/ui/deprecated/Popups'
+import { ListBox as ListBoxDeprecated } from '@/6shared/ui/deprecated/Popups'
 import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Currency } from '../../model/const/currency'
+import { ToggleFeatures } from '@/6shared/lib/features'
+import { ListBox } from '@/6shared/ui/redesigned/Popups'
 
 interface CurrencySelectProps {
     className?: string
@@ -37,16 +39,37 @@ export const CurrencyDropdown = memo(function CurrencyDropdown({
         onChange?.({ name: NAME, value })
     }
 
+    const props = {
+        name: NAME,
+        value,
+        label: t(NAME),
+        options,
+        className: classNames(undefined, [className]),
+        disabled,
+        onChange: onChangeHandler,
+    }
+
     return (
-        <ListBox
-            name={NAME}
-            value={value}
-            label={t(NAME)}
-            options={options}
-            className={classNames(undefined, [className])}
-            disabled={disabled}
-            onChange={onChangeHandler}
-            direction="top right"
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={
+                <ListBox
+                    {...props}
+                    size="l"
+                />
+            }
+            off={
+                <ListBoxDeprecated
+                    name={NAME}
+                    value={value}
+                    label={t(NAME)}
+                    options={options}
+                    className={classNames(undefined, [className])}
+                    disabled={disabled}
+                    onChange={onChangeHandler}
+                    direction="top right"
+                />
+            }
         />
     )
 })

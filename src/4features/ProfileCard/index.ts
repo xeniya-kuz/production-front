@@ -1,1 +1,1 @@
-export { ProfileCard } from './ui/ProfileCard/ProfileCard'
+export { ProfileCardContainer as ProfileCard } from './ui/ProfileCardContainer/ProfileCardContainer'
