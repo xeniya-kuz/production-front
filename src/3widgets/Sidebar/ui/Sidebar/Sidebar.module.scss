@@ -33,7 +33,7 @@
         cursor: pointer;
 
         position: absolute;
-        z-index: var(--collaps-btn-z-index);
+        z-index: var(--button-z-index);
         right: calc(var(--font-line-l) * -1);
         bottom: var(--font-line-l);
     }
@@ -90,7 +90,7 @@
         cursor: pointer;
 
         position: absolute;
-        z-index: var(--collaps-btn-z-index);
+        z-index: var(--button-z-index);
         top: 50%;
         right: 0;
         transform: rotate(90deg);
