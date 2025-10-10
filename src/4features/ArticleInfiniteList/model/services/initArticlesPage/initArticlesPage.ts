@@ -11,7 +11,7 @@ import {
 import { type SortOrder } from '@/6shared/types/sort'
 // TODO: спустить в entities???
 // eslint-disable-next-line fsd-path-checker-sia355/layer-imports
-import { articlesPageFiltersActions } from '@/3widgets/ArticlesPageFilters'
+import { articlesPageFiltersActions } from '@/3widgets/ArticlesFilters'
 
 export const init = createAsyncThunk<
     void,

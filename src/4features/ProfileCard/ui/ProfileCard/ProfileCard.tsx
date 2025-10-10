@@ -5,7 +5,7 @@ import { Input } from '@/6shared/ui/deprecated/Input/Input'
 import { Loader } from '@/6shared/ui/deprecated/Loader/Loader'
 import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
 import { useTranslation } from 'react-i18next'
-import { type Profile } from '../../model/types/profile'
+import { type Profile } from '@/5entities/Profile'
 import styles from './ProfileCard.module.scss'
 import { type JSX } from 'react'
 import { type Currency, CurrencyDropdown } from '@/5entities/CurrencyDropdown'
@@ -25,7 +25,7 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
     const { className, profile, isLoading, error, onChange, readonly } = props
     const { t } = useTranslation(['profile', 'buttons', 'alerts'])
 
-    if (isLoading === true) {
+    if (isLoading) {
         return (
             <HStack
                 justify="center"
@@ -40,7 +40,7 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
         )
     }
 
-    if (error !== undefined) {
+    if (error) {
         return (
             <HStack
                 justify="center"
@@ -100,7 +100,6 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
                 </HStack>
             )}
             <Input
-                // eslint-disable-next-line i18next/no-literal-string
                 name="firstname"
                 value={profile?.firstname}
                 placeholder={t('first-name')}
@@ -109,7 +108,6 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
                 data-testid={DATA_TEST_ID.profileCardFirstname}
             />
             <Input
-                // eslint-disable-next-line i18next/no-literal-string
                 name="lastname"
                 value={profile?.lastname}
                 placeholder={t('last-name')}
@@ -118,7 +116,6 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
                 data-testid={DATA_TEST_ID.profileCardLastname}
             />
             <Input
-                // eslint-disable-next-line i18next/no-literal-string
                 name="age"
                 value={profile?.age}
                 placeholder={t('age')}
@@ -127,7 +124,6 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
                 data-testid={DATA_TEST_ID.profileCardAge}
             />
             <Input
-                // eslint-disable-next-line i18next/no-literal-string
                 name="city"
                 value={profile?.city}
                 placeholder={t('city')}
@@ -136,7 +132,6 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
                 data-testid={DATA_TEST_ID.profileCardCity}
             />
             <Input
-                // eslint-disable-next-line i18next/no-literal-string
                 name="username"
                 value={profile?.username}
                 placeholder={t('username')}

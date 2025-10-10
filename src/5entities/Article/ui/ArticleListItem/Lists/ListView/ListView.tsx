@@ -70,7 +70,6 @@ export const ListView = memo(function ListView({
             data-testid={DATA_TEST_ID.articleListItem}
         >
             <div className={styles.header}>
-                {/* eslint-disable-next-line i18next/no-literal-string */}
                 <Avatar
                     size={30}
                     src={article.user?.avatar}

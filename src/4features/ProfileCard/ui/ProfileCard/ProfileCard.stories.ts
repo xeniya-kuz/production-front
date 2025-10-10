@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ProfileCard } from './ProfileCard'
-import { profileMock } from '../../model/const/mocks'
+import { profileMock } from '@/5entities/Profile'
 
 const meta = {
-    title: 'entities/ProfileCard',
+    title: 'features/ProfileCard',
     component: ProfileCard,
     parameters: {
         layout: 'fullscreen',

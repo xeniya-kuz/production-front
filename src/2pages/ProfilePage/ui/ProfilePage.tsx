@@ -1,5 +1,5 @@
 import { Page } from '@/3widgets/Page'
-import { EditableProfileCard } from '@/4features/EditableProfileCard'
+import { EditableProfileCard } from '@/3widgets/EditableProfileCard'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { type JSX, memo } from 'react'

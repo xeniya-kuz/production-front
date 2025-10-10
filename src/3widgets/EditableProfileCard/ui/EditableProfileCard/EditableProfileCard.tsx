@@ -1,4 +1,4 @@
-import { type Profile, ProfileCard } from '@/5entities/Profile'
+import { type Profile } from '@/5entities/Profile'
 import {
     DynamicModuleLoader,
     type ReducerList,
@@ -17,6 +17,7 @@ import { fetchProfileData } from '../../model/services'
 import { profileActions, profileReducer } from '../../model/slice'
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader'
 import { EditableProfileErrors } from '../EditableProfileErrors/EditableProfileErrors'
+import { ProfileCard } from '@/4features/ProfileCard'
 
 interface EditableProfileCardProps {
     className?: string

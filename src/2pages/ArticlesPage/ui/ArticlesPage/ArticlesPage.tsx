@@ -15,7 +15,7 @@ import { ViewSwitcher } from '@/4features/ViewSwitcher'
 import {
     ArticlesFiltersDeprecated,
     ArticlesFilters,
-} from '@/3widgets/ArticlesPageFilters'
+} from '@/3widgets/ArticlesFilters'
 
 const ArticlesPage = (): JSX.Element => {
     const dispatch = useAppDispatch()

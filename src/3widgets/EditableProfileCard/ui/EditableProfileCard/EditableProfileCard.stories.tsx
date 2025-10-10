@@ -6,7 +6,7 @@ import { profileMock } from '@/5entities/Profile'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-    title: 'features/EditableProfileCard',
+    title: 'widgets/EditableProfileCard',
     component: EditableProfileCard,
     tags: ['autodocs'],
     args: {
