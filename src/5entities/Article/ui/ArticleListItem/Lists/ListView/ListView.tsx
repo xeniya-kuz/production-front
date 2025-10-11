@@ -53,7 +53,10 @@ export const ListView = memo(function ListView({
             padding="24"
         >
             <VStack gap="16">
-                <VStack gap="8">
+                <VStack
+                    gap="8"
+                    max
+                >
                     <HStack gap="8">
                         <Avatar
                             size={32}

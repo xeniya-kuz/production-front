@@ -1,13 +1,13 @@
 import { Theme } from '@/6shared/const/themes'
 import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { articleMock } from '../../../../model/const/mocks'
+import { articleMock } from '../../../../../model/const/mocks'
 import type { Meta, StoryObj } from '@storybook/react'
 import { TileViewDeprecated } from './TileViewDeprecated'
 import {
     articleImage,
     articleTypes,
     articleViews,
-} from '../../../ArticleList/helpers'
+} from '../../../../ArticleList/helpers'
 
 const meta = {
     title: 'entities/Article/TileView',

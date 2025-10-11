@@ -1,71 +1,72 @@
-import { Skeleton as SkeletonDeprecated } from '@/6shared/ui/deprecated/Skeleton/Skeleton'
-import stylesRedesigned from '../ListView/ListView.module.scss'
-import stylesDeprecated from '../ListViewDeprecated/ListViewDeprecated.module.scss'
+import { Skeleton } from '@/6shared/ui/redesigned/Skeleton'
+import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
 import { type JSX, memo } from 'react'
-import { classNames } from '@/6shared/lib/classNames/classNames'
-import { Skeleton as SkeletonRedesigned } from '@/6shared/ui/redesigned/Skeleton'
-
-import { toggleFeatures } from '@/6shared/lib/features'
+import styles from '../ListView/ListView.module.scss'
+import { Card } from '@/6shared/ui/redesigned/Card'
 
 export const SkeletonListView = memo(function SkeletonListView(): JSX.Element {
-    const Skeleton = toggleFeatures({
-        name: 'isAppRedesigned',
-        on: () => SkeletonRedesigned,
-        off: () => SkeletonDeprecated,
-    })
-
-    const styles = toggleFeatures({
-        name: 'isAppRedesigned',
-        on: () => stylesRedesigned,
-        off: () => stylesDeprecated,
-    })
-
     return (
-        <div className={styles.skeleton}>
-            <div className={styles.header}>
+        <Card padding="24">
+            <VStack gap="16">
+                <VStack
+                    gap="8"
+                    max
+                >
+                    <HStack gap="8">
+                        <Skeleton
+                            width={32}
+                            height={32}
+                        />
+                        <Skeleton
+                            width={150}
+                            height={16}
+                            className={styles.username}
+                        />
+                        <Skeleton
+                            width={150}
+                            height={16}
+                            className={styles.date}
+                        />
+                    </HStack>
+                    <Skeleton
+                        height={32}
+                        width="100%"
+                    />
+                </VStack>
+
                 <Skeleton
-                    width={30}
-                    height={30}
-                    border="50%"
+                    height={24}
+                    width={250}
                 />
+
                 <Skeleton
-                    width={150}
-                    height={16}
-                    className={styles.username}
+                    height={350}
+                    width="100%"
                 />
-                <Skeleton
-                    width={150}
-                    height={16}
-                    className={styles.date}
-                />
-            </div>
-            <Skeleton
-                width={250}
-                height={24}
-                className={styles.title}
-            />
-            <Skeleton
-                height={200}
-                className={styles.img}
-            />
-            <Skeleton
-                height={16}
-                className={classNames(styles.textBlock)}
-            />
-            <Skeleton
-                height={16}
-                className={classNames(styles.textBlock)}
-            />
-            <Skeleton
-                height={16}
-                className={classNames(styles.textBlock)}
-            />
-            <div className={styles.footer}>
-                <Skeleton
-                    width={200}
-                    height={36}
-                />
-            </div>
-        </div>
+                <VStack
+                    gap="8"
+                    className={styles.textBlock}
+                    max
+                >
+                    <Skeleton height={16} />
+                    <Skeleton height={16} />
+                    <Skeleton height={16} />
+                </VStack>
+
+                <HStack
+                    max
+                    justify="between"
+                >
+                    <Skeleton
+                        height={32}
+                        width={145}
+                    />
+                    <Skeleton
+                        height={32}
+                        width={90}
+                    />
+                </HStack>
+            </VStack>
+        </Card>
     )
 })

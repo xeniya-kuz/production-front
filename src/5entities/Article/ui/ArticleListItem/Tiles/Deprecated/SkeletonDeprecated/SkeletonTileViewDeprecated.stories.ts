@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { SkeletonTileView } from './SkeletonTileView'
+import { SkeletonTileViewDeprecated } from './SkeletonTileViewDeprecated'
 import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from '@/6shared/const/themes'
 
 const meta = {
     title: 'entities/Article/SkeletonTileView',
-    component: SkeletonTileView,
+    component: SkeletonTileViewDeprecated,
 
     parameters: {
         layout: 'fullscreen',
     },
     tags: ['autodocs'],
-} satisfies Meta<typeof SkeletonTileView>
+} satisfies Meta<typeof SkeletonTileViewDeprecated>
 
 export default meta
 type Story = StoryObj<typeof meta>

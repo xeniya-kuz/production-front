@@ -6,13 +6,14 @@ import { Card } from '@/6shared/ui/deprecated/Card/Card'
 import { Text } from '@/6shared/ui/deprecated/Text/Text'
 import { memo, type HTMLAttributeAnchorTarget, type JSX } from 'react'
 import { useTranslation } from 'react-i18next'
-import { type Article } from '../../../../model/types/article'
-import { ArticleTextBlock } from '../../../ArticleTextBlock/ArticleTextBlock'
+import { type Article } from '../../../../../model/types/article'
+import { ArticleTextBlock } from '../../../../ArticleTextBlock/ArticleTextBlock'
 import styles from './ListViewDeprecated.module.scss'
 
 import { getRouteArticleDetails } from '@/6shared/const/router'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
-import { ArticleBlockType } from '../../../../model/const/article'
+import { ArticleBlockType } from '../../../../../model/const/article'
+import { HStack } from '@/6shared/ui/redesigned/Stack'
 
 interface ListViewDeprecatedProps {
     article: Article
@@ -35,6 +36,7 @@ interface ListViewDeprecatedProps {
         article: Article
     }) => JSX.Element
 }
+
 /**
  * Устарел, используем новый компонент из папки ListView
  * @deprecated
@@ -60,7 +62,7 @@ export const ListViewDeprecated = memo(function ListView({
             className={classNames(styles.card, [className])}
             data-testid={DATA_TEST_ID.articleListItem}
         >
-            <div className={styles.header}>
+            <HStack align="center">
                 <Avatar
                     size={30}
                     src={article.user?.avatar}
@@ -74,7 +76,7 @@ export const ListViewDeprecated = memo(function ListView({
                     text={article.createdAt}
                     className={styles.date}
                 />
-            </div>
+            </HStack>
             <Text
                 title={article.title}
                 className={styles.title}

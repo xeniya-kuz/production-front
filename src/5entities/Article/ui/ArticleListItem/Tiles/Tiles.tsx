@@ -1,22 +1,21 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
+import { toggleFeatures } from '@/6shared/lib/features'
 import { useInitialEffect } from '@/6shared/lib/hooks'
 import {
-    type FC,
-    type HTMLAttributeAnchorTarget,
     memo,
     useCallback,
     useRef,
+    type FC,
+    type HTMLAttributeAnchorTarget,
     type JSX,
 } from 'react'
 import { VirtuosoGrid, type VirtuosoGridHandle } from 'react-virtuoso'
 import { type Article } from '../../../model/types/article'
 import { SkeletonTileView } from './Skeleton/SkeletonTileView'
-import styles from './styles.module.scss'
-import { toggleFeatures } from '@/6shared/lib/features'
-import { Card as CardDeprecated } from '@/6shared/ui/deprecated/Card'
-import { Card as CardRedesigned } from '@/6shared/ui/redesigned/Card'
-import { TileViewDeprecated } from './TileViewDeprecated/TileViewDeprecated'
+import styles from './Tiles.module.scss'
 import { TileView } from './TileView/TileView'
+import { TileViewDeprecated } from './Deprecated/TileViewDeprecated/TileViewDeprecated'
+import { SkeletonTileViewDeprecated } from './Deprecated/SkeletonDeprecated/SkeletonTileViewDeprecated'
 
 interface TilesProps {
     className?: string
@@ -95,17 +94,11 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
         timeout()
     })
 
-    const Card = toggleFeatures({
+    const Skeleton = toggleFeatures({
         name: 'isAppRedesigned',
-        on: () => CardRedesigned,
-        off: () => CardDeprecated,
+        on: () => SkeletonTileView,
+        off: () => SkeletonTileViewDeprecated,
     })
-
-    const Skeleton: FC = () => (
-        <Card>
-            <SkeletonTileView />
-        </Card>
-    )
 
     const WrappedHeader: FC = () =>
         Header ? (

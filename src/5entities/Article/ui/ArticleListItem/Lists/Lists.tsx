@@ -2,12 +2,12 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 
 import { type HTMLAttributeAnchorTarget, memo, type JSX } from 'react'
 import { Virtuoso } from 'react-virtuoso'
-import { ListViewDeprecated } from './ListViewDeprecated/ListViewDeprecated'
 import { Footer } from './Footer'
-import styles from './styles.module.scss'
+import styles from './Lists.module.scss'
 import { type Article } from '../../../model/types/article'
 import { toggleFeatures } from '@/6shared/lib/features'
 import { ListView } from './ListView/ListView'
+import { ListViewDeprecated } from './Deprecated/ListViewDeprecated/ListViewDeprecated'
 
 interface ListsProps {
     className?: string
