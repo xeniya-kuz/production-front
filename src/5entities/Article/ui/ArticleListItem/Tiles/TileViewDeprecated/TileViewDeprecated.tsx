@@ -1,6 +1,6 @@
-import { AppLink } from '@/6shared/ui/redesigned/AppLink'
-import { Card } from '@/6shared/ui/redesigned/Card'
-import { Text } from '@/6shared/ui/redesigned/Text'
+import { AppLink } from '@/6shared/ui/deprecated/AppLink/AppLink'
+import { Card } from '@/6shared/ui/deprecated/Card/Card'
+import { Text } from '@/6shared/ui/deprecated/Text/Text'
 import { type HTMLAttributeAnchorTarget, type JSX, memo } from 'react'
 import { type Article } from '../../../../model/types/article'
 import styles from '../styles.module.scss'
@@ -8,13 +8,17 @@ import styles from '../styles.module.scss'
 import { getRouteArticleDetails } from '@/6shared/const/router'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 
-interface TileViewProps {
+interface TileViewDeprecatedProps {
     article: Article
     target?: HTMLAttributeAnchorTarget
-    index: number
     className?: string
+    index: number
     handleButtonClick: (index: number) => () => void
     articleViews: (props: {
+        className: string
+        article: Article
+    }) => JSX.Element
+    articleTypes: (props: {
         className: string
         article: Article
     }) => JSX.Element
@@ -26,15 +30,20 @@ interface TileViewProps {
     }) => JSX.Element
 }
 
-export const TileView = memo(function TileView({
+/**
+ * Устарел, используем новый компонент из папки TileView
+ * @deprecated
+ */
+export const TileViewDeprecated = memo(function TileView({
     article,
     target,
-    index,
     className,
+    index,
     handleButtonClick,
     articleViews,
+    articleTypes,
     articleImage,
-}: TileViewProps): JSX.Element {
+}: TileViewDeprecatedProps): JSX.Element {
     return (
         <AppLink
             to={getRouteArticleDetails(article.id)}
@@ -42,7 +51,10 @@ export const TileView = memo(function TileView({
             className={className}
             onClick={handleButtonClick(index)}
         >
-            <Card data-testid={DATA_TEST_ID.articleListItem}>
+            <Card
+                className={styles.card}
+                data-testid={DATA_TEST_ID.articleListItem}
+            >
                 <div className={styles.imageWrapper}>
                     {articleImage({
                         className: styles.img,
@@ -56,6 +68,7 @@ export const TileView = memo(function TileView({
                     />
                 </div>
                 <div className={styles.infoWrapper}>
+                    {articleTypes({ className: styles.types, article })}
                     {articleViews({ className: styles.views, article })}
                 </div>
                 <Text

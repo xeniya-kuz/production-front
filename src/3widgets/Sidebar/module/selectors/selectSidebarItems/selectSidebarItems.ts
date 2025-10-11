@@ -39,7 +39,7 @@ export const selectSidebarItems = createSelector(selectUserAuthData, (user) => {
         },
     ]
 
-    if (user !== undefined) {
+    if (user) {
         sidebarItemsList = [
             ...sidebarItemsList,
             {

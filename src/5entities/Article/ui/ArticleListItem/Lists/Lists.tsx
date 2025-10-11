@@ -2,10 +2,12 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 
 import { type HTMLAttributeAnchorTarget, memo, type JSX } from 'react'
 import { Virtuoso } from 'react-virtuoso'
-import { ListView } from './ListView/ListView'
+import { ListViewDeprecated } from './ListViewDeprecated/ListViewDeprecated'
 import { Footer } from './Footer'
 import styles from './styles.module.scss'
 import { type Article } from '../../../model/types/article'
+import { toggleFeatures } from '@/6shared/lib/features'
+import { ListView } from './ListView/ListView'
 
 interface ListsProps {
     className?: string
@@ -16,6 +18,21 @@ interface ListsProps {
     selectedArticleId: number
     isLoading?: boolean
     virtualized?: boolean
+    handleButtonClick: (index: number) => () => void
+    articleViews: (props: {
+        className: string
+        article: Article
+    }) => JSX.Element
+    articleTypes: (props: {
+        className: string
+        article: Article
+    }) => JSX.Element
+    articleImage: (props: {
+        width: number | string
+        height: number | string
+        className: string
+        article: Article
+    }) => JSX.Element
 }
 
 export const Lists = memo(function Lists(props: ListsProps): JSX.Element {
@@ -28,46 +45,65 @@ export const Lists = memo(function Lists(props: ListsProps): JSX.Element {
         selectedArticleId,
         isLoading,
         virtualized,
+        handleButtonClick,
+        articleViews,
+        articleTypes,
+        articleImage,
     } = props
 
+    const View = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => ListView,
+        off: () => ListViewDeprecated,
+    })
+
     const renderArticle = (index: number, article: Article): JSX.Element => (
-        <ListView
+        <View
             article={article}
             target={target}
-            index={index}
             className={styles.list}
             key={index}
+            handleButtonClick={handleButtonClick}
+            articleViews={articleViews}
+            articleTypes={articleTypes}
+            articleImage={articleImage}
+            index={index}
         />
     )
 
-    const components = {
-        Header,
-        Footer: () => <Footer isLoading={isLoading} />,
+    if (virtualized) {
+        return (
+            <Virtuoso
+                data={articles}
+                itemContent={renderArticle}
+                endReached={onLoadNextArticles}
+                initialTopMostItemIndex={selectedArticleId}
+                components={{
+                    Header,
+                    Footer: () => <Footer />,
+                }}
+                className={classNames(undefined, [className])}
+                // useWindowScroll
+            />
+        )
     }
 
-    if (virtualized === true)
-        <Virtuoso
-            data={articles}
-            itemContent={renderArticle}
-            endReached={onLoadNextArticles}
-            initialTopMostItemIndex={selectedArticleId}
-            components={components}
-            className={classNames(undefined, [className])}
-        />
-
-    if (isLoading === true) {
+    if (isLoading) {
         return (
-            <>
-                {Header !== undefined && <Header />}
+            <div className={classNames(styles.listsContainer, [className])}>
                 <Footer />
-            </>
+            </div>
         )
     }
 
     return (
-        <div className={classNames(styles.listsContainer, [className])}>
+        <>
             {Header && <Header />}
-            {articles.map((article, index) => renderArticle(index, article))}
-        </div>
+            <div className={classNames(styles.listsContainer, [className])}>
+                {articles.map((article, index) =>
+                    renderArticle(index, article),
+                )}
+            </div>
+        </>
     )
 })

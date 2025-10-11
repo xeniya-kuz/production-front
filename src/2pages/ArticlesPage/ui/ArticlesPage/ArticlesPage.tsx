@@ -26,10 +26,7 @@ const ArticlesPage = (): JSX.Element => {
     }, [dispatch])
 
     const Header = (): JSX.Element => (
-        <ArticlesFiltersDeprecated
-            className={styles.header}
-            fetchData={fetchData}
-        />
+        <ArticlesFiltersDeprecated fetchData={fetchData} />
     )
 
     return (

@@ -1,4 +1,4 @@
-import { classNames } from '@/6shared/lib/classNames/classNames'
+import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import styles from './Text.module.scss'
 import { type JSX, memo } from 'react'
 
@@ -8,7 +8,7 @@ export type TextSize = 's' | 'm' | 'l'
 
 export type TextVariant = 'primary' | 'error' | 'accent'
 
-interface TextProps {
+export interface TextProps {
     className?: string
     title?: string
     text?: string
@@ -16,6 +16,7 @@ interface TextProps {
     align?: TextAlign
     size?: TextSize
     'data-testid'?: string
+    bold?: boolean
 }
 
 type HeaderTagType = 'h1' | 'h2' | 'h3'
@@ -34,6 +35,7 @@ export const Text = memo(function Text(props: TextProps): JSX.Element {
         variant = 'primary',
         align = 'left',
         size = 'm',
+        bold = false,
         'data-testid': dataTestId,
     } = props
 
@@ -45,12 +47,15 @@ export const Text = memo(function Text(props: TextProps): JSX.Element {
         return <></>
     }
 
+    const mods: Mods = { [styles.bold]: bold }
+
     return (
         <div
-            className={classNames(styles.text, [
-                className,
-                ...additionalClassNames,
-            ])}
+            className={classNames(
+                styles.text,
+                [className, ...additionalClassNames],
+                mods,
+            )}
             data-testid={dataTestId}
         >
             {title && (

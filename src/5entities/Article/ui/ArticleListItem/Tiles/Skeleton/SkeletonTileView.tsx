@@ -1,8 +1,17 @@
-import { Skeleton } from '@/6shared/ui/deprecated/Skeleton/Skeleton'
-import styles from '../styles.module.scss'
+import { Skeleton as SkeletonDeprecated } from '@/6shared/ui/deprecated/Skeleton/Skeleton'
+import { Skeleton as SkeletonRedesigned } from '@/6shared/ui/redesigned/Skeleton'
 import { memo, type JSX } from 'react'
+import styles from '../styles.module.scss'
+
+import { toggleFeatures } from '@/6shared/lib/features'
 
 export const SkeletonTileView = memo(function SkeletonTileView(): JSX.Element {
+    const Skeleton = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => SkeletonRedesigned,
+        off: () => SkeletonDeprecated,
+    })
+
     return (
         <>
             <div className={styles.imageWrapper}>

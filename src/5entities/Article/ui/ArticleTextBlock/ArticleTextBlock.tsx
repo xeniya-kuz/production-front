@@ -14,7 +14,7 @@ export const ArticleTextBlock = memo(function ArticleTextBlock({
 }: ArticleTextBlockProps): JSX.Element {
     return (
         <div className={className}>
-            {block.title !== undefined && (
+            {block.title && (
                 <Text
                     title={block.title}
                     className={styles.title}

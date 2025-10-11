@@ -6,7 +6,7 @@ export type ButtonSize = 's' | 'm' | 'l'
 
 type ButtonVariant = 'clearWP' | 'clear' | 'filled' | 'outline'
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string
     /**
      * Тема кнопки. Отвечает за визуал (в рамке, без стилей, противоположный теме приложения цвет и тд)
@@ -40,6 +40,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
      * Добавляет элемент справа
      */
     addonRight?: ReactNode
+    hover?: boolean
 }
 
 // обычно в качестве children кнопки передается строка, поэтому используем memo
@@ -55,7 +56,7 @@ export const Button = memo(function Button(props: ButtonProps) {
         variant = 'clear',
         addonLeft,
         addonRight,
-
+        hover = true,
         ...otherProps
     } = props
 
@@ -64,7 +65,7 @@ export const Button = memo(function Button(props: ButtonProps) {
         [styles[size]]: size,
         [styles.disabled]: disabled,
         [styles.fullWidth]: fullWidth,
-
+        [styles.hover]: hover && !disabled,
         [styles.withAddonRight]: !!addonRight,
         [styles.withAddonLeft]: !!addonLeft,
     }

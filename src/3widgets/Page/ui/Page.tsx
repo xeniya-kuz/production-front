@@ -62,7 +62,7 @@ export const Page = memo(function Page({
         )
     }, 500)
 
-    // TODO: classPage при выполнении remove-toggle не удалится
+    // TODO: classPage при выполнении remove-toggle не удалится, надо дополнить линтер, чтобы он ругался, если в on и off передается функция с телом {}, либо поправить сам скрипт. А так же в идеале сделать так, чтобы старые функции (и файлы) тоже удалялись. Например, если в off передавать переменную или отдельный компонент
     const classPage = toggleFeatures({
         name: 'isAppRedesigned',
         on: () => styles.pageRedesigned,
@@ -77,7 +77,7 @@ export const Page = memo(function Page({
             data-testid={testProps['data-testid'] ?? DATA_TEST_ID.page}
         >
             {children}
-            {onScrollEnd !== undefined && (
+            {onScrollEnd && (
                 <div
                     className={styles.trigger}
                     ref={triggerRef}

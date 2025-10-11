@@ -30,7 +30,7 @@
         opacity: 0.5;
     }
 
-    &:not(:disabled):hover {
+    &:hover.hover {
         color: var(--accent-redesigned);
 
         .addonLeft svg,
@@ -42,7 +42,7 @@
     &.filled {
         background: var(--light-bg-redesigned);
 
-        &:not(:disabled) &:hover {
+        &:hover.hover {
             background: var(--bg-redesigned);
         }
     }
@@ -53,6 +53,10 @@
 
     &.outline {
         border: 2px solid var(--light-bg-redesigned);
+
+        &:hover.hover {
+            border: 2px solid var(--icon-redesigned);
+        }
     }
 }
 

@@ -1,6 +1,5 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { useInitialEffect } from '@/6shared/lib/hooks'
-import { Card } from '@/6shared/ui/deprecated/Card/Card'
 import {
     type FC,
     type HTMLAttributeAnchorTarget,
@@ -12,8 +11,12 @@ import {
 import { VirtuosoGrid, type VirtuosoGridHandle } from 'react-virtuoso'
 import { type Article } from '../../../model/types/article'
 import { SkeletonTileView } from './Skeleton/SkeletonTileView'
-import { TileView } from './TileView/TileView'
 import styles from './styles.module.scss'
+import { toggleFeatures } from '@/6shared/lib/features'
+import { Card as CardDeprecated } from '@/6shared/ui/deprecated/Card'
+import { Card as CardRedesigned } from '@/6shared/ui/redesigned/Card'
+import { TileViewDeprecated } from './TileViewDeprecated/TileViewDeprecated'
+import { TileView } from './TileView/TileView'
 
 interface TilesProps {
     className?: string
@@ -24,6 +27,21 @@ interface TilesProps {
     selectedArticleId: number
     isLoading?: boolean
     virtualized?: boolean
+    handleButtonClick: (index: number) => () => void
+    articleViews: (props: {
+        className: string
+        article: Article
+    }) => JSX.Element
+    articleTypes: (props: {
+        className: string
+        article: Article
+    }) => JSX.Element
+    articleImage: (props: {
+        width: number | string
+        height: number | string
+        className: string
+        article: Article
+    }) => JSX.Element
 }
 
 export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
@@ -36,6 +54,10 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
         selectedArticleId,
         isLoading,
         virtualized,
+        handleButtonClick,
+        articleViews,
+        articleTypes,
+        articleImage,
     } = props
     const virtuosoGridRef = useRef<VirtuosoGridHandle>(null)
 
@@ -49,13 +71,23 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
         }, 1000)
     }, [selectedArticleId])
 
+    const View = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => TileView,
+        off: () => TileViewDeprecated,
+    })
+
     const renderArticle = (index: number, article: Article): JSX.Element => (
-        <TileView
+        <View
             article={article}
             target={target}
             className={styles.tile}
-            index={index}
             key={index}
+            handleButtonClick={handleButtonClick}
+            articleViews={articleViews}
+            articleTypes={articleTypes}
+            articleImage={articleImage}
+            index={index}
         />
     )
 
@@ -63,8 +95,14 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
         timeout()
     })
 
+    const Card = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => CardRedesigned,
+        off: () => CardDeprecated,
+    })
+
     const Skeleton: FC = () => (
-        <Card className={styles.card}>
+        <Card>
             <SkeletonTileView />
         </Card>
     )
@@ -78,7 +116,7 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
             <></>
         )
 
-    if (isLoading === true) {
+    if (isLoading) {
         return (
             <>
                 <WrappedHeader />
@@ -91,7 +129,7 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
         )
     }
 
-    if (virtualized === true) {
+    if (virtualized) {
         return (
             <div className={classNames(styles.tilesContainer, [className])}>
                 <VirtuosoGrid
@@ -112,6 +150,7 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
                         enter: (velocity) => Math.abs(velocity) > 200,
                         exit: (velocity) => Math.abs(velocity) < 30,
                     }}
+                    //   scrollerRef={}
                 />
             </div>
         )
@@ -119,7 +158,7 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
 
     return (
         <div className={classNames(styles.tilesContainer, [className])}>
-            {Header !== undefined && <Header />}
+            {Header && <Header />}
             <div className={styles.tiles}>
                 {articles.map((article, index) =>
                     renderArticle(index, article),

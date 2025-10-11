@@ -1,11 +1,27 @@
-import { Skeleton } from '@/6shared/ui/deprecated/Skeleton/Skeleton'
-import styles from '../ListView/ListView.module.scss'
+import { Skeleton as SkeletonDeprecated } from '@/6shared/ui/deprecated/Skeleton/Skeleton'
+import stylesRedesigned from '../ListView/ListView.module.scss'
+import stylesDeprecated from '../ListViewDeprecated/ListViewDeprecated.module.scss'
 import { type JSX, memo } from 'react'
 import { classNames } from '@/6shared/lib/classNames/classNames'
+import { Skeleton as SkeletonRedesigned } from '@/6shared/ui/redesigned/Skeleton'
+
+import { toggleFeatures } from '@/6shared/lib/features'
 
 export const SkeletonListView = memo(function SkeletonListView(): JSX.Element {
+    const Skeleton = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => SkeletonRedesigned,
+        off: () => SkeletonDeprecated,
+    })
+
+    const styles = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => stylesRedesigned,
+        off: () => stylesDeprecated,
+    })
+
     return (
-        <>
+        <div className={styles.skeleton}>
             <div className={styles.header}>
                 <Skeleton
                     width={30}
@@ -38,7 +54,7 @@ export const SkeletonListView = memo(function SkeletonListView(): JSX.Element {
             />
             <Skeleton
                 height={16}
-                className={classNames(styles.textBlock, [styles.skeleton])}
+                className={classNames(styles.textBlock)}
             />
             <Skeleton
                 height={16}
@@ -50,6 +66,6 @@ export const SkeletonListView = memo(function SkeletonListView(): JSX.Element {
                     height={36}
                 />
             </div>
-        </>
+        </div>
     )
 })

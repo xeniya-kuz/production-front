@@ -3,9 +3,9 @@ import { forwardRef, type ReactNode } from 'react'
 import { NavLink, type NavLinkProps } from 'react-router-dom'
 import styles from './AppLink.module.scss'
 
-export type AppLinkVariant = 'primary' | 'inverted'
+type AppLinkVariant = 'primary' | 'inverted'
 
-interface AppLinkProps extends Omit<NavLinkProps, 'children'> {
+export interface AppLinkProps extends Omit<NavLinkProps, 'children'> {
     className?: string
     variant?: AppLinkVariant
     children?: ReactNode

@@ -3,7 +3,6 @@ import {
     ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY,
 } from '@/6shared/const/localstorage'
 import { classNames } from '@/6shared/lib/classNames/classNames'
-import { Text } from '@/6shared/ui/deprecated/Text/Text'
 import {
     type HTMLAttributeAnchorTarget,
     memo,
@@ -18,6 +17,15 @@ import { Tiles } from '../ArticleListItem/Tiles/Tiles'
 import styles from './ArticleList.module.scss'
 import { ArticleView } from '../../model/const/article'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
+import { Text } from '@/6shared/ui/redesigned/Text'
+import { ToggleFeatures } from '@/6shared/lib/features'
+import { Text as TextDeprecated } from '@/6shared/ui/deprecated/Text'
+import {
+    articleImage,
+    articleTypes,
+    articleViews,
+    handleButtonClick,
+} from './helpers'
 
 interface ArticleListProps {
     className?: string
@@ -56,12 +64,28 @@ export const ArticleList = memo(function ArticleList(
         )
     }, [view])
 
-    if (isLoading !== true && articles.length === 0) {
+    if (!isLoading && !articles.length) {
         return (
-            <div className={classNames(styles.articleList, [className])}>
-                <Text title={t('articles-not-found')} />
-            </div>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={<Text title={t('articles-not-found')} />}
+                off={<TextDeprecated title={t('articles-not-found')} />}
+            />
         )
+    }
+
+    const articleProps = {
+        Header,
+        articles,
+        onLoadNextArticles,
+        selectedArticleId,
+        isLoading,
+        target,
+        virtualized,
+        articleTypes,
+        articleViews,
+        handleButtonClick,
+        articleImage,
     }
 
     return (
@@ -70,25 +94,9 @@ export const ArticleList = memo(function ArticleList(
             data-testid={DATA_TEST_ID.articleList}
         >
             {view === ArticleView.LIST ? (
-                <Lists
-                    Header={Header}
-                    articles={articles}
-                    onLoadNextArticles={onLoadNextArticles}
-                    selectedArticleId={selectedArticleId}
-                    isLoading={isLoading}
-                    target={target}
-                    virtualized={virtualized}
-                />
+                <Lists {...articleProps} />
             ) : (
-                <Tiles
-                    Header={Header}
-                    articles={articles}
-                    onLoadNextArticles={onLoadNextArticles}
-                    selectedArticleId={selectedArticleId}
-                    isLoading={isLoading}
-                    target={target}
-                    virtualized={virtualized}
-                />
+                <Tiles {...articleProps} />
             )}
         </div>
     )

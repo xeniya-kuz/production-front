@@ -1,131 +1,113 @@
-import { ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY } from '@/6shared/const/localstorage'
-import { classNames } from '@/6shared/lib/classNames/classNames'
-import { AppLink } from '@/6shared/ui/deprecated/AppLink/AppLink'
-import { Avatar } from '@/6shared/ui/deprecated/Avatar/Avatar'
-import { Button } from '@/6shared/ui/deprecated/Button/Button'
-import { Card } from '@/6shared/ui/deprecated/Card/Card'
-import { Icon, IconColors } from '@/6shared/ui/deprecated/Icon/Icon'
-import { Text } from '@/6shared/ui/deprecated/Text/Text'
-import { type JSX, memo, type HTMLAttributeAnchorTarget } from 'react'
+import { AppLink } from '@/6shared/ui/redesigned/AppLink'
+import { Avatar } from '@/6shared/ui/redesigned/Avatar'
+import { Button } from '@/6shared/ui/redesigned/Button/Button'
+import { Text } from '@/6shared/ui/redesigned/Text'
+import { type HTMLAttributeAnchorTarget, type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { type Article } from '../../../../model/types/article'
-import { ArticleTextBlock } from '../../../ArticleTextBlock/ArticleTextBlock'
 import styles from './ListView.module.scss'
 
-import EyeIcon from '@/6shared/assets/icons/eye-20-20.svg'
-import { ArticleBlockType } from '../../../../model/const/article'
 import { getRouteArticleDetails } from '@/6shared/const/router'
-import { AppImage } from '@/6shared/ui/redesigned/AppImage'
-import { Skeleton } from '@/6shared/ui/deprecated/Skeleton'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
+import { Card } from '@/6shared/ui/redesigned/Card'
+import { ArticleBlockType } from '../../../../model/const/article'
+import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
 
-interface ListViewProps {
+export interface ListViewProps {
     article: Article
     target?: HTMLAttributeAnchorTarget
     index: number
     className?: string
+    handleButtonClick: (index: number) => () => void
+    articleViews: (props: {
+        className: string
+        article: Article
+    }) => JSX.Element
+    articleImage: (props: {
+        width: number | string
+        height: number | string
+        className: string
+        article: Article
+    }) => JSX.Element
 }
 
 export const ListView = memo(function ListView({
     article,
     target,
-    index,
     className,
+    index,
+    handleButtonClick,
+    articleViews,
+    articleImage,
 }: ListViewProps): JSX.Element {
     const { t } = useTranslation('buttons')
-    // TODO: вынести
-    const types = (
-        <Text
-            text={article.type.join(', ')}
-            className={styles.types}
-        />
-    )
-    const views = (
-        <>
-            <Text
-                text={String(article.views)}
-                className={styles.views}
-            />
-            <Icon
-                Svg={EyeIcon}
-                color={[IconColors.SECONDARY_STROKE, IconColors.SECONDARY_FILL]}
-            />
-        </>
-    )
 
     const textBlock = article.blocks.find(
         (block) => block.type === ArticleBlockType.TEXT,
     )!
 
-    const handleButtonClick = (): void => {
-        localStorage.setItem(
-            ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY,
-            JSON.stringify(index),
-        )
-    }
-
     return (
         <Card
-            className={classNames(styles.card, [className])}
             data-testid={DATA_TEST_ID.articleListItem}
+            className={className}
+            padding="24"
         >
-            <div className={styles.header}>
-                <Avatar
-                    size={30}
-                    src={article.user?.avatar}
-                    alt="avatar"
-                />
-                <Text
-                    text={article.user?.username}
-                    className={styles.username}
-                />
-                <Text
-                    text={article.createdAt}
-                    className={styles.date}
-                />
-            </div>
-            <Text
-                title={article.title}
-                className={styles.title}
-            />
-            {types}
-            <AppImage
-                src={article.img}
-                alt={article.title}
-                className={styles.img}
-                fallback={
-                    <Skeleton
-                        width={'100%'}
-                        height={250}
+            <VStack gap="16">
+                <VStack gap="8">
+                    <HStack gap="8">
+                        <Avatar
+                            size={32}
+                            src={article.user?.avatar}
+                            alt="avatar"
+                        />
+                        <Text
+                            bold
+                            text={article.user?.username}
+                        />
+                        <Text text={article.createdAt} />
+                    </HStack>
+                    <Text
+                        bold
+                        title={article.title}
                     />
-                }
-                errorFallback={
-                    // TODO: вынести
-                    <img
-                        src="src/6shared/assets/images/no-image.png"
-                        style={{ width: '100%', height: '100%' }}
-                        className={styles.img}
-                    />
-                }
-            />
-            {textBlock !== undefined && (
-                <ArticleTextBlock
-                    block={textBlock}
-                    className={styles.textBlock}
-                />
-            )}
-            <div className={styles.footer}>
-                <AppLink
-                    to={getRouteArticleDetails(article.id)}
-                    target={target}
-                >
-                    <Button onClick={handleButtonClick}>
-                        {t('read-more')}
-                    </Button>
-                </AppLink>
+                </VStack>
 
-                {views}
-            </div>
+                <Text
+                    title={article.subtitle}
+                    size="s"
+                />
+
+                {articleImage({
+                    className: styles.img,
+                    height: 420,
+                    width: '100%',
+                    article,
+                })}
+                {textBlock && (
+                    <Text
+                        text={textBlock.paragraphs[0]}
+                        className={styles.textBlock}
+                    />
+                )}
+                <HStack
+                    max
+                    justify="between"
+                >
+                    <AppLink
+                        to={getRouteArticleDetails(article.id)}
+                        target={target}
+                    >
+                        <Button
+                            onClick={handleButtonClick(index)}
+                            variant="outline"
+                            size="l"
+                        >
+                            {t('read-more')}
+                        </Button>
+                    </AppLink>
+                    {articleViews({ className: '', article })}
+                </HStack>
+            </VStack>
         </Card>
     )
 })

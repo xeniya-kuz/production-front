@@ -53,6 +53,7 @@ export const Tabs = <T extends string>({
                     onClick={onClick(tab)}
                     disabled={tab.disabled}
                     size={size}
+                    hover={tab.value !== activeTab}
                 >
                     {tab.label}
                 </Button>
