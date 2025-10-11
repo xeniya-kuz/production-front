@@ -88,34 +88,31 @@ export const ListBox = <T extends string>(
                         <HListbox.Option
                             key={option.value}
                             value={option.value}
-                            as={Fragment}
                             disabled={option.disabled}
                         >
                             {({ active, selected, disabled }) => (
-                                <>
-                                    <li
-                                        className={classNames(
-                                            styles.option,
-                                            undefined,
-                                            {
-                                                [styles.active]: active,
-                                                [styles.disabled]: disabled,
-                                            },
-                                        )}
-                                    >
-                                        {selected && (
-                                            <Icon
-                                                Svg={DoneIcon}
-                                                color={
-                                                    active
-                                                        ? IconColors.INVERTED_PRIMARY_FILL
-                                                        : IconColors.PRIMARY_FILL
-                                                }
-                                            />
-                                        )}
-                                        {option.label}
-                                    </li>
-                                </>
+                                <div
+                                    className={classNames(
+                                        styles.option,
+                                        undefined,
+                                        {
+                                            [styles.active]: active,
+                                            [styles.disabled]: disabled,
+                                        },
+                                    )}
+                                >
+                                    {selected && (
+                                        <Icon
+                                            Svg={DoneIcon}
+                                            color={
+                                                active
+                                                    ? IconColors.INVERTED_PRIMARY_FILL
+                                                    : IconColors.PRIMARY_FILL
+                                            }
+                                        />
+                                    )}
+                                    {option.label}
+                                </div>
                             )}
                         </HListbox.Option>
                     ))}

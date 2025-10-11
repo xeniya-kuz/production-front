@@ -4,7 +4,7 @@ import { type HTMLAttributes, type JSX, memo, type ReactNode } from 'react'
 
 type CardVariant = 'primary' | 'outline' | 'light'
 type CardPadding = '0' | '8' | '16' | '24'
-type CardRadius = 'normal' | 'round'
+type CardRadius = 'normal' | 'round' | 'none'
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string

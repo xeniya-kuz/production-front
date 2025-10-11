@@ -42,8 +42,8 @@ export const ListBox = <T extends string>(
         size,
     } = props
 
-    const handleOnChange = (value: T): void => {
-        onChange({ name, value })
+    const handleOnChange = (newValue: T): void => {
+        value !== newValue && onChange({ name, value: newValue })
     }
 
     const selectedOption = options.find((option) => option.value === value)
@@ -68,7 +68,10 @@ export const ListBox = <T extends string>(
                 onChange={handleOnChange}
                 disabled={disabled}
             >
-                <HListbox.Button className={classNames(styles.trigger)}>
+                <HListbox.Button
+                    as={'div'}
+                    className={classNames(styles.trigger)}
+                >
                     {({ open, disabled }) => (
                         <Button
                             size={size}
@@ -106,21 +109,19 @@ export const ListBox = <T extends string>(
                             disabled={option.disabled}
                         >
                             {({ active, selected, disabled }) => (
-                                <>
-                                    <li
-                                        className={classNames(
-                                            styles.option,
-                                            undefined,
-                                            {
-                                                [styles.active]: active,
-                                                [styles.disabled]: disabled,
-                                                [styles.selected]: selected,
-                                            },
-                                        )}
-                                    >
-                                        {option.label}
-                                    </li>
-                                </>
+                                <div
+                                    className={classNames(
+                                        styles.option,
+                                        undefined,
+                                        {
+                                            [styles.active]: active,
+                                            [styles.disabled]: disabled,
+                                            [styles.selected]: selected,
+                                        },
+                                    )}
+                                >
+                                    {option.label}
+                                </div>
                             )}
                         </HListbox.Option>
                     ))}

@@ -28,7 +28,8 @@ export const NotificationItem = memo(function NotificationItem({
             on={
                 <Card
                     className={classNames(styles.notificationItem, [className])}
-                    padding="0"
+                    padding="16"
+                    radius="none"
                 >
                     <Text
                         title={notification.title}

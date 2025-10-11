@@ -1,4 +1,3 @@
-import { VStack } from '@/6shared/ui/redesigned/Stack'
 import { type JSX, memo } from 'react'
 import { useNotifications } from '../../api/notificationApi'
 import { NotificationItem } from '../NotificationItem/NotificationItem'
@@ -20,11 +19,7 @@ export const NotificationList = memo(function NotificationList({
     }
 
     return (
-        <VStack
-            gap={'16'}
-            max
-            className={className}
-        >
+        <div className={className}>
             {isLoading ? (
                 <NotificationSkeletons />
             ) : (
@@ -35,6 +30,6 @@ export const NotificationList = memo(function NotificationList({
                     />
                 ))
             )}
-        </VStack>
+        </div>
     )
 })

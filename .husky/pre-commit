@@ -10,5 +10,6 @@
 # проверяет только измененные файлы
 npx lint-staged
 npm run lint:scss:fix
+# ! пока выключила из-за редизайна
 # npm run test:unit
 # npm run test:ui

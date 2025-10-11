@@ -10,7 +10,11 @@ import {
 } from '@/5entities/User'
 import { useAppDispatch } from '@/6shared/lib/hooks'
 import { useTranslation } from 'react-i18next'
-import { getRouteAdmin, getRouteProfile } from '@/6shared/const/router'
+import {
+    getRouteAdmin,
+    getRouteProfile,
+    getRouteSettings,
+} from '@/6shared/const/router'
 import { ToggleFeatures } from '@/6shared/lib/features'
 import { Dropdown } from '@/6shared/ui/redesigned/Popups'
 import { Avatar } from '@/6shared/ui/redesigned/Avatar'
@@ -50,6 +54,11 @@ export const AvatarDropdown = memo(function AvatarDropdown({
         {
             content: t('profile:profile'),
             href: getRouteProfile(authData.id),
+        },
+        // TODO: add translation
+        {
+            content: 'Настройки',
+            href: getRouteSettings(),
         },
         {
             content: t('Выйти'),
