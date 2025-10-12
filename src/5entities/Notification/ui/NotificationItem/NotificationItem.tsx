@@ -16,18 +16,24 @@ import { Card } from '@/6shared/ui/redesigned/Card'
 interface NotificationItemProps {
     className?: string
     notification: Notification
+    isMobile?: boolean
 }
 
 export const NotificationItem = memo(function NotificationItem({
     className,
     notification,
+    isMobile = false,
 }: NotificationItemProps): JSX.Element {
     const content = (
         <ToggleFeatures
             feature="isAppRedesigned"
             on={
                 <Card
-                    className={classNames(styles.notificationItem, [className])}
+                    className={classNames(
+                        styles.notificationItem,
+                        [className, styles.notificationItemRedesigned],
+                        { [styles.mobile]: isMobile },
+                    )}
                     padding="16"
                     radius="none"
                 >
@@ -40,7 +46,11 @@ export const NotificationItem = memo(function NotificationItem({
             off={
                 <CardDeprecated
                     theme={CardTheme.OUTLINE}
-                    className={classNames(styles.notificationItem, [className])}
+                    className={classNames(
+                        styles.notificationItem,
+                        [className, styles.notificationItemDeprecated],
+                        { [styles.mobile]: isMobile },
+                    )}
                 >
                     <TextDeprecated
                         title={notification.title}
@@ -59,7 +69,11 @@ export const NotificationItem = memo(function NotificationItem({
                     <AppLink
                         target="_blank"
                         to={notification.href}
-                        className={styles.link}
+                        className={classNames(
+                            styles.notificationItem,
+                            [className, styles.notificationItemDeprecated],
+                            { [styles.mobile]: isMobile },
+                        )}
                     >
                         {content}
                     </AppLink>
@@ -68,7 +82,11 @@ export const NotificationItem = memo(function NotificationItem({
                     <AppLinkDeprecated
                         target="_blank"
                         to={notification.href}
-                        className={styles.link}
+                        className={classNames(
+                            styles.notificationItem,
+                            [className, styles.notificationItemDeprecated],
+                            { [styles.mobile]: isMobile },
+                        )}
                     >
                         {content}
                     </AppLinkDeprecated>

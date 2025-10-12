@@ -2,9 +2,12 @@
     width: 100%;
     min-width: var(--notification-width);
     max-height: var(--notification-height);
-    border-bottom: 1px solid var(--light-bg-redesigned);
 }
 
-.link {
-    width: 100%;
+.notificationItemRedesigned {
+    border-bottom: 1px solid var(--light-bg-redesigned);
+
+    &.mobile {
+        border-radius: 16px;
+    }
 }

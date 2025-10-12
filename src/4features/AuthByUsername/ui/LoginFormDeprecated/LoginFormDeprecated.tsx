@@ -3,15 +3,15 @@ import {
     DynamicModuleLoader,
     type ReducerList,
 } from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { Button } from '@/6shared/ui/redesigned/Button'
-import { Input } from '@/6shared/ui/redesigned/Input'
-import { Text } from '@/6shared/ui/redesigned/Text'
+import { Button, ButtonTheme } from '@/6shared/ui/deprecated/Button/Button'
+import { Input } from '@/6shared/ui/deprecated/Input/Input'
+import { Text, TextTheme } from '@/6shared/ui/deprecated/Text/Text'
 import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { loginReducer } from '../../model/slice/loginSlice'
-import styles from './LoginForm.module.scss'
+import styles from './LoginFormDeprecated.module.scss'
 
-export interface LoginFormProps {
+export interface LoginFormDeprecatedProps {
     className?: string
     error?: string
     onChangeUsername: (props: { name: string; value: string }) => void
@@ -26,7 +26,7 @@ const initialReducer: ReducerList = {
     loginForm: loginReducer,
 }
 
-const LoginForm = memo(function LoginForm({
+const LoginFormDeprecated = memo(function LoginForm({
     className,
     error,
     onChangeUsername,
@@ -35,41 +35,38 @@ const LoginForm = memo(function LoginForm({
     password,
     onLoginClick,
     isLoading,
-}: LoginFormProps): JSX.Element {
+}: LoginFormDeprecatedProps): JSX.Element {
     const { t } = useTranslation()
 
     return (
         <DynamicModuleLoader reducers={initialReducer}>
             <div className={classNames(styles.loginForm, [className])}>
                 <Text title={t('Форма авторизации')} />
-                {error && (
+                {error !== undefined && (
                     <Text
                         text={t('Логин или пароль введены неправильно')}
-                        variant="error"
+                        theme={TextTheme.ERROR}
                     />
                 )}
-                <Text
-                    className={styles.label}
-                    text={t('Введите логин')}
-                />
                 <Input
                     type="text"
+                    className={styles.input}
                     autofocus
+                    placeholder={t('Введите логин')}
                     onChange={onChangeUsername}
                     value={username}
                 />
-                <Text
-                    className={styles.label}
-                    text={t('Введите пароль')}
-                />
                 <Input
                     type="text"
+                    className={styles.input}
+                    placeholder={t('Введите пароль')}
                     onChange={onChangePassword}
                     value={password}
                 />
                 <Button
-                    variant="outline"
+                    theme={ButtonTheme.OUTLINE}
                     className={styles.loginBtn}
+                    // eslint-disable-next-line @typescript-eslint/no-misused-promises
                     onClick={onLoginClick}
                     disabled={isLoading}
                 >
@@ -80,4 +77,4 @@ const LoginForm = memo(function LoginForm({
     )
 })
 
-export default LoginForm
+export default LoginFormDeprecated

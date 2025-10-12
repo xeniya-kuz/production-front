@@ -39,36 +39,38 @@ export default function App(): JSX.Element {
         }
     }, [dispatch, pathname])
 
-    // TODO: можно сделать скелетон старницы с хедером и сайдбаром
+    // TODO: можно сделать скелетон страницы с хедером и сайдбаром
     if (!isMounted) {
         return <PageLoader />
     }
 
     return (
+        // Здесь Suspense нужен, т.к. переводы из i18n будут подгружаться чанками
         <Suspense fallback={<PageLoader />}>
             <ToggleFeatures
                 feature="isAppRedesigned"
                 on={
-                    <div className={classNames('app_redesigned', [theme])}>
-                        {/* <Suspense fallback={<PageLoader />}> */}
+                    <div
+                        id="app"
+                        className={classNames('app_redesigned', [theme])}
+                    >
                         <MainLayout
                             header={<Navbar />}
                             content={<AppRouter />}
                             sidebar={<Sidebar />}
                         />
-                        {/* </Suspense> */}
                     </div>
                 }
                 off={
-                    <div className={classNames('app', [theme])}>
-                        {/* Здесь Suspense нужен, т.к. переводы из i18n будут подгружаться чанками */}
-                        {/* <Suspense fallback={<PageLoader />}> */}
+                    <div
+                        id="app"
+                        className={classNames('app', [theme])}
+                    >
                         <Navbar />
                         <div className="content-page">
                             <Sidebar />
                             <AppRouter />
                         </div>
-                        {/* </Suspense> */}
                     </div>
                 }
             />

@@ -18,6 +18,17 @@
     height: calc(100vh + 100px);
     padding: 15px;
     border-radius: 12px 12px 0;
+}
 
-    background: var(--bg-color);
+.drawerRedesigned {
+    .content {
+        transform: none;
+        background: var(--light-bg-redesigned);
+    }
+}
+
+.drawerDeprecated {
+    .content {
+        background: var(--bg-color);
+    }
 }

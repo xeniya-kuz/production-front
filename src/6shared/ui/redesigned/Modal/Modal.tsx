@@ -4,6 +4,7 @@ import { type JSX, type ReactNode } from 'react'
 import { Overlay } from '../../redesigned/Overlay/Overlay'
 import { Portal } from '../../redesigned/Portal/Portal'
 import styles from './Modal.module.scss'
+import { toggleFeatures } from '@/6shared/lib/features'
 
 interface ModalProps {
     className?: string
@@ -13,10 +14,6 @@ interface ModalProps {
     lazy?: boolean
 }
 
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
 // мемоизировать компонент (memo) не имеет смысла, т.к. в кач-ве children всегда передается какая-то двевовидная структура, которая часто меняется и стоит дорого для мемоизации
 export const Modal = ({
     className,
@@ -41,9 +38,22 @@ export const Modal = ({
         return null
     }
 
+    const modalStyles = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => styles.modalRedesigned,
+        off: () => styles.modalDeprecated,
+    })
+
+    // element={document.getElementById('app') ?? document.body}
     return (
         <Portal>
-            <div className={classNames(styles.modal, [theme, className], mods)}>
+            <div
+                className={classNames(
+                    styles.modal,
+                    [theme, modalStyles, className],
+                    mods,
+                )}
+            >
                 <Overlay onClick={close} />
                 <div className={styles.content}>{children}</div>
             </div>

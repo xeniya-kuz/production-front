@@ -5,6 +5,7 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import { Overlay } from '../../redesigned/Overlay/Overlay'
 import styles from './DrawerContent.module.scss'
 import { type DrawerProps } from './types'
+import { toggleFeatures } from '@/6shared/lib/features'
 
 const height = window.innerHeight - 100
 
@@ -82,12 +83,18 @@ export const DrawerContent = memo(function DrawerContent(props: DrawerProps) {
         return null
     }
 
-    const display = y.to((py) => (py < height ? 'block' : 'none'))
+    const display = y.to((py) => (py < height ? 'flex' : 'none'))
+
+    const drawerStyles = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => styles.drawerRedesigned,
+        off: () => styles.drawerDeprecated,
+    })
 
     return (
-        <Portal>
+        <Portal element={document.getElementById('app') ?? document.body}>
             <div
-                className={classNames(styles.drawer, [className, 'app_drawer'])}
+                className={classNames(styles.drawer, [drawerStyles, className])}
             >
                 <Overlay onClick={close} />
                 {/* @ts-expect-error - проблема типизации: ругается на className и children */}

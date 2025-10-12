@@ -3,7 +3,7 @@ import NotificationIconDeprecated from '@/6shared/assets/icons/notification-20-2
 import NotificationIcon from '@/6shared/assets/icons/notification.svg'
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { ToggleFeatures } from '@/6shared/lib/features'
-import { Drawer } from '@/6shared/ui/deprecated/Drawer/Drawer'
+import { Drawer } from '@/6shared/ui/redesigned/Drawer/Drawer'
 import {
     Icon as IconDeprecated,
     IconColors,
@@ -29,7 +29,13 @@ export const NotificationButton = memo(function NotificationButton({
     const trigger = (
         <ToggleFeatures
             feature="isAppRedesigned"
-            on={<Icon Svg={NotificationIcon} />}
+            on={
+                <Icon
+                    Svg={NotificationIcon}
+                    clickable
+                    onClick={toggleOpen}
+                />
+            }
             off={
                 <div onClick={toggleOpen}>
                     <IconDeprecated
@@ -73,7 +79,7 @@ export const NotificationButton = memo(function NotificationButton({
                     onClose={toggleOpen}
                     isOpen={isOpen}
                 >
-                    <NotificationList />
+                    <NotificationList isMobile />
                 </Drawer>
             </MobileView>
         </>

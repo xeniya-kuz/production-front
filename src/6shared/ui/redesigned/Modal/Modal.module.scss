@@ -8,8 +8,6 @@
     align-items: center;
     justify-content: center;
 
-    color: var(--primary-color);
-
     opacity: 0;
 
     transition: var(--modal-transition) opacity;
@@ -22,9 +20,23 @@
     padding: 20px;
     border-radius: 12px;
 
-    background-color: var(--bg-color);
-
     transition: var(--modal-transition) transform;
+}
+
+.modalDeprecated {
+    color: var(--primary-color);
+
+    .content {
+        background-color: var(--bg-color);
+    }
+}
+
+.modalRedesigned {
+    color: var(--text-redesigned);
+
+    .content {
+        background-color: var(--light-bg-redesigned);
+    }
 }
 
 .opened {
