@@ -34,6 +34,7 @@ export const NotificationButton = memo(function NotificationButton({
                     Svg={NotificationIcon}
                     clickable
                     onClick={toggleOpen}
+                    title="Уведомления"
                 />
             }
             off={

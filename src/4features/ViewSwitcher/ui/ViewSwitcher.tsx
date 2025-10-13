@@ -69,6 +69,8 @@ export const ViewSwitcher = memo(function ArticlesViewSwitcher({
                     onClick={onClick(viewType.view)}
                     hover={viewType.view !== view}
                     variant={viewType.view === view ? 'primary' : 'secondary'}
+                    // TODO: translate
+                    title={view === ArticleView.LIST ? 'Список' : 'Плитка'}
                 />
             }
             off={

@@ -2,7 +2,9 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './ArticleCodeBlock.module.scss'
 import { type JSX, memo } from 'react'
 import { type ArticleCodeBlock as ArticleCodeBlockType } from '../../model/types/article'
-import { Code } from '@/6shared/ui/deprecated/Code'
+import { Code as CodeDeprecated } from '@/6shared/ui/deprecated/Code'
+import { ToggleFeatures } from '@/6shared/lib/features'
+import { Code } from '@/6shared/ui/redesigned/Code'
 
 interface ArticleCodeBlockProps {
     className?: string
@@ -15,7 +17,11 @@ export const ArticleCodeBlock = memo(function ArticleCodeBlock({
 }: ArticleCodeBlockProps): JSX.Element {
     return (
         <div className={classNames(styles.articleCodeBlock, [className])}>
-            <Code code={block.code} />
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={<Code code={block.code} />}
+                off={<CodeDeprecated code={block.code} />}
+            />
         </div>
     )
 })

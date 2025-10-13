@@ -15,6 +15,7 @@ import { Text } from '@/6shared/ui/redesigned/Text'
 import { type JSX } from 'react'
 import { type Article } from '../../model/types/article'
 import { HStack } from '@/6shared/ui/redesigned/Stack'
+import { EMPTY_IMAGE_PATH } from '@/6shared/const/general'
 
 export const articleTypes = ({
     className,
@@ -88,26 +89,14 @@ export const articleImage = ({
         alt={article.title}
         className={className}
         fallback={
-            <ToggleFeatures
-                feature="isAppRedesigned"
-                on={
-                    <Skeleton
-                        width={width}
-                        height={height}
-                    />
-                }
-                off={
-                    <SkeletonDeprecated
-                        width={width}
-                        height={height}
-                    />
-                }
+            <SkeletonDeprecated
+                width={width}
+                height={height}
             />
         }
         errorFallback={
-            <img
-                src="src/6shared/assets/images/no-image.png"
-                style={{ width: '100%', height: '100%' }}
+            <AppImage
+                src={EMPTY_IMAGE_PATH}
                 className={className}
             />
         }

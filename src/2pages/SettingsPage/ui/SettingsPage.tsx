@@ -7,11 +7,11 @@ import { Text as TextRedesigned } from '@/6shared/ui/redesigned/Text'
 import { type JSX, memo } from 'react'
 
 const SettingsPage = memo(function SettingsPage(): JSX.Element {
-    const Text = ({ title }: { title: string }): JSX.Element => (
+    const Text = (props: { title: string }): JSX.Element => (
         <ToggleFeatures
             feature="isAppRedesigned"
-            on={<TextRedesigned title={title} />}
-            off={<TextDeprecated title={title} />}
+            on={<TextRedesigned {...props} />}
+            off={<TextDeprecated {...props} />}
         />
     )
 

@@ -12,6 +12,7 @@ import { DATA_TEST_ID } from '@/6shared/const/tests'
 import { Card } from '@/6shared/ui/redesigned/Card'
 import { ArticleBlockType } from '../../../../model/const/article'
 import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
+import { AppImage } from '@/6shared/ui/redesigned/AppImage'
 
 export interface ListViewProps {
     article: Article
@@ -20,12 +21,6 @@ export interface ListViewProps {
     className?: string
     handleButtonClick: (index: number) => () => void
     articleViews: (props: {
-        className: string
-        article: Article
-    }) => JSX.Element
-    articleImage: (props: {
-        width: number | string
-        height: number | string
         className: string
         article: Article
     }) => JSX.Element
@@ -38,7 +33,6 @@ export const ListView = memo(function ListView({
     index,
     handleButtonClick,
     articleViews,
-    articleImage,
 }: ListViewProps): JSX.Element {
     const { t } = useTranslation('buttons')
 
@@ -78,12 +72,12 @@ export const ListView = memo(function ListView({
                     size="s"
                 />
 
-                {articleImage({
-                    className: styles.img,
-                    height: 420,
-                    width: '100%',
-                    article,
-                })}
+                <AppImage
+                    src={article.img}
+                    alt={article.title}
+                    className={styles.img}
+                    fallbackHeight={420}
+                />
                 {textBlock && (
                     <Text
                         text={textBlock.paragraphs[0]}

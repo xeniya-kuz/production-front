@@ -9,6 +9,7 @@ import { getRouteArticleDetails } from '@/6shared/const/router'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
 import { Avatar } from '@/6shared/ui/redesigned/Avatar'
+import { AppImage } from '@/6shared/ui/redesigned/AppImage'
 
 interface TileViewProps {
     article: Article
@@ -17,12 +18,6 @@ interface TileViewProps {
     className?: string
     handleButtonClick: (index: number) => () => void
     articleViews: (props: {
-        className: string
-        article: Article
-    }) => JSX.Element
-    articleImage: (props: {
-        width: number | string
-        height: number | string
         className: string
         article: Article
     }) => JSX.Element
@@ -35,7 +30,6 @@ export const TileView = memo(function TileView({
     className,
     handleButtonClick,
     articleViews,
-    articleImage,
 }: TileViewProps): JSX.Element {
     return (
         <AppLink
@@ -50,12 +44,12 @@ export const TileView = memo(function TileView({
                 padding="0"
                 className={styles.card}
             >
-                {articleImage({
-                    className: styles.img,
-                    height: '100%',
-                    width: '100%',
-                    article,
-                })}
+                <AppImage
+                    src={article.img}
+                    alt={article.title}
+                    className={styles.img}
+                    fallbackHeight={141}
+                />
 
                 <Text
                     text={article.title}

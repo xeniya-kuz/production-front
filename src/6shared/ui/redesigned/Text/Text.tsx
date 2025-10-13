@@ -1,6 +1,7 @@
 import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import styles from './Text.module.scss'
 import { type JSX, memo } from 'react'
+import { VStack } from '../Stack'
 
 export type TextAlign = 'right' | 'left' | 'center'
 
@@ -50,7 +51,8 @@ export const Text = memo(function Text(props: TextProps): JSX.Element {
     const mods: Mods = { [styles.bold]: bold }
 
     return (
-        <div
+        <VStack
+            gap="8"
             className={classNames(
                 styles.text,
                 [className, ...additionalClassNames],
@@ -67,13 +69,13 @@ export const Text = memo(function Text(props: TextProps): JSX.Element {
                 </HeaderTag>
             )}
             {text && (
-                <p
+                <HeaderTag
                     data-testid={`${dataTestId}.Text`}
                     className={styles.text}
                 >
                     {text}
-                </p>
+                </HeaderTag>
             )}
-        </div>
+        </VStack>
     )
 })

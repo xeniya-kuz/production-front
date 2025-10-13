@@ -58,6 +58,7 @@ export const ThemeSwitcher = memo(function ThemeSwitcher({
                     Svg={ThemeIcon}
                     clickable
                     onClick={onToggleHandler}
+                    title="Переключить тему"
                 />
             }
             off={<Deprecated />}

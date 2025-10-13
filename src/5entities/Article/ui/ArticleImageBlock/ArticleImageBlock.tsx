@@ -14,13 +14,13 @@ export const ArticleImageBlock = memo(function ArticleImageBlock({
     block,
 }: ArticleImageBlockProps): JSX.Element {
     return (
-        <div className={classNames(styles.articleimageblock, [className])}>
+        <div className={classNames(styles.articleImageblock, [className])}>
             <img
                 src={block.src}
                 className={styles.img}
                 alt={block.title}
             />
-            {block.title !== undefined && (
+            {block.title && (
                 <Text
                     text={block.title}
                     align={TextAlign.CENTER}

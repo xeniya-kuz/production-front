@@ -66,6 +66,7 @@ module.exports = {
                     'name',
                     'size',
                     'radius',
+                    'objectFit',
                 ],
             },
         ],

@@ -9,14 +9,17 @@ import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
 import styles from './styles.module.scss'
 import { useSelector } from 'react-redux'
 import { Article } from './Article'
-import { SketelonArticle } from './SketelonArticle'
-import { Error } from '@/6shared/ui/deprecated/Error'
+import { SketelonArticleDeprecated } from './SketelonArticleDeprecated'
+import { Error as ErrorDeprecated } from '@/6shared/ui/deprecated/Error'
 import { selectArticleDetailsIsLoading } from '../../model/selectors/selectArticleDetailsIsLoading/selectArticleDetailsIsLoading'
 import { selectArticleDetailsError } from '../../model/selectors/selectArticleDetailsError/selectArticleDetailsError'
 import { selectArticleDetails } from '../../model/selectors/selectArticleDetails/selectArticleDetails'
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById'
 import { VStack } from '@/6shared/ui/redesigned/Stack'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
+import { ToggleFeatures } from '@/6shared/lib/features'
+import { SketelonArticle } from './SketelonArticle'
+import { Error } from '@/6shared/ui/redesigned/Error'
 
 interface ArticleDetailsProps {
     className?: string
@@ -36,7 +39,6 @@ export const ArticleDetails = memo(function ArticleDetails({
 
     const error = useSelector(selectArticleDetailsError)
     const article = useSelector(selectArticleDetails)
-    console.log('article', article)
 
     useInitialEffect(() => {
         void dispatch(fetchArticleById(articleId))
@@ -45,14 +47,31 @@ export const ArticleDetails = memo(function ArticleDetails({
     let content
 
     if (isLoading) {
-        content = <SketelonArticle />
+        content = (
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={<SketelonArticle />}
+                off={<SketelonArticleDeprecated />}
+            />
+        )
     }
 
     if (error) {
         content = (
-            <Error
-                title={error}
-                text=""
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <Error
+                        title={error}
+                        text=""
+                    />
+                }
+                off={
+                    <ErrorDeprecated
+                        title={error}
+                        text=""
+                    />
+                }
             />
         )
     }

@@ -18,27 +18,28 @@ export const SketelonArticle = memo(function SketelonArticle({
             className={classNames(undefined, [className])}
         >
             <Skeleton
+                // width={300}
+                height={38}
+            />
+            <Skeleton
+                width={500}
+                height={28}
+            />
+            <Skeleton
                 className={styles.avatar}
-                width={200}
-                height={200}
-                border="50%"
+                height={400}
             />
+
             <Skeleton
-                width={300}
-                height={32}
-            />
-            <Skeleton
-                width={600}
                 height={24}
+                width={300}
             />
+            <Skeleton height={300} />
             <Skeleton
-                width="100%"
-                height={200}
+                height={24}
+                width={300}
             />
-            <Skeleton
-                width="100%"
-                height={200}
-            />
+            <Skeleton height={300} />
         </VStack>
     )
 })

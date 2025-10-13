@@ -1,8 +1,10 @@
-.articleDetails {
-    min-height: 100%;
+.articleDeprecated {
+    .avatar {
+        margin-inline: auto !important;
+        object-fit: cover;
+    }
 }
 
-.avatar {
-    margin-inline: auto !important;
-    object-fit: cover;
+.articleDetails {
+    min-height: 100%;
 }

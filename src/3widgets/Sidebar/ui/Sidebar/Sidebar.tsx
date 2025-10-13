@@ -114,6 +114,7 @@ export const Sidebar = memo(function Sidebar({
                         onClick={onToggle}
                         Svg={ArrowIcon}
                         clickable
+                        title="Свернуть меню"
                     />
                     <ul className={styles.switchersRedesigned}>
                         <li className={styles.li}>
