@@ -1,9 +1,11 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './StarRating.module.scss'
 import { type JSX, memo, useState } from 'react'
-import { Icon, IconColors } from '../Icon'
-import StarIcon from '../../../assets/icons/star.svg'
+import { Icon } from '../Icon'
+import StarNotFilledIcon from '../../../assets/icons/starNotFilled.svg'
+import StarFilledIcon from '../../../assets/icons/starFilled.svg'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
+import { HStack } from '../Stack'
 
 export interface StarRatingProps {
     className?: string
@@ -14,10 +16,6 @@ export interface StarRatingProps {
 
 const stars = [1, 2, 3, 4, 5]
 
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
 export const StarRating = memo(function StarRating({
     className,
     onSelect,
@@ -40,6 +38,7 @@ export const StarRating = memo(function StarRating({
     }
 
     const onClick = (starNumber: number) => () => {
+        console.log('onClick')
         if (!isSelected) {
             setCurrentStarNumber(starNumber)
             setIsSelected(!!starNumber)
@@ -48,12 +47,15 @@ export const StarRating = memo(function StarRating({
     }
 
     return (
-        <div className={classNames(styles.starRating, [className])}>
+        <HStack className={classNames(styles.starRating, [className])}>
             {stars.map((star) => (
                 <Icon
                     key={star}
-                    color={IconColors.PRIMARY_STROKE}
-                    Svg={StarIcon}
+                    Svg={
+                        isSelected || star <= currentStarNumber
+                            ? StarFilledIcon
+                            : StarNotFilledIcon
+                    }
                     className={classNames(styles.starIcon, [], {
                         [styles.isHover]: star <= currentStarNumber,
                         [styles.isSelected]: isSelected,
@@ -62,11 +64,13 @@ export const StarRating = memo(function StarRating({
                     height={size}
                     onMouseEnter={onHover(star)}
                     onMouseLeave={onLeave}
+                    clickable
                     onClick={onClick(star)}
                     data-testid={DATA_TEST_ID.starRating + star}
                     data-selected={star <= currentStarNumber}
+                    title=""
                 />
             ))}
-        </div>
+        </HStack>
     )
 })

@@ -53,11 +53,7 @@ export const Text = memo(function Text(props: TextProps): JSX.Element {
     return (
         <VStack
             gap="8"
-            className={classNames(
-                styles.text,
-                [className, ...additionalClassNames],
-                mods,
-            )}
+            className={classNames(className, [...additionalClassNames], mods)}
             data-testid={dataTestId}
         >
             {title && (
@@ -69,12 +65,12 @@ export const Text = memo(function Text(props: TextProps): JSX.Element {
                 </HeaderTag>
             )}
             {text && (
-                <HeaderTag
+                <p
                     data-testid={`${dataTestId}.Text`}
                     className={styles.text}
                 >
                     {text}
-                </HeaderTag>
+                </p>
             )}
         </VStack>
     )

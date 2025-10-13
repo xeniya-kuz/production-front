@@ -1,17 +1,14 @@
-import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
-import { type JSX, memo, useCallback, useState } from 'react'
-import { Card } from '@/6shared/ui/deprecated/Card'
-import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
-import { Text } from '@/6shared/ui/deprecated/Text'
-import { StarRating } from '@/6shared/ui/deprecated/StarRating'
-import { Modal } from '@/6shared/ui/redesigned/Modal/Modal'
-import { Input } from '@/6shared/ui/deprecated/Input'
-import { Button, ButtonSize, ButtonTheme } from '@/6shared/ui/deprecated/Button'
-import { useTranslation } from 'react-i18next'
-import { BrowserView, MobileView } from 'react-device-detect'
-import { Drawer } from '@/6shared/ui/redesigned/Drawer'
-import styles from './RatingCard.module.scss'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
+import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
+import { ButtonTheme } from '@/6shared/ui/deprecated/Button'
+import { Drawer } from '@/6shared/ui/redesigned/Drawer'
+import { Modal } from '@/6shared/ui/redesigned/Modal/Modal'
+import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
+import { type JSX, memo, useCallback, useState } from 'react'
+import { BrowserView, MobileView } from 'react-device-detect'
+import { useTranslation } from 'react-i18next'
+import { Button, Card, Input, StarRating, Text } from './helpers'
+import styles from './RatingCard.module.scss'
 
 interface RatingCardProps {
     className?: string
@@ -41,6 +38,7 @@ export const RatingCard = memo(function RatingCard({
 
     const onSelectStarsHandle = useCallback(
         (starNumber: number) => {
+            console.log('acceptHandle')
             setStarsCount(starNumber)
             if (hasFeedback) {
                 setIsModalOpen(true)
@@ -57,9 +55,9 @@ export const RatingCard = memo(function RatingCard({
     }, [feedback, onAccept, starsCount])
 
     const cancelHandle = useCallback(() => {
-        setIsModalOpen(false)
-        onCancel?.(starsCount)
-    }, [onCancel, starsCount])
+        // setIsModalOpen(false)
+        // onCancel?.(starsCount)
+    }, [])
 
     const onChangeHandle = ({
         name,
@@ -150,7 +148,6 @@ export const RatingCard = memo(function RatingCard({
                         {modalContent}
                         <Button
                             onClick={acceptHandle}
-                            size={ButtonSize.L}
                             fullWidth
                             data-testid={DATA_TEST_ID.ratingCardSend}
                         >

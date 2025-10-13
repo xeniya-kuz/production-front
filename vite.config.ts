@@ -24,6 +24,7 @@ export default defineConfig((env: ConfigEnv) => {
                     replaceAttrValues: {
                         '#FFC700': 'currentColor',
                         '#74A2B2': 'currentColor',
+                        '#5ED3F3': 'currentColor',
                     },
                     svgoConfig: {
                         plugins: [

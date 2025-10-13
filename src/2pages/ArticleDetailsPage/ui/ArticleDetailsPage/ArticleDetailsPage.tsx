@@ -5,7 +5,7 @@ import { ArticleRecommendations } from '@/4features/ArticleRecommendations'
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { ToggleFeatures } from '@/6shared/lib/features'
 import { VStack } from '@/6shared/ui/redesigned/Stack'
-import { type FC, type JSX, memo, type PropsWithChildren } from 'react'
+import { type FC, type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
@@ -48,22 +48,16 @@ const ArticleDetailsPage = ({
         </>
     )
 
-    const Wrapper: FC<PropsWithChildren> = ({ children }) => (
+    const Deprecated: FC = () => (
         <Page className={classNames(styles.articleDetailsPage, [className])}>
             <VStack
                 gap="16"
                 max
             >
-                {children}
+                <ArticleDetailsPageHeader />
+                {content}
             </VStack>
         </Page>
-    )
-
-    const Deprecated: FC = () => (
-        <Wrapper>
-            <ArticleDetailsPageHeader />
-            {content}
-        </Wrapper>
     )
 
     return (
@@ -72,7 +66,20 @@ const ArticleDetailsPage = ({
             on={
                 <StickyContentLayout
                     right={<AdditionalInfoContainer />}
-                    content={<Wrapper>{content}</Wrapper>}
+                    content={
+                        <Page
+                            className={classNames(styles.articleDetailsPage, [
+                                className,
+                            ])}
+                        >
+                            <VStack
+                                gap="16"
+                                max
+                            >
+                                {content}
+                            </VStack>
+                        </Page>
+                    }
                 />
             }
             off={<Deprecated />}

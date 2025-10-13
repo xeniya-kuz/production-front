@@ -11,14 +11,14 @@
       "title": "Уведомление 2",
       "description": "Произошло какое-то событие",
       "userId": "1",
-      "href": "http://localhost:3000/admin"
+      "href": "/admin"
     },
     {
       "id": "3",
       "title": "Уведомление 3",
       "description": "Произошло какое-то событие",
       "userId": "1",
-      "href": "http://localhost:3000/admin"
+      "href": ""
     },
     {
       "id": "4",
@@ -607,6 +607,9 @@
       "username": "admin",
       "password": "123",
       "avatar": "https://avatars.dzeninfra.ru/get-zen_doc/53963/pub_651011ddc419e8692e91c5dc_65101281d67f4c757ed51043/scale_1200",
+      "roles": [
+        "ADMIN"
+      ],
       "features": {
         "isArticleRatingEnabled": true,
         "isAppRedesigned": true
@@ -731,12 +734,6 @@
       "rate": 3,
       "feedback": "",
       "id": "bcPnbbZ"
-    },
-    {
-      "userId": "1",
-      "articleId": "4",
-      "rate": 3,
-      "id": "MTPCRtG"
     }
   ],
   "profile-ratings": [
