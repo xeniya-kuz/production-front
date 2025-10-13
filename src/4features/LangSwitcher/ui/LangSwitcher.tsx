@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import {
     Button as ButtonDeprecated,
     ButtonTheme,
-} from '@/6shared/ui/deprecated/Button/Button'
+} from '@/6shared/ui/deprecated/Button'
 import { type JSX, memo } from 'react'
 import styles from './LangSwitcher.module.scss'
 import { ToggleFeatures } from '@/6shared/lib/features'
@@ -33,6 +33,7 @@ export const LangSwitcher = memo(function LangSwitcher({
             feature="isAppRedesigned"
             on={
                 <Button
+                    variant="clear"
                     className={classNames(styles.langSwitcherRedesigned, [
                         className,
                     ])}

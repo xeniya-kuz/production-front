@@ -6,16 +6,13 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import {
     AppLink as AppLinkDeprecated,
     AppLinkTheme,
-} from '@/6shared/ui/deprecated/AppLink/AppLink'
+} from '@/6shared/ui/deprecated/AppLink'
 import {
     Button as ButtonDeprecated,
     ButtonTheme,
-} from '@/6shared/ui/deprecated/Button/Button'
+} from '@/6shared/ui/deprecated/Button'
 import { HStack } from '@/6shared/ui/redesigned/Stack'
-import {
-    Text as TextDeprecated,
-    TextTheme,
-} from '@/6shared/ui/deprecated/Text/Text'
+import { Text as TextDeprecated, TextTheme } from '@/6shared/ui/deprecated/Text'
 import { type FC, type JSX, memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'

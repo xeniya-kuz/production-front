@@ -4,11 +4,11 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import {
     Button as ButtonDeprecated,
     ButtonTheme,
-} from '@/6shared/ui/deprecated/Button/Button'
+} from '@/6shared/ui/deprecated/Button'
 import {
     Icon as IconDeprecated,
     IconColors,
-} from '@/6shared/ui/deprecated/Icon/Icon'
+} from '@/6shared/ui/deprecated/Icon'
 import { type FC, type JSX, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from './ThemeSwitcher.module.scss'

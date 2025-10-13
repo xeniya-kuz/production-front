@@ -1,8 +1,8 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { ToggleFeatures } from '@/6shared/lib/features'
 import { memo } from 'react'
-import { SkeletonListView } from './Skeleton/SkeletonListView'
 import { SkeletonListViewDeprecated } from './Deprecated/SkeletonListViewDeprecated/SkeletonListViewDeprecated'
+import { SkeletonListView } from './SkeletonListView/SkeletonListView'
 
 interface FooterProps {
     className?: string

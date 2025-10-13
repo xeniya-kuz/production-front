@@ -9,11 +9,11 @@ import { ArticleView } from '@/5entities/Article'
 import {
     Icon as IconDeprecated,
     IconColors,
-} from '@/6shared/ui/deprecated/Icon/Icon'
+} from '@/6shared/ui/deprecated/Icon'
 import {
     Button as ButtonDeprecated,
     ButtonTheme,
-} from '@/6shared/ui/deprecated/Button/Button'
+} from '@/6shared/ui/deprecated/Button'
 import { toggleFeatures, ToggleFeatures } from '@/6shared/lib/features'
 import { Icon } from '@/6shared/ui/redesigned/Icon'
 

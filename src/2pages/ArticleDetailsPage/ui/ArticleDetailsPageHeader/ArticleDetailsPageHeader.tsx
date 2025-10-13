@@ -1,6 +1,6 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { type JSX, memo, useCallback } from 'react'
-import { Button } from '@/6shared/ui/deprecated/Button/Button'
+import { Button } from '@/6shared/ui/deprecated/Button'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import {

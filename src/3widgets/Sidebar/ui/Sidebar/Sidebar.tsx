@@ -1,11 +1,7 @@
 import { LangSwitcher } from '@/4features/LangSwitcher'
 import { ThemeSwitcher } from '@/4features/ThemeSwitcher'
 import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
-import {
-    Button,
-    ButtonSize,
-    ButtonTheme,
-} from '@/6shared/ui/deprecated/Button/Button'
+import { Button, ButtonSize, ButtonTheme } from '@/6shared/ui/deprecated/Button'
 import { type FC, type JSX, memo, useMemo, useState } from 'react'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
 import styles from './Sidebar.module.scss'

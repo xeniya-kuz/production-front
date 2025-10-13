@@ -82,7 +82,7 @@ export const TileView = memo(function TileView({
                     >
                         <Avatar
                             size={32}
-                            src={article.user.avatar}
+                            src={article.user.avatar ?? ''}
                             alt="user avatar"
                         />
                         <Text

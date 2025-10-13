@@ -1,11 +1,11 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './styles.module.scss'
 import { type JSX, memo, useCallback } from 'react'
-import { Avatar } from '@/6shared/ui/deprecated/Avatar/Avatar'
+import { Avatar } from '@/6shared/ui/deprecated/Avatar'
 import CalendarIcon from '@/6shared/assets/icons/calendar-20-20.svg'
 import EyeIcon from '@/6shared/assets/icons/eye-20-20.svg'
-import { Icon } from '@/6shared/ui/deprecated/Icon/Icon'
-import { Text, TextSize } from '@/6shared/ui/deprecated/Text/Text'
+import { Icon } from '@/6shared/ui/deprecated/Icon'
+import { Text, TextSize } from '@/6shared/ui/deprecated/Text'
 import {
     type ArticleBlock,
     type Article as ArticleType,
@@ -36,6 +36,8 @@ export const Article = memo(function Article({
             text: article?.createdAt,
         },
     ]
+
+    console.log('article 2', article)
 
     const renderBlock = useCallback((block: ArticleBlock) => {
         switch (block.type) {

@@ -1,6 +1,6 @@
 import { type FC, type JSX, memo, useCallback } from 'react'
 import { Dropdown as DropdownDeprecated } from '@/6shared/ui/deprecated/Popups'
-import { Avatar as AvatarDeprecated } from '@/6shared/ui/deprecated/Avatar/Avatar'
+import { Avatar as AvatarDeprecated } from '@/6shared/ui/deprecated/Avatar'
 import { useSelector } from 'react-redux'
 import {
     isUserAdmin,

@@ -7,7 +7,7 @@ import { Drawer } from '@/6shared/ui/redesigned/Drawer/Drawer'
 import {
     Icon as IconDeprecated,
     IconColors,
-} from '@/6shared/ui/deprecated/Icon/Icon'
+} from '@/6shared/ui/deprecated/Icon'
 import { Popover as PopoverDeprecated } from '@/6shared/ui/deprecated/Popups'
 import { Icon } from '@/6shared/ui/redesigned/Icon'
 import { Popover } from '@/6shared/ui/redesigned/Popups'

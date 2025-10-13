@@ -1,4 +1,4 @@
-import { Skeleton } from '@/6shared/ui/deprecated/Skeleton/Skeleton'
+import { Skeleton } from '@/6shared/ui/deprecated/Skeleton'
 import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
 import { type JSX, memo } from 'react'
 

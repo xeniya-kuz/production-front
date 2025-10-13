@@ -1,5 +1,5 @@
 import { ToggleFeatures } from '@/6shared/lib/features'
-import { Skeleton as SkeletonDeprecated } from '@/6shared/ui/deprecated/Skeleton/Skeleton'
+import { Skeleton as SkeletonDeprecated } from '@/6shared/ui/deprecated/Skeleton'
 import { Card } from '@/6shared/ui/redesigned/Card'
 import { Skeleton } from '@/6shared/ui/redesigned/Skeleton'
 import { type JSX, memo } from 'react'

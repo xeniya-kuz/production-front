@@ -1,5 +1,5 @@
 import { type JSX, memo } from 'react'
-import { Text } from '../Text/Text'
+import { Text } from '../Text'
 import { t } from 'i18next'
 
 interface ErrorProps {

@@ -53,7 +53,7 @@ export const Button = memo(function Button(props: ButtonProps) {
         size = 'm',
         disabled = false,
         fullWidth,
-        variant = 'clear',
+        variant = 'filled',
         addonLeft,
         addonRight,
         hover = true,

@@ -3,9 +3,9 @@ import {
     DynamicModuleLoader,
     type ReducerList,
 } from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { Button, ButtonTheme } from '@/6shared/ui/deprecated/Button/Button'
-import { Input } from '@/6shared/ui/deprecated/Input/Input'
-import { Text, TextTheme } from '@/6shared/ui/deprecated/Text/Text'
+import { Button, ButtonTheme } from '@/6shared/ui/deprecated/Button'
+import { Input } from '@/6shared/ui/deprecated/Input'
+import { Text, TextTheme } from '@/6shared/ui/deprecated/Text'
 import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { loginReducer } from '../../model/slice/loginSlice'

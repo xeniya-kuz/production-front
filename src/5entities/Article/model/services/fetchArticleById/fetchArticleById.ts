@@ -19,7 +19,7 @@ export const fetchArticleById = createAsyncThunk<
             },
         )
 
-        if (response.data === undefined) {
+        if (!response.data) {
             throw new Error()
         }
 

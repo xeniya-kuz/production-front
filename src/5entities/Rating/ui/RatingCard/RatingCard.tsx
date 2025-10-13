@@ -1,19 +1,15 @@
 import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import { type JSX, memo, useCallback, useState } from 'react'
-import { Card } from '@/6shared/ui/deprecated/Card/Card'
+import { Card } from '@/6shared/ui/deprecated/Card'
 import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
-import { Text } from '@/6shared/ui/deprecated/Text/Text'
-import { StarRating } from '@/6shared/ui/deprecated/StarRating/StarRating'
-import { Modal } from '@/6shared/ui/deprecated/Modal/Modal'
-import { Input } from '@/6shared/ui/deprecated/Input/Input'
-import {
-    Button,
-    ButtonSize,
-    ButtonTheme,
-} from '@/6shared/ui/deprecated/Button/Button'
+import { Text } from '@/6shared/ui/deprecated/Text'
+import { StarRating } from '@/6shared/ui/deprecated/StarRating'
+import { Modal } from '@/6shared/ui/redesigned/Modal/Modal'
+import { Input } from '@/6shared/ui/deprecated/Input'
+import { Button, ButtonSize, ButtonTheme } from '@/6shared/ui/deprecated/Button'
 import { useTranslation } from 'react-i18next'
 import { BrowserView, MobileView } from 'react-device-detect'
-import { Drawer } from '@/6shared/ui/deprecated/Drawer'
+import { Drawer } from '@/6shared/ui/redesigned/Drawer'
 import styles from './RatingCard.module.scss'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
 

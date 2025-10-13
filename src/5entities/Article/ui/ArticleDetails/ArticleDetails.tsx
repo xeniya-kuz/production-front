@@ -10,7 +10,7 @@ import styles from './styles.module.scss'
 import { useSelector } from 'react-redux'
 import { Article } from './Article'
 import { SketelonArticle } from './SketelonArticle'
-import { Error } from '@/6shared/ui/deprecated/Error/Error'
+import { Error } from '@/6shared/ui/deprecated/Error'
 import { selectArticleDetailsIsLoading } from '../../model/selectors/selectArticleDetailsIsLoading/selectArticleDetailsIsLoading'
 import { selectArticleDetailsError } from '../../model/selectors/selectArticleDetailsError/selectArticleDetailsError'
 import { selectArticleDetails } from '../../model/selectors/selectArticleDetails/selectArticleDetails'
@@ -36,6 +36,7 @@ export const ArticleDetails = memo(function ArticleDetails({
 
     const error = useSelector(selectArticleDetailsError)
     const article = useSelector(selectArticleDetails)
+    console.log('article', article)
 
     useInitialEffect(() => {
         void dispatch(fetchArticleById(articleId))
@@ -43,11 +44,11 @@ export const ArticleDetails = memo(function ArticleDetails({
 
     let content
 
-    if (isLoading === true) {
+    if (isLoading) {
         content = <SketelonArticle />
     }
 
-    if (error !== undefined) {
+    if (error) {
         content = (
             <Error
                 title={error}
@@ -56,7 +57,7 @@ export const ArticleDetails = memo(function ArticleDetails({
         )
     }
 
-    if (article !== undefined) {
+    if (article) {
         content = <Article article={article} />
     }
 

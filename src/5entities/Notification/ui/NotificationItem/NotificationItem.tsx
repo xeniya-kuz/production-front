@@ -2,12 +2,9 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './NotificationItem.module.scss'
 import { type JSX, memo } from 'react'
 import { type Notification } from '../../model/types/notification'
-import {
-    Card as CardDeprecated,
-    CardTheme,
-} from '@/6shared/ui/deprecated/Card/Card'
-import { Text as TextDeprecated } from '@/6shared/ui/deprecated/Text/Text'
-import { AppLink as AppLinkDeprecated } from '@/6shared/ui/deprecated/AppLink/AppLink'
+import { Card as CardDeprecated, CardTheme } from '@/6shared/ui/deprecated/Card'
+import { Text as TextDeprecated } from '@/6shared/ui/deprecated/Text'
+import { AppLink as AppLinkDeprecated } from '@/6shared/ui/deprecated/AppLink'
 import { ToggleFeatures } from '@/6shared/lib/features'
 import { AppLink } from '@/6shared/ui/redesigned/AppLink'
 import { Text } from '@/6shared/ui/redesigned/Text'

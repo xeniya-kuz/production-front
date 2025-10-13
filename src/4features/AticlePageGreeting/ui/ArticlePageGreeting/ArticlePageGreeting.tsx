@@ -1,10 +1,12 @@
 import { saveJsonSettings, useJsonSettings } from '@/5entities/User'
 import { useAppDispatch } from '@/6shared/lib/hooks'
-import { Drawer } from '@/6shared/ui/deprecated/Drawer'
-import { Modal } from '@/6shared/ui/deprecated/Modal'
-import { Text } from '@/6shared/ui/deprecated/Text'
-import { memo, useEffect, useState } from 'react'
+import { Drawer } from '@/6shared/ui/redesigned/Drawer'
+import { Modal } from '@/6shared/ui/redesigned/Modal'
+import { Text as TextDeprecated } from '@/6shared/ui/deprecated/Text'
+import { Text as TextRedesigned } from '@/6shared/ui/redesigned/Text'
+import { type FC, memo, useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
+import { ToggleFeatures } from '@/6shared/lib/features'
 
 export const ArticlePageGreeting = memo(function ArticlePageGreeting() {
     const [isOpen, setIsOpen] = useState(false)
@@ -21,6 +23,14 @@ export const ArticlePageGreeting = memo(function ArticlePageGreeting() {
     const onClose = (): void => {
         setIsOpen(false)
     }
+
+    const Text: FC<{ title: string; text: string }> = (props) => (
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={<TextRedesigned {...props} />}
+            off={<TextDeprecated {...props} />}
+        />
+    )
 
     const text = (
         <Text

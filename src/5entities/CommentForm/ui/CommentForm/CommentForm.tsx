@@ -1,9 +1,9 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './CommentForm.module.scss'
 import { type JSX, memo, useCallback } from 'react'
-import { Input } from '@/6shared/ui/deprecated/Input/Input'
+import { Input } from '@/6shared/ui/deprecated/Input'
 import { useTranslation } from 'react-i18next'
-import { Button } from '@/6shared/ui/deprecated/Button/Button'
+import { Button } from '@/6shared/ui/deprecated/Button'
 import {
     DynamicModuleLoader,
     type ReducerList,

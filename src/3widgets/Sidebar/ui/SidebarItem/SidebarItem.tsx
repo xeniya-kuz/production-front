@@ -2,7 +2,7 @@ import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import {
     AppLink as AppLinkDeprecated,
     AppLinkTheme,
-} from '@/6shared/ui/deprecated/AppLink/AppLink'
+} from '@/6shared/ui/deprecated/AppLink'
 import { type FC, type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from './SidebarItem.module.scss'
@@ -11,7 +11,7 @@ import { selectUserAuthData } from '@/5entities/User'
 import {
     Icon as IconDeprecated,
     IconColors,
-} from '@/6shared/ui/deprecated/Icon/Icon'
+} from '@/6shared/ui/deprecated/Icon'
 import { type SidebarItemType } from '../../module/types/sidebar'
 import { ToggleFeatures } from '@/6shared/lib/features'
 import { AppLink } from '@/6shared/ui/redesigned/AppLink'

@@ -2,7 +2,7 @@ import ArrowIcon from '@/6shared/assets/icons/arrow-bottom.svg'
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { Listbox as HListbox } from '@headlessui/react'
 import { type JSX, type ReactNode } from 'react'
-import { Button, type ButtonSize } from '../../../Button/Button'
+import { Button, type ButtonSize } from '../../../Button'
 import { Icon } from '../../../Icon'
 import popupStyles from '../styles/popup.module.scss'
 import styles from './ListBox.module.scss'
@@ -76,7 +76,6 @@ export const ListBox = <T extends string>(
                         <Button
                             size={size}
                             disabled={disabled}
-                            variant="filled"
                             addonRight={
                                 <Icon
                                     Svg={ArrowIcon}

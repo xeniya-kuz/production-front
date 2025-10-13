@@ -1,7 +1,7 @@
 import { ArticleList, ArticleView } from '@/5entities/Article'
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { VStack } from '@/6shared/ui/redesigned/Stack'
-import { Text, TextSize } from '@/6shared/ui/deprecated/Text/Text'
+import { Text, TextSize } from '@/6shared/ui/deprecated/Text'
 import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useArticleRecommendations } from '../api/articleRecommendationsApi'
@@ -18,7 +18,7 @@ export const ArticleRecommendations = memo(function ArticleRecommendations({
     const { t } = useTranslation('articles')
     const { isLoading, data: recommendations } = useArticleRecommendations(3)
 
-    if (recommendations === undefined) {
+    if (!recommendations) {
         return null
     }
 

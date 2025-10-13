@@ -1,4 +1,4 @@
-import { Skeleton } from '@/6shared/ui/deprecated/Skeleton/Skeleton'
+import { Skeleton } from '@/6shared/ui/deprecated/Skeleton'
 import styles from '../ListViewDeprecated/ListViewDeprecated.module.scss'
 import { type JSX, memo } from 'react'
 import { classNames } from '@/6shared/lib/classNames/classNames'

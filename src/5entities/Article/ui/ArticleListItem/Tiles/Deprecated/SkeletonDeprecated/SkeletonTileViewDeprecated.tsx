@@ -1,4 +1,4 @@
-import { Skeleton } from '@/6shared/ui/deprecated/Skeleton/Skeleton'
+import { Skeleton } from '@/6shared/ui/deprecated/Skeleton'
 import { memo, type JSX } from 'react'
 import styles from '../TileViewDeprecated/TileViewDeprecated.module.scss'
 import { Card } from '@/6shared/ui/deprecated/Card'

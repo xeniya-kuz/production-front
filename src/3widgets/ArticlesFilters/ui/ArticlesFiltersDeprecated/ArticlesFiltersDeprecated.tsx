@@ -5,9 +5,9 @@ import {
     DynamicModuleLoader,
     type ReducerList,
 } from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { Card } from '@/6shared/ui/deprecated/Card/Card'
-import { Input } from '@/6shared/ui/deprecated/Input/Input'
-import { Tabs } from '@/6shared/ui/deprecated/Tabs/Tabs'
+import { Card } from '@/6shared/ui/deprecated/Card'
+import { Input } from '@/6shared/ui/deprecated/Input'
+import { Tabs } from '@/6shared/ui/deprecated/Tabs'
 import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { articlesFiltersReducer } from '../../model/slice/articlesPageFiltersSlice'

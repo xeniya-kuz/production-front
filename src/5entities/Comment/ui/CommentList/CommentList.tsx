@@ -2,7 +2,7 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import { type JSX, memo } from 'react'
 import { type Comment } from '../../model/types/comment'
 import { CommentCard } from '../CommentCard/CommentCard'
-import { Text } from '@/6shared/ui/deprecated/Text/Text'
+import { Text } from '@/6shared/ui/deprecated/Text'
 import { useTranslation } from 'react-i18next'
 import { VStack } from '@/6shared/ui/redesigned/Stack'
 

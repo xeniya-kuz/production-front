@@ -11,11 +11,11 @@ import {
 } from 'react'
 import { VirtuosoGrid, type VirtuosoGridHandle } from 'react-virtuoso'
 import { type Article } from '../../../model/types/article'
-import { SkeletonTileView } from './Skeleton/SkeletonTileView'
 import styles from './Tiles.module.scss'
 import { TileView } from './TileView/TileView'
 import { TileViewDeprecated } from './Deprecated/TileViewDeprecated/TileViewDeprecated'
 import { SkeletonTileViewDeprecated } from './Deprecated/SkeletonDeprecated/SkeletonTileViewDeprecated'
+import { SkeletonTileView } from './Skeleton/SkeletonTileView'
 
 interface TilesProps {
     className?: string

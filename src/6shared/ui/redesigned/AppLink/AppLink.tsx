@@ -31,6 +31,7 @@ export const AppLink = forwardRef<HTMLAnchorElement, AppLinkProps>(
                 className={({ isActive }) =>
                     classNames(styles.appLink, [className, styles[variant]], {
                         [activeClassName]: isActive,
+                        [styles.hover]: !isActive,
                     })
                 }
                 {...otherProps}

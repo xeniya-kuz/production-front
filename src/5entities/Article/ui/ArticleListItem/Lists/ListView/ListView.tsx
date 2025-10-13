@@ -1,6 +1,6 @@
 import { AppLink } from '@/6shared/ui/redesigned/AppLink'
 import { Avatar } from '@/6shared/ui/redesigned/Avatar'
-import { Button } from '@/6shared/ui/redesigned/Button/Button'
+import { Button } from '@/6shared/ui/redesigned/Button'
 import { Text } from '@/6shared/ui/redesigned/Text'
 import { type HTMLAttributeAnchorTarget, type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
