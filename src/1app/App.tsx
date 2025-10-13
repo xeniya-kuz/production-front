@@ -6,7 +6,11 @@ import { type JSX, Suspense, useEffect } from 'react'
 import './styles/index.scss'
 import { PageLoader } from '@/3widgets/PageLoader'
 import { AppRouter } from './providers/router'
-import { selectUserMounted, initAuthData } from '@/5entities/User'
+import {
+    selectUserMounted,
+    initAuthData,
+    selectUserAuthData,
+} from '@/5entities/User'
 
 import { useSelector } from 'react-redux'
 import {
@@ -26,9 +30,12 @@ export default function App(): JSX.Element {
     const { theme } = useTheme()
     const isMounted = useSelector(selectUserMounted)
     const { pathname } = useLocation()
+    const authData = useSelector(selectUserAuthData)
 
     useEffect(() => {
-        void dispatch(initAuthData())
+        if (!authData) {
+            void dispatch(initAuthData())
+        }
 
         if (
             !pathname.includes(getRouteArticles()) ||
@@ -37,7 +44,7 @@ export default function App(): JSX.Element {
             localStorage.removeItem(ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY)
             localStorage.removeItem(ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY)
         }
-    }, [dispatch, pathname])
+    }, [dispatch, pathname, authData])
 
     // TODO: можно сделать скелетон страницы с хедером и сайдбаром
     if (!isMounted) {

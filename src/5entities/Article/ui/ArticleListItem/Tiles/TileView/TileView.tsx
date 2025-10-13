@@ -76,20 +76,15 @@ export const TileView = memo(function TileView({
                             article,
                         })}
                     </HStack>
-                    <HStack
-                        gap="4"
-                        className={styles.footer}
-                    >
+                    <div className={styles.footer}>
                         <Avatar
                             size={32}
                             src={article.user.avatar ?? ''}
                             alt="user avatar"
+                            username={article.user.username}
+                            gap="4"
                         />
-                        <Text
-                            bold
-                            text={article.user.username}
-                        />
-                    </HStack>
+                    </div>
                 </VStack>
             </Card>
         </AppLink>

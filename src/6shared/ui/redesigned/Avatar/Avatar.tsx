@@ -5,12 +5,17 @@ import { AppImage } from '../AppImage'
 import UserIcon from '../../../assets/icons/avatar.svg'
 import { Icon } from '../Icon'
 import { Skeleton } from '../Skeleton'
+import { HStack } from '../Stack'
+import { type FlexGap } from '../Stack/Flex/Flex'
+import { Text } from '../Text'
 
 interface AvatarProps {
     className?: string
     src?: string
     alt: string
     size?: number
+    username?: string
+    gap?: FlexGap
 }
 
 export const Avatar = ({
@@ -18,6 +23,8 @@ export const Avatar = ({
     src,
     alt,
     size = 100,
+    username,
+    gap,
 }: AvatarProps): JSX.Element => {
     const inlineStyles = useMemo<CSSProperties>(() => {
         return {
@@ -42,7 +49,7 @@ export const Avatar = ({
         />
     )
 
-    return (
+    const img = (
         <AppImage
             src={src}
             alt={alt}
@@ -52,4 +59,21 @@ export const Avatar = ({
             errorFallback={errorFallback}
         />
     )
+
+    if (username) {
+        return (
+            <HStack
+                gap={gap}
+                className={styles.footer}
+            >
+                {img}
+                <Text
+                    bold
+                    text={username}
+                />
+            </HStack>
+        )
+    }
+
+    return img
 }

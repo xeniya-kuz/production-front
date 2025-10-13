@@ -29,7 +29,7 @@ export const SidebarItem = memo(function SidebarItem({
     const { t } = useTranslation()
     const isAuth = Boolean(useSelector(selectUserAuthData))
 
-    if (!isAuth && Boolean(item.isPrivate)) {
+    if (!isAuth && item.isPrivate) {
         return null
     }
 

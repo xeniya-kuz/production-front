@@ -62,10 +62,8 @@ export const ListView = memo(function ListView({
                             size={32}
                             src={article.user?.avatar}
                             alt="avatar"
-                        />
-                        <Text
-                            bold
-                            text={article.user?.username}
+                            username={article.user?.username}
+                            gap="8"
                         />
                         <Text text={article.createdAt} />
                     </HStack>

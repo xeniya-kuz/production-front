@@ -4,5 +4,7 @@
     "articles-not-found": "Articles are not found",
     "recommendations": "Recommendations",
     "article-edition": "Edit article",
-    "article-creation": "Create article"
+    "article-creation": "Create article",
+    "{{count}} views_one":"{{count}} view",
+    "{{count}} views_other":"{{count}} views"
 }
