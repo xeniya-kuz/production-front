@@ -1,4 +1,4 @@
-import { ToggleFeatures, toggleFeatures } from '@/6shared/lib/features'
+import { ToggleFeatures } from '@/6shared/lib/features'
 import { Card as CardDeprecated } from '@/6shared/ui/deprecated/Card'
 import { Card as CardRedesigned } from '@/6shared/ui/redesigned/Card'
 import {
@@ -28,13 +28,24 @@ import {
     type StarRatingProps as StarRatingRedesignedProps,
 } from '@/6shared/ui/redesigned/StarRating'
 
-import { type FC, type JSX } from 'react'
+import { type PropsWithChildren, type FC, type JSX } from 'react'
 
-export const Card = toggleFeatures({
-    name: 'isAppRedesigned',
-    on: () => CardRedesigned,
-    off: () => CardDeprecated,
-})
+export const Card: FC<PropsWithChildren & { className?: string }> = ({
+    children,
+}): JSX.Element => (
+    <ToggleFeatures
+        feature="isAppRedesigned"
+        on={
+            <CardRedesigned
+                radius="round"
+                padding="24"
+            >
+                {children}
+            </CardRedesigned>
+        }
+        off={<CardDeprecated>{children}</CardDeprecated>}
+    />
+)
 
 export const Text = (props: { title?: string }): JSX.Element => (
     <ToggleFeatures

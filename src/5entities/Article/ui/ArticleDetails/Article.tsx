@@ -6,7 +6,6 @@ import { ToggleFeatures } from '@/6shared/lib/features'
 import { Avatar as AvatarDeprecated } from '@/6shared/ui/deprecated/Avatar'
 import { Icon as IconDeprecated } from '@/6shared/ui/deprecated/Icon'
 import { Text as TextDeprecated, TextSize } from '@/6shared/ui/deprecated/Text'
-import { Avatar } from '@/6shared/ui/redesigned/Avatar'
 import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
 import { type FC, type JSX, memo } from 'react'
 import { type Article as ArticleType } from '../../model/types/article'
@@ -24,53 +23,55 @@ export const Article = memo(function Article({
     className,
     article,
 }: ArticleProps): JSX.Element {
-    const articleInfo = [
-        {
-            icon: EyeIconDeprecated,
-            text: String(article?.views),
-        },
-        {
-            icon: CalendarIconDeprecated,
-            text: article?.createdAt,
-        },
-    ]
+    const Deprecated: FC = () => {
+        const articleInfo = [
+            {
+                icon: EyeIconDeprecated,
+                text: String(article?.views),
+            },
+            {
+                icon: CalendarIconDeprecated,
+                text: article?.createdAt,
+            },
+        ]
 
-    const Deprecated: FC = () => (
-        <div className={styles.articleDeprecated}>
-            <HStack
-                justify="center"
-                max
-            >
-                <AvatarDeprecated
-                    size={200}
-                    src={article?.img}
-                    alt={article?.title}
-                    className={styles.avatar}
-                />
-            </HStack>
-            <VStack
-                gap="4"
-                max
-                data-testid={DATA_TEST_ID.articleInfo}
-            >
-                <TextDeprecated
-                    title={article?.title}
-                    text={article?.subtitle}
-                    size={TextSize.L}
-                />
-                {articleInfo.map((info, index) => (
-                    <HStack
-                        gap="8"
-                        key={index}
-                    >
-                        <IconDeprecated Svg={info.icon} />
-                        <TextDeprecated text={info.text} />
-                    </HStack>
-                ))}
-            </VStack>
-            {article?.blocks.map(renderArticleBlock)}
-        </div>
-    )
+        return (
+            <div className={styles.articleDeprecated}>
+                <HStack
+                    justify="center"
+                    max
+                >
+                    <AvatarDeprecated
+                        size={200}
+                        src={article?.img}
+                        alt={article?.title}
+                        className={styles.avatar}
+                    />
+                </HStack>
+                <VStack
+                    gap="4"
+                    max
+                    data-testid={DATA_TEST_ID.articleInfo}
+                >
+                    <TextDeprecated
+                        title={article?.title}
+                        text={article?.subtitle}
+                        size={TextSize.L}
+                    />
+                    {articleInfo.map((info, index) => (
+                        <HStack
+                            gap="8"
+                            key={index}
+                        >
+                            <IconDeprecated Svg={info.icon} />
+                            <TextDeprecated text={info.text} />
+                        </HStack>
+                    ))}
+                </VStack>
+                {article?.blocks.map(renderArticleBlock)}
+            </div>
+        )
+    }
 
     const Redesigned: FC = () => (
         <div className={styles.articleRedesigned}>

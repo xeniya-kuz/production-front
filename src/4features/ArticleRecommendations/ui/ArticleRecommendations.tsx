@@ -1,12 +1,14 @@
 import { ArticleList, ArticleView } from '@/5entities/Article'
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { VStack } from '@/6shared/ui/redesigned/Stack'
-import { Text, TextSize } from '@/6shared/ui/deprecated/Text'
+import { Text as TextDeprecated, TextSize } from '@/6shared/ui/deprecated/Text'
 import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useArticleRecommendations } from '../api/articleRecommendationsApi'
 import styles from './ArticleRecommendations.module.scss'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
+import { toggleFeatures, ToggleFeatures } from '@/6shared/lib/features'
+import { Text } from '@/6shared/ui/redesigned/Text'
 
 interface ArticleRecommendationsProps {
     className?: string
@@ -16,11 +18,27 @@ export const ArticleRecommendations = memo(function ArticleRecommendations({
     className,
 }: ArticleRecommendationsProps): JSX.Element | null {
     const { t } = useTranslation('articles')
-    const { isLoading, data: recommendations } = useArticleRecommendations(3)
+    const { isLoading, data: recommendations } = useArticleRecommendations(
+        toggleFeatures({ name: 'isAppRedesigned', on: () => 9, off: () => 3 }),
+    )
 
     if (!recommendations) {
         return null
     }
+
+    const text = (
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            // TODO: должен быть h3
+            on={<Text title={t('recommendations')} />}
+            off={
+                <TextDeprecated
+                    title={t('recommendations')}
+                    size={TextSize.S}
+                />
+            }
+        />
+    )
 
     return (
         <VStack
@@ -29,10 +47,7 @@ export const ArticleRecommendations = memo(function ArticleRecommendations({
             className={classNames(styles.articleRecommendations, [className])}
             data-testid={DATA_TEST_ID.articleRecommendationList}
         >
-            <Text
-                title={t('recommendations')}
-                size={TextSize.S}
-            />
+            {text}
             <ArticleList
                 articles={recommendations}
                 isLoading={isLoading}
@@ -40,6 +55,7 @@ export const ArticleRecommendations = memo(function ArticleRecommendations({
                 target="_blank"
                 view={ArticleView.TILE}
                 virtualized={false}
+                direction={'row'}
             />
         </VStack>
     )

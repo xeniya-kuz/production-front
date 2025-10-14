@@ -40,7 +40,12 @@ export const Text = memo(function Text(props: TextProps): JSX.Element {
         'data-testid': dataTestId,
     } = props
 
-    const additionalClassNames = [styles[variant], styles[align], styles[size]]
+    const additionalClassNames = [
+        className,
+        styles[variant],
+        styles[align],
+        styles[size],
+    ]
 
     const HeaderTag = mapSizeToHeaderTag[size]
 
@@ -53,7 +58,11 @@ export const Text = memo(function Text(props: TextProps): JSX.Element {
     return (
         <VStack
             gap="8"
-            className={classNames(className, [...additionalClassNames], mods)}
+            className={classNames(
+                styles.container,
+                [...additionalClassNames],
+                mods,
+            )}
             data-testid={dataTestId}
         >
             {title && (

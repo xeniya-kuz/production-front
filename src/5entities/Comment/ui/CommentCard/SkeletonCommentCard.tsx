@@ -1,4 +1,6 @@
-import { Skeleton } from '@/6shared/ui/deprecated/Skeleton'
+import { toggleFeatures } from '@/6shared/lib/features'
+import { Skeleton as SkeletonDeprecated } from '@/6shared/ui/deprecated/Skeleton'
+import { Skeleton as SkeletonRedesigned } from '@/6shared/ui/redesigned/Skeleton'
 import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
 import { type JSX, memo } from 'react'
 
@@ -11,6 +13,12 @@ export const SkeletonCommentCard = memo(function SkeletonCommentCard({
     classNameHeader,
     classNameUsername,
 }: SkeletonCommentCardProps): JSX.Element {
+    const Skeleton = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => SkeletonRedesigned,
+        off: () => SkeletonDeprecated,
+    })
+
     return (
         <VStack
             gap="16"

@@ -1,4 +1,4 @@
-import { classNames } from '@/6shared/lib/classNames/classNames'
+import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import { toggleFeatures } from '@/6shared/lib/features'
 import { useInitialEffect } from '@/6shared/lib/hooks'
 import {
@@ -26,6 +26,7 @@ interface TilesProps {
     selectedArticleId: number
     isLoading?: boolean
     virtualized?: boolean
+    direction?: 'row'
     handleButtonClick: (index: number) => () => void
     articleViews: (props: {
         className: string
@@ -53,6 +54,7 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
         selectedArticleId,
         isLoading,
         virtualized,
+        direction,
         handleButtonClick,
         articleViews,
         articleTypes,
@@ -149,10 +151,14 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
         )
     }
 
+    const mods: Mods = {
+        [styles.row]: direction,
+    }
+
     return (
         <div className={classNames(styles.tilesContainer, [className])}>
             {Header && <Header />}
-            <div className={styles.tiles}>
+            <div className={classNames(styles.tiles, [], mods)}>
                 {articles.map((article, index) =>
                     renderArticle(index, article),
                 )}

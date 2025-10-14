@@ -2,9 +2,11 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import { type JSX, memo } from 'react'
 import { type Comment } from '../../model/types/comment'
 import { CommentCard } from '../CommentCard/CommentCard'
-import { Text } from '@/6shared/ui/deprecated/Text'
+import { Text as TextDeprecated } from '@/6shared/ui/deprecated/Text'
 import { useTranslation } from 'react-i18next'
 import { VStack } from '@/6shared/ui/redesigned/Stack'
+import { ToggleFeatures } from '@/6shared/lib/features'
+import { Text } from '@/6shared/ui/redesigned/Text'
 
 interface CommentListProps {
     className?: string
@@ -34,7 +36,11 @@ export const CommentList = memo(function CommentList({
                     />
                 ))
             ) : (
-                <Text text={t('no-comments')} />
+                <ToggleFeatures
+                    feature="isAppRedesigned"
+                    on={<Text text={t('no-comments')} />}
+                    off={<TextDeprecated text={t('no-comments')} />}
+                />
             )}
         </VStack>
     )

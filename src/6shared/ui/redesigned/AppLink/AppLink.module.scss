@@ -1,24 +1,24 @@
 .appLink {
     display: flex;
     transition: var(--transition) color;
-}
 
-.primary {
-    color: var(--text-redesigned);
+    &.primary {
+        color: var(--text-redesigned);
 
-    &:hover.hover {
-        color: var(--accent-redesigned);
-
-        svg {
+        &:hover.hover * {
             color: var(--accent-redesigned);
+
+            svg {
+                color: var(--accent-redesigned);
+            }
         }
     }
-}
 
-.inverted {
-    color: var(--cancel-redesigned);
+    &.inverted {
+        color: var(--cancel-redesigned);
 
-    &:hover.hover {
-        opacity: 0.8;
+        &:hover.hover * {
+            opacity: 0.8;
+        }
     }
 }

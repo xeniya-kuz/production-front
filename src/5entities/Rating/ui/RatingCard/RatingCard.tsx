@@ -55,9 +55,9 @@ export const RatingCard = memo(function RatingCard({
     }, [feedback, onAccept, starsCount])
 
     const cancelHandle = useCallback(() => {
-        // setIsModalOpen(false)
-        // onCancel?.(starsCount)
-    }, [])
+        setIsModalOpen(false)
+        onCancel?.(starsCount)
+    }, [onCancel, starsCount])
 
     const onChangeHandle = ({
         name,

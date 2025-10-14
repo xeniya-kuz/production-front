@@ -36,6 +36,7 @@ interface ArticleListProps {
     view: ArticleView
     Header?: () => JSX.Element
     virtualized?: boolean
+    direction?: 'row'
 }
 
 export const ArticleList = memo(function ArticleList(
@@ -50,6 +51,7 @@ export const ArticleList = memo(function ArticleList(
         view,
         Header,
         virtualized = true,
+        direction,
     } = props
     const { t } = useTranslation('articles')
     const [selectedArticleId, setSelectedArticleId] = useState(0)
@@ -82,6 +84,7 @@ export const ArticleList = memo(function ArticleList(
         isLoading,
         target,
         virtualized,
+        direction,
         articleTypes,
         articleViews,
         handleButtonClick,

@@ -1,9 +1,9 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './ArticleComments.module.scss'
-import { type JSX, memo, useCallback } from 'react'
+import { Fragment, type JSX, memo, useCallback } from 'react'
 import { CommentForm } from '@/5entities/CommentForm'
 import { useTranslation } from 'react-i18next'
-import { Text, TextSize } from '@/6shared/ui/deprecated/Text'
+import { Text as TextDeprecated, TextSize } from '@/6shared/ui/deprecated/Text'
 import { CommentList } from '@/5entities/Comment'
 import { useAppDispatch, useInitialEffect } from '@/6shared/lib/hooks'
 import {
@@ -18,6 +18,9 @@ import {
 import { addArticleComment } from '../model/services/addArticleComment/addArticleComment'
 import { VStack } from '@/6shared/ui/redesigned/Stack'
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
+import { toggleFeatures, ToggleFeatures } from '@/6shared/lib/features'
+import { Text } from '@/6shared/ui/redesigned/Text'
+import { Card } from '@/6shared/ui/redesigned/Card'
 
 export interface AddArticleCommentFormProps {
     className?: string
@@ -48,22 +51,41 @@ const ArticleComments = memo(function ArticleComments({
         [dispatch],
     )
 
+    const Tag = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => Card,
+        off: () => Fragment,
+    })
+
     return (
         <DynamicModuleLoader reducers={initialReducer}>
-            <VStack
-                gap="16"
-                className={classNames(styles.addCommentForm, [className])}
+            <Tag
+                padding="24"
+                radius="round"
             >
-                <Text
-                    title={t('comments')}
-                    size={TextSize.S}
-                />
-                <CommentForm onSend={onSendComment} />
-                <CommentList
-                    comments={comments}
-                    isLoading={commentsisLoading}
-                />
-            </VStack>
+                <VStack
+                    gap="16"
+                    className={classNames(styles.addCommentForm, [className])}
+                >
+                    {/* TODO: h3 */}
+                    <ToggleFeatures
+                        feature="isAppRedesigned"
+                        on={<Text title={t('comments')} />}
+                        off={
+                            <TextDeprecated
+                                title={t('comments')}
+                                size={TextSize.S}
+                            />
+                        }
+                    />
+
+                    <CommentForm onSend={onSendComment} />
+                    <CommentList
+                        comments={comments}
+                        isLoading={commentsisLoading}
+                    />
+                </VStack>
+            </Tag>
         </DynamicModuleLoader>
     )
 })
