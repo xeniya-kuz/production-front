@@ -9,6 +9,14 @@
         color: var(--light-bg-redesigned);
     }
 
+    &.error {
+        color: var(--cancel-redesigned);
+    }
+
+    &.success {
+        color: var(--save-redesigned);
+    }
+
     &:hover .hover {
         color: var(--accent-redesigned);
     }

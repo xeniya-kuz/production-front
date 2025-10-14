@@ -1,6 +1,6 @@
 import { TestAsyncThunk } from '@/6shared/lib/tests/TestAsyncThunk'
 import { fetchProfileData } from './fetchProfileData'
-import { profileMock } from '@/5entities/Profile'
+import { profileMock } from '../../const/mocks'
 
 describe('fetchProfileData', () => {
     test('success', async () => {

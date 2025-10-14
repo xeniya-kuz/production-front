@@ -7,7 +7,6 @@ import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
 export const SkeletonTileView = memo(function SkeletonTileView(): JSX.Element {
     return (
         <Card
-            radius="round"
             padding="0"
             className={styles.card}
         >

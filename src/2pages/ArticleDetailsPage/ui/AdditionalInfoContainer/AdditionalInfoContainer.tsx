@@ -14,10 +14,7 @@ export const AdditionalInfoContainer = memo(
         }
 
         return (
-            <Card
-                radius="round"
-                className={styles.additionalInfoContainer}
-            >
+            <Card className={styles.additionalInfoContainer}>
                 <AdditionalInfo
                     author={article.user}
                     createdAt={article.createdAt}

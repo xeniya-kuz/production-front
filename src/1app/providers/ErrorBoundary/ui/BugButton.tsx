@@ -32,7 +32,10 @@ export const BugButton = (): JSX.Element => {
         <ToggleFeatures
             feature="isAppRedesigned"
             on={
-                <ButtonRedesigned onClick={onClick}>
+                <ButtonRedesigned
+                    onClick={onClick}
+                    variant="outline"
+                >
                     {children}
                 </ButtonRedesigned>
             }

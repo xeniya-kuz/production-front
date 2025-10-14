@@ -15,7 +15,6 @@ export const ArticleDetailsContainer = memo(function DetailsContainer({
         <Card
             className={className}
             padding="24"
-            radius="round"
         >
             <ArticleDetails articleId={articleId} />
         </Card>

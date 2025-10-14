@@ -1,4 +1,4 @@
-import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
+import { classNames } from '@/6shared/lib/classNames/classNames'
 
 import { type HTMLAttributeAnchorTarget, memo, type JSX } from 'react'
 import { Virtuoso } from 'react-virtuoso'
@@ -18,7 +18,6 @@ interface ListsProps {
     selectedArticleId: number
     isLoading?: boolean
     virtualized?: boolean
-    direction?: 'row'
     handleButtonClick: (index: number) => () => void
     articleViews: (props: {
         className: string
@@ -46,7 +45,6 @@ export const Lists = memo(function Lists(props: ListsProps): JSX.Element {
         selectedArticleId,
         isLoading,
         virtualized,
-        direction,
         handleButtonClick,
         articleViews,
         articleTypes,
@@ -98,16 +96,10 @@ export const Lists = memo(function Lists(props: ListsProps): JSX.Element {
         )
     }
 
-    const mods: Mods = {
-        [styles.row]: direction,
-    }
-
     return (
         <>
             {Header && <Header />}
-            <div
-                className={classNames(styles.listsContainer, [className], mods)}
-            >
+            <div className={classNames(styles.listsContainer, [className])}>
                 {articles.map((article, index) =>
                     renderArticle(index, article),
                 )}

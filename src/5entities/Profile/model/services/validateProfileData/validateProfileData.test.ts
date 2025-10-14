@@ -1,6 +1,6 @@
 import { validateProfileData } from './validateProfileData'
 import { ValidateProfileError } from '../../const/validate'
-import { profileMock } from '@/5entities/Profile'
+import { profileMock } from '../../const/mocks'
 
 describe('validateProfileData', () => {
     test('success', async () => {

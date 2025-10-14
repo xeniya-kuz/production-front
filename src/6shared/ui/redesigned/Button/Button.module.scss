@@ -52,10 +52,10 @@
     }
 
     &.outline {
-        border: 2px solid var(--light-bg-redesigned);
+        border: 2px solid var(--icon-redesigned);
 
         &:hover.hover {
-            border: 2px solid var(--icon-redesigned);
+            border: 2px solid var(--accent-redesigned);
         }
     }
 }

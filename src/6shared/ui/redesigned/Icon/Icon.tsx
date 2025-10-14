@@ -4,7 +4,7 @@ import { memo, type SVGProps, type JSX, type FC } from 'react'
 
 type SvgProps = Omit<SVGProps<SVGSVGElement>, 'onCLick'>
 
-export type IconVariant = 'primary' | 'secondary'
+export type IconVariant = 'primary' | 'secondary' | 'error' | 'success'
 
 interface IconBaseProps extends SvgProps {
     iconClassName?: string
@@ -25,7 +25,7 @@ interface IconNonclickableProps extends IconBaseProps {
     title: string
 }
 
-type IconProps = IconClickableProps | IconNonclickableProps
+export type IconProps = IconClickableProps | IconNonclickableProps
 
 export const Icon = memo(function Icon({
     iconClassName,

@@ -10,6 +10,7 @@ import { type JSX, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { loginReducer } from '../../model/slice/loginSlice'
 import styles from './LoginForm.module.scss'
+import { VStack } from '@/6shared/ui/redesigned/Stack'
 
 export interface LoginFormProps {
     className?: string
@@ -41,40 +42,57 @@ const LoginForm = memo(function LoginForm({
     return (
         <DynamicModuleLoader reducers={initialReducer}>
             <div className={classNames(styles.loginForm, [className])}>
-                <Text title={t('Форма авторизации')} />
-                {error && (
-                    <Text
-                        text={t('Логин или пароль введены неправильно')}
-                        variant="error"
-                    />
-                )}
-                <Text
-                    className={styles.label}
-                    text={t('Введите логин')}
-                />
-                <Input
-                    type="text"
-                    autofocus
-                    onChange={onChangeUsername}
-                    value={username}
-                />
-                <Text
-                    className={styles.label}
-                    text={t('Введите пароль')}
-                />
-                <Input
-                    type="text"
-                    onChange={onChangePassword}
-                    value={password}
-                />
-                <Button
-                    variant="outline"
-                    className={styles.loginBtn}
-                    onClick={onLoginClick}
-                    disabled={isLoading}
+                <VStack
+                    gap="16"
+                    max
                 >
-                    {t('Войти')}
-                </Button>
+                    <Text title={t('Форма авторизации')} />
+                    {error && (
+                        <Text
+                            text={t('Логин или пароль введены неправильно')}
+                            variant="error"
+                        />
+                    )}
+
+                    <VStack
+                        gap="8"
+                        max
+                    >
+                        <Text
+                            className={styles.label}
+                            text={t('Введите логин')}
+                        />
+                        <Input
+                            type="text"
+                            autofocus
+                            onChange={onChangeUsername}
+                            value={username}
+                        />
+                    </VStack>
+                    <VStack
+                        gap="8"
+                        max
+                    >
+                        <Text
+                            className={styles.label}
+                            text={t('Введите пароль')}
+                        />
+                        <Input
+                            type="text"
+                            onChange={onChangePassword}
+                            value={password}
+                        />
+                    </VStack>
+
+                    <Button
+                        variant="outline"
+                        className={styles.loginBtn}
+                        onClick={onLoginClick}
+                        disabled={isLoading}
+                    >
+                        {t('Войти')}
+                    </Button>
+                </VStack>
             </div>
         </DynamicModuleLoader>
     )

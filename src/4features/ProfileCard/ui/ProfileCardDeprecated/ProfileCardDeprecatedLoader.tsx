@@ -9,7 +9,7 @@ interface ProfileCardDeprecatedLoaderProps {
 }
 
 /**
- * Устарел, используем новый компонент bp папки ProfileCard
+ * Устарел, используем новый компонент из папки ProfileCard
  * @deprecated
  */
 export const ProfileCardDeprecatedLoader = memo(function ProfileCardLoader({

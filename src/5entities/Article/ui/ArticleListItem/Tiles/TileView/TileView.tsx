@@ -40,7 +40,6 @@ export const TileView = memo(function TileView({
         >
             <Card
                 data-testid={DATA_TEST_ID.articleListItem}
-                radius="round"
                 padding="0"
                 className={styles.card}
             >

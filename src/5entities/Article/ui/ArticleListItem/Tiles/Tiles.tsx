@@ -1,5 +1,5 @@
 import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
-import { toggleFeatures } from '@/6shared/lib/features'
+import { getFeatureFlag, toggleFeatures } from '@/6shared/lib/features'
 import { useInitialEffect } from '@/6shared/lib/hooks'
 import {
     memo,
@@ -61,6 +61,7 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
         articleImage,
     } = props
     const virtuosoGridRef = useRef<VirtuosoGridHandle>(null)
+    const isAppRedesigned = getFeatureFlag('isAppRedesigned')
 
     const timeout = useCallback(() => {
         setTimeout(() => {
@@ -111,11 +112,15 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
             <></>
         )
 
+    const mods: Mods = {
+        [styles.row]: direction && isAppRedesigned,
+    }
+
     if (isLoading) {
         return (
             <>
                 <WrappedHeader />
-                <div className={classNames(styles.tiles, [className])}>
+                <div className={classNames(styles.tiles, [className], mods)}>
                     {new Array(9).fill(0).map((_, index) => (
                         <Skeleton key={index} />
                     ))}
@@ -140,7 +145,7 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
                     endReached={onLoadNextArticles}
                     data={articles}
                     itemContent={renderArticle}
-                    listClassName={styles.tiles}
+                    listClassName={classNames(styles.tiles, [className], mods)}
                     scrollSeekConfiguration={{
                         enter: (velocity) => Math.abs(velocity) > 200,
                         exit: (velocity) => Math.abs(velocity) < 30,
@@ -149,10 +154,6 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
                 />
             </div>
         )
-    }
-
-    const mods: Mods = {
-        [styles.row]: direction,
     }
 
     return (

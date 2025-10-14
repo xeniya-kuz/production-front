@@ -10,7 +10,13 @@ import { AppLink as AppLinkRedesigned } from '@/6shared/ui/redesigned/AppLink'
 import { Avatar as AvatarRedesigned } from '@/6shared/ui/redesigned/Avatar'
 import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
 import { Text as TextRedesigned } from '@/6shared/ui/redesigned/Text'
-import { type FC, type JSX, memo, type PropsWithChildren } from 'react'
+import {
+    type FC,
+    Fragment,
+    type JSX,
+    memo,
+    type PropsWithChildren,
+} from 'react'
 import { type Comment } from '../../model/types/comment'
 import styles from './CommentCard.module.scss'
 import { SkeletonCommentCard } from './SkeletonCommentCard'
@@ -69,8 +75,14 @@ export const CommentCard = memo(function CommentCard({
         )
     }
 
+    const Tag = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => Card,
+        off: () => Fragment,
+    })
+
     return (
-        <Card variant="light">
+        <Tag variant="light">
             <VStack
                 gap="16"
                 max
@@ -107,6 +119,6 @@ export const CommentCard = memo(function CommentCard({
                 </AppLink>
                 <Text />
             </VStack>
-        </Card>
+        </Tag>
     )
 })

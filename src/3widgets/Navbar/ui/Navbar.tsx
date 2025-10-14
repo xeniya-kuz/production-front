@@ -18,10 +18,11 @@ import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import styles from './Navbar.module.scss'
 import { getRouteArticleCreate } from '@/6shared/const/router'
-import { ToggleFeatures } from '@/6shared/lib/features'
+import { toggleFeatures, ToggleFeatures } from '@/6shared/lib/features'
 import { AppLink } from '@/6shared/ui/redesigned/AppLink'
 import { Icon } from '@/6shared/ui/redesigned/Icon'
-import NewArticleIcon from '@/6shared/assets/icons/pencil.svg'
+import NewArticleIcon from '@/6shared/assets/icons/article.svg'
+import { Button } from '@/6shared/ui/redesigned/Button'
 
 interface NavbarProps {
     className?: string
@@ -46,7 +47,10 @@ export const Navbar = memo(function Navbar({
             <ToggleFeatures
                 feature="isAppRedesigned"
                 on={
-                    <AppLink to={getRouteArticleCreate()}>
+                    <AppLink
+                        to={getRouteArticleCreate()}
+                        title="Создать статью"
+                    >
                         <Icon Svg={NewArticleIcon} />
                     </AppLink>
                 }
@@ -75,7 +79,7 @@ export const Navbar = memo(function Navbar({
         </header>
     )
 
-    if (authData !== undefined) {
+    if (authData) {
         return (
             <ToggleFeatures
                 feature="isAppRedesigned"
@@ -94,14 +98,37 @@ export const Navbar = memo(function Navbar({
     }
 
     return (
-        <header className={classNames(styles.navbar, [className])}>
-            <ButtonDeprecated
-                className={styles.links}
-                theme={ButtonTheme.CLEAR_INVERTED}
-                onClick={onToggleModal}
-            >
-                {t('Войти')}
-            </ButtonDeprecated>
+        <header
+            className={classNames(
+                toggleFeatures({
+                    name: 'isAppRedesigned',
+                    on: () => styles.navbarRedesigned,
+                    off: () => styles.navbar,
+                }),
+                [className],
+            )}
+        >
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <Button
+                        onClick={onToggleModal}
+                        variant="outline"
+                    >
+                        {t('Войти')}
+                    </Button>
+                }
+                off={
+                    <ButtonDeprecated
+                        className={styles.links}
+                        theme={ButtonTheme.CLEAR_INVERTED}
+                        onClick={onToggleModal}
+                    >
+                        {t('Войти')}
+                    </ButtonDeprecated>
+                }
+            />
+
             {isAuthModal && (
                 <LoginModal
                     isOpen={isAuthModal}

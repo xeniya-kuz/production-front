@@ -19,7 +19,7 @@ interface ProfileCardDeprecatedProps {
 }
 
 /**
- * Устарел, используем новый компонент bp папки ProfileCard
+ * Устарел, используем новый компонент из папки ProfileCard
  * @deprecated
  */
 export const ProfileCardDeprecated = (
@@ -46,7 +46,7 @@ export const ProfileCardDeprecated = (
                     <Avatar
                         src={profile?.avatar}
                         alt={t('profile:avatar')}
-                        size={32}
+                        size={128}
                     />
                 </HStack>
             )}

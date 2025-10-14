@@ -94,6 +94,7 @@ export const RatingCard = memo(function RatingCard({
                 align="center"
                 gap="8"
             >
+                {/* // TODO: translate */}
                 <Text title={starsCount ? 'Спасибо за оценку!' : title} />
                 <StarRating
                     size={40}

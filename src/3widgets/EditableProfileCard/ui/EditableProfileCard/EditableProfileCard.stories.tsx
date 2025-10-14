@@ -1,6 +1,6 @@
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
 import type { Meta, StoryObj } from '@storybook/react'
-import { ValidateProfileError } from '../../model/const/validate'
+import { ValidateProfileError } from '../../../../5entities/Profile/model/const/validate'
 import { EditableProfileCard } from './EditableProfileCard'
 import { profileMock } from '@/5entities/Profile'
 

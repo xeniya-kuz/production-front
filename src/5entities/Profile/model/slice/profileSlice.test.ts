@@ -2,7 +2,7 @@ import { profileActions, profileReducer } from './profileSlice'
 import { updateProfileData } from '../services'
 import { type ProfileSchema } from '../types/profile'
 import { ValidateProfileError } from '../const/validate'
-import { profileMock } from '@/5entities/Profile'
+import { profileMock } from '../const/mocks'
 import { Currency } from '@/5entities/CurrencyDropdown'
 
 describe('profileSlice', () => {

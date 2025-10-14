@@ -1,3 +1,4 @@
+import { EditProfileButton } from '../../../EditableProfileButton'
 import { CountryDropdown } from '@/5entities/CountryDropdown'
 import { CurrencyDropdown } from '@/5entities/CurrencyDropdown'
 import { type Profile } from '@/5entities/Profile'
@@ -10,6 +11,8 @@ import { HStack, VStack } from '@/6shared/ui/redesigned/Stack'
 import { type JSX } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from './styles.module.scss'
+import { ToggleFeatures } from '@/6shared/lib/features'
+import { ProfileValidate } from '../ProfileValidate/ProfileValidate'
 
 interface ProfileCardProps {
     className?: string
@@ -28,6 +31,11 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
             className={classNames(styles.profileCard, [className])}
             padding="24"
         >
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={<EditProfileButton className={styles.editProfileBtn} />}
+                off={<></>}
+            />
             <VStack gap="32">
                 {profile?.avatar && (
                     <HStack
@@ -41,6 +49,8 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
                         />
                     </HStack>
                 )}
+
+                <ProfileValidate />
 
                 <HStack
                     gap="24"

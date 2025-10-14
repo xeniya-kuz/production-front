@@ -28,22 +28,20 @@ import {
     type StarRatingProps as StarRatingRedesignedProps,
 } from '@/6shared/ui/redesigned/StarRating'
 
-import { type PropsWithChildren, type FC, type JSX } from 'react'
+import { type FC, type JSX, type ReactNode } from 'react'
 
-export const Card: FC<PropsWithChildren & { className?: string }> = ({
-    children,
-}): JSX.Element => (
+export const Card: FC<{ className?: string; children: ReactNode }> = (
+    props,
+): JSX.Element => (
     <ToggleFeatures
         feature="isAppRedesigned"
         on={
             <CardRedesigned
-                radius="round"
                 padding="24"
-            >
-                {children}
-            </CardRedesigned>
+                {...props}
+            />
         }
-        off={<CardDeprecated>{children}</CardDeprecated>}
+        off={<CardDeprecated {...props} />}
     />
 )
 

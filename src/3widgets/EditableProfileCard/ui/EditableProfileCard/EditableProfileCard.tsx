@@ -1,23 +1,24 @@
-import { type Profile } from '@/5entities/Profile'
+import { ProfileCard, ProfileValidate } from '@/4features/ProfileCard'
 import {
-    DynamicModuleLoader,
-    type ReducerList,
-} from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { useAppDispatch, useInitialEffect } from '@/6shared/lib/hooks'
-import { VStack } from '@/6shared/ui/redesigned/Stack'
-import { type JSX, memo, useCallback } from 'react'
-import { useSelector } from 'react-redux'
-import {
+    fetchProfileData,
+    profileActions,
+    profileReducer,
     selectEditedProfile,
     selectProfileError,
     selectProfileIsLoading,
     selectProfileReadonly,
-} from '../../model/selectors'
-import { fetchProfileData } from '../../model/services'
-import { profileActions, profileReducer } from '../../model/slice'
+    type Profile,
+} from '@/5entities/Profile'
+import {
+    DynamicModuleLoader,
+    type ReducerList,
+} from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { ToggleFeatures } from '@/6shared/lib/features'
+import { useAppDispatch, useInitialEffect } from '@/6shared/lib/hooks'
+import { VStack } from '@/6shared/ui/redesigned/Stack'
+import { memo, useCallback, type JSX } from 'react'
+import { useSelector } from 'react-redux'
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader'
-import { EditableProfileErrors } from '../EditableProfileErrors/EditableProfileErrors'
-import { ProfileCard } from '@/4features/ProfileCard'
 
 interface EditableProfileCardProps {
     className?: string
@@ -39,9 +40,7 @@ export const EditableProfileCard = memo(function EditableProfileCard({
     const readonly = useSelector(selectProfileReadonly)
 
     useInitialEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            void dispatch(fetchProfileData(profileId))
-        }
+        void dispatch(fetchProfileData(profileId))
     })
 
     const onChange = useCallback(
@@ -59,8 +58,17 @@ export const EditableProfileCard = memo(function EditableProfileCard({
                 className={className}
                 align="center"
             >
-                <EditableProfileCardHeader />
-                <EditableProfileErrors />
+                <ToggleFeatures
+                    feature="isAppRedesigned"
+                    on={<></>}
+                    off={
+                        <>
+                            <EditableProfileCardHeader />
+                            <ProfileValidate />
+                        </>
+                    }
+                />
+
                 <ProfileCard
                     profile={editingProfile}
                     isLoading={isLoading}

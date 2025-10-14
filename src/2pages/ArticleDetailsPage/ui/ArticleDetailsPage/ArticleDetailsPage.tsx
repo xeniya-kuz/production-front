@@ -70,6 +70,7 @@ const ArticleDetailsPage = ({
                         <Page
                             className={classNames(styles.articleDetailsPage, [
                                 className,
+                                styles.articleDetailsPageRedesigned,
                             ])}
                         >
                             <VStack

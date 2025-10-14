@@ -59,10 +59,7 @@ const ArticleComments = memo(function ArticleComments({
 
     return (
         <DynamicModuleLoader reducers={initialReducer}>
-            <Tag
-                padding="24"
-                radius="round"
-            >
+            <Tag padding="24">
                 <VStack
                     gap="16"
                     className={classNames(styles.addCommentForm, [className])}
