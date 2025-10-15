@@ -1,6 +1,6 @@
+import { Theme } from '@/6shared/const/themes'
 import { useCallback, useContext } from 'react'
 import { ThemeContext } from '../../context/ThemeContext'
-import { Theme } from '@/6shared/const/themes'
 
 interface UseThemeResult {
     toggleTheme: (saveAction: (theme: Theme) => void) => void
@@ -27,6 +27,7 @@ export function useTheme(): UseThemeResult {
                     newTheme = Theme.LIGHT
             }
             setTheme?.(newTheme)
+
             saveAction?.(newTheme)
         },
         [setTheme, theme],

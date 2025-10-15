@@ -36,17 +36,31 @@
     display: flex;
 }
 
-*::-webkit-scrollbar {
+.app *::-webkit-scrollbar {
     width: 12px; /* ширина scrollbar */
     height: 8px;
 }
 
-*::-webkit-scrollbar-track {
+.app *::-webkit-scrollbar-track {
     background: var(--card-bg); /* цвет дорожки */
 }
 
-*::-webkit-scrollbar-thumb {
+.app *::-webkit-scrollbar-thumb {
     border: 3px solid var(--primary-color); /* padding вокруг плашки */
     border-radius: 20px; /* закругления плашки */
     background-color: var(--inverted-primaty-color); /* цвет плашки */
+}
+
+.app_redesigned *::-webkit-scrollbar {
+    width: 10px; /* ширина scrollbar */
+    height: 8px;
+}
+
+.app_redesigned *::-webkit-scrollbar-track {
+    background: var(--light-bg-redesigned); /* цвет дорожки */
+}
+
+.app_redesigned *::-webkit-scrollbar-thumb {
+    border-radius: 20px; /* закругления плашки */
+    background-color: var(--icon-redesigned); /* цвет плашки */
 }

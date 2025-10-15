@@ -49,7 +49,7 @@ export const AppImage = memo(function AppImage({
         }
     })
 
-    if (isLoading && fallback) {
+    if (isLoading) {
         return (
             fallback ?? (
                 <Skeleton
@@ -60,7 +60,7 @@ export const AppImage = memo(function AppImage({
         )
     }
 
-    if (hasError && errorFallback) {
+    if (hasError) {
         return (
             errorFallback ?? (
                 <img

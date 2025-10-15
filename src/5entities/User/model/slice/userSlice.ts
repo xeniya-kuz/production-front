@@ -14,9 +14,9 @@ export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setAuthData: (state, action: PayloadAction<User>) => {
-            state.authData = action.payload
-            setFeatureFlags(action.payload.features)
+        setAuthData: (state, { payload }: PayloadAction<User>) => {
+            state.authData = payload
+            setFeatureFlags(payload.features)
         },
         logout: (state) => {
             localStorage.removeItem(USER_LOCALSTORAGE_KEY)

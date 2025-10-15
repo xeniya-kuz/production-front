@@ -1,6 +1,9 @@
 import { userActions, type User } from '@/5entities/User'
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { USER_LOCALSTORAGE_KEY } from '@/6shared/const/localstorage'
+import {
+    LOCAL_STORAGE_LAST_DESIGN_KEY,
+    USER_LOCALSTORAGE_KEY,
+} from '@/6shared/const/localstorage'
 import { type ThunkConfig } from '@/1app/providers/StoreProvider'
 
 interface LoginByUsernameProps {
@@ -18,11 +21,15 @@ export const loginByUsername = createAsyncThunk<
     try {
         const response = await extra.api.post<User>('/login', authData)
 
-        if (response?.data === undefined) {
+        if (!response?.data) {
             throw new Error()
         }
 
         localStorage.setItem(USER_LOCALSTORAGE_KEY, response.data.id)
+        localStorage.setItem(
+            LOCAL_STORAGE_LAST_DESIGN_KEY,
+            response.data.features?.isAppRedesigned ? 'new' : 'old',
+        )
         dispatch(userActions.setAuthData(response.data))
 
         return response.data

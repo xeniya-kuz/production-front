@@ -6,11 +6,7 @@ import { type JSX, Suspense, useEffect } from 'react'
 import './styles/index.scss'
 import { PageLoader } from '@/3widgets/PageLoader'
 import { AppRouter } from './providers/router'
-import {
-    selectUserMounted,
-    initAuthData,
-    selectUserAuthData,
-} from '@/5entities/User'
+import { selectUserMounted, initAuthData } from '@/5entities/User'
 
 import { useSelector } from 'react-redux'
 import {
@@ -24,16 +20,16 @@ import {
 } from '@/6shared/const/router'
 import { ToggleFeatures } from '@/6shared/lib/features'
 import { MainLayout } from '@/6shared/layouts/MainLayout'
+import { AppLoaderLayout } from '@/6shared/layouts/AppLoaderLayout'
 
 export default function App(): JSX.Element {
     const dispatch = useAppDispatch()
     const { theme } = useTheme()
     const isMounted = useSelector(selectUserMounted)
     const { pathname } = useLocation()
-    const authData = useSelector(selectUserAuthData)
 
     useEffect(() => {
-        if (!authData) {
+        if (!isMounted) {
             void dispatch(initAuthData())
         }
 
@@ -44,12 +40,7 @@ export default function App(): JSX.Element {
             localStorage.removeItem(ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY)
             localStorage.removeItem(ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY)
         }
-    }, [dispatch, pathname, authData])
-
-    // TODO: можно сделать скелетон страницы с хедером и сайдбаром
-    if (!isMounted) {
-        return <PageLoader />
-    }
+    }, [dispatch, pathname, isMounted])
 
     return (
         // Здесь Suspense нужен, т.к. переводы из i18n будут подгружаться чанками
@@ -61,11 +52,15 @@ export default function App(): JSX.Element {
                         id="app"
                         className={classNames('app_redesigned', [theme])}
                     >
-                        <MainLayout
-                            header={<Navbar />}
-                            content={<AppRouter />}
-                            sidebar={<Sidebar />}
-                        />
+                        {isMounted ? (
+                            <MainLayout
+                                header={<Navbar />}
+                                content={<AppRouter />}
+                                sidebar={<Sidebar />}
+                            />
+                        ) : (
+                            <AppLoaderLayout />
+                        )}
                     </div>
                 }
                 off={
@@ -73,11 +68,17 @@ export default function App(): JSX.Element {
                         id="app"
                         className={classNames('app', [theme])}
                     >
-                        <Navbar />
-                        <div className="content-page">
-                            <Sidebar />
-                            <AppRouter />
-                        </div>
+                        {isMounted ? (
+                            <>
+                                <Navbar />
+                                <div className="content-page">
+                                    <Sidebar />
+                                    <AppRouter />
+                                </div>
+                            </>
+                        ) : (
+                            <PageLoader />
+                        )}
                     </div>
                 }
             />

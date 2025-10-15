@@ -1,4 +1,4 @@
-import { type JSX, memo, useCallback } from 'react'
+import { type JSX, memo, Suspense, useCallback } from 'react'
 import { LoginFormAsync } from '../LoginForm/LoginForm.async'
 import { LoginFormDeprecatedAsync } from '../LoginFormDeprecated/LoginFormDeprecated.async'
 import { toggleFeatures } from '@/6shared/lib/features'
@@ -9,6 +9,8 @@ import { useLoginIsLoading } from '../../model/selectors/selectLoginIsLoading/se
 import { useLoginPassword } from '../../model/selectors/selectLoginPassword/selectLoginPassword'
 import { useLoginUsername } from '../../model/selectors/selectLoginUsername.ts/selectLoginUsername'
 import { useAppDispatch } from '@/6shared/lib/hooks'
+import { LoginFormSkeleton } from '../LoginForm/LoginFormSkeleton'
+import { Loader } from '@/6shared/ui/deprecated/Loader'
 
 interface LoginFormContainerProps {
     className?: string
@@ -53,16 +55,24 @@ export const LoginFormContainer = memo(function LoginFormContainer({
         off: () => LoginFormDeprecatedAsync,
     })
     return (
-        <LoginForm
-            error={error}
-            onChangeUsername={onChangeUsername}
-            username={username}
-            onChangePassword={onChangePassword}
-            password={password}
-            // eslint-disable-next-line @typescript-eslint/no-misused-promises
-            onLoginClick={onLoginClick}
-            isLoading={isLoading}
-            className={className}
-        />
+        <Suspense
+            fallback={toggleFeatures({
+                name: 'isAppRedesigned',
+                on: () => <LoginFormSkeleton />,
+                off: () => <Loader />,
+            })}
+        >
+            <LoginForm
+                error={error}
+                onChangeUsername={onChangeUsername}
+                username={username}
+                onChangePassword={onChangePassword}
+                password={password}
+                // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                onLoginClick={onLoginClick}
+                isLoading={isLoading}
+                className={className}
+            />
+        </Suspense>
     )
 })
