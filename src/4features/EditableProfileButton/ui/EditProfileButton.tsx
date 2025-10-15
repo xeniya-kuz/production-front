@@ -14,11 +14,10 @@ import { useAppDispatch } from '@/6shared/lib/hooks'
 import {
     Button as ButtonDeprecated,
     ButtonTheme,
-    type ButtonProps as ButtonDeprecatedProps,
 } from '@/6shared/ui/deprecated/Button'
 import { Icon, type IconProps } from '@/6shared/ui/redesigned/Icon'
 import { HStack } from '@/6shared/ui/redesigned/Stack'
-import { useCallback, type JSX } from 'react'
+import { type ReactNode, useCallback, type JSX } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 
@@ -48,13 +47,44 @@ export const EditProfileButton = ({
         void dispatch(updateProfileData())
     }, [dispatch])
 
-    const Tag = (props: ButtonDeprecatedProps & IconProps): JSX.Element => (
-        <ToggleFeatures
-            feature="isAppRedesigned"
-            on={<Icon {...props} />}
-            off={<ButtonDeprecated {...props} />}
-        />
-    )
+    const Tag = ({
+        theme,
+        onClick,
+        title,
+        Svg,
+        variant,
+        children,
+        'data-testid': dataTestid,
+    }: {
+        theme: ButtonTheme
+        onClick: () => void
+        title: string
+        Svg: IconProps['Svg']
+        variant?: IconProps['variant']
+        children: ReactNode
+        'data-testid': string
+    }): JSX.Element => {
+        const iconProps = { onClick, title, Svg, variant }
+        const buttonProps = { theme, onClick, children }
+        return (
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <Icon
+                        clickable
+                        data-testid={dataTestid}
+                        {...iconProps}
+                    />
+                }
+                off={
+                    <ButtonDeprecated
+                        data-testid={dataTestid}
+                        {...buttonProps}
+                    />
+                }
+            />
+        )
+    }
 
     return (
         <HStack
@@ -70,8 +100,7 @@ export const EditProfileButton = ({
                             data-testid={
                                 DATA_TEST_ID.editableProfileCardHeaderEditBtn
                             }
-                            clickable
-                            title="Редактировать профиль"
+                            title={t('edit')}
                             Svg={EditIcon}
                         >
                             {t('edit')}
@@ -84,8 +113,7 @@ export const EditProfileButton = ({
                                 data-testid={
                                     DATA_TEST_ID.editableProfileCardHeaderSaveBtn
                                 }
-                                clickable
-                                title="Сохранить"
+                                title={t('save')}
                                 Svg={SaveIcon}
                                 variant="success"
                             >
@@ -97,8 +125,7 @@ export const EditProfileButton = ({
                                 data-testid={
                                     DATA_TEST_ID.editableProfileCardHeaderCancelBtn
                                 }
-                                clickable
-                                title="Отменить"
+                                title={t('cancel')}
                                 Svg={CancelIcon}
                                 variant="error"
                             >

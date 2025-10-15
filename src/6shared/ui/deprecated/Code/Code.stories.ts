@@ -6,11 +6,8 @@ import { Theme } from '@/6shared/const/themes'
 const meta = {
     title: 'shared/Code',
     component: Code,
-    parameters: {
-        layout: 'fullscreen',
-    },
+    parameters: {},
 
-    tags: ['autodocs'],
     args: {
         code:
             "import type { Meta, StoryObj } from '@storybook/react'\n" +

@@ -5,13 +5,10 @@ import { Currency } from '../../model/const/currency'
 const meta = {
     title: 'features/CurrencyDropdown',
     component: CurrencyDropdown,
-    parameters: {
-        layout: 'fullscreen',
-    },
+    parameters: {},
     args: {
         onChange: () => {},
     },
-    tags: ['autodocs'],
 } satisfies Meta<typeof CurrencyDropdown>
 
 export default meta

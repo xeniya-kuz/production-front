@@ -7,7 +7,7 @@ import { fn } from '@storybook/test'
 const meta = {
     title: 'shared/Tabs',
     component: Tabs,
-    tags: ['autodocs'],
+
     args: {
         activeTab: 'value1',
         setActiveTab: fn(),

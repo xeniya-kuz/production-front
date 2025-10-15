@@ -5,7 +5,7 @@ import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreD
 const meta = {
     title: 'pages/Article/ArticlesPage',
     component: ArticlesPage,
-    tags: ['autodocs'],
+
     args: {},
     decorators: [StoreDecorator({})],
 } satisfies Meta<typeof ArticlesPage>

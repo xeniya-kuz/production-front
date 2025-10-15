@@ -4,7 +4,13 @@ import { type JSX, memo } from 'react'
 import { MainLayout } from '../MainLayout'
 import styles from './AppLoaderLayout.module.scss'
 
-export const AppLoaderLayout = memo(function AppLoaderLayout(): JSX.Element {
+interface AppLoaderLayoutProps {
+    withSidebar?: boolean
+}
+
+export const AppLoaderLayout = memo(function AppLoaderLayout({
+    withSidebar = false,
+}: AppLoaderLayoutProps): JSX.Element {
     return (
         <MainLayout
             header={
@@ -48,11 +54,15 @@ export const AppLoaderLayout = memo(function AppLoaderLayout(): JSX.Element {
                 </VStack>
             }
             sidebar={
-                <Skeleton
-                    border="32px"
-                    width={220}
-                    height="100%"
-                />
+                withSidebar ? (
+                    <Skeleton
+                        border="32px"
+                        width={220}
+                        height="100%"
+                    />
+                ) : (
+                    <></>
+                )
             }
         />
     )

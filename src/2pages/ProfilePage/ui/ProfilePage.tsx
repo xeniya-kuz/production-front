@@ -17,7 +17,7 @@ const ProfilePage = memo(function ProfilePage({
     return (
         <Page
             data-testid={DATA_TEST_ID.profilePage}
-            className={classNames(undefined, [className])}
+            className={classNames(className)}
         >
             <EditableProfileCard profileId={profileId} />
         </Page>

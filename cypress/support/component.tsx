@@ -25,6 +25,7 @@ import {
 import { ThemeProvider } from '../../src/1app/providers/ThemeProvider'
 import '../../src/1app/styles/index.scss'
 import { Theme } from '@/6shared/const/themes'
+import { toggleFeatures } from '@/6shared/lib/features'
 
 // Example use:
 // cy.mount(<MyComponent />)
@@ -58,11 +59,16 @@ Cypress.Commands.add(
     'mount',
     (component: React.ReactNode, options: Options = {}) => {
         const theme = options.theme ?? Theme.DARK
+        const appStyles = toggleFeatures({
+            name: 'isAppRedesigned',
+            on: () => 'app_redesigned',
+            off: () => 'app',
+        })
 
         const wrapped = (
             <TestProvider options={options}>
                 <ThemeProvider initialTheme={theme}>
-                    <div className={`app ${theme}`}>{component}</div>
+                    <div className={`${appStyles} ${theme}`}>{component}</div>
                 </ThemeProvider>
             </TestProvider>
         )

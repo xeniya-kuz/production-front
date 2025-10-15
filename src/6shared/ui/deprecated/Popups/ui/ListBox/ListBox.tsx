@@ -1,7 +1,7 @@
 import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import { type DropdownDirection } from '@/6shared/types/ui'
 import { Listbox as HListbox } from '@headlessui/react'
-import { Fragment, type JSX, type ReactNode } from 'react'
+import { type JSX, type ReactNode } from 'react'
 import DoneIcon from '@/6shared/assets/icons/done-20-20.svg'
 import { Button } from '../../../Button'
 import { Icon, IconColors } from '../../../Icon'

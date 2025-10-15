@@ -9,7 +9,7 @@ const loginFormState = { username: '123', password: '123', isLoading: false }
 const meta = {
     title: 'features/AuthByUsername/LoginForm',
     component: LoginFormDeprecated,
-    tags: ['autodocs'],
+
     decorators: [StoreDecorator({ loginForm: loginFormState })],
     args: {
         onSuccess: () => {},

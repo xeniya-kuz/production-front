@@ -7,7 +7,7 @@ const loginFormState = { username: '123', password: '123', isLoading: false }
 const meta = {
     title: 'features/AuthByUsername/LoginModal',
     component: LoginModal,
-    tags: ['autodocs'],
+
     decorators: [StoreDecorator({ loginForm: loginFormState })],
     args: {
         isOpen: true,

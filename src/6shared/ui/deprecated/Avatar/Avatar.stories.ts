@@ -5,11 +5,8 @@ import AvatarImg from '@/6shared/assets/tests/storybook.jpg'
 const meta = {
     title: 'shared/Avatar',
     component: Avatar,
-    parameters: {
-        layout: 'fullscreen',
-    },
+    parameters: {},
 
-    tags: ['autodocs'],
     args: { alt: 'Avatar', src: AvatarImg },
 } satisfies Meta<typeof Avatar>
 

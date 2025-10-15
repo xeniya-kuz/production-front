@@ -6,7 +6,7 @@ import { articlesMock } from '@/5entities/Article'
 const meta = {
     title: 'features/Article/ArticleRecommendations',
     component: ArticleRecommendations,
-    tags: ['autodocs'],
+
     decorators: [StoreDecorator({})],
     parameters: {
         mockData: [

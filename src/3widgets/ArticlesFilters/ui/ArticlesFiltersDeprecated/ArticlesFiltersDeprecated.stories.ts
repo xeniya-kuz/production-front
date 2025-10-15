@@ -5,7 +5,7 @@ import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreD
 const meta = {
     title: 'features/Article/ArticlesFiltersDeprecated',
     component: ArticlesFiltersDeprecated,
-    tags: ['autodocs'],
+
     args: {
         fetchData: () => {},
     },

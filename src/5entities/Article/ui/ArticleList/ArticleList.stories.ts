@@ -9,10 +9,8 @@ const meta = {
     title: 'entities/Article/ArticleList',
     component: ArticleList,
 
-    parameters: {
-        layout: 'fullscreen',
-    },
-    tags: ['autodocs'],
+    parameters: {},
+
     args: {
         articles: articlesMock,
     },

@@ -3,20 +3,13 @@ import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeD
 import { articleMock } from '../../../../../model/const/mocks'
 import type { Meta, StoryObj } from '@storybook/react'
 import { TileViewDeprecated } from './TileViewDeprecated'
-import {
-    articleImage,
-    articleTypes,
-    articleViews,
-} from '../../../../ArticleList/helpers'
 
 const meta = {
     title: 'entities/Article/TileView',
     component: TileViewDeprecated,
 
-    parameters: {
-        layout: 'fullscreen',
-    },
-    tags: ['autodocs'],
+    parameters: {},
+
     args: {
         article: articleMock,
         index: 0,

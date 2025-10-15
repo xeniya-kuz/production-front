@@ -6,7 +6,7 @@ import { articleMock } from '../../model/const/mocks'
 const meta = {
     title: 'entities/Article/ArticleDetails',
     component: ArticleDetails,
-    tags: ['autodocs'],
+
     args: {
         articleId: '1',
     },

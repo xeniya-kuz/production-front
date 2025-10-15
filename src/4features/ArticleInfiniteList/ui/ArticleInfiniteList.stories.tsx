@@ -6,7 +6,7 @@ import { articleEntities, articleIds } from '@/5entities/Article'
 const meta = {
     title: 'features/Article/ArticleInfiniteList',
     component: ArticleInfiniteList,
-    tags: ['autodocs'],
+
     args: {
         Header: () => <div style={{ backgroundColor: 'yellow' }}>Header</div>,
     },

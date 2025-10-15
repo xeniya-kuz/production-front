@@ -8,7 +8,7 @@ import { profileMock } from '@/5entities/Profile'
 const meta = {
     title: 'widgets/EditableProfileCard',
     component: EditableProfileCard,
-    tags: ['autodocs'],
+
     args: {
         profileId: '1',
     },

@@ -6,7 +6,7 @@ import { Skeleton } from './Skeleton'
 const meta = {
     title: 'shared/Skeleton',
     component: Skeleton,
-    tags: ['autodocs'],
+
     args: {},
 } satisfies Meta<typeof Skeleton>
 

@@ -8,7 +8,7 @@ import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreD
 const meta = {
     title: 'widgets/Navbar',
     component: Navbar,
-    tags: ['autodocs'],
+
     decorators: [
         StoreDecorator({
             user: undefined,

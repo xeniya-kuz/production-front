@@ -3,12 +3,12 @@ import { articleCommentsReducer } from '@/4features/ArticleComments'
 import { articleInfiniteListReducer } from '@/4features/ArticleInfiniteList'
 import { articlesPageFiltersReducer } from '@/3widgets/ArticlesFilters'
 import { loginReducer } from '@/4features/AuthByUsername'
-import { profileReducer } from '@/3widgets/EditableProfileCard'
 import { articleDetailsReducer } from '@/5entities/Article'
 import { commentFormReducer } from '@/5entities/CommentForm'
 import { type ReducerList } from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { type JSX, type ReactNode } from 'react'
 import { type StoryFn } from '@storybook/react'
+import { profileReducer } from '@/5entities/Profile'
 
 const defaultAsyncReducers: ReducerList = {
     loginForm: loginReducer,

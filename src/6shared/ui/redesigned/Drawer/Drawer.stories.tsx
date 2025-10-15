@@ -4,7 +4,7 @@ import { Drawer } from './Drawer'
 const meta = {
     title: 'shared/Drawer',
     component: Drawer,
-    tags: ['autodocs'],
+
     args: {
         children: <p>text text text</p>,
         isOpen: true,

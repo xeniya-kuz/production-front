@@ -37,18 +37,16 @@ export const ProfileCard = (props: ProfileCardProps): JSX.Element => {
                 off={<></>}
             />
             <VStack gap="32">
-                {profile?.avatar && (
-                    <HStack
-                        justify="center"
-                        max
-                    >
-                        <Avatar
-                            src={profile?.avatar}
-                            alt={t('profile:avatar')}
-                            size={128}
-                        />
-                    </HStack>
-                )}
+                <HStack
+                    justify="center"
+                    max
+                >
+                    <Avatar
+                        src={profile?.avatar}
+                        alt={t('profile:avatar')}
+                        size={128}
+                    />
+                </HStack>
 
                 <ProfileValidate />
 

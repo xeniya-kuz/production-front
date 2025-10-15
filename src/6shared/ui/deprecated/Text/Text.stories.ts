@@ -6,7 +6,7 @@ import { Theme } from '@/6shared/const/themes'
 const meta = {
     title: 'shared/Text',
     component: Text,
-    tags: ['autodocs'],
+
     args: {
         title: 'title',
         text: 'Задача организации, в особенности же понимание сущности ресурсосберегающих технологий влечёт за собой интересный процесс внедрения модернизации дальнейших направлений развития.',

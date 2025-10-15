@@ -1,10 +1,9 @@
 import { ComponentRender } from '@/6shared/lib/tests/ComponentRender'
 import { EditableProfileCard } from './EditableProfileCard'
-import { profileReducer } from '../../model/slice'
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { $api } from '@/6shared/api/api'
-import { profileMock } from '@/5entities/Profile'
+import { profileMock, profileReducer } from '@/5entities/Profile'
 
 const options = {
     initialState: {

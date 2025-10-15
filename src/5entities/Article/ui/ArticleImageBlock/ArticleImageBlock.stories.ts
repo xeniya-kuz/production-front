@@ -7,7 +7,7 @@ import { Theme } from '@/6shared/const/themes'
 const meta = {
     title: 'entities/Article/ArticleImageBlock',
     component: ArticleImageBlock,
-    tags: ['autodocs'],
+
     args: {
         block: {
             id: 'image',

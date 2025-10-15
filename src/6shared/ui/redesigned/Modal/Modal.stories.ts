@@ -6,7 +6,7 @@ import { Modal } from './Modal'
 const meta = {
     title: 'shared/Modal',
     component: Modal,
-    tags: ['autodocs'],
+
     args: {
         isOpen: true,
         children:

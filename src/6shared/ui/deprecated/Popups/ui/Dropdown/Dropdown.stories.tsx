@@ -4,7 +4,7 @@ import { Dropdown } from './Dropdown'
 const meta = {
     title: 'shared/Popups/Dropdown',
     component: Dropdown,
-    tags: ['autodocs'],
+
     args: {
         items: [
             { content: 'content2' },

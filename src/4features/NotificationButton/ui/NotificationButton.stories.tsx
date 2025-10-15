@@ -5,7 +5,7 @@ import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreD
 const meta = {
     title: 'features/NotificationButton',
     component: NotificationButton,
-    tags: ['autodocs'],
+
     args: {},
     decorators: [(Story) => <Story />, StoreDecorator({})],
 } satisfies Meta<typeof NotificationButton>

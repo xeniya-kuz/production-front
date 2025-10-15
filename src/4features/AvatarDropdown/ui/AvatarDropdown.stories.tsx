@@ -6,7 +6,7 @@ import { userMock } from '@/5entities/User'
 const meta = {
     title: 'features/AvatarDropdown',
     component: AvatarDropdown,
-    tags: ['autodocs'],
+
     args: {},
     decorators: [
         StoreDecorator({

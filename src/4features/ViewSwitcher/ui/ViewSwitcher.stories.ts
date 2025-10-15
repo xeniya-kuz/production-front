@@ -5,7 +5,7 @@ import { ArticleView } from '@/5entities/Article'
 const meta = {
     title: 'features/ViewSwitcher',
     component: ViewSwitcher,
-    tags: ['autodocs'],
+
     args: {
         onViewChange: () => {},
     },

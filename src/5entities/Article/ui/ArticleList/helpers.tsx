@@ -10,7 +10,6 @@ import { Skeleton as SkeletonDeprecated } from '@/6shared/ui/deprecated/Skeleton
 import { Text as TextDeprecated } from '@/6shared/ui/deprecated/Text'
 import { AppImage } from '@/6shared/ui/redesigned/AppImage'
 import { Icon } from '@/6shared/ui/redesigned/Icon'
-import { Skeleton } from '@/6shared/ui/redesigned/Skeleton'
 import { Text } from '@/6shared/ui/redesigned/Text'
 import { type JSX } from 'react'
 import { type Article } from '../../model/types/article'

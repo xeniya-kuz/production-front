@@ -7,10 +7,7 @@ const meta = {
     title: 'entities/Article/SkeletonTileView',
     component: SkeletonTileViewDeprecated,
 
-    parameters: {
-        layout: 'fullscreen',
-    },
-    tags: ['autodocs'],
+    parameters: {},
 } satisfies Meta<typeof SkeletonTileViewDeprecated>
 
 export default meta

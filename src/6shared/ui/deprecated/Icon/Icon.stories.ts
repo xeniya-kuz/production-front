@@ -5,7 +5,7 @@ import EyeIcon from '@/6shared/assets/icons/eye-20-20.svg'
 const meta = {
     title: 'shared/Icon',
     component: Icon,
-    tags: ['autodocs'],
+
     args: {
         Svg: EyeIcon,
     },

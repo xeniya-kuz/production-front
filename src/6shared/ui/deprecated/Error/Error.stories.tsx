@@ -6,11 +6,8 @@ import { Theme } from '@/6shared/const/themes'
 const meta = {
     title: 'shared/Error',
     component: Error,
-    parameters: {
-        layout: 'fullscreen',
-    },
+    parameters: {},
 
-    tags: ['autodocs'],
     args: {
         title: 'error title',
         text: 'error text',

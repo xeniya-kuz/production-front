@@ -91,7 +91,7 @@ export const Article = memo(function Article({
                     alt={article?.title}
                     className={styles.img}
                     objectFit="contain"
-                    fallbackHeight="400px"
+                    fallbackHeight={400}
                 />
                 {article?.blocks.map(renderArticleBlock)}
             </VStack>

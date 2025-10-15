@@ -4,11 +4,8 @@ import { CommentList } from './CommentList'
 const meta = {
     title: 'entities/Comment/CommentList',
     component: CommentList,
-    parameters: {
-        layout: 'fullscreen',
-    },
+    parameters: {},
 
-    tags: ['autodocs'],
     args: {
         comments: [
             {

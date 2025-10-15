@@ -6,7 +6,7 @@ import { commentsMock } from '@/5entities/Comment'
 const meta = {
     title: 'features/Article/ArticleComments',
     component: ArticleComments,
-    tags: ['autodocs'],
+
     args: {
         articleId: commentsMock[0].id,
     },

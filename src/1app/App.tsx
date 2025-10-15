@@ -1,32 +1,34 @@
+import { Navbar } from '@/3widgets/Navbar'
+import { PageLoader } from '@/3widgets/PageLoader'
+import { Sidebar } from '@/3widgets/Sidebar'
+import { initAuthData, selectUserMounted } from '@/5entities/User'
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import { useAppDispatch, useTheme } from '@/6shared/lib/hooks'
-import { Navbar } from '@/3widgets/Navbar'
-import { Sidebar } from '@/3widgets/Sidebar'
-import { type JSX, Suspense, useEffect } from 'react'
-import './styles/index.scss'
-import { PageLoader } from '@/3widgets/PageLoader'
+import { type JSX, memo, Suspense, useEffect } from 'react'
 import { AppRouter } from './providers/router'
-import { selectUserMounted, initAuthData } from '@/5entities/User'
+import './styles/index.scss'
 
-import { useSelector } from 'react-redux'
 import {
     ARTICLE_LIST_ITEM_INDEX_LOCALSTORAGE_KEY,
     ARTICLE_VIEW_ITEM_INDEX_LOCALSTORAGE_KEY,
 } from '@/6shared/const/localstorage'
-import { useLocation } from 'react-router-dom'
 import {
     getRouteArticleDetails,
     getRouteArticles,
 } from '@/6shared/const/router'
-import { ToggleFeatures } from '@/6shared/lib/features'
 import { MainLayout } from '@/6shared/layouts/MainLayout'
-import { AppLoaderLayout } from '@/6shared/layouts/AppLoaderLayout'
+import { toggleFeatures, ToggleFeatures } from '@/6shared/lib/features'
+import { useSelector } from 'react-redux'
+import { useLocation } from 'react-router-dom'
+import { useAppToolbar } from './lib/useAppToolbar'
+import { withTheme } from './providers/ThemeProvider/ui/withTheme'
 
-export default function App(): JSX.Element {
+const App = memo(function App(): JSX.Element {
     const dispatch = useAppDispatch()
     const { theme } = useTheme()
     const isMounted = useSelector(selectUserMounted)
     const { pathname } = useLocation()
+    const toolbar = useAppToolbar()
 
     useEffect(() => {
         if (!isMounted) {
@@ -42,6 +44,23 @@ export default function App(): JSX.Element {
         }
     }, [dispatch, pathname, isMounted])
 
+    const appStyles = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => 'app_redesigned',
+        off: () => 'app',
+    })
+
+    if (!isMounted) {
+        return (
+            <div
+                id="app"
+                className={classNames(appStyles, [theme])}
+            >
+                <PageLoader />
+            </div>
+        )
+    }
+
     return (
         // Здесь Suspense нужен, т.к. переводы из i18n будут подгружаться чанками
         <Suspense fallback={<PageLoader />}>
@@ -50,38 +69,31 @@ export default function App(): JSX.Element {
                 on={
                     <div
                         id="app"
-                        className={classNames('app_redesigned', [theme])}
+                        className={classNames(appStyles, [theme])}
                     >
-                        {isMounted ? (
-                            <MainLayout
-                                header={<Navbar />}
-                                content={<AppRouter />}
-                                sidebar={<Sidebar />}
-                            />
-                        ) : (
-                            <AppLoaderLayout />
-                        )}
+                        <MainLayout
+                            header={<Navbar />}
+                            content={<AppRouter />}
+                            sidebar={<Sidebar />}
+                            toolbar={toolbar}
+                        />
                     </div>
                 }
                 off={
                     <div
                         id="app"
-                        className={classNames('app', [theme])}
+                        className={classNames(appStyles, [theme])}
                     >
-                        {isMounted ? (
-                            <>
-                                <Navbar />
-                                <div className="content-page">
-                                    <Sidebar />
-                                    <AppRouter />
-                                </div>
-                            </>
-                        ) : (
-                            <PageLoader />
-                        )}
+                        <Navbar />
+                        <div className="content-page">
+                            <Sidebar />
+                            <AppRouter />
+                        </div>
                     </div>
                 }
             />
         </Suspense>
     )
-}
+})
+
+export default withTheme(App)

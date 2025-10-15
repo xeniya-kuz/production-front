@@ -7,10 +7,7 @@ const meta = {
     title: 'entities/Article/SkeletonListView',
     component: SkeletonListViewDeprecated,
 
-    parameters: {
-        layout: 'fullscreen',
-    },
-    tags: ['autodocs'],
+    parameters: {},
 } satisfies Meta<typeof SkeletonListViewDeprecated>
 
 export default meta

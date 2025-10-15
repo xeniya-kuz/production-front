@@ -43,33 +43,33 @@
 }
 
 .primaryStroke {
-    stroke: var(--primary-color);
+    color: var(--primary-color);
 
     &:hover {
-        stroke: var(--secondary-color);
+        color: var(--primary-color);
     }
 }
 
 .secondaryStroke {
-    stroke: var(--secondary-color);
+    color: var(--secondary-color);
 
     &:hover {
-        stroke: var(--primary-color);
+        color: var(--secondary-color);
     }
 }
 
 .invertedPrimaryStroke {
-    stroke: var(--inverted-primary-color);
+    color: var(--inverted-primary-color);
 
     &:hover {
-        stroke: var(--inverted-secondary-color);
+        color: var(--inverted-primary-color);
     }
 }
 
 .invertedSecondaryStroke {
-    stroke: var(--inverted-secondary-color);
+    color: var(--inverted-secondary-color);
 
     &:hover {
-        stroke: var(--inverted-primary-color);
+        color: var(--inverted-primary-color);
     }
 }

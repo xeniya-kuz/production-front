@@ -17,7 +17,6 @@ const meta = {
         ],
     },
     decorators: [StoreDecorator({})],
-    tags: ['autodocs'],
 } satisfies Meta<typeof NotificationList>
 
 export default meta

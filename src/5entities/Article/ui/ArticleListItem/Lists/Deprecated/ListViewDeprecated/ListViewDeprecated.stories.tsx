@@ -8,10 +8,8 @@ const meta = {
     title: 'entities/Article/ListView',
     component: ListViewDeprecated,
 
-    parameters: {
-        layout: 'fullscreen',
-    },
-    tags: ['autodocs'],
+    parameters: {},
+
     args: {
         article: articleMock,
         // types: <Text text={`${ArticleType.IT}, ${ArticleType.ECONOMICS}`} />,

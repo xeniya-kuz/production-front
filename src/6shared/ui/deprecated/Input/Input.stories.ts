@@ -6,7 +6,7 @@ import { Input } from './Input'
 const meta = {
     title: 'shared/Input',
     component: Input,
-    tags: ['autodocs'],
+
     args: {
         value: 'text',
         placeholder: 'Введите текст',

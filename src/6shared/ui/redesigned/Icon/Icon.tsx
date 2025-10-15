@@ -2,7 +2,7 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './Icon.module.scss'
 import { memo, type SVGProps, type JSX, type FC } from 'react'
 
-type SvgProps = Omit<SVGProps<SVGSVGElement>, 'onCLick'>
+type SvgProps = Omit<SVGProps<SVGSVGElement>, 'onCLick' | 'className'>
 
 export type IconVariant = 'primary' | 'secondary' | 'error' | 'success'
 

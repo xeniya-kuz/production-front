@@ -5,13 +5,10 @@ import { Country } from '../../model/const/country'
 const meta = {
     title: 'features/CountryDropdown',
     component: CountryDropdown,
-    parameters: {
-        layout: 'fullscreen',
-    },
+    parameters: {},
     args: {
         onChange: () => {},
     },
-    tags: ['autodocs'],
 } satisfies Meta<typeof CountryDropdown>
 
 export default meta

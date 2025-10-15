@@ -5,7 +5,7 @@ import { ArticleSortField } from '@/5entities/Article'
 const meta = {
     title: 'features/Article/ArticleSortDropdown',
     component: ArticleSortDropdown,
-    tags: ['autodocs'],
+
     args: {
         sort: ArticleSortField.TITLE,
         order: 'asc',

@@ -7,7 +7,7 @@ import { Theme } from '@/6shared/const/themes'
 const meta = {
     title: 'entities/Comment/CommentForm',
     component: CommentForm,
-    tags: ['autodocs'],
+
     args: {
         onSend: () => {},
     },

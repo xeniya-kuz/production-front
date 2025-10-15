@@ -4,7 +4,7 @@ import { StarRating } from './StarRating'
 const meta = {
     title: 'shared/StarRating',
     component: StarRating,
-    tags: ['autodocs'],
+
     args: {
         onSelect: () => {},
     },

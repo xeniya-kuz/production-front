@@ -3,6 +3,7 @@ import { type Preview } from '@storybook/react'
 import { RouterDecorator } from '@/6shared/config/storybook/RouterDecorator/RouterDecorator'
 import { Theme } from '@/6shared/const/themes'
 import { withThemeByClassName } from '@storybook/addon-themes'
+import { FeaturesFlagsDecorator } from '@/6shared/config/storybook/FeaturesFlagsDecorator/FeaturesFlagsDecorator'
 
 const preview: Preview = {
     parameters: {
@@ -19,6 +20,7 @@ const preview: Preview = {
     decorators: [
         StyleDecorator,
         RouterDecorator,
+        FeaturesFlagsDecorator({}),
         withThemeByClassName({
             themes: {
                 light: Theme.LIGHT,
@@ -26,6 +28,7 @@ const preview: Preview = {
                 orange: Theme.ORANGE,
             },
             defaultTheme: 'light',
+            parentSelector: 'html',
         }),
     ],
 }

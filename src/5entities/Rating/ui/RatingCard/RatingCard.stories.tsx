@@ -4,7 +4,7 @@ import { RatingCard } from './RatingCard'
 const meta = {
     title: 'entities/RatingCard',
     component: RatingCard,
-    tags: ['autodocs'],
+
     args: {
         title: 'title',
         feedbackTitle: 'cool cool cool',

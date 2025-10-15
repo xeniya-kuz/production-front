@@ -5,13 +5,10 @@ import { notificationMock } from '../../model/const/mocks'
 const meta = {
     title: 'entities/Notification/NotificationItem',
     component: NotificationItem,
-    parameters: {
-        layout: 'fullscreen',
-    },
+    parameters: {},
     args: {
         notification: notificationMock,
     },
-    tags: ['autodocs'],
 } satisfies Meta<typeof NotificationItem>
 
 export default meta

@@ -6,7 +6,7 @@ import { articleMock } from '@/5entities/Article'
 const meta = {
     title: 'pages/Article/ArticleDetailsPage',
     component: ArticleDetailsPage,
-    tags: ['autodocs'],
+
     args: {},
     decorators: [
         StoreDecorator({

@@ -7,7 +7,7 @@ import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreD
 const meta = {
     title: 'widgets/Page',
     component: Page,
-    tags: ['autodocs'],
+
     args: {
         children: <></>,
     },

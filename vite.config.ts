@@ -25,6 +25,7 @@ export default defineConfig((env: ConfigEnv) => {
                         '#FFC700': 'currentColor',
                         '#74A2B2': 'currentColor',
                         '#5ED3F3': 'currentColor',
+                        white: 'currentColor',
                     },
                     svgoConfig: {
                         plugins: [

@@ -7,7 +7,7 @@ import { Theme } from '@/6shared/const/themes'
 const meta = {
     title: 'entities/Article/ArticleCodeBlock',
     component: ArticleCodeBlock,
-    tags: ['autodocs'],
+
     args: {
         block: {
             id: 'code',
@@ -20,7 +20,7 @@ const meta = {
                 'const meta = {\n' +
                 "  title: 'entities/ArticleCodeBlock',\n" +
                 '  component: ArticleCodeBlock,\n' +
-                "  tags: ['autodocs'],\n" +
+                '  \n' +
                 '  args: {\n' +
                 '    block: {\n' +
                 "      id: 'code',\n" +

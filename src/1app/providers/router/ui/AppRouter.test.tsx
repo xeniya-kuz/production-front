@@ -40,7 +40,7 @@ describe('app/router/AppRouter', function () {
 
     test('Access to the private page for an authorized user', async () => {
         ComponentRender(<AppRouter />, {
-            route: getRouteProfile(profileMock.id ?? '1'),
+            route: getRouteProfile(profileMock.id ?? '3'),
             initialState: {
                 user: {
                     _mounted: true,
