@@ -27,7 +27,6 @@ export function useTheme(): UseThemeResult {
                     newTheme = Theme.LIGHT
             }
             setTheme?.(newTheme)
-
             saveAction?.(newTheme)
         },
         [setTheme, theme],
