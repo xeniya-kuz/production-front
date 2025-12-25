@@ -16,10 +16,10 @@ export const useInfiniteScroll = ({
         const wrapperElement = wrapperRef?.current ?? null
         const triggerElement = triggerRef.current
 
-        if (callback !== undefined) {
+        if (callback) {
             const options = {
                 root: wrapperElement,
-                rootMargin: '0px',
+                rootMargin: '10px',
                 threshold: 1.0,
             }
 
@@ -29,12 +29,12 @@ export const useInfiniteScroll = ({
                 }
             }, options)
 
-            if (triggerElement !== null) {
+            if (triggerElement) {
                 observer.observe(triggerElement)
             }
 
             return () => {
-                if (observer !== null && triggerElement !== null) {
+                if (observer && triggerElement) {
                     // observer.disconnect()
                     observer.unobserve(triggerElement)
                 }

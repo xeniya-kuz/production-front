@@ -4,7 +4,7 @@ import {
     type ReducerList,
 } from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch, useInitialEffect } from '@/6shared/lib/hooks'
-import { memo, useCallback, type JSX } from 'react'
+import { type FC, memo, useCallback, type JSX } from 'react'
 import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 import { selectArticlesIsLoading } from '../model/selectors/selectArticlesIsLoading/selectArticlesIsLoading'
@@ -17,7 +17,8 @@ import {
 import { useJsonSettings } from '@/5entities/User'
 
 interface AddArticleCommentFormProps {
-    Header?: () => JSX.Element
+    Header?: FC
+    virtualized?: boolean
 }
 
 const initialReducer: ReducerList = {
@@ -26,6 +27,7 @@ const initialReducer: ReducerList = {
 
 export const ArticleInfiniteList = memo(function AddArticleCommentForm({
     Header,
+    virtualized = true,
 }: AddArticleCommentFormProps): JSX.Element {
     const dispatch = useAppDispatch()
 
@@ -55,6 +57,7 @@ export const ArticleInfiniteList = memo(function AddArticleCommentForm({
                 onLoadNextArticles={onLoadNextArticles}
                 view={view}
                 Header={Header}
+                virtualized={virtualized}
             />
         </DynamicModuleLoader>
     )

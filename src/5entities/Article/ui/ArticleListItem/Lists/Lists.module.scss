@@ -1,5 +1,12 @@
 .listsContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    & div[data-test-id='virtuoso-item-list'],
+    & {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    & div[data-test-id='virtuoso-item-list'] {
+        margin-top: 30px;
+    }
 }

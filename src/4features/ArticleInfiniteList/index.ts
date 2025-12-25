@@ -1,3 +1,5 @@
+export { fetchNextArticlesPage } from './model/services/fetchNextArticlesPage/fetchNextArticlesPage'
+
 export { fetchArticlesList } from './model/services/fetchArticlesList/fetchArticlesList'
 
 export { articleInfiniteListActions } from './model/slice/articleInfiniteListSlice'

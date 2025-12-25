@@ -1,20 +1,20 @@
+import { type StateSchema } from '@/1app/providers/StoreProvider'
+import { DATA_TEST_ID } from '@/6shared/const/tests'
 import { classNames } from '@/6shared/lib/classNames/classNames'
-import styles from './Page.module.scss'
-import { type JSX, memo, useRef, type ReactNode, type UIEvent } from 'react'
+import { toggleFeatures } from '@/6shared/lib/features'
 import {
     useAppDispatch,
     useInfiniteScroll,
     useInitialEffect,
     useThrottle,
 } from '@/6shared/lib/hooks'
+import { type TestProps } from '@/6shared/types/tests'
+import { type JSX, type ReactNode, memo, type UIEvent, useRef } from 'react'
 import { useSelector } from 'react-redux'
-import { pageActions } from '../model/slice/pageSlice'
 import { useLocation } from 'react-router-dom'
 import { selectScrollByPath } from '../model/selectors/selectScrollByPath/selectScrollByPath'
-import { type StateSchema } from '@/1app/providers/StoreProvider'
-import { type TestProps } from '@/6shared/types/tests'
-import { DATA_TEST_ID } from '@/6shared/const/tests'
-import { toggleFeatures } from '@/6shared/lib/features'
+import { pageActions } from '../model/slice/pageSlice'
+import styles from './Page.module.scss'
 
 interface PageProps extends TestProps {
     className?: string
@@ -37,18 +37,17 @@ export const Page = memo(function Page({
     )
 
     useInfiniteScroll({
-        // wrapperRef: toggleFeatures({
-        //     name: 'isAppRedesigned',
-        //     on: () => undefined,
-        //     off: () => wrapperRef,
-        // }),
-        wrapperRef,
+        wrapperRef: toggleFeatures({
+            name: 'isAppRedesigned',
+            on: () => undefined,
+            off: () => wrapperRef,
+        }),
         triggerRef,
         callback: onScrollEnd,
     })
 
     useInitialEffect(() => {
-        if (wrapperRef.current !== null) {
+        if (wrapperRef.current) {
             wrapperRef.current.scrollTop = scrollPosition
         }
     })
@@ -77,12 +76,12 @@ export const Page = memo(function Page({
             data-testid={testProps['data-testid'] ?? DATA_TEST_ID.page}
         >
             {children}
-            {onScrollEnd && (
+            {onScrollEnd ? (
                 <div
                     className={styles.trigger}
                     ref={triggerRef}
                 />
-            )}
+            ) : null}
         </main>
     )
 })

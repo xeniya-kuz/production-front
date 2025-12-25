@@ -17,7 +17,7 @@ describe('initArticlesPage', () => {
 
         expect(fetchArticlesList).toHaveBeenCalled()
         // dispatch(articlesPageActions...), dispatch(fetchArticlesList(...)), initArticlesPage.pending, initArticlesPage.fulfilled
-        expect(thunk.dispatch).toHaveBeenCalledTimes(4)
+        expect(thunk.dispatch).toHaveBeenCalledTimes(5)
     })
 
     test('state was initialized before', async () => {

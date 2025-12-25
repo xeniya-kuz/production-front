@@ -50,7 +50,7 @@ export const fetchArticlesList = createAsyncThunk<
             },
         })
 
-        if (response.data === undefined) {
+        if (!response.data) {
             throw new Error()
         }
 

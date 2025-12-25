@@ -1,6 +1,6 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 
-import { type HTMLAttributeAnchorTarget, memo, type JSX } from 'react'
+import { type HTMLAttributeAnchorTarget, memo, type JSX, type FC } from 'react'
 import { Virtuoso } from 'react-virtuoso'
 import { Footer } from './Footer'
 import styles from './Lists.module.scss'
@@ -13,7 +13,7 @@ interface ListsProps {
     className?: string
     articles: Article[]
     onLoadNextArticles?: () => void
-    Header?: () => JSX.Element
+    Header?: FC
     target?: HTMLAttributeAnchorTarget
     selectedArticleId: number
     isLoading?: boolean
@@ -80,19 +80,20 @@ export const Lists = memo(function Lists(props: ListsProps): JSX.Element {
                 initialTopMostItemIndex={selectedArticleId}
                 components={{
                     Header,
-                    Footer: () => <Footer />,
+                    Footer: () =>
+                        isLoading ? (
+                            <div data-test-id="virtuoso-item-list">
+                                <Footer />
+                            </div>
+                        ) : null,
                 }}
-                className={classNames(undefined, [className])}
-                // useWindowScroll
+                className={classNames(styles.listsContainer, [className])}
+                useWindowScroll={toggleFeatures({
+                    name: 'isAppRedesigned',
+                    on: () => true,
+                    off: () => false,
+                })}
             />
-        )
-    }
-
-    if (isLoading) {
-        return (
-            <div className={classNames(styles.listsContainer, [className])}>
-                <Footer />
-            </div>
         )
     }
 
@@ -103,6 +104,7 @@ export const Lists = memo(function Lists(props: ListsProps): JSX.Element {
                 {articles.map((article, index) =>
                     renderArticle(index, article),
                 )}
+                {isLoading && <Footer />}
             </div>
         </>
     )

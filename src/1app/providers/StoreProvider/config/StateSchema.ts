@@ -3,7 +3,6 @@ import { type ArticleCommentsSchema } from '@/4features/ArticleComments'
 import { type ArticleInfiniteListSchema } from '@/4features/ArticleInfiniteList'
 import { type ArticlesPageFiltersSchema } from '@/3widgets/ArticlesFilters'
 import { type LoginSchema } from '@/4features/AuthByUsername'
-import { type ProfileSchema } from '@/3widgets/EditableProfileCard'
 import { type ArticleDetailsSchema } from '@/5entities/Article'
 import { type CommentFormSchema } from '@/5entities/CommentForm'
 import { type UserSchema } from '@/5entities/User'
@@ -17,6 +16,7 @@ import {
 } from '@reduxjs/toolkit'
 import { type ThunkMiddlewareFor } from '@reduxjs/toolkit/dist/getDefaultMiddleware'
 import { type AxiosInstance } from 'axios'
+import { type ProfileSchema } from '@/5entities/Profile'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StateSchema {

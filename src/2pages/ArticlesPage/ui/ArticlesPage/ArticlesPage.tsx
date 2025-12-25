@@ -3,6 +3,7 @@ import {
     ArticleInfiniteList,
     articleInfiniteListActions,
     fetchArticlesList,
+    fetchNextArticlesPage,
 } from '@/4features/ArticleInfiniteList'
 import { ArticlePageGreeting } from '@/4features/AticlePageGreeting'
 import { DATA_TEST_ID } from '@/6shared/const/tests'
@@ -16,6 +17,8 @@ import {
     ArticlesFiltersDeprecated,
     ArticlesFilters,
 } from '@/3widgets/ArticlesFilters'
+
+const VIRTUALIZED = true
 
 const ArticlesPage = (): JSX.Element => {
     const dispatch = useAppDispatch()
@@ -38,6 +41,9 @@ const ArticlesPage = (): JSX.Element => {
                         <Page
                             data-testid={DATA_TEST_ID.articlesPage}
                             className={styles.pageRedesigned}
+                            onScrollEnd={() => {
+                                void dispatch(fetchNextArticlesPage())
+                            }}
                         >
                             <ArticlePageGreeting />
                             <ArticleInfiniteList />
@@ -51,9 +57,19 @@ const ArticlesPage = (): JSX.Element => {
                 <Page
                     data-testid={DATA_TEST_ID.articlesPage}
                     className={styles.page}
+                    onScrollEnd={
+                        VIRTUALIZED
+                            ? undefined
+                            : () => {
+                                  void dispatch(fetchNextArticlesPage())
+                              }
+                    }
                 >
                     <ArticlePageGreeting />
-                    <ArticleInfiniteList Header={Header} />
+                    <ArticleInfiniteList
+                        Header={Header}
+                        virtualized={VIRTUALIZED}
+                    />
                 </Page>
             }
         />

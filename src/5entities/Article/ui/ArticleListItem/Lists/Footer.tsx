@@ -11,7 +11,7 @@ interface FooterProps {
 export const Footer = memo(function Footer({ className }: FooterProps) {
     return (
         <>
-            {new Array(3).fill(0).map((_, index) => (
+            {new Array(1).fill(0).map((_, index) => (
                 <div
                     className={classNames(className)}
                     key={index}

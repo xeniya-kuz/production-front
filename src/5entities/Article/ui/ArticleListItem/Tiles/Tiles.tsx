@@ -2,26 +2,24 @@ import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import { getFeatureFlag, toggleFeatures } from '@/6shared/lib/features'
 import { useInitialEffect } from '@/6shared/lib/hooks'
 import {
+    type FC,
     memo,
     useCallback,
+    useMemo,
     useRef,
-    type FC,
     type HTMLAttributeAnchorTarget,
     type JSX,
 } from 'react'
 import { VirtuosoGrid, type VirtuosoGridHandle } from 'react-virtuoso'
 import { type Article } from '../../../model/types/article'
+import { Footer, Skeleton, View, WrappedHeader } from './components'
 import styles from './Tiles.module.scss'
-import { TileView } from './TileView/TileView'
-import { TileViewDeprecated } from './Deprecated/TileViewDeprecated/TileViewDeprecated'
-import { SkeletonTileViewDeprecated } from './Deprecated/SkeletonDeprecated/SkeletonTileViewDeprecated'
-import { SkeletonTileView } from './Skeleton/SkeletonTileView'
 
 interface TilesProps {
     className?: string
     articles: Article[]
     onLoadNextArticles?: () => void
-    Header?: () => JSX.Element
+    Header?: FC
     target?: HTMLAttributeAnchorTarget
     selectedArticleId: number
     isLoading?: boolean
@@ -44,6 +42,8 @@ interface TilesProps {
     }) => JSX.Element
 }
 
+type ArticlesNewDesignElement = Article & { __skeleton?: true }
+
 export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
     const {
         className,
@@ -65,7 +65,7 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
 
     const timeout = useCallback(() => {
         setTimeout(() => {
-            if (virtuosoGridRef.current !== null) {
+            if (virtuosoGridRef.current) {
                 virtuosoGridRef.current.scrollToIndex(selectedArticleId)
             } else {
                 timeout()
@@ -73,61 +73,47 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
         }, 1000)
     }, [selectedArticleId])
 
-    const View = toggleFeatures({
-        name: 'isAppRedesigned',
-        on: () => TileView,
-        off: () => TileViewDeprecated,
-    })
-
-    const renderArticle = (index: number, article: Article): JSX.Element => (
-        <View
-            article={article}
-            target={target}
-            className={styles.tile}
-            key={index}
-            handleButtonClick={handleButtonClick}
-            articleViews={articleViews}
-            articleTypes={articleTypes}
-            articleImage={articleImage}
-            index={index}
-        />
-    )
-
     useInitialEffect(() => {
         timeout()
     })
 
-    const Skeleton = toggleFeatures({
-        name: 'isAppRedesigned',
-        on: () => SkeletonTileView,
-        off: () => SkeletonTileViewDeprecated,
-    })
-
-    const WrappedHeader: FC = () =>
-        Header ? (
-            <div className={styles.header}>
-                <Header />
-            </div>
+    const articlesWithSkeletons = (
+        index: number,
+        article: ArticlesNewDesignElement,
+    ): JSX.Element =>
+        article.__skeleton ? (
+            <Skeleton key={index} />
         ) : (
-            <></>
+            <View
+                article={article}
+                target={target}
+                className={styles.tile}
+                key={index}
+                handleButtonClick={handleButtonClick}
+                articleViews={articleViews}
+                articleTypes={articleTypes}
+                articleImage={articleImage}
+                index={index}
+            />
         )
 
     const mods: Mods = {
         [styles.row]: direction && isAppRedesigned,
     }
 
-    if (isLoading) {
-        return (
-            <>
-                <WrappedHeader />
-                <div className={classNames(styles.tiles, [className], mods)}>
-                    {new Array(9).fill(0).map((_, index) => (
-                        <Skeleton key={index} />
-                    ))}
-                </div>
-            </>
-        )
-    }
+    const articlesNewDesignData: ArticlesNewDesignElement[] = useMemo(() => {
+        if (isLoading && !articles.length) {
+            return [...articles, ...Array(9).fill({ __skeleton: true })]
+        }
+
+        if (isLoading) {
+            return [...articles, ...Array(3).fill({ __skeleton: true })]
+        }
+
+        return articles
+    }, [isLoading, articles])
+
+    const gridData = isAppRedesigned ? articlesNewDesignData : articles
 
     if (virtualized) {
         return (
@@ -135,22 +121,32 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
                 <VirtuosoGrid
                     style={{ width: '100%' }}
                     ref={virtuosoGridRef}
-                    totalCount={articles.length}
-                    // skeleton подставляется на каждый элемент
+                    totalCount={gridData.length}
                     components={{
-                        Header: WrappedHeader,
+                        Header: () => <WrappedHeader Header={Header} />,
                         ScrollSeekPlaceholder: Skeleton,
+                        Footer: () => (
+                            <div className={classNames(styles.tiles)}>
+                                <Footer
+                                    isLoading={!!isLoading}
+                                    isAppRedesigned={!!isAppRedesigned}
+                                />
+                            </div>
+                        ),
                     }}
-                    // эта строчка вызывает Warning: Can't perform a React state update on an unmounted component
                     endReached={onLoadNextArticles}
-                    data={articles}
-                    itemContent={renderArticle}
+                    data={gridData}
+                    itemContent={articlesWithSkeletons}
                     listClassName={classNames(styles.tiles, [className], mods)}
                     scrollSeekConfiguration={{
                         enter: (velocity) => Math.abs(velocity) > 200,
                         exit: (velocity) => Math.abs(velocity) < 30,
                     }}
-                    //   scrollerRef={}
+                    useWindowScroll={toggleFeatures({
+                        name: 'isAppRedesigned',
+                        on: () => true,
+                        off: () => false,
+                    })}
                 />
             </div>
         )
@@ -158,11 +154,15 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
 
     return (
         <div className={classNames(styles.tilesContainer, [className])}>
-            {Header && <Header />}
+            <WrappedHeader Header={Header} />
             <div className={classNames(styles.tiles, [], mods)}>
-                {articles.map((article, index) =>
-                    renderArticle(index, article),
+                {gridData.map((article, index) =>
+                    articlesWithSkeletons(index, article),
                 )}
+                <Footer
+                    isLoading={!!isLoading}
+                    isAppRedesigned={!!isAppRedesigned}
+                />
             </div>
         </div>
     )

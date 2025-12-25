@@ -32,12 +32,16 @@ const articleInfiniteListSlice = createSlice({
         setPage: (state, action: PayloadAction<number>) => {
             state.page = action.payload
         },
-        initState: (
-            state,
-            { payload }: PayloadAction<{ view: ArticleView }>,
-        ) => {
-            state.limit = payload.view === ArticleView.LIST ? 4 : 9
+        initState: (state) => {
             state._inited = true
+        },
+        setLimit: (
+            state,
+            { payload }: PayloadAction<{ view?: ArticleView }>,
+        ) => {
+            if (payload.view) {
+                state.limit = payload.view === ArticleView.LIST ? 4 : 9
+            }
         },
     },
     extraReducers: (builder) => {
@@ -45,7 +49,7 @@ const articleInfiniteListSlice = createSlice({
             .addCase(fetchArticlesList.pending, (state, action) => {
                 state.error = undefined
                 state.isLoading = true
-                if (action.meta.arg.replace === true) {
+                if (action.meta.arg.replace) {
                     articlesAdapter.removeAll(state)
                 }
             })
@@ -53,7 +57,7 @@ const articleInfiniteListSlice = createSlice({
                 state.isLoading = false
                 state.hasMore = action.payload.length >= state.limit
 
-                action.meta.arg.replace === true
+                action.meta.arg.replace
                     ? articlesAdapter.setAll(state, action.payload)
                     : articlesAdapter.addMany(state, action.payload)
             })

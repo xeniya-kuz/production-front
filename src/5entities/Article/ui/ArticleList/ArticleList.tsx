@@ -9,6 +9,7 @@ import {
     useEffect,
     useState,
     type JSX,
+    type FC,
 } from 'react'
 import { useTranslation } from 'react-i18next'
 import { type Article } from '../../model/types/article'
@@ -34,7 +35,7 @@ interface ArticleListProps {
     target?: HTMLAttributeAnchorTarget
     onLoadNextArticles?: () => void
     view: ArticleView
-    Header?: () => JSX.Element
+    Header?: FC
     virtualized?: boolean
     direction?: 'row'
 }
@@ -95,6 +96,7 @@ export const ArticleList = memo(function ArticleList(
         <div
             className={classNames(styles.articleList, [className])}
             data-testid={DATA_TEST_ID.articleList}
+            style={virtualized ? { height: '100%' } : {}}
         >
             {view === ArticleView.LIST ? (
                 <Lists {...articleProps} />

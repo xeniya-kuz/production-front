@@ -3,6 +3,9 @@ import { saveJsonSettings, useJsonSettings } from '@/5entities/User'
 import { useAppDispatch } from '@/6shared/lib/hooks'
 import { memo, useCallback } from 'react'
 import { ViewSwitcher } from './ViewSwitcher'
+// TODO: fix
+// eslint-disable-next-line fsd-path-checker-sia355/layer-imports
+import { articleInfiniteListActions } from '@/4features/ArticleInfiniteList'
 
 interface ViewSelectorContainerProps {
     className?: string
@@ -19,6 +22,11 @@ export const ViewSwitcherContainer = memo(function ViewSelectorContainer({
     const onViewChange = useCallback(
         (view: ArticleView) => {
             void dispatch(saveJsonSettings({ articlesView: view })).then(() => {
+                dispatch(
+                    articleInfiniteListActions.setLimit({
+                        view,
+                    }),
+                )
                 fetchData()
             })
         },

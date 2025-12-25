@@ -57,11 +57,9 @@ export const init = createAsyncThunk<
                 )
             }
 
-            dispatch(
-                articleInfiniteListActions.initState({
-                    view,
-                }),
-            )
+            dispatch(articleInfiniteListActions.initState())
+            dispatch(articleInfiniteListActions.setLimit({ view }))
+
             void dispatch(fetchArticlesList({}))
         }
     },
