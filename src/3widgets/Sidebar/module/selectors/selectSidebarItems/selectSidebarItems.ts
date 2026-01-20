@@ -7,7 +7,7 @@ import ProfileIconDeprecated from '@/6shared/assets/icons/profile-20-20.svg'
 import ArticleIconDeprecated from '@/6shared/assets/icons/article-20-20.svg'
 import MainIcon from '@/6shared/assets/icons/home.svg'
 import ArticleIcon from '@/6shared/assets/icons/article.svg'
-import AboutIcon from '@/6shared/assets/icons/info.svg'
+import AboutIcon from '@/6shared/assets/icons/about.svg'
 import ProfileIcon from '@/6shared/assets/icons/avatar.svg'
 import {
     getRouteAbout,
