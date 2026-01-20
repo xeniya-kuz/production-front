@@ -1,29 +1,25 @@
 import { Theme } from '@/6shared/const/themes'
 import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { articleMock } from '../../../../../model/const/mocks'
 import type { Meta, StoryObj } from '@storybook/react'
 import { TileViewDeprecated } from './TileViewDeprecated'
+import {
+    articleImage,
+    articleTypes,
+    articleViews,
+} from '../../../../ArticleList/helpers'
+import { articleMock } from '../../../../../model/const/mocks'
 
 const meta = {
     title: 'entities/Article/TileView',
     component: TileViewDeprecated,
-
     parameters: {},
-
     args: {
         article: articleMock,
         index: 0,
+        articleTypes,
+        articleViews,
         handleButtonClick: (index) => () => {},
-        // articleImage: articleImage({
-        //     width: 200,
-        //     height: 200,
-        //     className: '',
-        //     article: articleMock,
-        // }),
-        // articleTypes: articleTypes({className: '',
-        //     article: articleMock,}),
-        // articleViews: articleViews({className: '',
-        //     article: articleMock})
+        articleImage,
     },
 } satisfies Meta<typeof TileViewDeprecated>
 

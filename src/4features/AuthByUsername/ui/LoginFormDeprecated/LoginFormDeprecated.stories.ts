@@ -9,10 +9,13 @@ const loginFormState = { username: '123', password: '123', isLoading: false }
 const meta = {
     title: 'features/AuthByUsername/LoginForm',
     component: LoginFormDeprecated,
-
     decorators: [StoreDecorator({ loginForm: loginFormState })],
     args: {
-        onSuccess: () => {},
+        onChangeUsername: () => {},
+        username: 'username',
+        onChangePassword: () => {},
+        password: '12345',
+        onLoginClick: () => {},
     },
 } satisfies Meta<typeof LoginFormDeprecated>
 

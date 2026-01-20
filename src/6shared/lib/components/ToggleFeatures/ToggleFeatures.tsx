@@ -1,6 +1,6 @@
+import { type FeatureFlags } from '@/6shared/types/featureFlags'
 import { memo, type ReactElement } from 'react'
-import { type FeatureFlags } from '../../../../types/featureFlags'
-import { getFeatureFlag } from '../setGetFeatures'
+import { getFeatureFlag } from '../../features'
 
 interface ToggleFeaturesProps {
     feature: keyof FeatureFlags

@@ -3,6 +3,11 @@ import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeD
 import { articleMock } from '../../../../../model/const/mocks'
 import type { Meta, StoryObj } from '@storybook/react'
 import { ListViewDeprecated } from './ListViewDeprecated'
+import {
+    articleImage,
+    articleTypes,
+    articleViews,
+} from '../../../../ArticleList/helpers'
 
 const meta = {
     title: 'entities/Article/ListView',
@@ -13,8 +18,12 @@ const meta = {
     args: {
         article: articleMock,
         // types: <Text text={`${ArticleType.IT}, ${ArticleType.ECONOMICS}`} />,
-        // views: <Text text={'1042'}/>,
+        // views: <Text text={'1042'} />,
         index: 0,
+        articleTypes,
+        articleViews,
+        handleButtonClick: (index) => () => {},
+        articleImage,
     },
 } satisfies Meta<typeof ListViewDeprecated>
 

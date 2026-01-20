@@ -56,7 +56,7 @@ export const StarRating = memo(function StarRating({
                             ? StarFilledIcon
                             : StarNotFilledIcon
                     }
-                    className={classNames(styles.starIcon, [], {
+                    iconClassName={classNames(styles.starIcon, [], {
                         [styles.isHover]: star <= currentStarNumber,
                         [styles.isSelected]: isSelected,
                     })}

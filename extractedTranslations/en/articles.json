@@ -8,5 +8,7 @@
   "it": "it",
   "recommendations": "recommendations",
   "science": "science",
-  "search": ""
+  "search": "",
+  "{{count}} views": "",
+  "{{count}} views_plural": ""
 }

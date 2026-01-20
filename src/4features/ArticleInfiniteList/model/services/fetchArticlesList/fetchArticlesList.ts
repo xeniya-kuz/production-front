@@ -8,10 +8,10 @@ import { addQueryParams } from '@/6shared/lib/url/addQueryParams/addQueryParams'
 
 import { selectArticlesNum } from '../../selectors/selectArticlesNum/selectArticlesNum'
 // TODO: перенести в entities??
-import { selectArticlesSort } from '@/3widgets/ArticlesFilters/selectors/selectArticlesSort/selectArticlesSort'
-import { selectArticlesOrder } from '@/3widgets/ArticlesFilters/selectors/selectArticlesOrder/selectArticlesOrder'
-import { selectArticlesSearch } from '@/3widgets/ArticlesFilters/selectors/selectArticlesSearch/selectArticlesSearch'
-import { selectArticlesType } from '@/3widgets/ArticlesFilters/selectors/selectArticlesType/selectArticlesType'
+import { selectArticlesSort } from '@/3widgets/ArticlesFilters/model/selectors/selectArticlesSort/selectArticlesSort'
+import { selectArticlesOrder } from '@/3widgets/ArticlesFilters/model/selectors/selectArticlesOrder/selectArticlesOrder'
+import { selectArticlesSearch } from '@/3widgets/ArticlesFilters/model/selectors/selectArticlesSearch/selectArticlesSearch'
+import { selectArticlesType } from '@/3widgets/ArticlesFilters/model/selectors/selectArticlesType/selectArticlesType'
 
 interface FetchArticlesListProps {
     replace?: boolean

@@ -1,11 +1,8 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './ViewSwitcher.module.scss'
-import { type FC, type JSX, memo, type SVGAttributes } from 'react'
-import ListIconDeprecated from '@/6shared/assets/icons/list-24-24.svg'
-import TileIconDeprecated from '@/6shared/assets/icons/tile-24-24.svg'
-import ListIcon from '@/6shared/assets/icons/burger.svg'
-import TileIcon from '@/6shared/assets/icons/tile.svg'
-import { ArticleView } from '@/5entities/Article'
+import { type FC, type JSX, memo } from 'react'
+
+import { ArticleView, DEFAULT_ARTICLE_VIEW } from '@/5entities/Article'
 import {
     Icon as IconDeprecated,
     IconColors,
@@ -16,44 +13,38 @@ import {
 } from '@/6shared/ui/deprecated/Button'
 import { toggleFeatures, ToggleFeatures } from '@/6shared/lib/features'
 import { Icon } from '@/6shared/ui/redesigned/Icon'
+import { saveJsonSettings, useJsonSettings } from '@/5entities/User'
+import { useAppDispatch } from '@/6shared/lib/hooks'
+// TODO: fix
+// eslint-disable-next-line fsd-path-checker-sia355/layer-imports, fsd-path-checker-sia355/public-api-imports
+import { articleInfiniteListActions } from '@/4features/ArticleInfiniteList/model/slice/articleInfiniteListSlice' // цикл зависимости
+import { type ViewType } from '../model/types/view'
+import { VIEW_TYPES } from '../model/const/view'
 
 interface ViewSwitcherProps {
     className?: string
-    view: ArticleView
-    onViewChange: (view: ArticleView) => void
+    view?: ArticleView
+    fetchData: () => void
 }
-
-interface ViewType {
-    view: ArticleView
-    icon: FC<SVGAttributes<SVGElement>>
-}
-
-const viewTypes: ViewType[] = [
-    {
-        view: ArticleView.LIST,
-        icon: toggleFeatures({
-            name: 'isAppRedesigned',
-            on: () => ListIcon,
-            off: () => ListIconDeprecated,
-        }),
-    },
-    {
-        view: ArticleView.TILE,
-        icon: toggleFeatures({
-            name: 'isAppRedesigned',
-            on: () => TileIcon,
-            off: () => TileIconDeprecated,
-        }),
-    },
-]
 
 export const ViewSwitcher = memo(function ArticlesViewSwitcher({
     className,
-    view,
-    onViewChange,
+    view: viewProp,
+    fetchData,
 }: ViewSwitcherProps): JSX.Element {
+    const dispatch = useAppDispatch()
+    const { articlesView = DEFAULT_ARTICLE_VIEW } = useJsonSettings()
+    const view = viewProp ?? articlesView
+
     const onClick = (newView: ArticleView) => () => {
-        onViewChange(newView)
+        void dispatch(saveJsonSettings({ articlesView: newView })).then(() => {
+            dispatch(
+                articleInfiniteListActions.setLimit({
+                    view: newView,
+                }),
+            )
+            fetchData()
+        })
     }
 
     const Content: FC<ViewType> = (viewType: ViewType) => (
@@ -107,7 +98,7 @@ export const ViewSwitcher = memo(function ArticlesViewSwitcher({
                 [className],
             )}
         >
-            {viewTypes.map((viewType) => (
+            {VIEW_TYPES.map((viewType) => (
                 <Content
                     key={viewType.view}
                     {...viewType}

@@ -7,7 +7,7 @@ const meta = {
     component: ViewSwitcher,
 
     args: {
-        onViewChange: () => {},
+        fetchData: () => {},
     },
 } satisfies Meta<typeof ViewSwitcher>
 
