@@ -6,7 +6,7 @@ export const selectIsArticleAuthor = createSelector(
     selectUserAuthData,
     selectArticleDetails,
     (user, article) => {
-        if (user === undefined || article === undefined) {
+        if (!user || !article) {
             return false
         }
 

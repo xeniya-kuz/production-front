@@ -25,7 +25,7 @@ export const updateProfileData = createAsyncThunk<
             profile,
         )
 
-        if (response.data === undefined) {
+        if (!response.data) {
             throw new Error()
         }
 

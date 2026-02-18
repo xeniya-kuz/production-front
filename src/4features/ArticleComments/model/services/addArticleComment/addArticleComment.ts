@@ -14,7 +14,7 @@ export const addArticleComment = createAsyncThunk<
     const user = selectUserAuthData(getState())
     const article = selectArticleDetails(getState())
 
-    if (user === undefined || article === undefined) {
+    if (!user || !article) {
         return rejectWithValue('no data')
     }
 
@@ -25,7 +25,7 @@ export const addArticleComment = createAsyncThunk<
             text: comment,
         })
 
-        if (response.data === undefined) {
+        if (!response.data) {
             throw new Error()
         }
 

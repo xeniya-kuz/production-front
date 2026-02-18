@@ -1,22 +1,37 @@
 ## Сущность статьи
 
-Описание:
-описываем сущность.
+Описание: базовая сущность статьи. Содержит компоненты для отображения детальной информации и списков статей, типы данных, сортировку и фильтрацию.
 
 #### Public api
 
 - Components
 
-`ArticleDetails` - Компонент с информацией о статье
+`ArticleDetails` - Детальная страница статьи с блоками текста, кода и изображений
 
-`ArticleList` - Компонент со списком статей
+`ArticleList` - Список статей с поддержкой виртуализации, бесконечного скролла и двух режимов отображения
 
-`ArticleListItem` - Компонент с краткой информацией по статье
+`ArticleListItem` - Карточка статьи в режиме плитки или списка
 
 - types
 
-`Article` - Тип, описывающий статью
+`Article` - Тип, описывающий статью (id, user, title, subtitle, img, views, createdAt, type, blocks)
+
+`ArticleDetailsSchema` - Тип состояния Redux (isLoading, error, article)
+
+`ArticleBlockType` - Перечисление типов блоков статьи (TEXT, CODE, IMAGE)
+
+`ArticleType` - Перечисление категорий статьи (ALL, IT, SCIENCE, ECONOMICS)
+
+`ArticleView` - Перечисление режимов отображения (LIST, TILE)
+
+`ArticleSortField` - Перечисление полей сортировки (VIEWS, TITLE, CREATED)
 
 - selectors
 
-`selectArticleDetails` - Селектор для получения информации о текущей открытой статье
+`selectArticleDetails` - Получение данных текущей открытой статьи
+
+`selectIsArticleAuthor` - Проверка, является ли текущий пользователь автором статьи
+
+- reducers
+
+`articleDetailsReducer` - Редьюсер для управления состоянием детальной страницы статьи

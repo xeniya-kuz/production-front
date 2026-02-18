@@ -15,7 +15,7 @@ const AppRouter = (): JSX.Element => {
                 key={route.path}
                 path={route.path}
                 element={
-                    route.isPrivate === true ? (
+                    route.isPrivate ? (
                         <RequireAuth>
                             <RequirePermission roles={route.roles}>
                                 {element}

@@ -17,7 +17,7 @@ export const RequirePermission = ({
     const userRoles = useSelector(selectUserRoles)
 
     const hasRequiredRoles = useMemo(() => {
-        if (roles === undefined) {
+        if (!roles) {
             return true
         }
 

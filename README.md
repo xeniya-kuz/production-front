@@ -1,6 +1,5 @@
 ## To Complete
 
-- Documentation
 - npm run generate:slice
 - Comments on scripts
 - Add translations everywhere
@@ -13,7 +12,6 @@
 - добавить сторисы
 - декомпозиция
 - написать линтер, чтобы в новом коде старый вариант компонентов не использовался
-- заменить дурацкие === undefined/true/false/null
 - урок 136 11 мин: надо добавить функции со стандартизированными стилями (отспупами и тд) (по факту убрать VStack и HStack)
 - добавить в jsonSettings настройку для коллапса сайдбара
 - TODO
