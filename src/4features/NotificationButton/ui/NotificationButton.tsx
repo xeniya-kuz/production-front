@@ -13,6 +13,7 @@ import { Icon } from '@/6shared/ui/redesigned/Icon'
 import { Popover } from '@/6shared/ui/redesigned/Popups'
 import { type JSX, memo, useCallback, useState } from 'react'
 import { BrowserView, MobileView } from 'react-device-detect'
+import { useTranslation } from 'react-i18next'
 
 interface NotificationButtonProps {
     className?: string
@@ -21,6 +22,7 @@ interface NotificationButtonProps {
 export const NotificationButton = memo(function NotificationButton({
     className,
 }: NotificationButtonProps): JSX.Element {
+    const { t } = useTranslation()
     const [isOpen, setIsOpen] = useState(false)
     const toggleOpen = useCallback(() => {
         setIsOpen((prev) => !prev)
@@ -34,7 +36,7 @@ export const NotificationButton = memo(function NotificationButton({
                     Svg={NotificationIcon}
                     clickable
                     onClick={toggleOpen}
-                    title="Уведомления"
+                    title={t('notifications')}
                 />
             }
             off={

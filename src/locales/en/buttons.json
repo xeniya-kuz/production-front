@@ -6,5 +6,9 @@
     "change-theme": "Change theme",
     "send": "Send",
     "read-more": "Read more...",
-    "back-to-list": "Back to the list"
+    "back-to-list": "Back to the list",
+    "collapse-menu": "Collapse menu",
+    "scroll-to-top": "Scroll to top",
+    "feedback-placeholder": "Your feedback",
+    "thank-you-for-rating": "Thank you for your rating!"
 }

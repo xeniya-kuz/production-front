@@ -1,6 +1,7 @@
 import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './ViewSwitcher.module.scss'
 import { type FC, type JSX, memo } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { ArticleView, DEFAULT_ARTICLE_VIEW } from '@/5entities/Article'
 import {
@@ -32,6 +33,7 @@ export const ViewSwitcher = memo(function ArticlesViewSwitcher({
     view: viewProp,
     fetchData,
 }: ViewSwitcherProps): JSX.Element {
+    const { t } = useTranslation('filters')
     const dispatch = useAppDispatch()
     const { articlesView = DEFAULT_ARTICLE_VIEW } = useJsonSettings()
     const view = viewProp ?? articlesView
@@ -60,8 +62,11 @@ export const ViewSwitcher = memo(function ArticlesViewSwitcher({
                     onClick={onClick(viewType.view)}
                     hover={viewType.view !== view}
                     variant={viewType.view === view ? 'primary' : 'secondary'}
-                    // TODO: translate
-                    title={view === ArticleView.LIST ? 'Список' : 'Плитка'}
+                    title={
+                        viewType.view === ArticleView.LIST
+                            ? t('list-view')
+                            : t('tile-view')
+                    }
                 />
             }
             off={

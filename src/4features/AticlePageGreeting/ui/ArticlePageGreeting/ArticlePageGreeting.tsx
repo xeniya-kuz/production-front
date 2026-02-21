@@ -6,9 +6,11 @@ import { Text as TextDeprecated } from '@/6shared/ui/deprecated/Text'
 import { Text as TextRedesigned } from '@/6shared/ui/redesigned/Text'
 import { type FC, memo, useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
+import { useTranslation } from 'react-i18next'
 import { ToggleFeatures } from '@/6shared/lib/features'
 
 export const ArticlePageGreeting = memo(function ArticlePageGreeting() {
+    const { t } = useTranslation('articles')
     const [isOpen, setIsOpen] = useState(false)
     const { isArticlesPageWasOpened } = useJsonSettings()
     const dispatch = useAppDispatch()
@@ -34,8 +36,8 @@ export const ArticlePageGreeting = memo(function ArticlePageGreeting() {
 
     const text = (
         <Text
-            title="Добро пожаловать на страницу статей"
-            text="Здесь вы можете искать и просматривать статьи на различные темы"
+            title={t('articles-welcome-title')}
+            text={t('articles-welcome-description')}
         />
     )
 

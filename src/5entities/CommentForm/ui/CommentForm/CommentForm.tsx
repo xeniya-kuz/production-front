@@ -92,7 +92,7 @@ const CommentForm = memo(function ArticleComments({
                 clickable
                 onClick={onSendHandler}
                 Svg={SendIcon}
-                title="Отправить комментарий"
+                title={t('submit-comment')}
                 data-testid={DATA_TEST_ID.commentFormBtn}
             ></Icon>
         </HStack>

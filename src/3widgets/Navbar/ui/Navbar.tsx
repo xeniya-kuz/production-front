@@ -49,7 +49,7 @@ export const Navbar = memo(function Navbar({
                 on={
                     <AppLink
                         to={getRouteArticleCreate()}
-                        title="Создать статью"
+                        title={t('articles:create-article')}
                     >
                         <Icon Svg={NewArticleIcon} />
                     </AppLink>

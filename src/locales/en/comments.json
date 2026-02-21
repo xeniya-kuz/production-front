@@ -1,5 +1,6 @@
 {
     "no-comments": "No comments found",
     "comments": "Comments",
-    "input-comment": "Enter your text"
+    "input-comment": "Enter your text",
+    "submit-comment": "Submit comment"
 }

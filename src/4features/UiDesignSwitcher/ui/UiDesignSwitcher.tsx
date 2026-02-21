@@ -12,17 +12,18 @@ import { ListBox as ListBoxRedesigned } from '@/6shared/ui/redesigned/Popups'
 import { Skeleton as SkeletonRedesigned } from '@/6shared/ui/redesigned/Skeleton'
 import { type JSX, memo, useCallback, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 export const UiDesignSwitcher = memo(function UiDesignSwitcher(): JSX.Element {
+    const { t } = useTranslation()
     const dispatch = useAppDispatch()
     const isAppRedesigned = getFeatureFlag('isAppRedesigned')
     const authData = useSelector(selectUserAuthData)
     const [isLoading, setIsLoading] = useState(false)
 
-    // TODO: translate
     const options = [
-        { value: 'new', label: 'Новый' },
-        { value: 'old', label: 'Старый' },
+        { value: 'new', label: t('ui-new') },
+        { value: 'old', label: t('ui-old') },
     ]
 
     const onChange = useCallback(
@@ -65,7 +66,7 @@ export const UiDesignSwitcher = memo(function UiDesignSwitcher(): JSX.Element {
             value={isAppRedesigned ? 'new' : 'old'}
             options={options}
             onChange={onChange}
-            label="Вариант интерфейса"
+            label={t('ui-variant')}
         />
     )
 })

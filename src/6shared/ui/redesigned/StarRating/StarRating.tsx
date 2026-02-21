@@ -25,6 +25,8 @@ export const StarRating = memo(function StarRating({
     const [isSelected, setIsSelected] = useState(!!selectedStars)
     const [currentStarNumber, setCurrentStarNumber] = useState(selectedStars)
 
+    console.log('selectedStars', selectedStars)
+
     const onHover = (starNumber: number) => () => {
         if (!isSelected) {
             setCurrentStarNumber(starNumber)
@@ -52,7 +54,7 @@ export const StarRating = memo(function StarRating({
                 <Icon
                     key={star}
                     Svg={
-                        isSelected || star <= currentStarNumber
+                        star <= currentStarNumber
                             ? StarFilledIcon
                             : StarNotFilledIcon
                     }

@@ -38,7 +38,7 @@ export const LangSwitcher = memo(function LangSwitcher({
                         className,
                     ])}
                     onClick={onToggle}
-                    title="Сменить язык"
+                    title={t('change-language')}
                 >
                     {t('Короткий язык').toUpperCase()}
                 </Button>

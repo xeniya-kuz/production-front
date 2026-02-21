@@ -5,8 +5,10 @@ import { Text as TextDeprecated } from '@/6shared/ui/deprecated/Text'
 import { VStack } from '@/6shared/ui/redesigned/Stack'
 import { Text as TextRedesigned } from '@/6shared/ui/redesigned/Text'
 import { type JSX, memo } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const SettingsPage = memo(function SettingsPage(): JSX.Element {
+    const { t } = useTranslation()
     const Text = (props: { title: string }): JSX.Element => (
         <ToggleFeatures
             feature="isAppRedesigned"
@@ -18,7 +20,7 @@ const SettingsPage = memo(function SettingsPage(): JSX.Element {
     return (
         <Page>
             <VStack gap="16">
-                <Text title="Настройки пользователя" />
+                <Text title={t('Настройки пользователя')} />
                 <UiDesignSwitcher />
             </VStack>
         </Page>

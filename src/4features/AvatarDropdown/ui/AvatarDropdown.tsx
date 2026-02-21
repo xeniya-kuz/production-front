@@ -55,9 +55,8 @@ export const AvatarDropdown = memo(function AvatarDropdown({
             content: t('profile:profile'),
             href: getRouteProfile(authData.id),
         },
-        // TODO: add translation
         {
-            content: 'Настройки',
+            content: t('profile:settings'),
             href: getRouteSettings(),
         },
         {

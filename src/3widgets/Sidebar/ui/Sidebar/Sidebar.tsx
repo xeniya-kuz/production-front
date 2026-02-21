@@ -3,6 +3,7 @@ import { ThemeSwitcher } from '@/4features/ThemeSwitcher'
 import { classNames, type Mods } from '@/6shared/lib/classNames/classNames'
 import { Button, ButtonSize, ButtonTheme } from '@/6shared/ui/deprecated/Button'
 import { type FC, type JSX, memo, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
 import styles from './Sidebar.module.scss'
 import { useSelector } from 'react-redux'
@@ -22,6 +23,7 @@ interface SidebarProps {
 export const Sidebar = memo(function Sidebar({
     className,
 }: SidebarProps): JSX.Element {
+    const { t } = useTranslation('buttons')
     const [collapsed, setCollapsed] = useState<boolean>(false)
     const sidebarItemList = useSelector(selectSidebarItems)
 
@@ -109,7 +111,7 @@ export const Sidebar = memo(function Sidebar({
                 onClick={onToggle}
                 Svg={ArrowIcon}
                 clickable
-                title="Свернуть меню"
+                title={t('collapse-menu')}
             />
             <ul className={styles.switchersRedesigned}>
                 <li className={styles.li}>

@@ -9,5 +9,7 @@
     "all": "Все статьи",
     "it": "IT",
     "science": "Наука",
-    "economics": "Экономика"
+    "economics": "Экономика",
+    "list-view": "Список",
+    "tile-view": "Плитка"
 }

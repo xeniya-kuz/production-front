@@ -1,4 +1,5 @@
 import { type JSX, memo, useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 import { RatingCard } from '@/5entities/Rating'
 import { useGetArticleRating, useRateArticle } from '../api/articleRatingApi'
 import { useSelector } from 'react-redux'
@@ -14,6 +15,7 @@ const ArticleRating = memo(function ArticleRating({
     className,
     articleId,
 }: ArticleRatingProps): JSX.Element {
+    const { t } = useTranslation('articles')
     const user = useSelector(selectUserAuthData)
     const userId = user?.id ?? ''
     const { isLoading, data } = useGetArticleRating({ articleId, userId })
@@ -57,10 +59,8 @@ const ArticleRating = memo(function ArticleRating({
     return (
         <RatingCard
             className={className}
-            feedbackTitle={
-                'Оставьте свой отзыв о статье, это поможет улучшить качество'
-            }
-            title={'Оцените статью'}
+            feedbackTitle={t('article-feedback-request')}
+            title={t('rate-article')}
             onAccept={onAcceptHandle}
             onCancel={onCancelHandle}
             fullWidth

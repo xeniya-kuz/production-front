@@ -73,7 +73,7 @@ export const RatingCard = memo(function RatingCard({
         <>
             <Text title={feedbackTitle} />
             <Input
-                placeholder="Ваш отзыв"
+                placeholder={t('feedback-placeholder')}
                 value={feedback}
                 onChange={onChangeHandle}
                 data-testid={DATA_TEST_ID.ratingCardText}
@@ -94,8 +94,7 @@ export const RatingCard = memo(function RatingCard({
                 align="center"
                 gap="8"
             >
-                {/* // TODO: translate */}
-                <Text title={starsCount ? 'Спасибо за оценку!' : title} />
+                <Text title={starsCount ? t('thank-you-for-rating') : title} />
                 <StarRating
                     size={40}
                     onSelect={onSelectStarsHandle}

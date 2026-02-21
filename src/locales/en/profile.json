@@ -8,5 +8,6 @@
     "city": "City",
     "username": "Username",
     "avatar": "Avatar",
-    "admin-panel": "Admin. panel"
+    "admin-panel": "Admin. panel",
+    "settings": "Settings"
 }

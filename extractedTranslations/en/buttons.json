@@ -2,9 +2,13 @@
   "back-to-list": "back-to-list",
   "cancel": "cancel",
   "change-theme": "",
+  "collapse-menu": "",
   "copy": "",
   "edit": "edit",
+  "feedback-placeholder": "",
   "read-more": "",
   "save": "save",
-  "send": "send"
+  "scroll-to-top": "",
+  "send": "send",
+  "thank-you-for-rating": ""
 }

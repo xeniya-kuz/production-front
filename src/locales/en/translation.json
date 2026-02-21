@@ -12,5 +12,12 @@
     "Введите пароль": "Type password",
     "Форма авторизации": "Sign in form",
     "Логин или пароль введены неправильно": "Username or password are incorrect",
-    "Выйти": "Log out"
+    "Выйти": "Log out",
+    "Обновить страницу": "Refresh page",
+    "Настройки пользователя": "User settings",
+    "notifications": "Notifications",
+    "change-language": "Change language",
+    "ui-new": "New",
+    "ui-old": "Old",
+    "ui-variant": "UI variant"
 }

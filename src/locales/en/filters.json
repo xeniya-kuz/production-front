@@ -9,5 +9,7 @@
     "all": "All articles",
     "it": "IT",
     "science": "Science",
-    "economics": "Economics"
+    "economics": "Economics",
+    "list-view": "List",
+    "tile-view": "Tile"
 }

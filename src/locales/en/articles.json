@@ -5,6 +5,12 @@
     "recommendations": "Recommendations",
     "article-edition": "Edit article",
     "article-creation": "Create article",
+    "creation-article": "Create article",
+    "create-article": "Create article",
+    "rate-article": "Rate the article",
+    "article-feedback-request": "Leave your feedback, it will help improve quality",
+    "articles-welcome-title": "Welcome to the articles page",
+    "articles-welcome-description": "Here you can search and browse articles on various topics",
     "{{count}} views_one":"{{count}} view",
     "{{count}} views_other":"{{count}} views"
 }
