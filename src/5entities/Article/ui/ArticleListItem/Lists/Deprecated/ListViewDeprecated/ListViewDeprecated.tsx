@@ -73,7 +73,7 @@ export const ListViewDeprecated = memo(function ListView({
                     className={styles.username}
                 />
                 <Text
-                    text={article.createdAt}
+                    text={article.createdAt.split('-').reverse().join('.')}
                     className={styles.date}
                 />
             </HStack>

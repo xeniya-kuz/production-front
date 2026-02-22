@@ -59,7 +59,12 @@ export const ListView = memo(function ListView({
                             username={article.user?.username}
                             gap="8"
                         />
-                        <Text text={article.createdAt} />
+                        <Text
+                            text={article.createdAt
+                                .split('-')
+                                .reverse()
+                                .join('.')}
+                        />
                     </HStack>
                     <Text
                         bold

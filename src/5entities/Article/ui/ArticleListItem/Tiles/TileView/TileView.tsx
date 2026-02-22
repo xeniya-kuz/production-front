@@ -63,7 +63,12 @@ export const TileView = memo(function TileView({
                         max
                         className={styles.info}
                     >
-                        <Text text={article.createdAt} />
+                        <Text
+                            text={article.createdAt
+                                .split('-')
+                                .reverse()
+                                .join('.')}
+                        />
                         {articleViews({
                             className: '',
                             article,
