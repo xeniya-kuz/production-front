@@ -31,7 +31,7 @@ export const Article = memo(function Article({
             },
             {
                 icon: CalendarIconDeprecated,
-                text: article?.createdAt?.split('-').reverse().join('.'),
+                text: article?.createdAt,
             },
         ]
 

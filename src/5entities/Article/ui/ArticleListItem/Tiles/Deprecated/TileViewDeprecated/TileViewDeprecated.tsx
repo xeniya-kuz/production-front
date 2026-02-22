@@ -63,7 +63,7 @@ export const TileViewDeprecated = memo(function TileView({
                         article,
                     })}
                     <Text
-                        text={article.createdAt.split('-').reverse().join('.')}
+                        text={article.createdAt}
                         className={styles.date}
                     />
                 </div>

@@ -54,7 +54,10 @@ export const fetchArticlesList = createAsyncThunk<
             throw new Error()
         }
 
-        return response.data
+        return response.data.map((article) => ({
+            ...article,
+            createdAt: article.createdAt.split('-').reverse().join('.'),
+        }))
     } catch (error) {
         return rejectWithValue('fetchArticlesList error')
     }
