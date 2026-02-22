@@ -13,4 +13,6 @@ module.exports = {
         },
     },
     staticDir: './storybook-static', // путь к папке со статическим билдом
+    chromeFlags:
+        '--headless --disable-gpu --hide-scrollbars --no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage',
 }
