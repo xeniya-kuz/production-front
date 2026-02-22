@@ -62,7 +62,7 @@ concurrency:
     cancel-in-progress: true
 jobs:
     build-and-ui-testing:
-        runs-on: windows-latest
+        runs-on: ubuntu-latest
         concurrency: ci-${{ github.ref }}
         environment:
             name: github-pages
@@ -84,15 +84,15 @@ jobs:
             - name: Build storybook
               run: npm run storybook:build
               if: always()
-            # TODO: doens't work
-            # - name: Start Storybook server
-            #   run: npx start-storybook -p 6006 -c ./config/storybook -h 0.0.0.0 &
-            #     npx wait-on http://192.168.100.7:6006
-            # - name: Screenshot testing
-            #   # run: npm run test:ui:ci
-            #   run: npx loki --requireReference --reactUri http://192.168.100.7:6006
-            #   if: always()
-
+            - name: Serve Storybook static
+              run: npx serve storybook-static -l 6006 &
+              if: always()
+            - name: Wait for Storybook server
+              run: npx wait-on http://localhost:6006 --timeout 30000
+              if: always()
+            - name: Screenshot testing
+              run: npx loki --requireReference --reactUri http://localhost:6006
+              if: always()
             - name: unit testing
               run: npm run test:unit
             - name: generate HTML report

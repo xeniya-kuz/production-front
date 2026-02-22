@@ -14,8 +14,8 @@ i18n.use(Backend)
     // init i18next
     // for all options read: https://www.i18next.com/overview/configuration-options
     .init({
-        // язык по умолчанию
-        fallbackLng: 'ru',
+        // language to use if translations in user language are not available
+        fallbackLng: 'en',
         // __IS_DEV__ - переменная окружения
         // debug: Boolean(__IS_DEV__),
         debug: false,
