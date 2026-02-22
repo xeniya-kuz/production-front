@@ -85,13 +85,13 @@ jobs:
               run: npm run storybook:build
               if: always()
             - name: Serve Storybook static
-              run: npx serve storybook-static -l 6006 &
+              run: npx serve storybook-static -l http://127.0.0.1:6006 &
               if: always()
             - name: Wait for Storybook server
-              run: npx wait-on http://localhost:6006 --timeout 30000
+              run: npx wait-on http://127.0.0.1:6006 --timeout 30000
               if: always()
             - name: Screenshot testing
-              run: npx loki --requireReference --reactUri http://localhost:6006
+              run: npx loki --requireReference --reactUri http://127.0.0.1:6006
               if: always()
             - name: unit testing
               run: npm run test:unit
