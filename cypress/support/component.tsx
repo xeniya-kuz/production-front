@@ -26,6 +26,10 @@ import { ThemeProvider } from '../../src/1app/providers/ThemeProvider'
 import '../../src/1app/styles/index.scss'
 import { Theme } from '@/6shared/const/themes'
 import { toggleFeatures } from '@/6shared/lib/features'
+import {
+    REDESIGNED_CLASSNAME,
+    DEPRECATED_CLASSNAME,
+} from '@/6shared/const/general'
 
 // Example use:
 // cy.mount(<MyComponent />)
@@ -61,8 +65,8 @@ Cypress.Commands.add(
         const theme = options.theme ?? Theme.DARK
         const appStyles = toggleFeatures({
             name: 'isAppRedesigned',
-            on: () => 'app_redesigned',
-            off: () => 'app',
+            on: () => REDESIGNED_CLASSNAME,
+            off: () => DEPRECATED_CLASSNAME,
         })
 
         const wrapped = (

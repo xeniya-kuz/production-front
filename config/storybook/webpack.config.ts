@@ -44,6 +44,7 @@ export default ({
         )
     }
 
+    // Storybook обрабатывает только .css, для .scss добавляем свой лоадер
     config.module?.rules?.push(buildCssLoader(true))
     config.module?.rules?.push(buildSvgLoader())
     // помогает прокидывать глобальные переменные (окружения??) в сам проект

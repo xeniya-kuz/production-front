@@ -16,6 +16,10 @@ import { Text as TextRedesigned } from '@/6shared/ui/redesigned/Text'
 
 import { Text as TextDeprecated } from '@/6shared/ui/deprecated/Text'
 import { VStack } from '@/6shared/ui/redesigned/Stack'
+import {
+    DEPRECATED_CLASSNAME,
+    REDESIGNED_CLASSNAME,
+} from '@/6shared/const/general'
 
 interface PageErrorProps {
     className?: string
@@ -51,8 +55,8 @@ export const PageError = memo(function PageError({
 
     const appStyles = toggleFeatures({
         name: 'isAppRedesigned',
-        on: () => 'app_redesigned',
-        off: () => 'app',
+        on: () => REDESIGNED_CLASSNAME,
+        off: () => DEPRECATED_CLASSNAME,
     })
 
     return (

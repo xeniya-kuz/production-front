@@ -19,7 +19,7 @@ export const enum ArticleView {
 export enum ArticleSortField {
     VIEWS = 'views',
     TITLE = 'title',
-    CREATED = 'creation-date',
+    CREATED = 'createdAt',
 }
 
 export const DEFAULT_ARTICLE_VIEW: ArticleView = ArticleView.TILE

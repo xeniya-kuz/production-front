@@ -22,6 +22,10 @@ import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { useAppToolbar } from './lib/useAppToolbar'
 import { withTheme } from './providers/ThemeProvider/ui/withTheme'
+import {
+    DEPRECATED_CLASSNAME,
+    REDESIGNED_CLASSNAME,
+} from '@/6shared/const/general'
 
 const App = memo(function App(): JSX.Element {
     const dispatch = useAppDispatch()
@@ -46,8 +50,8 @@ const App = memo(function App(): JSX.Element {
 
     const appStyles = toggleFeatures({
         name: 'isAppRedesigned',
-        on: () => 'app_redesigned',
-        off: () => 'app',
+        on: () => REDESIGNED_CLASSNAME,
+        off: () => DEPRECATED_CLASSNAME,
     })
 
     if (!isMounted) {

@@ -4,6 +4,7 @@ import { RouterDecorator } from '@/6shared/config/storybook/RouterDecorator/Rout
 import { Theme } from '@/6shared/const/themes'
 import { withThemeByClassName } from '@storybook/addon-themes'
 import { CenterDecorator } from '@/6shared/config/storybook/CenterDecorator/CenterDecorator'
+import { I18nDecorator } from '@/6shared/config/storybook/I18nDecorator/I18nDecorator'
 
 const preview: Preview = {
     globalTypes: {
@@ -37,6 +38,7 @@ const preview: Preview = {
     },
     decorators: [
         StyleDecorator,
+        I18nDecorator,
         RouterDecorator,
         CenterDecorator,
         withThemeByClassName({

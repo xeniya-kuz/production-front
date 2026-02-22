@@ -11,6 +11,6 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {}
 
-export const Short: Story = {
+export const ShortDeprecated: Story = {
     args: { short: true },
 }

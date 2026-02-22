@@ -3,6 +3,10 @@ import {
     getAllFeatureFlags,
     setFeatureFlags,
 } from '@/6shared/lib/features/lib/setGetFeatures'
+import {
+    DEPRECATED_CLASSNAME,
+    REDESIGNED_CLASSNAME,
+} from '@/6shared/const/general'
 
 export const CenterDecorator: Decorator = (Story, context) => {
     const isRedesigned = context.globals?.design !== 'deprecated'
@@ -10,7 +14,9 @@ export const CenterDecorator: Decorator = (Story, context) => {
 
     return (
         <div
-            className={isRedesigned ? 'app_redesigned' : 'app'}
+            className={
+                isRedesigned ? REDESIGNED_CLASSNAME : DEPRECATED_CLASSNAME
+            }
             style={{
                 width: '100%',
                 minHeight: '500px',
@@ -19,7 +25,15 @@ export const CenterDecorator: Decorator = (Story, context) => {
                 justifyContent: 'center',
             }}
         >
-            <Story />
+            <div
+                style={{
+                    height: 'stretch',
+                    display: 'flex',
+                    alignItems: 'center',
+                }}
+            >
+                <Story />
+            </div>
         </div>
     )
 }
