@@ -17,12 +17,9 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Light: Story = {
-    args: {},
-}
+export const Primary: Story = {}
 
 export const NoAuth: Story = {
-    args: {},
     decorators: [
         StoreDecorator({
             user: {},

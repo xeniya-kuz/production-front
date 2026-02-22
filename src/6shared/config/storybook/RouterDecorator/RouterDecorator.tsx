@@ -1,11 +1,9 @@
 // eslint-disable-next-line fsd-path-checker-sia355/layer-imports
 import '@/1app/styles/index.scss'
-import { type StoryFn } from '@storybook/react'
-import { type ReactNode, type JSX } from 'react'
+import { type Decorator } from '@storybook/react'
 import { BrowserRouter } from 'react-router-dom'
 
-// export const StyleDecorator = (story: () => StoryFn) => story()
-export const RouterDecorator = (Story: () => ReactNode): JSX.Element => (
+export const RouterDecorator: Decorator = (Story) => (
     <BrowserRouter>
         <Story />
     </BrowserRouter>

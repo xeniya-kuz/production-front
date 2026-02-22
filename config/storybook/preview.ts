@@ -3,9 +3,28 @@ import { type Preview } from '@storybook/react'
 import { RouterDecorator } from '@/6shared/config/storybook/RouterDecorator/RouterDecorator'
 import { Theme } from '@/6shared/const/themes'
 import { withThemeByClassName } from '@storybook/addon-themes'
-import { FeaturesFlagsDecorator } from '@/6shared/config/storybook/FeaturesFlagsDecorator/FeaturesFlagsDecorator'
+import { CenterDecorator } from '@/6shared/config/storybook/CenterDecorator/CenterDecorator'
 
 const preview: Preview = {
+    globalTypes: {
+        design: {
+            name: 'Design',
+            description: 'Switch between old and new design system',
+            defaultValue: 'redesigned',
+            toolbar: {
+                icon: 'paintbrush',
+                items: [
+                    {
+                        value: 'redesigned',
+                        title: 'New Design',
+                    },
+                    { value: 'deprecated', title: 'Old Design' },
+                ],
+                showName: true,
+                dynamicTitle: true,
+            },
+        },
+    },
     parameters: {
         actions: {},
         controls: {
@@ -15,12 +34,11 @@ const preview: Preview = {
             },
         },
         layout: 'fullscreen',
-        tags: ['autodocs'],
     },
     decorators: [
         StyleDecorator,
         RouterDecorator,
-        FeaturesFlagsDecorator({}),
+        CenterDecorator,
         withThemeByClassName({
             themes: {
                 light: Theme.LIGHT,

@@ -10,15 +10,7 @@ export const ThemeDecorator = (theme: Theme) =>
         return (
             // initialTheme для тестирования
             <ThemeProvider initialTheme={theme}>
-                <div
-                    className={`app ${theme}`}
-                    style={{
-                        width: '100%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}
-                >
+                <div className={`app ${theme}`}>
                     {StoryComponent(context.args, context)}
                 </div>
             </ThemeProvider>

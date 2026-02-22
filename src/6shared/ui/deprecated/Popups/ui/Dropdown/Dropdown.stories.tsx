@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Dropdown } from './Dropdown'
 
 const meta = {
-    title: 'shared/Popups/Dropdown',
+    title: 'shared/deprecated/Popups/Dropdown',
     component: Dropdown,
 
     args: {
@@ -18,4 +18,4 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Light: Story = {}
+export const Primary: Story = {}

@@ -3,7 +3,7 @@ import { CurrencyDropdown } from './CurrencyDropdown'
 import { Currency } from '../../model/const/currency'
 
 const meta = {
-    title: 'features/CurrencyDropdown',
+    title: 'entities/CurrencyDropdown',
     component: CurrencyDropdown,
     parameters: {},
     args: {

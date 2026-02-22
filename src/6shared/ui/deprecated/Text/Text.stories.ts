@@ -1,10 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Text, TextAlign, TextSize, TextTheme } from './Text'
-import { Theme } from '@/6shared/const/themes'
 
 const meta = {
-    title: 'shared/Text',
+    title: 'shared/deprecated/Text',
     component: Text,
 
     args: {
@@ -16,36 +14,18 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Light: Story = {}
+export const Primary: Story = {}
 
-export const OnlyTitleLight: Story = {
+export const OnlyTitle: Story = {
     args: {
         text: undefined,
     },
 }
 
-export const OnlyTextLight: Story = {
+export const OnlyText: Story = {
     args: {
         title: undefined,
     },
-}
-
-export const Dark: Story = {
-    decorators: [ThemeDecorator(Theme.DARK)],
-}
-
-export const OnlyTitleDark: Story = {
-    args: {
-        text: undefined,
-    },
-    decorators: [ThemeDecorator(Theme.DARK)],
-}
-
-export const OnlyTextDark: Story = {
-    args: {
-        title: undefined,
-    },
-    decorators: [ThemeDecorator(Theme.DARK)],
 }
 
 export const Error: Story = {

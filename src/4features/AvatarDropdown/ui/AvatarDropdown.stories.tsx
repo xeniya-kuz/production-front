@@ -7,7 +7,6 @@ const meta = {
     title: 'features/AvatarDropdown',
     component: AvatarDropdown,
 
-    args: {},
     decorators: [
         StoreDecorator({
             user: {

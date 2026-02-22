@@ -3,7 +3,7 @@ import { ArticlesFiltersDeprecated } from './ArticlesFiltersDeprecated'
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
 
 const meta = {
-    title: 'features/Article/ArticlesFiltersDeprecated',
+    title: 'widgets/ArticlesFilters/deprecated/ArticlesFiltersDeprecated',
     component: ArticlesFiltersDeprecated,
 
     args: {
@@ -15,6 +15,4 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {
-    args: {},
-}
+export const Primary: Story = {}

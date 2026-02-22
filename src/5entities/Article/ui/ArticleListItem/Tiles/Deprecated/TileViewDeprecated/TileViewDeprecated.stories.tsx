@@ -1,5 +1,3 @@
-import { Theme } from '@/6shared/const/themes'
-import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import type { Meta, StoryObj } from '@storybook/react'
 import { TileViewDeprecated } from './TileViewDeprecated'
 import {
@@ -10,7 +8,7 @@ import {
 import { articleMock } from '../../../../../model/const/mocks'
 
 const meta = {
-    title: 'entities/Article/TileView',
+    title: 'entities/Article/deprecated/TileView',
     component: TileViewDeprecated,
     parameters: {},
     args: {
@@ -27,7 +25,3 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {}
-
-export const Dark: Story = {
-    decorators: [ThemeDecorator(Theme.DARK)],
-}

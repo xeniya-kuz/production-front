@@ -7,9 +7,9 @@ import {
     useLayoutEffect,
     useState,
 } from 'react'
-import styles from './AppImage.module.scss'
-import { EMPTY_IMAGE_PATH } from '@/6shared/const/general'
+import { NoImage } from '../NoImage'
 import { Skeleton } from '../Skeleton'
+import styles from './AppImage.module.scss'
 
 interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
     className?: string
@@ -63,10 +63,9 @@ export const AppImage = memo(function AppImage({
     if (hasError) {
         return (
             errorFallback ?? (
-                <img
-                    src={EMPTY_IMAGE_PATH}
+                <NoImage
                     className={classNames(styles.img, [className])}
-                    style={{ objectFit }}
+                    objectFit={objectFit}
                 />
             )
         )

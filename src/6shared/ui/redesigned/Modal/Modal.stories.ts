@@ -1,10 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Theme } from '@/6shared/const/themes'
-import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Modal } from './Modal'
 
 const meta = {
-    title: 'shared/Modal',
+    title: 'shared/redesigned/Modal',
     component: Modal,
 
     args: {
@@ -18,11 +16,4 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Light: Story = {
-    args: {},
-}
-
-export const Dark: Story = {
-    args: {},
-    decorators: [ThemeDecorator(Theme.DARK)],
-}
+export const Primary: Story = {}

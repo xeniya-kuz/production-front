@@ -16,7 +16,6 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
-    args: {},
     decorators: [
         StoreDecorator({
             articleDetails: {
@@ -27,7 +26,6 @@ export const Primary: Story = {
 }
 
 export const Loading: Story = {
-    args: {},
     decorators: [
         StoreDecorator({
             articleDetails: {
@@ -38,7 +36,6 @@ export const Loading: Story = {
 }
 
 export const Error: Story = {
-    args: {},
     decorators: [
         StoreDecorator({
             articleDetails: {

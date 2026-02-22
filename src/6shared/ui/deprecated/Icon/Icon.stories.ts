@@ -3,7 +3,7 @@ import { Icon, IconColors } from './Icon'
 import EyeIcon from '@/6shared/assets/icons/eye-20-20.svg'
 
 const meta = {
-    title: 'shared/Icon',
+    title: 'shared/deprecated/Icon',
     component: Icon,
 
     args: {

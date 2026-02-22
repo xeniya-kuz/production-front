@@ -1,6 +1,5 @@
 import { profileMock } from '@/5entities/Profile'
 import { userMock } from '@/5entities/User'
-import { NewDesignDecorator } from '@/6shared/config/storybook/NewDesignDecorator/NewDesignDecorator'
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
 import type { Meta, StoryObj } from '@storybook/react'
 import { ProfileCardContainer } from './ProfileCardContainer'
@@ -26,17 +25,8 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const PrimaryDeprecated: Story = {}
-
-export const PrimaryRedesigned: Story = {
-    decorators: [NewDesignDecorator],
-}
+export const Primary: Story = {}
 
 export const Readonly: Story = {
     args: { readonly: true },
-}
-
-export const ReadonlyRedesigned: Story = {
-    args: { readonly: true },
-    decorators: [NewDesignDecorator],
 }

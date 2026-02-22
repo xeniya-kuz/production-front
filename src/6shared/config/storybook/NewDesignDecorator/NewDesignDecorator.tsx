@@ -10,17 +10,5 @@ export const NewDesignDecorator = (
     context: StoryContext<any>,
 ): JSX.Element => {
     setFeatureFlags({ ...getAllFeatureFlags(), isAppRedesigned: true })
-    return (
-        <div
-            className="app_redesigned"
-            style={{
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}
-        >
-            {StoryComponent(context.args, context)}
-        </div>
-    )
+    return StoryComponent(context.args, context)
 }

@@ -3,7 +3,7 @@ import { Button, ButtonSize, ButtonTheme } from './Button'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-    title: 'shared/Button',
+    title: 'shared/deprecated/Button',
     component: Button,
     // подключила глобально в preview
     parameters: {
@@ -24,9 +24,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
-    args: {},
-}
+export const Primary: Story = {}
 
 export const Clear: Story = {
     args: {

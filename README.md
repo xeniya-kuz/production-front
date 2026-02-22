@@ -2,13 +2,9 @@
 
 - npm run generate:slice
 - Comments on scripts
-- Add translations everywhere
 - Loki fails in Git Actions because of "Failed fetching stories because the server is down"
-- скролл в статьях:
-- скролл отскакивает наверх при прокрутке статей в плитках
 - добавить и проверить написанные tests
 - fix db (user-profile) - плохая структура
-- добавить сторисы
 - декомпозиция
 - написать линтер, чтобы в новом коде старый вариант компонентов не использовался
 - урок 136 11 мин: надо добавить функции со стандартизированными стилями (отспупами и тд) (по факту убрать VStack и HStack)
@@ -128,7 +124,6 @@ Example:
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Button, ButtonSize, ButtonTheme } from './Button';
 import { Theme } from '@/6shared/const/theme';
 

@@ -1,5 +1,3 @@
-import { Theme } from '@/6shared/const/themes'
-import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { articlesMock } from '../../model/const/mocks'
 import type { Meta, StoryObj } from '@storybook/react'
 import { ArticleView } from '../../model/const/article'
@@ -19,49 +17,24 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const PrimaryList: Story = {
+export const List: Story = {
     args: { view: ArticleView.LIST },
 }
 
-export const DarkList: Story = {
-    args: { view: ArticleView.LIST },
-    decorators: [ThemeDecorator(Theme.DARK)],
-}
-
-export const PrimaryTile: Story = {
+export const Tile: Story = {
     args: { view: ArticleView.TILE },
 }
 
-export const DarkTile: Story = {
-    args: { view: ArticleView.TILE },
-    decorators: [ThemeDecorator(Theme.DARK)],
-}
-
-export const PrimaryListLoading: Story = {
+export const ListLoading: Story = {
     args: {
         isLoading: true,
         view: ArticleView.LIST,
     },
 }
 
-export const DarkListLoading: Story = {
-    args: {
-        isLoading: true,
-        view: ArticleView.LIST,
-    },
-}
-
-export const PrimaryTileLoading: Story = {
+export const TileLoading: Story = {
     args: {
         isLoading: true,
         view: ArticleView.TILE,
     },
-}
-
-export const DarkTileLoading: Story = {
-    args: {
-        isLoading: true,
-        view: ArticleView.TILE,
-    },
-    decorators: [ThemeDecorator(Theme.DARK)],
 }

@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Theme } from '@/6shared/const/themes'
-import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { ArticleTextBlock } from './ArticleTextBlock'
 import { ArticleBlockType } from '../../model/const/article'
 
@@ -24,8 +22,4 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {
-    args: {},
-}
-
-export const Dark: Story = { decorators: [ThemeDecorator(Theme.DARK)] }
+export const Primary: Story = {}

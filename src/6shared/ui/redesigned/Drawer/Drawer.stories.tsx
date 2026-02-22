@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Drawer } from './Drawer'
 
 const meta = {
-    title: 'shared/Drawer',
+    title: 'shared/redesigned/Drawer',
     component: Drawer,
 
     args: {
@@ -15,6 +15,4 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Light: Story = {
-    args: {},
-}
+export const Primary: Story = {}

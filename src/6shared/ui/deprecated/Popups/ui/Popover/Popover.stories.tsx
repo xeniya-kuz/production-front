@@ -3,7 +3,7 @@ import { Popover } from './Popover'
 import { Button } from '../../../Button'
 
 const meta = {
-    title: 'shared/Popups/Popover',
+    title: 'shared/deprecated/Popups/Popover',
     component: Popover,
 
     args: {
@@ -15,4 +15,4 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Light: Story = {}
+export const Primary: Story = {}

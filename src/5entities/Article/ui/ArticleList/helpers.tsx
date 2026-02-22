@@ -10,11 +10,11 @@ import { Skeleton as SkeletonDeprecated } from '@/6shared/ui/deprecated/Skeleton
 import { Text as TextDeprecated } from '@/6shared/ui/deprecated/Text'
 import { AppImage } from '@/6shared/ui/redesigned/AppImage'
 import { Icon } from '@/6shared/ui/redesigned/Icon'
+import { NoImage } from '@/6shared/ui/redesigned/NoImage'
+import { HStack } from '@/6shared/ui/redesigned/Stack'
 import { Text } from '@/6shared/ui/redesigned/Text'
 import { type JSX } from 'react'
 import { type Article } from '../../model/types/article'
-import { HStack } from '@/6shared/ui/redesigned/Stack'
-import { EMPTY_IMAGE_PATH } from '@/6shared/const/general'
 
 export const articleTypes = ({
     className,
@@ -93,11 +93,6 @@ export const articleImage = ({
                 height={height}
             />
         }
-        errorFallback={
-            <AppImage
-                src={EMPTY_IMAGE_PATH}
-                className={className}
-            />
-        }
+        errorFallback={<NoImage className={className} />}
     />
 )

@@ -1,10 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Theme } from '@/6shared/const/themes'
-import { ThemeDecorator } from '@/6shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Input } from './Input'
 
 const meta = {
-    title: 'shared/Input',
+    title: 'shared/deprecated/Input',
     component: Input,
 
     args: {
@@ -16,11 +14,4 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Light: Story = {
-    args: {},
-}
-
-export const Dark: Story = {
-    args: {},
-    decorators: [ThemeDecorator(Theme.DARK)],
-}
+export const Primary: Story = {}

@@ -1,14 +1,13 @@
 import { StoreProvider, type StateSchema } from '@/1app/providers/StoreProvider'
+import { articlesPageFiltersReducer } from '@/3widgets/ArticlesFilters'
 import { articleCommentsReducer } from '@/4features/ArticleComments'
 import { articleInfiniteListReducer } from '@/4features/ArticleInfiniteList'
-import { articlesPageFiltersReducer } from '@/3widgets/ArticlesFilters'
 import { loginReducer } from '@/4features/AuthByUsername'
 import { articleDetailsReducer } from '@/5entities/Article'
 import { commentFormReducer } from '@/5entities/CommentForm'
-import { type ReducerList } from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { type JSX, type ReactNode } from 'react'
-import { type StoryFn } from '@storybook/react'
 import { profileReducer } from '@/5entities/Profile'
+import { type ReducerList } from '@/6shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { type Decorator } from '@storybook/react'
 
 const defaultAsyncReducers: ReducerList = {
     loginForm: loginReducer,
@@ -23,14 +22,14 @@ const defaultAsyncReducers: ReducerList = {
 export const StoreDecorator = (
     state: DeepPartial<StateSchema>,
     asyncReducers?: ReducerList,
-) =>
-    function StoreDecorator(StoryComponent: () => ReactNode): JSX.Element {
+): Decorator<object> =>
+    function StoreDecorator(Story) {
         return (
             <StoreProvider
                 initialState={state}
                 asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}
             >
-                <StoryComponent />
+                <Story />
             </StoreProvider>
         )
     }

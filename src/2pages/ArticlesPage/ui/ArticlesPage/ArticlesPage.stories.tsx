@@ -6,13 +6,10 @@ const meta = {
     title: 'pages/Article/ArticlesPage',
     component: ArticlesPage,
 
-    args: {},
     decorators: [StoreDecorator({})],
 } satisfies Meta<typeof ArticlesPage>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {
-    args: {},
-}
+export const Primary: Story = {}
