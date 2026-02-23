@@ -2,16 +2,19 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './Icon.module.scss'
 import { memo, type SVGProps, type JSX, type FC } from 'react'
 
-export enum IconColors {
-    PRIMARY_FILL = 'primaryFill',
-    SECONDARY_FILL = 'secondaryFill',
-    INVERTED_PRIMARY_FILL = 'invertedPrimaryFill',
-    INVERTED_SECONDARY_FILL = 'invertedSecondaryFill',
-    PRIMARY_STROKE = 'primaryStroke',
-    SECONDARY_STROKE = 'secondaryStroke',
-    INVERTED_PRIMARY_STROKE = 'invertedPrimaryStroke',
-    INVERTED_SECONDARY_STROKE = 'invertedSecondaryStroke',
-}
+export const IconColors = {
+    PRIMARY_FILL: 'primaryFill',
+    SECONDARY_FILL: 'secondaryFill',
+    INVERTED_PRIMARY_FILL: 'invertedPrimaryFill',
+    INVERTED_SECONDARY_FILL: 'invertedSecondaryFill',
+    PRIMARY_STROKE: 'primaryStroke',
+    SECONDARY_STROKE: 'secondaryStroke',
+    INVERTED_PRIMARY_STROKE: 'invertedPrimaryStroke',
+    INVERTED_SECONDARY_STROKE: 'invertedSecondaryStroke',
+} as const
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export type IconColors = (typeof IconColors)[keyof typeof IconColors]
 
 interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'color'> {
     className?: string
