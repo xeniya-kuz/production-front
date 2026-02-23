@@ -2,7 +2,7 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './Icon.module.scss'
 import { memo, type SVGProps, type JSX, type FC } from 'react'
 
-export const enum IconColors {
+export enum IconColors {
     PRIMARY_FILL = 'primaryFill',
     SECONDARY_FILL = 'secondaryFill',
     INVERTED_PRIMARY_FILL = 'invertedPrimaryFill',
