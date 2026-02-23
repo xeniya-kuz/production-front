@@ -36,6 +36,10 @@
  *    Why: Runtime.evaluate with awaitPromise:true has no built-in timeout. If
  *    window.loki.awaitReady() returns a never-resolving Promise for any reason,
  *    this call would hang indefinitely. Cap it at 10 s as defence in depth.
+ *
+ * 7. create-chrome-target: cap Page.navigate at 20 s
+ *    Why: Page.navigate has no built-in timeout. If the server stalls, Chrome
+ *    waits ~60 s before giving up, consuming the full chromeLoadTimeout.
  */
 const fs = require('fs')
 const path = require('path')
@@ -120,4 +124,22 @@ patch(
     `      debug('Waiting for executeFunctionWithWindow...');
       await Promise.race([executeFunctionWithWindow(awaitLokiReady).catch(() => {}), new Promise(r => setTimeout(r, 10000))]);`,
     'create-chrome-target: cap awaitLokiReady at 10 000 ms',
+)
+
+// Patch 7: cap Page.navigate at 20 s
+// Why: Page.navigate has no built-in timeout. If Chrome cannot reach the server
+// (e.g. server not started, TCP handshake stalls), Chrome waits ~60 s before
+// giving up, consuming the full chromeLoadTimeout for every story.
+patch(
+    path.join(root, '@loki', 'target-chrome-core', 'src', 'create-chrome-target.js'),
+    `      debug(\`Navigating to \${url}\`);
+      startObservingRequests();
+      await Page.navigate({ url });`,
+    `      debug(\`Navigating to \${url}\`);
+      startObservingRequests();
+      await Promise.race([
+        Page.navigate({ url }),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Page.navigate timed out after 20 s')), 20000)),
+      ]);`,
+    'create-chrome-target: cap Page.navigate at 20 000 ms',
 )
