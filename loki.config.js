@@ -15,4 +15,7 @@ module.exports = {
     staticDir: './storybook-static', // путь к папке со статическим билдом
     chromeFlags:
         '--headless --disable-gpu --hide-scrollbars --no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage',
+    // Ignore failed requests (e.g. i18next translation 404s, WebSocket upgrade rejections)
+    // so loki never throws FetchingURLsError for background requests.
+    fetchFailIgnore: '.*',
 }

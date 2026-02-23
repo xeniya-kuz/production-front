@@ -1,18 +1,26 @@
 /**
- * Patches loki packages to fix two issues:
+ * Patches loki packages to fix several issues:
  *
  * 1. awaitSelectorPresent timeout 10s → 60s
  *    Why: the default is hardcoded and not configurable via loki.config.js.
- *    On a GitHub Actions runner with chromeConcurrency > 1, CPU contention
- *    can push story render time past 10 s, producing false "Timeout" failures.
+ *    On a GitHub Actions runner CPU contention can push story render time
+ *    past 10 s, producing false "Timeout" failures.
  *
  * 2. create-chrome-target: re-throw TimeoutError instead of swallowing it
- *    Why: when chromeLoadTimeout fires (also 60 s), the caught TimeoutError is
- *    silently swallowed and captureScreenshotForStory returns undefined.
+ *    Why: when chromeLoadTimeout fires, the caught TimeoutError is silently
+ *    swallowed and captureScreenshotForStory returns undefined.
  *    compareScreenshot then calls fs.outputFile(path, undefined) which crashes
- *    the entire loki process (exit code 7) instead of marking the test as FAIL.
+ *    the entire loki process (exit code 7) instead of marking the test FAIL.
  *
- * 3. compare-screenshot: guard against undefined screenshot (defense in depth)
+ * 3. create-chrome-target: cap awaitRequestsFinished at 10 s
+ *    Why: Storybook 8 keeps long-lived connections (WebSocket/SSE channel,
+ *    i18next-http-backend) that never close, so awaitRequestsFinished never
+ *    resolves and the 60 s chromeLoadTimeout fires for every single story.
+ *    Capping at 10 s lets the screenshot proceed once the UI is painted.
+ *    Errors (e.g. FetchingURLsError for 404 translation files) are swallowed
+ *    here because loki.config.js already sets fetchFailIgnore: '.*'.
+ *
+ * 4. compare-screenshot: guard against undefined screenshot (defense in depth)
  *    Why: if screenshot is undefined for any reason, throw a proper Error so
  *    loki marks the test as FAIL rather than crashing the whole process.
  */
@@ -56,7 +64,17 @@ patch(
     'create-chrome-target: re-throw TimeoutError instead of swallowing',
 )
 
-// Patch 3: guard against undefined screenshot in compare-screenshot.js
+// Patch 3: cap awaitRequestsFinished at 10 s
+patch(
+    path.join(root, '@loki', 'target-chrome-core', 'src', 'create-chrome-target.js'),
+    `      debug('Waiting for awaitRequestsFinished...');
+      await awaitRequestsFinished();`,
+    `      debug('Waiting for awaitRequestsFinished...');
+      await Promise.race([awaitRequestsFinished().catch(() => {}), new Promise(r => setTimeout(r, 10000))]);`,
+    'create-chrome-target: cap awaitRequestsFinished at 10 000 ms',
+)
+
+// Patch 4: guard against undefined screenshot in compare-screenshot.js
 patch(
     path.join(root, '@loki', 'runner', 'src', 'commands', 'test', 'compare-screenshot.js'),
     `  const shouldUpdateReference =
