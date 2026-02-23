@@ -2,10 +2,12 @@ import { classNames } from '@/6shared/lib/classNames/classNames'
 import styles from './Card.module.scss'
 import { type HTMLAttributes, type JSX, memo, type ReactNode } from 'react'
 
-export const enum CardTheme {
-    PRIMARY = 'primary',
-    OUTLINE = 'outline',
-}
+export const CardTheme = {
+    PRIMARY: 'primary',
+    OUTLINE: 'outline',
+} as const
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export type CardTheme = (typeof CardTheme)[keyof typeof CardTheme]
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string

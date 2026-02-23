@@ -1,20 +1,27 @@
-export const enum ArticleBlockType {
-    TEXT = 'TEXT',
-    CODE = 'CODE',
-    IMAGE = 'IMAGE',
-}
+export const ArticleBlockType = {
+    TEXT: 'TEXT',
+    CODE: 'CODE',
+    IMAGE: 'IMAGE',
+} as const
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export type ArticleBlockType =
+    (typeof ArticleBlockType)[keyof typeof ArticleBlockType]
 
-export const enum ArticleType {
-    ALL = 'All',
-    IT = 'IT',
-    SCIENCE = 'SCIENCE',
-    ECONOMICS = 'ECONOMICS',
-}
+export const ArticleType = {
+    ALL: 'All',
+    IT: 'IT',
+    SCIENCE: 'SCIENCE',
+    ECONOMICS: 'ECONOMICS',
+} as const
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export type ArticleType = (typeof ArticleType)[keyof typeof ArticleType]
 
-export const enum ArticleView {
-    LIST = 'list',
-    TILE = 'tile',
-}
+export const ArticleView = {
+    LIST: 'list',
+    TILE: 'tile',
+} as const
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export type ArticleView = (typeof ArticleView)[keyof typeof ArticleView]
 
 export enum ArticleSortField {
     VIEWS = 'views',
