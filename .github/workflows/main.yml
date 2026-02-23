@@ -91,7 +91,7 @@ jobs:
               run: npx wait-on http://127.0.0.1:6006 --timeout 30000
               if: always()
             - name: Screenshot testing
-              run: npx loki test --reactUri http://127.0.0.1:6006
+              run: npx loki test --reactUri http://127.0.0.1:6006 --chromeConcurrency 1
               if: always()
             - name: unit testing
               run: npm run test:unit
