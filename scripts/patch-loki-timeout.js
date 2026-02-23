@@ -23,6 +23,19 @@
  * 4. compare-screenshot: guard against undefined screenshot (defense in depth)
  *    Why: if screenshot is undefined for any reason, throw a proper Error so
  *    loki marks the test as FAIL rather than crashing the whole process.
+ *
+ * 5. create-chrome-target: cap Page.loadEventFired() at 15 s
+ *    Why: with Storybook 8 static builds the browser load event can be delayed
+ *    by ES-module resolution or persistent background connections. Without a
+ *    timeout, loadUrl hangs until the outer 60 s chromeLoadTimeout fires for
+ *    every story. 15 s is plenty for the static bundles to load locally; if the
+ *    load event hasn't fired by then we proceed anyway (the story is typically
+ *    already rendered in JS before the load event).
+ *
+ * 6. create-chrome-target: cap executeFunctionWithWindow(awaitLokiReady) at 10 s
+ *    Why: Runtime.evaluate with awaitPromise:true has no built-in timeout. If
+ *    window.loki.awaitReady() returns a never-resolving Promise for any reason,
+ *    this call would hang indefinitely. Cap it at 10 s as defence in depth.
  */
 const fs = require('fs')
 const path = require('path')
@@ -89,4 +102,22 @@ patch(
   }
   await fs.outputFile(`,
     'compare-screenshot: guard against undefined screenshot',
+)
+
+// Patch 5: cap Page.loadEventFired() at 15 s
+patch(
+    path.join(root, '@loki', 'target-chrome-core', 'src', 'create-chrome-target.js'),
+    `      await Page.loadEventFired();`,
+    `      await Promise.race([Page.loadEventFired(), new Promise(r => setTimeout(r, 15000))]);`,
+    'create-chrome-target: cap Page.loadEventFired at 15 000 ms',
+)
+
+// Patch 6: cap executeFunctionWithWindow(awaitLokiReady) at 10 s
+patch(
+    path.join(root, '@loki', 'target-chrome-core', 'src', 'create-chrome-target.js'),
+    `      debug('Waiting for executeFunctionWithWindow...');
+      await executeFunctionWithWindow(awaitLokiReady);`,
+    `      debug('Waiting for executeFunctionWithWindow...');
+      await Promise.race([executeFunctionWithWindow(awaitLokiReady).catch(() => {}), new Promise(r => setTimeout(r, 10000))]);`,
+    'create-chrome-target: cap awaitLokiReady at 10 000 ms',
 )
