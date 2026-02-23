@@ -6,17 +6,18 @@ export interface ArticleBlockBase {
     type: ArticleBlockType
 }
 
+// TODO: после локи вернуться сюда и заменить ArticleBlockType обратно на конст енам (IconColors тоже)
 export interface ArticleCodeBlock extends ArticleBlockBase {
-    type: ArticleBlockType.CODE
+    type: 'CODE'
     code: string
 }
 export interface ArticleImageBlock extends ArticleBlockBase {
-    type: ArticleBlockType.IMAGE
+    type: 'IMAGE'
     title: string
     src: string
 }
 export interface ArticleTextBlock extends ArticleBlockBase {
-    type: ArticleBlockType.TEXT
+    type: 'TEXT'
     title?: string
     paragraphs: string[]
 }

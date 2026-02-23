@@ -1,34 +1,74 @@
 /**
- * Patches @loki/browser's awaitSelectorPresent timeout from 10s to 60s.
+ * Patches loki packages to fix two issues:
  *
- * Why: the default 10 s is hardcoded and not exposed via loki.config.js.
- * On a GitHub Actions runner with chromeConcurrency > 1, CPU contention
- * can push story render time past 10 s, producing false "Timeout" failures.
+ * 1. awaitSelectorPresent timeout 10s → 60s
+ *    Why: the default is hardcoded and not configurable via loki.config.js.
+ *    On a GitHub Actions runner with chromeConcurrency > 1, CPU contention
+ *    can push story render time past 10 s, producing false "Timeout" failures.
+ *
+ * 2. create-chrome-target: re-throw TimeoutError instead of swallowing it
+ *    Why: when chromeLoadTimeout fires (also 60 s), the caught TimeoutError is
+ *    silently swallowed and captureScreenshotForStory returns undefined.
+ *    compareScreenshot then calls fs.outputFile(path, undefined) which crashes
+ *    the entire loki process (exit code 7) instead of marking the test as FAIL.
+ *
+ * 3. compare-screenshot: guard against undefined screenshot (defense in depth)
+ *    Why: if screenshot is undefined for any reason, throw a proper Error so
+ *    loki marks the test as FAIL rather than crashing the whole process.
  */
 const fs = require('fs')
 const path = require('path')
 
-const target = path.join(
-    __dirname,
-    '..',
-    'node_modules',
-    '@loki',
-    'browser',
-    'src',
-    'await-selector-present.js',
+function patch(filePath, searchStr, replaceStr, label) {
+    if (!fs.existsSync(filePath)) {
+        console.log(`[patch-loki] file not found, skipping: ${label}`)
+        return
+    }
+    const original = fs.readFileSync(filePath, 'utf8')
+    const patched = original.replace(searchStr, replaceStr)
+    if (patched === original) {
+        console.log(`[patch-loki] already patched or pattern not found, skipping: ${label}`)
+    } else {
+        fs.writeFileSync(filePath, patched)
+        console.log(`[patch-loki] ${label}`)
+    }
+}
+
+const root = path.join(__dirname, '..', 'node_modules')
+
+// Patch 1: awaitSelectorPresent timeout 10s → 60s
+patch(
+    path.join(root, '@loki', 'browser', 'src', 'await-selector-present.js'),
+    'timeout = 10000',
+    'timeout = 60000',
+    'awaitSelectorPresent timeout → 60 000 ms',
 )
 
-if (!fs.existsSync(target)) {
-    console.log('[patch-loki] file not found, skipping')
-    process.exit(0)
-}
+// Patch 2: re-throw TimeoutError in create-chrome-target.js
+patch(
+    path.join(root, '@loki', 'target-chrome-core', 'src', 'create-chrome-target.js'),
+    `      if (err instanceof TimeoutError) {
+        debug(\`Timed out waiting for "\${url}" to load\`);
+      } else {
+        throw err;
+      }`,
+    `      throw err;`,
+    'create-chrome-target: re-throw TimeoutError instead of swallowing',
+)
 
-const original = fs.readFileSync(target, 'utf8')
-const patched = original.replace('timeout = 10000', 'timeout = 60000')
+// Patch 3: guard against undefined screenshot in compare-screenshot.js
+patch(
+    path.join(root, '@loki', 'runner', 'src', 'commands', 'test', 'compare-screenshot.js'),
+    `  const shouldUpdateReference =
+    options.updateReference || (!options.requireReference && !referenceExists);
 
-if (patched === original) {
-    console.log('[patch-loki] already patched or pattern not found, skipping')
-} else {
-    fs.writeFileSync(target, patched)
-    console.log('[patch-loki] awaitSelectorPresent timeout → 60 000 ms')
-}
+  await fs.outputFile(`,
+    `  const shouldUpdateReference =
+    options.updateReference || (!options.requireReference && !referenceExists);
+
+  if (!screenshot) {
+    throw new Error(\`Screenshot capture failed for \${kind}/\${story}\`);
+  }
+  await fs.outputFile(`,
+    'compare-screenshot: guard against undefined screenshot',
+)
