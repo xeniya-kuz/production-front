@@ -1,5 +1,7 @@
 ## To Complete
 
+- оба report на https://xeniya-kuz.github.io/production-front/.loki/report.html - 404
+-yml - убунту, проверить скрипт от клауда, as const,  
 - npm run generate:slice
 - Comments on scripts
 - Loki fails in Git Actions because of "Failed fetching stories because the server is down"
