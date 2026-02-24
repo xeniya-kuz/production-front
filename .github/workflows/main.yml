@@ -85,16 +85,40 @@ jobs:
               run: npm run storybook:build
               if: always()
             - name: Screenshot testing
-              run: npx loki test --reactUri file:./storybook-static --chromeConcurrency 1
+              run: npm run test:ui:ci
               if: always()
+            - name: upload loki artifact on failure
+              if: failure()
+              uses: actions/upload-artifact@v4
+              with:
+                name: loki-artifact
+                path: .loki
+                overwrite: true
+                include-hidden-files: true
             - name: unit testing
               run: npm run test:unit
+            - name: upload unit artifact on failure
+              if: failure()
+              uses: actions/upload-artifact@v4
+              with:
+                name: unit-artifact
+                path: reports
+                overwrite: true
+                include-hidden-files: true
             - name: generate HTML report
               run: npm run test:ui:report
               if: always()
             - name: move .loki to reports/
               run: mv .loki reports/
               if: always()
+            - name: upload reports artifact on failure
+              if: failure()
+              uses: actions/upload-artifact@v4
+              with:
+                name: reports-artifact
+                path: reports
+                overwrite: true
+                include-hidden-files: true
             - name: setup Pages
               uses: actions/configure-pages@v2
               if: always()
