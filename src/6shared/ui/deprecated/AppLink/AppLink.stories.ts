@@ -5,17 +5,13 @@ const meta = {
     title: 'shared/deprecated/AppLink',
     component: AppLink,
 
-    args: { to: '/', children: 'Text' },
+    args: { to: '/', children: 'App Link' },
 } satisfies Meta<typeof AppLink>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {
-    args: {
-        theme: AppLinkTheme.PRIMARY,
-    },
-}
+export const Primary: Story = {}
 
 export const Inverted: Story = {
     args: {
