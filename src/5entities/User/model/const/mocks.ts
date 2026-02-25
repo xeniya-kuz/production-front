@@ -3,5 +3,6 @@ import { type User } from '../types/user'
 export const userMock: User = {
     id: '3',
     username: 'user1',
-    avatar: 'https://i.pinimg.com/originals/d5/27/1f/d5271fc5c01c944833472e58f3e238b3.jpg',
+    // avatar: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2NjYyIvPjwvc3ZnPg==',
+    avatar: '',
 }

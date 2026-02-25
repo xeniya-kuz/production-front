@@ -5,7 +5,9 @@ import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreD
 const meta = {
     title: 'pages/Article/ArticlesPage',
     component: ArticlesPage,
-
+    parameters: {
+        loki: { skip: true },
+    },
     decorators: [StoreDecorator({})],
 } satisfies Meta<typeof ArticlesPage>
 

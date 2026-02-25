@@ -1,6 +1,5 @@
 ## To Complete
 
-- оба report на https://xeniya-kuz.github.io/production-front/.loki/report.html - 404
 - если в локи нет референса на историю, что происходит?
 - проверить артефакты (и в ямл тоже)
 - проверить скрипт от клауда, as const,  

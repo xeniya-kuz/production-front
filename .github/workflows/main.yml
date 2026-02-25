@@ -37,7 +37,7 @@
 #        run: npm run storybook:build
 #      - name: screenshot testing
 #        if: always()
-#        run: npm run test:ui:ci
+#        run: npm run test:ui
 #      - name: upload loki artifact on failure
 #        if: failure()
 #        uses: actions/upload-artifact@v4
@@ -85,7 +85,7 @@ jobs:
               run: npm run storybook:build
               if: always()
             - name: Screenshot testing
-              run: npm run test:ui:ci
+              run: npm run test:ui
               if: always()
             - name: upload loki artifact on failure
               if: failure()

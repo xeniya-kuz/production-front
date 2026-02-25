@@ -11,6 +11,7 @@ const meta = {
 
     args: {
         articles: articlesMock,
+        virtualized: false,
     },
 } satisfies Meta<typeof ArticleList>
 
