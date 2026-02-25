@@ -108,12 +108,8 @@ jobs:
             - name: generate HTML report
               run: npm run test:ui:report
               if: always()
-            - name: move .loki to reports/
-              run: mv .loki reports/
-              if: always()
-            - name: disable Jekyll (allow dotfolder .loki to be served)
-              run: touch reports/.nojekyll
-              shell: bash
+            - name: move .loki to reports/loki
+              run: mv .loki reports/loki
               if: always()
             - name: upload reports artifact on failure
               if: failure()
