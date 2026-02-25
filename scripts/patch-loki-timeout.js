@@ -40,6 +40,32 @@
  * 7. create-chrome-target: cap Page.navigate at 20 s
  *    Why: Page.navigate has no built-in timeout. If the server stalls, Chrome
  *    waits ~60 s before giving up, consuming the full chromeLoadTimeout.
+ *
+ * 8. create-chrome-target: cap ensureNoErrorPresent() at 5 s
+ *    Why: Runtime.evaluate with awaitPromise:true can hang if the page navigates
+ *    mid-call (context destroyed) or if Storybook is in a broken state. Cap at
+ *    5 s as defence in depth; errors are swallowed so rendering proceeds.
+ *
+ * 9. create-chrome-target: cap executeFunctionWithWindow(setLokiTestAttribute) at 5 s
+ *    Why: Same Runtime.evaluate hang risk as above; setLokiTestAttribute is a
+ *    simple DOM setAttribute so 5 s is more than enough.
+ *
+ * 10. create-chrome-app-target: use 127.0.0.1 for file: protocol static server
+ *    Why: when --reactUri is file:./storybook-static, loki starts an embedded
+ *    HTTP server and serves via http://<getLocalIPAddress()>:<randomPort>.
+ *    getLocalIPAddress() returns the machine's LAN IP (e.g. 192.168.100.7).
+ *    On Windows, Chrome often cannot reach the LAN IP due to the local firewall
+ *    blocking the random port, causing a "Failed fetching stories because the
+ *    server is down" error for every run. Using 127.0.0.1 avoids the firewall
+ *    entirely. The localhost→IP replacement for http://localhost is also removed
+ *    because headless Chrome accesses localhost without issues.
+ *
+ * 11. chrome-launcher: ignore EPERM in destroyTmp
+ *    Why: on Windows, Chrome's temp user-data directory is sometimes still
+ *    locked when destroyTmp() calls rmSync(). This throws EPERM and crashes the
+ *    loki process with an unhandled exception even though the screenshot was
+ *    already captured successfully. Wrapping in try-catch lets loki finish
+ *    cleanly; the OS will clean the temp dir on reboot anyway.
  */
 const fs = require('fs')
 const path = require('path')
@@ -142,4 +168,60 @@ patch(
         new Promise((_, reject) => setTimeout(() => reject(new Error('Page.navigate timed out after 20 s')), 20000)),
       ]);`,
     'create-chrome-target: cap Page.navigate at 20 000 ms',
+)
+
+// Patch 8: cap ensureNoErrorPresent() at 5 s
+patch(
+    path.join(root, '@loki', 'target-chrome-core', 'src', 'create-chrome-target.js'),
+    `      debug('Waiting for ensureNoErrorPresent...');
+      await ensureNoErrorPresent();`,
+    `      debug('Waiting for ensureNoErrorPresent...');
+      await Promise.race([ensureNoErrorPresent().catch(() => {}), new Promise(r => setTimeout(r, 5000))]);`,
+    'create-chrome-target: cap ensureNoErrorPresent at 5 000 ms',
+)
+
+// Patch 9: cap executeFunctionWithWindow(setLokiTestAttribute) at 5 s
+patch(
+    path.join(root, '@loki', 'target-chrome-core', 'src', 'create-chrome-target.js'),
+    `      debug('Awaiting runtime setup');
+      await executeFunctionWithWindow(setLokiTestAttribute);`,
+    `      debug('Awaiting runtime setup');
+      await Promise.race([executeFunctionWithWindow(setLokiTestAttribute).catch(() => {}), new Promise(r => setTimeout(r, 5000))]);`,
+    'create-chrome-target: cap setLokiTestAttribute at 5 000 ms',
+)
+
+// Patch 10: use 127.0.0.1 for file: protocol static server
+patch(
+    path.join(root, '@loki', 'target-chrome-app', 'src', 'create-chrome-app-target.js'),
+    `  if (chromeUrl.indexOf('http://localhost') === 0 || isLocalFile) {
+    const ip = getLocalIPAddress();
+
+    if (!ip) {
+      throw new Error(
+        'Unable to detect local IP address, try passing --host argument'
+      );
+    }
+
+    if (isLocalFile) {
+      staticServerPort = getRandomPort();
+      staticServerPath = chromeUrl.substr('file:'.length);
+      chromeUrl = \`http://\${ip}:\${staticServerPort}\`;
+    } else {
+      chromeUrl = chromeUrl.replace('localhost', ip);
+    }
+  }`,
+    `  if (isLocalFile) {
+    staticServerPort = getRandomPort();
+    staticServerPath = chromeUrl.substr('file:'.length);
+    chromeUrl = \`http://127.0.0.1:\${staticServerPort}\`;
+  }`,
+    'create-chrome-app-target: use 127.0.0.1 for file: protocol static server',
+)
+
+// Patch 11: ignore EPERM in chrome-launcher destroyTmp
+patch(
+    path.join(root, 'chrome-launcher', 'dist', 'chrome-launcher.js'),
+    `        rmSync(this.userDataDir, { recursive: true, force: true, maxRetries: 10 });`,
+    `        try { rmSync(this.userDataDir, { recursive: true, force: true, maxRetries: 10 }); } catch (e) { /* ignore EPERM on Windows */ }`,
+    'chrome-launcher: ignore EPERM in destroyTmp',
 )

@@ -111,6 +111,10 @@ jobs:
             - name: move .loki to reports/
               run: mv .loki reports/
               if: always()
+            - name: disable Jekyll (allow dotfolder .loki to be served)
+              run: touch reports/.nojekyll
+              shell: bash
+              if: always()
             - name: upload reports artifact on failure
               if: failure()
               uses: actions/upload-artifact@v4
