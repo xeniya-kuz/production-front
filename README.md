@@ -1,20 +1,7 @@
 ## To Complete
 
-EPERM, Permission denied: \\?\C:\Users\Ksufik\AppData\Local\Temp\lighthouse.34793010 '\\?\C:\Users\Ksufik\AppData\Local\Temp\lighthouse.34793010'
-Error: EPERM, Permission denied: \\?\C:\Users\Ksufik\AppData\Local\Temp\lighthouse.34793010 '\\?\C:\Users\Ksufik\AppData\Local\Temp\lighthouse.34793010'
-    at rmSync (node:fs:1230:18)
-    at Launcher.destroyTmp (C:\Мое\Программирование\Курсы\production\front\node_modules\chrome-launcher\dist\chrome-launcher.js:330:9)
-    at Launcher.kill (C:\Мое\Программирование\Курсы\production\front\node_modules\chrome-launcher\dist\chrome-launcher.js:312:14)
-    at Object.kill (C:\Мое\Программирование\Курсы\production\front\node_modules\chrome-launcher\dist\chrome-launcher.js:41:18)
-    at Object.stop (C:\Мое\Программирование\Курсы\production\front\node_modules\@loki\target-chrome-app\src\create-chrome-app-target.js:79:22)
-    at C:\Мое\Программирование\Курсы\production\front\node_modules\@loki\runner\src\commands\test\run-tests.js:305:68
-    at Array.map (<anonymous>)
-    at runTests (C:\Мое\Программирование\Курсы\production\front\node_modules\@loki\runner\src\commands\test\run-tests.js:305:45)
-    at async test (C:\Мое\Программирование\Курсы\production\front\node_modules\@loki\runner\src\commands\test\index.js:68:5)
-    at async run (C:\Мое\Программирование\Курсы\production\front\node_modules\@loki\runner\src\cli.
 - оба report на https://xeniya-kuz.github.io/production-front/.loki/report.html - 404
 - если в локи нет референса на историю, что происходит?
-- новый AppLink в тестах все равно падает
 - проверить артефакты (и в ямл тоже)
 - проверить скрипт от клауда, as const,  
 - npm run generate:slice

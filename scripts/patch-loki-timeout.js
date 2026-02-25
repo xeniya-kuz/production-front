@@ -107,14 +107,18 @@ patch(
     'create-chrome-target: re-throw TimeoutError instead of swallowing',
 )
 
-// Patch 3: cap awaitRequestsFinished at 10 s
+// Patch 3: cap awaitRequestsFinished at 500 ms
+// Storybook 8 keeps long-lived WebSocket/SSE connections that never close,
+// so the original 10 s cap added 10 s of dead wait per story.
+// By the time this runs, Page.loadEventFired has already fired and the
+// story is fully rendered — 500 ms is enough for any real XHR to settle.
 patch(
     path.join(root, '@loki', 'target-chrome-core', 'src', 'create-chrome-target.js'),
     `      debug('Waiting for awaitRequestsFinished...');
       await awaitRequestsFinished();`,
     `      debug('Waiting for awaitRequestsFinished...');
-      await Promise.race([awaitRequestsFinished().catch(() => {}), new Promise(r => setTimeout(r, 10000))]);`,
-    'create-chrome-target: cap awaitRequestsFinished at 10 000 ms',
+      await Promise.race([awaitRequestsFinished().catch(() => {}), new Promise(r => setTimeout(r, 500))]);`,
+    'create-chrome-target: cap awaitRequestsFinished at 500 ms',
 )
 
 // Patch 4: guard against undefined screenshot in compare-screenshot.js
