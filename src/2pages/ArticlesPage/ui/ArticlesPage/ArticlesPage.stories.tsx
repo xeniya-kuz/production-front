@@ -5,6 +5,7 @@ import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreD
 const meta = {
     title: 'pages/Article/ArticlesPage',
     component: ArticlesPage,
+    // говорит loki пропустить данную story при запуске скриншотных тестов
     parameters: {
         loki: { skip: true },
     },

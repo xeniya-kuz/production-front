@@ -21,9 +21,14 @@ import {
     ArticlesFilters,
 } from '@/3widgets/ArticlesFilters'
 
-const VIRTUALIZED = true
+interface ArticlesPageProps {
+    // для скриншотных тестов
+    virtualized?: boolean
+}
 
-const ArticlesPage = (): JSX.Element => {
+const ArticlesPage = ({
+    virtualized = true,
+}: ArticlesPageProps): JSX.Element => {
     const dispatch = useAppDispatch()
 
     const fetchData = useCallback((): void => {
@@ -61,7 +66,7 @@ const ArticlesPage = (): JSX.Element => {
                     data-testid={DATA_TEST_ID.articlesPage}
                     className={styles.page}
                     onScrollEnd={
-                        VIRTUALIZED
+                        virtualized
                             ? undefined
                             : () => {
                                   void dispatch(fetchNextArticlesPage())
@@ -71,7 +76,7 @@ const ArticlesPage = (): JSX.Element => {
                     <ArticlePageGreeting />
                     <ArticleInfiniteList
                         Header={Header}
-                        virtualized={VIRTUALIZED}
+                        virtualized={virtualized}
                     />
                 </Page>
             }
