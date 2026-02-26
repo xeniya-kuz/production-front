@@ -1,7 +1,6 @@
 ## To Complete
 
 - если в локи нет референса на историю, что происходит?
-- проверить артефакты (и в ямл тоже)
 - проверить скрипт от клауда, as const,  
 - npm run generate:slice
 - Comments on scripts

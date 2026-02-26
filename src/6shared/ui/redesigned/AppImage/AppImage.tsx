@@ -29,13 +29,17 @@ export const AppImage = memo(function AppImage({
     fallbackWidth,
     ...otherProps
 }: AppImageProps): JSX.Element {
-    const [isLoading, setIsLoading] = useState(true)
-    const [hasError, setHasError] = useState(false)
+    const [isLoading, setIsLoading] = useState(!!otherProps.src)
+    const [hasError, setHasError] = useState(!otherProps.src)
 
-    // вызовется до того, как компонент вмонтируется
+    // вызовется до того, как компонент смонтируется
     useLayoutEffect(() => {
+        if (!otherProps.src) {
+            return
+        }
+
         const img = new Image()
-        img.src = otherProps.src ?? ''
+        img.src = otherProps.src
 
         // слушатель событий на завершение загрузки
         img.onload = () => {
@@ -47,7 +51,7 @@ export const AppImage = memo(function AppImage({
             setIsLoading(false)
             setHasError(true)
         }
-    })
+    }, [otherProps.src])
 
     if (isLoading) {
         return (

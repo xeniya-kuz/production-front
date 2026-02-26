@@ -1,52 +1,3 @@
-# name: listing, testing, building
-# run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-# on:
-#   push:
-#     branches: [ main ]
-#   pull_request:
-#     branches: [ main ]
-# jobs:
-#   pipeline-test:
-#     runs-on: windows-latest
-#     strategy:
-#       matrix:
-#         node-version: [ 20.x ]
-#     steps:
-#      - uses: actions/checkout@v4
-#      - name: Starting Node.js ${{ matrix.node-version }}
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: ${{ matrix.node-version }}
-#      - name: install modules
-#        run: npm install
-#      - name: production build
-#        if: always()
-#        run: npm run build:prod
-#      - name: fix linting typescript
-#        if: always()
-#        run: npm run lint:ts:fix
-#      - name: fix linting scss
-#        if: always()
-#        run: npm run lint:scss:fix
-#      - name: unit testing
-#        if: always()
-#        run: npm run test:unit
-
-#      - name: build storybook
-#        if: always()
-#        run: npm run storybook:build
-#      - name: screenshot testing
-#        if: always()
-#        run: npm run test:ui
-#      - name: upload loki artifact on failure
-#        if: failure()
-#        uses: actions/upload-artifact@v4
-#        with:
-#         name: loki-artifact
-#         path: .loki
-#         overwrite: true
-#         include-hidden-files: true
-
 name: linting, testing, building
 on:
     push:
@@ -85,26 +36,10 @@ jobs:
               run: npm run storybook:build
               if: always()
             - name: Screenshot testing
-              run: npm run test:ui
+              run: npm run test:ui:ci
               if: always()
-            - name: upload loki artifact on failure
-              if: failure()
-              uses: actions/upload-artifact@v4
-              with:
-                name: loki-artifact
-                path: .loki
-                overwrite: true
-                include-hidden-files: true
             - name: unit testing
               run: npm run test:unit
-            - name: upload unit artifact on failure
-              if: failure()
-              uses: actions/upload-artifact@v4
-              with:
-                name: unit-artifact
-                path: reports
-                overwrite: true
-                include-hidden-files: true
             - name: generate HTML report
               run: npm run test:ui:report
               if: always()
