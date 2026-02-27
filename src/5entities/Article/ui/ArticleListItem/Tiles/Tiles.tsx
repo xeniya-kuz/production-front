@@ -14,6 +14,7 @@ import { VirtuosoGrid, type VirtuosoGridHandle } from 'react-virtuoso'
 import { type Article } from '../../../model/types/article'
 import { Footer, Skeleton, View, WrappedHeader } from './components'
 import styles from './Tiles.module.scss'
+import { VIEW_LIMIT_TILE } from '../../../model/const/article'
 
 interface TilesProps {
     className?: string
@@ -103,7 +104,10 @@ export const Tiles = memo(function Tiles(props: TilesProps): JSX.Element {
 
     const articlesNewDesignData: ArticlesNewDesignElement[] = useMemo(() => {
         if (isLoading && !articles.length) {
-            return [...articles, ...Array(9).fill({ __skeleton: true })]
+            return [
+                ...articles,
+                ...Array(VIEW_LIMIT_TILE).fill({ __skeleton: true }),
+            ]
         }
 
         if (isLoading) {

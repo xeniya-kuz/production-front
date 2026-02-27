@@ -23,3 +23,6 @@ export enum ArticleSortField {
 }
 
 export const DEFAULT_ARTICLE_VIEW: ArticleView = ArticleView.TILE
+
+export const VIEW_LIMIT_TILE = 9
+export const VIEW_LIMIT_LIST = 4

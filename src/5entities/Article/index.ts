@@ -1,4 +1,8 @@
-export { DEFAULT_ARTICLE_VIEW } from './model/const/article'
+export {
+    DEFAULT_ARTICLE_VIEW,
+    VIEW_LIMIT_TILE,
+    VIEW_LIMIT_LIST,
+} from './model/const/article'
 
 export {
     articleEntities,

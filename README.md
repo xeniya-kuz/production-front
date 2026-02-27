@@ -1,12 +1,10 @@
 ## To Complete
 
+- eslint-disable-next-line @typescript-eslint/unbound-method
 - проверить скрипт postinstall
-- npm run generate:slice
 - Comments on scripts
-- добавить и проверить написанные tests
 - fix db (user-profile) - плохая структура
 - декомпозиция
-- написать линтер, чтобы в новом коде старый вариант компонентов не использовался
 - урок 136 11 мин: надо добавить функции со стандартизированными стилями (отспупами и тд) (по факту убрать VStack и HStack)
 - добавить в jsonSettings настройку для коллапса сайдбара
 - TODO

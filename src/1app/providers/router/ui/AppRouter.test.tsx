@@ -49,7 +49,12 @@ describe('app/router/AppRouter', function () {
             },
         })
 
-        const page = await screen.findByTestId(DATA_TEST_ID.profilePage)
+        // В суите всех тестов система перегружена и lazy ProfilePage не успевает разрезолвиться за дефолтный таймаут 1000мс.
+        const page = await screen.findByTestId(
+            DATA_TEST_ID.profilePage,
+            {},
+            { timeout: 5000 },
+        )
         expect(page).toBeInTheDocument()
     })
 

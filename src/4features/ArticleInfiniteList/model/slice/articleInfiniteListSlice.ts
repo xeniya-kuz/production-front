@@ -7,6 +7,7 @@ import {
 } from '@reduxjs/toolkit'
 import { type ArticleInfiniteListSchema } from '../types/articleInfiniteListSchema'
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList'
+import { VIEW_LIMIT_LIST, VIEW_LIMIT_TILE } from '../../../../5entities/Article'
 
 const articlesAdapter = createEntityAdapter<Article>({
     selectId: (article) => article.id,
@@ -40,7 +41,10 @@ const articleInfiniteListSlice = createSlice({
             { payload }: PayloadAction<{ view?: ArticleView }>,
         ) => {
             if (payload.view) {
-                state.limit = payload.view === ArticleView.LIST ? 4 : 9
+                state.limit =
+                    payload.view === ArticleView.LIST
+                        ? VIEW_LIMIT_LIST
+                        : VIEW_LIMIT_TILE
             }
         },
     },

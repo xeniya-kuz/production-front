@@ -1,19 +1,26 @@
-import { ComponentRender } from '@/6shared/lib/tests/ComponentRender'
+import {
+    ComponentRender,
+    componentRenderProps,
+} from '@/6shared/lib/tests/ComponentRender'
 import { EditableProfileCard } from './EditableProfileCard'
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { $api } from '@/6shared/api/api'
 import { profileMock, profileReducer } from '@/5entities/Profile'
 
-const options = {
+const options: componentRenderProps = {
     initialState: {
         profile: {
             profile: { ...profileMock },
             editedProfile: { ...profileMock },
             readonly: true,
+            isLoading: false,
         },
         user: {
-            authData: { id: profileMock.id, username: profileMock.username },
+            authData: {
+                id: profileMock.id!,
+                username: profileMock.username!,
+            },
             _mounted: true,
         },
     },
