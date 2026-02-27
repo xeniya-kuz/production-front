@@ -1,6 +1,6 @@
 ## To Complete
 
-- проверить скрипт от клауда, as const,  
+- проверить скрипт postinstall
 - npm run generate:slice
 - Comments on scripts
 - добавить и проверить написанные tests

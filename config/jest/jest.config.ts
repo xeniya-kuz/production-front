@@ -76,7 +76,10 @@ const config: Config = {
         '\\.s?css$': 'identity-obj-proxy',
         // заглушка, чтобы jest не ругался на svg. Т.е. тестировать svg мы не будем, т.к. это просто иконки. Для svg будет возвращаться jestEmptyComponent
         '\\.svg$': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
-        '\\.png$': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+        '\\.(png|jpg|jpeg|gif|webp)$': path.resolve(
+            __dirname,
+            'jestEmptyComponent.tsx',
+        ),
         // т.к. добавила alias @, иначе тесты падают
         '^@/(.*)$': '<rootDir>/src/$1',
     },
