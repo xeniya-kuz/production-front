@@ -2,14 +2,14 @@
 import { userMock } from '@/5entities/User/model/const/mocks'
 import { type Article } from '../types/article'
 import { ArticleType } from './article'
+import Image from '@/6shared/assets/tests/imageBlockMock.jpg'
 
 export const articleMock: Article = {
     id: '25',
     user: userMock,
     title: 'Javascript news 555',
     subtitle: 'Что нового в JS за 2022 год?',
-    // img: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2NjYyIvPjwvc3ZnPg==',
-    img: '',
+    img: Image,
     views: 1022,
     createdAt: '26.02.2022',
     type: [ArticleType.IT],

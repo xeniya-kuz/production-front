@@ -1,6 +1,5 @@
 ## To Complete
 
-- если в локи нет референса на историю, что происходит?
 - проверить скрипт от клауда, as const,  
 - npm run generate:slice
 - Comments on scripts

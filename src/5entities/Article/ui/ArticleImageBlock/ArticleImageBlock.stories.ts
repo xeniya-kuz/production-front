@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ArticleImageBlock } from './ArticleImageBlock'
 import { ArticleBlockType } from '../../model/const/article'
+import Image from '@/6shared/assets/tests/imageBlockMock.jpg'
 
 const meta = {
     title: 'entities/Article/ArticleImageBlock',
@@ -11,7 +12,7 @@ const meta = {
             id: 'image',
             type: ArticleBlockType.IMAGE,
             title: 'title',
-            src: 'https://i.pinimg.com/originals/20/5c/ee/205ceef08eb91f182983d0f611f4f2a3.jpg',
+            src: Image,
         },
     },
 } satisfies Meta<typeof ArticleImageBlock>

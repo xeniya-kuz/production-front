@@ -101,9 +101,10 @@ export const Lists = memo(function Lists(props: ListsProps): JSX.Element {
         <>
             {Header && <Header />}
             <div className={classNames(styles.listsContainer, [className])}>
-                {articles.map((article, index) =>
-                    renderArticle(index, article),
-                )}
+                {!isLoading &&
+                    articles.map((article, index) =>
+                        renderArticle(index, article),
+                    )}
                 {isLoading && <Footer />}
             </div>
         </>

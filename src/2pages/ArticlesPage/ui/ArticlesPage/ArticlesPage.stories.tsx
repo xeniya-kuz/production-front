@@ -1,15 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import ArticlesPage from './ArticlesPage'
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
+import { articleEntities, articleIds } from '@/5entities/Article'
 
 const meta = {
     title: 'pages/Article/ArticlesPage',
     component: ArticlesPage,
     // говорит loki пропустить данную story при запуске скриншотных тестов
-    parameters: {
-        loki: { skip: true },
-    },
-    decorators: [StoreDecorator({})],
+    // parameters: {
+    //     loki: { skip: true },
+    // },
+    args: { virtualized: false },
+    decorators: [
+        StoreDecorator({
+            articleInfiniteList: {
+                _inited: true,
+                entities: articleEntities,
+                ids: articleIds,
+            },
+        }),
+    ],
 } satisfies Meta<typeof ArticlesPage>
 
 export default meta

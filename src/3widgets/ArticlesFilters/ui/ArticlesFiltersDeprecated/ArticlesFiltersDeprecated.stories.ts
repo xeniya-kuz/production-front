@@ -3,7 +3,7 @@ import { ArticlesFiltersDeprecated } from './ArticlesFiltersDeprecated'
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
 
 const meta = {
-    title: 'widgets/ArticlesFilters/deprecated/ArticlesFiltersDeprecated',
+    title: 'widgets/ArticlesFilters/deprecated',
     component: ArticlesFiltersDeprecated,
 
     args: {

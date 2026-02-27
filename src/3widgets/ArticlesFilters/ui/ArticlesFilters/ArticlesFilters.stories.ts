@@ -3,7 +3,7 @@ import { ArticlesFilters } from './ArticlesFilters'
 import { StoreDecorator } from '@/6shared/config/storybook/StoreDecorator/StoreDecorator'
 
 const meta = {
-    title: 'widgets/ArticlesFilters/redesigned/ArticlesFilters',
+    title: 'widgets/ArticlesFilters/redesigned',
     component: ArticlesFilters,
     decorators: [StoreDecorator({})],
     args: {
