@@ -1,0 +1,140 @@
+import { LoginModal } from '@/features/AuthByUsername'
+import { AvatarDropdown } from '@/features/AvatarDropdown'
+import { NotificationButton } from '@/features/NotificationButton'
+import { selectUserAuthData } from '@/entities/User'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import {
+    AppLink as AppLinkDeprecated,
+    AppLinkTheme,
+} from '@/shared/ui/deprecated/AppLink'
+import {
+    Button as ButtonDeprecated,
+    ButtonTheme,
+} from '@/shared/ui/deprecated/Button'
+import { HStack } from '@/shared/ui/redesigned/Stack'
+import { Text as TextDeprecated, TextTheme } from '@/shared/ui/deprecated/Text'
+import { type FC, type JSX, memo, useCallback, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
+import styles from './Navbar.module.scss'
+import { getRouteArticleCreate } from '@/shared/const/router'
+import { toggleFeatures, ToggleFeatures } from '@/shared/lib/features'
+import { AppLink } from '@/shared/ui/redesigned/AppLink'
+import { Icon } from '@/shared/ui/redesigned/Icon'
+import NewArticleIcon from '@/shared/assets/icons/article.svg'
+import { Button } from '@/shared/ui/redesigned/Button'
+
+interface NavbarProps {
+    className?: string
+}
+
+export const Navbar = memo(function Navbar({
+    className,
+}: NavbarProps): JSX.Element {
+    const { t } = useTranslation()
+    const authData = useSelector(selectUserAuthData)
+    const [isAuthModal, setIsAuthModal] = useState(false)
+
+    const onToggleModal = useCallback(() => {
+        setIsAuthModal((prev) => !prev)
+    }, [])
+
+    const UserButtons: FC = () => (
+        <HStack
+            gap={'8'}
+            className={styles.actions}
+        >
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <AppLink
+                        to={getRouteArticleCreate()}
+                        title={t('articles:create-article')}
+                    >
+                        <Icon Svg={NewArticleIcon} />
+                    </AppLink>
+                }
+                off={<></>}
+            />
+            <NotificationButton />
+            <AvatarDropdown />
+        </HStack>
+    )
+
+    const Deprecated: FC = () => (
+        <header className={classNames(styles.navbar, [className])}>
+            <TextDeprecated
+                className={styles.appName}
+                title="Production project"
+                theme={TextTheme.INVERTED}
+            />
+            <AppLinkDeprecated
+                to={getRouteArticleCreate()}
+                theme={AppLinkTheme.INVERTED}
+                className={styles.create}
+            >
+                {t('articles:article-creation')}
+            </AppLinkDeprecated>
+            <UserButtons />
+        </header>
+    )
+
+    if (authData) {
+        return (
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <header
+                        className={classNames(styles.navbarRedesigned, [
+                            className,
+                        ])}
+                    >
+                        <UserButtons />
+                    </header>
+                }
+                off={<Deprecated />}
+            />
+        )
+    }
+
+    return (
+        <header
+            className={classNames(
+                toggleFeatures({
+                    name: 'isAppRedesigned',
+                    on: () => styles.navbarRedesigned,
+                    off: () => styles.navbar,
+                }),
+                [className],
+            )}
+        >
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <Button
+                        onClick={onToggleModal}
+                        variant="outline"
+                    >
+                        {t('Войти')}
+                    </Button>
+                }
+                off={
+                    <ButtonDeprecated
+                        className={styles.links}
+                        theme={ButtonTheme.CLEAR_INVERTED}
+                        onClick={onToggleModal}
+                    >
+                        {t('Войти')}
+                    </ButtonDeprecated>
+                }
+            />
+
+            {isAuthModal && (
+                <LoginModal
+                    isOpen={isAuthModal}
+                    onClose={onToggleModal}
+                />
+            )}
+        </header>
+    )
+})

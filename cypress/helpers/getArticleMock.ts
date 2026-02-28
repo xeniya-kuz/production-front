@@ -1,4 +1,4 @@
-import { articleMock } from '../../src/5entities/Article/model/const/mocks'
+import { articleMock } from '../../src/entities/Article/model/const/mocks'
 
 // TODO: все равно user в бд добавляется. Проверить добавление сущностей
 export const getArticleMock = () => {

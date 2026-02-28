@@ -1,4 +1,4 @@
-import { DATA_TEST_ID } from '../../../src/6shared/const/tests'
+import { DATA_TEST_ID } from '../../../src/shared/const/tests'
 
 export const addComment = (text: string): void => {
     cy.getByTestId(DATA_TEST_ID.commentFormInput).type(text)

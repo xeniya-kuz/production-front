@@ -1,5 +1,5 @@
-import { DATA_TEST_ID } from '../../../src/6shared/const/tests'
-import { getRouteArticles } from '../../../src/6shared/const/router'
+import { DATA_TEST_ID } from '../../../src/shared/const/tests'
+import { getRouteArticles } from '../../../src/shared/const/router'
 
 describe('User visits articles page', () => {
     beforeEach(() => {

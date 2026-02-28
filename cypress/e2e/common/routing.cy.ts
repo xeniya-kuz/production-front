@@ -1,8 +1,8 @@
 import {
     getRouteArticles,
     getRouteProfile,
-} from '../../../src/6shared/const/router'
-import { DATA_TEST_ID } from '../../../src/6shared/const/tests'
+} from '../../../src/shared/const/router'
+import { DATA_TEST_ID } from '../../../src/shared/const/tests'
 
 describe('Routing', () => {
     describe('User is UNauthorized', () => {

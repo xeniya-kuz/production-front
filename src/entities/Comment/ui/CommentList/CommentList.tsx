@@ -1,0 +1,47 @@
+import { classNames } from '@/shared/lib/classNames/classNames'
+import { type JSX, memo } from 'react'
+import { type Comment } from '../../model/types/comment'
+import { CommentCard } from '../CommentCard/CommentCard'
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text'
+import { useTranslation } from 'react-i18next'
+import { VStack } from '@/shared/ui/redesigned/Stack'
+import { ToggleFeatures } from '@/shared/lib/features'
+import { Text } from '@/shared/ui/redesigned/Text'
+
+interface CommentListProps {
+    className?: string
+    comments: Comment[]
+    isLoading?: boolean
+}
+
+export const CommentList = memo(function CommentList({
+    className,
+    comments,
+    isLoading,
+}: CommentListProps): JSX.Element {
+    const { t } = useTranslation('comments')
+
+    return (
+        <VStack
+            gap="16"
+            max
+            className={classNames(className)}
+        >
+            {comments.length > 0 ? (
+                comments.map((comment) => (
+                    <CommentCard
+                        key={comment.id}
+                        comment={comment}
+                        isLoading={isLoading}
+                    />
+                ))
+            ) : (
+                <ToggleFeatures
+                    feature="isAppRedesigned"
+                    on={<Text text={t('no-comments')} />}
+                    off={<TextDeprecated text={t('no-comments')} />}
+                />
+            )}
+        </VStack>
+    )
+})

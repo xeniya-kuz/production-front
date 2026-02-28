@@ -1,6 +1,6 @@
-import { profileMock } from '../../../src/5entities/Profile/model/const/mocks'
-import { getRouteProfile } from '../../../src/6shared/const/router'
-import { DATA_TEST_ID } from '../../../src/6shared/const/tests'
+import { profileMock } from '../../../src/entities/Profile/model/const/mocks'
+import { getRouteProfile } from '../../../src/shared/const/router'
+import { DATA_TEST_ID } from '../../../src/shared/const/tests'
 
 let profileId = ''
 

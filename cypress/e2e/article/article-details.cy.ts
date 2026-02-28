@@ -1,5 +1,5 @@
-import { DATA_TEST_ID } from '../../../src/6shared/const/tests'
-import { getRouteArticleDetails } from '../../../src/6shared/const/router'
+import { DATA_TEST_ID } from '../../../src/shared/const/tests'
+import { getRouteArticleDetails } from '../../../src/shared/const/router'
 
 let currentArticleId = ''
 

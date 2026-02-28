@@ -1,4 +1,4 @@
-import { DATA_TEST_ID } from '../../../src/6shared/const/tests'
+import { DATA_TEST_ID } from '../../../src/shared/const/tests'
 
 export const setRating = (
     rating: number = 5,

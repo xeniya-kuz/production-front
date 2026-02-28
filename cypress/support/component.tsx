@@ -21,15 +21,15 @@ import { type ReactNode } from 'react'
 import {
     type componentRenderProps,
     TestProvider,
-} from '../../src/6shared/lib/tests/ComponentRender'
-import { ThemeProvider } from '../../src/1app/providers/ThemeProvider'
-import '../../src/1app/styles/index.scss'
-import { Theme } from '@/6shared/const/themes'
-import { toggleFeatures } from '@/6shared/lib/features'
+} from '../../src/shared/lib/tests/ComponentRender'
+import { ThemeProvider } from '../../src/app/providers/ThemeProvider'
+import '../../src/app/styles/index.scss'
+import { Theme } from '@/shared/const/themes'
+import { toggleFeatures } from '@/shared/lib/features'
 import {
     REDESIGNED_CLASSNAME,
     DEPRECATED_CLASSNAME,
-} from '@/6shared/const/general'
+} from '@/shared/const/general'
 
 // Example use:
 // cy.mount(<MyComponent />)

@@ -1,5 +1,5 @@
-import { USER_LOCALSTORAGE_KEY } from '../../../src/6shared/const/localstorage'
-import { type User } from '../../../src/5entities/User'
+import { USER_LOCALSTORAGE_KEY } from '../../../src/shared/const/localstorage'
+import { type User } from '../../../src/entities/User'
 import { selectByTestId } from '../../helpers/selectByTestId'
 import { API } from '../const'
 

@@ -7,19 +7,12 @@ project.addSourceFilesAtPaths('src/**/*.ts')
 project.addSourceFilesAtPaths('src/**/*.tsx')
 
 const files = project.getSourceFiles()
-const uiPath = path.resolve(__dirname, '..', '..', 'src', '6shared', 'ui')
+const uiPath = path.resolve(__dirname, '..', '..', 'src', 'shared', 'ui')
 const sharedUiDirectory = project.getDirectory(uiPath)
 const componentsDirs = sharedUiDirectory?.getDirectories()
 
 function isAbsolute(value: string) {
-    const layers = [
-        '1app',
-        '6shared',
-        '5entities',
-        '4features',
-        '3widgets',
-        '2pages',
-    ]
+    const layers = ['app', 'shared', 'entities', 'features', 'widgets', 'pages']
     return layers.some((layer) => value.startsWith(layer))
 }
 

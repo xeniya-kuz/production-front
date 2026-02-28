@@ -1,5 +1,5 @@
 import { API } from '../const'
-import { type Article } from '../../../src/5entities/Article'
+import { type Article } from '../../../src/entities/Article'
 import { getArticleMock } from '../../helpers/getArticleMock'
 
 const articleMock = getArticleMock()

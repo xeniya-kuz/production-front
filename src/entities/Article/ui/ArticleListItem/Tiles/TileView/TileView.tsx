@@ -1,0 +1,85 @@
+import { AppLink } from '@/shared/ui/redesigned/AppLink'
+import { Card } from '@/shared/ui/redesigned/Card'
+import { Text } from '@/shared/ui/redesigned/Text'
+import { type HTMLAttributeAnchorTarget, type JSX, memo } from 'react'
+import { type Article } from '../../../../model/types/article'
+import styles from './TileView.module.scss'
+
+import { getRouteArticleDetails } from '@/shared/const/router'
+import { DATA_TEST_ID } from '@/shared/const/tests'
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
+import { Avatar } from '@/shared/ui/redesigned/Avatar'
+import { AppImage } from '@/shared/ui/redesigned/AppImage'
+
+interface TileViewProps {
+    article: Article
+    target?: HTMLAttributeAnchorTarget
+    index: number
+    className?: string
+    handleButtonClick: (index: number) => () => void
+    articleViews: (props: {
+        className: string
+        article: Article
+    }) => JSX.Element
+}
+
+export const TileView = memo(function TileView({
+    article,
+    target,
+    index,
+    className,
+    handleButtonClick,
+    articleViews,
+}: TileViewProps): JSX.Element {
+    return (
+        <AppLink
+            to={getRouteArticleDetails(article.id)}
+            target={target}
+            className={className}
+            onClick={handleButtonClick(index)}
+        >
+            <Card
+                data-testid={DATA_TEST_ID.articleListItem}
+                padding="0"
+                className={styles.card}
+            >
+                <AppImage
+                    src={article.img}
+                    alt={article.title}
+                    className={styles.img}
+                    fallbackHeight={141}
+                />
+
+                <Text
+                    text={article.title}
+                    className={styles.title}
+                />
+                <VStack
+                    gap="4"
+                    max
+                >
+                    <HStack
+                        justify="between"
+                        max
+                        className={styles.info}
+                    >
+                        <Text text={article.createdAt} />
+                        {articleViews({
+                            className: '',
+                            article,
+                        })}
+                    </HStack>
+                    <div className={styles.footer}>
+                        <Avatar
+                            size={32}
+                            src={article.user.avatar ?? ''}
+                            alt="user avatar"
+                            username={article.user.username}
+                            gap="4"
+                        />
+                    </div>
+                </VStack>
+            </Card>
+        </AppLink>
+    )
+})

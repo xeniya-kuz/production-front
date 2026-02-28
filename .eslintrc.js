@@ -94,7 +94,7 @@ module.exports = {
                     '**/StoreProvider',
                     '**/testing',
                     '**/ErrorBoundary/**',
-                    '@/1app/types/router',
+                    '@/app/types/router',
                 ],
                 ignoreFiles: ['**/ThemeDecorator.tsx', '**/StoreDecorator.tsx'],
             },

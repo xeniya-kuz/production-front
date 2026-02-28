@@ -1,12 +1,12 @@
-import { ErrorBoundary } from '@/1app/providers/ErrorBoundary'
-import { StoreProvider } from '@/1app/providers/StoreProvider'
-import { ThemeProvider } from '@/1app/providers/ThemeProvider'
-import { PageError } from '@/3widgets/PageError'
+import { ErrorBoundary } from '@/app/providers/ErrorBoundary'
+import { StoreProvider } from '@/app/providers/StoreProvider'
+import { ThemeProvider } from '@/app/providers/ThemeProvider'
+import { PageError } from '@/widgets/PageError'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import App from './1app/App'
+import App from './app/App'
 // библиотека для интренализации приложения (подключения разных языков)
-import '@/6shared/config/i18n/i18n'
+import '@/shared/config/i18n/i18n'
 
 const container = document.getElementById('root')
 

@@ -1,5 +1,5 @@
-import { profileMock } from '../../../src/5entities/Profile/model/const/mocks'
-import { DATA_TEST_ID } from '../../../src/6shared/const/tests'
+import { profileMock } from '../../../src/entities/Profile/model/const/mocks'
+import { DATA_TEST_ID } from '../../../src/shared/const/tests'
 import { API } from '../const'
 
 export const updateProfile = (firstname: string, lastname: string): void => {

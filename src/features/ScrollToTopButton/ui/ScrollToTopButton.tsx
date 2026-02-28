@@ -1,0 +1,29 @@
+import CircleIcon from '@/shared/assets/icons/circle-up.svg'
+import { Icon } from '@/shared/ui/redesigned/Icon'
+import { type JSX, memo } from 'react'
+import { useTranslation } from 'react-i18next'
+import styles from './ScrollToTopButton.module.scss'
+import { classNames } from '@/shared/lib/classNames/classNames'
+
+interface ScrollToTopButtonProps {
+    className?: string
+}
+
+export const ScrollToTopButton = memo(function ScrollToTopButton({
+    className,
+}: ScrollToTopButtonProps): JSX.Element {
+    const { t } = useTranslation('buttons')
+    const onClick = (): void => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
+    return (
+        <Icon
+            iconClassName={classNames(styles.scrollToTopButton, [className])}
+            Svg={CircleIcon}
+            clickable
+            onClick={onClick}
+            title={t('scroll-to-top')}
+        />
+    )
+})

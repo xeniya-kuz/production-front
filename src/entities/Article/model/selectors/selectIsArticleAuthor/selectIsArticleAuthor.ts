@@ -1,0 +1,15 @@
+import { selectUserAuthData } from '@/entities/User'
+import { createSelector } from '@reduxjs/toolkit'
+import { selectArticleDetails } from '../selectArticleDetails/selectArticleDetails'
+
+export const selectIsArticleAuthor = createSelector(
+    selectUserAuthData,
+    selectArticleDetails,
+    (user, article) => {
+        if (!user || !article) {
+            return false
+        }
+
+        return article.user.id === user.id
+    },
+)
